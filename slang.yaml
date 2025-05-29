@@ -1,0 +1,3 @@
+input_directory: lib/i18n/translations
+output_directory: lib/i18n/gen
+fallback_locale: zh
