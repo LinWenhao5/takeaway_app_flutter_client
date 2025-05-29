@@ -10,6 +10,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }
