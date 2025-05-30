@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/search/presentation/home_page_search.dart';
+import 'package:takeaway_app_flutter_client/ui/features/search/presentation/product_search.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const HomePageSearch(),
+        const ProductSearch(),
         Expanded(
           child: Center(
             child: Text(

@@ -1,8 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:takeaway_app_flutter_client/config/app_config.dart';
 
 class ApiClient {
-  static const String baseUrl = 'http://localhost:8000/api';
+  static String get baseUrl => AppConfig.apiBaseUrl;
 
   // GET request
   static Future<dynamic> get(String path, {Map<String, String>? params}) async {
