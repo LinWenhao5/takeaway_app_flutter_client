@@ -12,6 +12,7 @@ dependencies:
   slang: ^3.30.0
   slang_flutter: ^3.30.0
   flutter_riverpod: ^2.5.1
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
