@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/setting/application/language_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/setting/domain/language_option.dart';
 
 class LanguageSwitcher extends ConsumerWidget {
   const LanguageSwitcher({super.key});
@@ -10,13 +11,20 @@ class LanguageSwitcher extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
 
+    final currentOption = locale == AppLocale.en
+        ? LanguageOption.english
+        : LanguageOption.chinese;
+
+    final nextOption = currentOption == LanguageOption.english
+        ? LanguageOption.chinese
+        : LanguageOption.english;
+
     return IconButton(
       icon: const Icon(Icons.language),
-      tooltip: locale == AppLocale.en ? '切换到中文' : 'Switch to English',
+      tooltip: nextOption.label,
       onPressed: () {
-        final nextLocale = locale == AppLocale.en ? AppLocale.zh : AppLocale.en;
-        ref.read(localeProvider.notifier).state = nextLocale;
-        LocaleSettings.setLocale(nextLocale);
+        ref.read(localeProvider.notifier).state = nextOption.appLocale;
+        LocaleSettings.setLocale(nextOption.appLocale);
       },
     );
   }

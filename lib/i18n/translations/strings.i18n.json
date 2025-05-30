@@ -1,4 +1,10 @@
 {
-  "hello": "Hello",
-  "welcome": "Welcome!"
+  "homepage": {
+    "hello": "Hello",
+    "welcome": "Welcome!"
+  },
+  "navbar": {
+    "home": "Home",
+    "settings": "Settings"
+  }
 }

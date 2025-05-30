@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/navbar/application/navigation_provider.dart';
+
+class MainNavBar extends ConsumerWidget {
+  const MainNavBar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(navIndexProvider);
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.home),
+          label: context.t.navbar.home,
+        ),
+        BottomNavigationBarItem(
+          icon: const Icon(Icons.settings),
+          label: context.t.navbar.settings,
+        ),
+      ],
+      currentIndex: currentIndex,
+      onTap: (index) {
+        ref.read(navIndexProvider.notifier).state = index;
+      },
+    );
+  }
+}

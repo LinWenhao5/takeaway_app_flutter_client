@@ -1,4 +1,10 @@
 {
-  "hello": "你好",
-  "welcome": "欢迎！"
+  "homepage": {
+    "hello": "你好",
+    "welcome": "欢迎！"
+  },
+  "navbar": {
+    "home": "首页",
+    "settings": "设置"
+  }
 }

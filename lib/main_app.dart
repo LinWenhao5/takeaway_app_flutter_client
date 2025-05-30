@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/home/presentation/home_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 
 
 class MyApp extends ConsumerWidget {
@@ -11,7 +11,7 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const MainScaffold(),
     );
   }
 }

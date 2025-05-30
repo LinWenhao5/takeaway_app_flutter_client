@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 4 (2 per locale)
+/// Strings: 8 (4 per locale)
 ///
-/// Built on 2025-05-29 at 21:27 UTC
+/// Built on 2025-05-30 at 12:31 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,8 +148,30 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	late final _StringsHomepageEn homepage = _StringsHomepageEn._(_root);
+	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
+}
+
+// Path: homepage
+class _StringsHomepageEn {
+	_StringsHomepageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
 	String get hello => 'Hello';
 	String get welcome => 'Welcome!';
+}
+
+// Path: navbar
+class _StringsNavbarEn {
+	_StringsNavbarEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get home => 'Home';
+	String get settings => 'Settings';
 }
 
 // Path: <root>
@@ -176,8 +198,30 @@ class _StringsZh implements Translations {
 	@override late final _StringsZh _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsHomepageZh homepage = _StringsHomepageZh._(_root);
+	@override late final _StringsNavbarZh navbar = _StringsNavbarZh._(_root);
+}
+
+// Path: homepage
+class _StringsHomepageZh implements _StringsHomepageEn {
+	_StringsHomepageZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
 	@override String get hello => '你好';
 	@override String get welcome => '欢迎！';
+}
+
+// Path: navbar
+class _StringsNavbarZh implements _StringsNavbarEn {
+	_StringsNavbarZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => '首页';
+	@override String get settings => '设置';
 }
 
 /// Flat map(s) containing all translations.
@@ -186,8 +230,10 @@ class _StringsZh implements Translations {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return 'Hello';
-			case 'welcome': return 'Welcome!';
+			case 'homepage.hello': return 'Hello';
+			case 'homepage.welcome': return 'Welcome!';
+			case 'navbar.home': return 'Home';
+			case 'navbar.settings': return 'Settings';
 			default: return null;
 		}
 	}
@@ -196,8 +242,10 @@ extension on Translations {
 extension on _StringsZh {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return '你好';
-			case 'welcome': return '欢迎！';
+			case 'homepage.hello': return '你好';
+			case 'homepage.welcome': return '欢迎！';
+			case 'navbar.home': return '首页';
+			case 'navbar.settings': return '设置';
 			default: return null;
 		}
 	}
