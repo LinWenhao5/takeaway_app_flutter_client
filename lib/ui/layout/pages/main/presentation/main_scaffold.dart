@@ -4,8 +4,8 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/setting/presentation/language_swicher.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/navbar/application/navigation_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/navbar/presentation/main_nav_bar.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/home/presentation/home_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/settings/presentaion/settings_page.dart'; // 导入你的nav-bar组件
+import 'package:takeaway_app_flutter_client/ui/layout/pages/main/domain/pages_list.dart';
+
 
 class MainScaffold extends ConsumerWidget {
   const MainScaffold({super.key});
@@ -14,10 +14,7 @@ class MainScaffold extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(navIndexProvider);
 
-    final pages = [
-      const HomePage(),
-      const SettingsPage(),
-    ];
+  
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.homepage.hello),
@@ -25,7 +22,7 @@ class MainScaffold extends ConsumerWidget {
           LanguageSwitcher(),
         ],
       ),
-      body: pages[currentIndex],
+      body: pagesList[currentIndex],
       bottomNavigationBar: const MainNavBar(),
     );
   }
