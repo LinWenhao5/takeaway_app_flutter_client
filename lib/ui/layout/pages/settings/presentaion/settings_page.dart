@@ -7,7 +7,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(context.t.navbar.settings, style: const TextStyle(fontSize: 24)),
+      child: Text(context.t.navbar.settings, style: Theme.of(context).textTheme.titleLarge),
     );
   }
 }

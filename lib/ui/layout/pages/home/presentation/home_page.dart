@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(context.t.homepage.hello, style: const TextStyle(fontSize: 24)),
+      child: Text(context.t.homepage.hello, style: Theme.of(context).textTheme.titleLarge),
     );
   }
 }

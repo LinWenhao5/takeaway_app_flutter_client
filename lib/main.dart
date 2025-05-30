@@ -7,7 +7,7 @@ import 'package:takeaway_app_flutter_client/main_app.dart';
 void main() {
   runApp(
     ProviderScope(
-      child: TranslationProvider(child: MyApp()),
+      child: TranslationProvider(child: TakeawayApp()),
     ),
   );
 }
