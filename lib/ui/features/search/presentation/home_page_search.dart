@@ -12,10 +12,6 @@ class HomePageSearch extends StatelessWidget {
         decoration: InputDecoration(
           hintText: context.t.search.hint,
           prefixIcon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-          contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
         ),
       ),
     );

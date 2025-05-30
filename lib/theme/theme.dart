@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/app_bar_theme.dart';
+import 'package:takeaway_app_flutter_client/theme/preset/input_decoration_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/nav_bar_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/text_theme.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/colors.dart'; // 导入你的颜色
+import 'package:takeaway_app_flutter_client/theme/preset/colors.dart';
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: kPrimaryColor,
@@ -10,6 +11,7 @@ final ThemeData lightTheme = ThemeData(
   appBarTheme: lightAppBarTheme,
   bottomNavigationBarTheme: lightNavBarTheme,
   textTheme: appTextTheme,
+  inputDecorationTheme: appInputDecorationThemeLight,
 );
 
 final ThemeData darkTheme = ThemeData(
@@ -18,4 +20,5 @@ final ThemeData darkTheme = ThemeData(
   appBarTheme: darkAppBarTheme,
   bottomNavigationBarTheme: darkNavBarTheme,
   textTheme: appTextTheme,
+  inputDecorationTheme: appInputDecorationThemeDark,
 );
