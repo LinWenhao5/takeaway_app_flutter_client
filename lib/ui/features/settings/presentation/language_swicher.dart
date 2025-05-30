@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/setting/application/language_provider.dart';
-import 'package:takeaway_app_flutter_client/ui/features/setting/domain/language_option.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/application/language_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/domain/language_option.dart';
 
 class LanguageSwitcher extends ConsumerWidget {
   const LanguageSwitcher({super.key});
