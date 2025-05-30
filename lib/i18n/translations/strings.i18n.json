@@ -1,4 +1,7 @@
 {
+  "search": {
+    "hint": "What do you want to eat today?"
+  },
   "homepage": {
     "hello": "Hello",
     "welcome": "Welcome!"

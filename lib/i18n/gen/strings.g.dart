@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 8 (4 per locale)
+/// Strings: 10 (5 per locale)
 ///
-/// Built on 2025-05-30 at 12:31 UTC
+/// Built on 2025-05-30 at 13:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,8 +148,19 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	late final _StringsSearchEn search = _StringsSearchEn._(_root);
 	late final _StringsHomepageEn homepage = _StringsHomepageEn._(_root);
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
+}
+
+// Path: search
+class _StringsSearchEn {
+	_StringsSearchEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get hint => 'What do you want to eat today?';
 }
 
 // Path: homepage
@@ -198,8 +209,19 @@ class _StringsZh implements Translations {
 	@override late final _StringsZh _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsSearchZh search = _StringsSearchZh._(_root);
 	@override late final _StringsHomepageZh homepage = _StringsHomepageZh._(_root);
 	@override late final _StringsNavbarZh navbar = _StringsNavbarZh._(_root);
+}
+
+// Path: search
+class _StringsSearchZh implements _StringsSearchEn {
+	_StringsSearchZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get hint => '今天想吃点什么？';
 }
 
 // Path: homepage
@@ -230,6 +252,7 @@ class _StringsNavbarZh implements _StringsNavbarEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'search.hint': return 'What do you want to eat today?';
 			case 'homepage.hello': return 'Hello';
 			case 'homepage.welcome': return 'Welcome!';
 			case 'navbar.home': return 'Home';
@@ -242,6 +265,7 @@ extension on Translations {
 extension on _StringsZh {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'search.hint': return '今天想吃点什么？';
 			case 'homepage.hello': return '你好';
 			case 'homepage.welcome': return '欢迎！';
 			case 'navbar.home': return '首页';

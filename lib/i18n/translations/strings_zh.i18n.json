@@ -1,4 +1,7 @@
 {
+  "search": {
+    "hint": "今天想吃点什么？"
+  },
   "homepage": {
     "hello": "你好",
     "welcome": "欢迎！"
