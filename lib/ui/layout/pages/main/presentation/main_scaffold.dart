@@ -14,16 +14,21 @@ class MainScaffold extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentIndex = ref.watch(navIndexProvider);
 
-  
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.homepage.hello),
-        actions: [
-          LanguageSwitcher(),
-        ],
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(context.t.homepage.hello),
+          actions: [
+            LanguageSwitcher(),
+          ],
+        ),
+        body: pagesList[currentIndex],
+        bottomNavigationBar: const MainNavBar(),
       ),
-      body: pagesList[currentIndex],
-      bottomNavigationBar: const MainNavBar(),
     );
   }
 }
