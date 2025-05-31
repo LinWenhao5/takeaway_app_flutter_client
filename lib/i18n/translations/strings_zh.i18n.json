@@ -1,6 +1,9 @@
 {
   "search": {
-    "hint": "今天想吃点什么？"
+    "hint": "今天想吃点什么？",
+    "noResult": "没有搜索结果",
+    "addToCart": "加入",
+    "loadFailed": "加载失败"
   },
   "homepage": {
     "hello": "你好",

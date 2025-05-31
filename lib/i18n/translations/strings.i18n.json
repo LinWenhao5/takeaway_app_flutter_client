@@ -1,6 +1,9 @@
 {
   "search": {
-    "hint": "What do you want to eat today?"
+    "hint": "What do you want to eat today?",
+    "noResult": "No search results",
+    "addToCart": "Add",
+    "loadFailed": "Load failed"
   },
   "homepage": {
     "hello": "Hello",

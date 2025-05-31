@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 10 (5 per locale)
+/// Strings: 16 (8 per locale)
 ///
-/// Built on 2025-05-30 at 13:49 UTC
+/// Built on 2025-05-30 at 18:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,9 @@ class _StringsSearchEn {
 
 	// Translations
 	String get hint => 'What do you want to eat today?';
+	String get noResult => 'No search results';
+	String get addToCart => 'Add';
+	String get loadFailed => 'Load failed';
 }
 
 // Path: homepage
@@ -222,6 +225,9 @@ class _StringsSearchZh implements _StringsSearchEn {
 
 	// Translations
 	@override String get hint => '今天想吃点什么？';
+	@override String get noResult => '没有搜索结果';
+	@override String get addToCart => '加入';
+	@override String get loadFailed => '加载失败';
 }
 
 // Path: homepage
@@ -253,6 +259,9 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'search.hint': return 'What do you want to eat today?';
+			case 'search.noResult': return 'No search results';
+			case 'search.addToCart': return 'Add';
+			case 'search.loadFailed': return 'Load failed';
 			case 'homepage.hello': return 'Hello';
 			case 'homepage.welcome': return 'Welcome!';
 			case 'navbar.home': return 'Home';
@@ -266,6 +275,9 @@ extension on _StringsZh {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'search.hint': return '今天想吃点什么？';
+			case 'search.noResult': return '没有搜索结果';
+			case 'search.addToCart': return '加入';
+			case 'search.loadFailed': return '加载失败';
 			case 'homepage.hello': return '你好';
 			case 'homepage.welcome': return '欢迎！';
 			case 'navbar.home': return '首页';
