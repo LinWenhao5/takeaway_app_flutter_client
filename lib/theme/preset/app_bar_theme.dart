@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/colors.dart';
+import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 
 const AppBarTheme lightAppBarTheme = AppBarTheme(
   backgroundColor: kPrimaryColor,
