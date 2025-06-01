@@ -10,17 +10,20 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoryAsync = ref.watch(categoryWithProductsProvider);
+
     return Column(
       children: [
         const ProductSearch(),
         Expanded(
-          child: categoryAsync.when(
-            data: (categories) => CategoryTabView(categories: categories),
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, stack) {
-        
-              return Center(child: Text(e.toString()));
+          child: RefreshIndicator(
+            onRefresh: () {
+              return ref.refresh(categoryWithProductsProvider.future);
             },
+            child: categoryAsync.when(
+              data: (categories) => CategoryTabView(categories: categories),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, stack) => Center(child: Text(e.toString())),
+            ),
           ),
         ),
       ],

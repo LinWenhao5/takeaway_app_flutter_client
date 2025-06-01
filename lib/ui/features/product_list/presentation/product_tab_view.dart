@@ -14,6 +14,7 @@ class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderSt
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
   final List<GlobalKey> _categoryKeys = [];
+  bool _isTabTapped = false;
 
   @override
   void initState() {
@@ -31,17 +32,27 @@ class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderSt
   }
 
   void _onTabTap(int index) {
+    setState(() {
+      _isTabTapped = true;
+    });
+
     final keyContext = _categoryKeys[index].currentContext;
     if (keyContext != null) {
       Scrollable.ensureVisible(
         keyContext,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
-      );
+      ).then((_) {
+        setState(() {
+          _isTabTapped = false;
+        });
+      });
     }
   }
 
   void _onScroll() {
+    if (_isTabTapped) return;
+
     for (int i = 0; i < _categoryKeys.length; i++) {
       final keyContext = _categoryKeys[i].currentContext;
       if (keyContext != null) {
