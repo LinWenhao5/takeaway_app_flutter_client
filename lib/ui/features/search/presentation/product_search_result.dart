@@ -33,9 +33,12 @@ class ProductSearchResult extends ConsumerWidget {
                 color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(kCardRadius),
               ),
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.3,
+              ),
               child: ListView.separated(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 itemCount: products.length,
                 separatorBuilder: (context, index) => const Divider(),
                 itemBuilder: (context, index) {
@@ -46,9 +49,11 @@ class ProductSearchResult extends ConsumerWidget {
             ),
       loading: () => const Padding(
         padding: EdgeInsets.all(32),
-        child: Center(child: CircularProgressIndicator(
-          color: kPrimaryColor,
-        )),
+        child: Center(
+          child: CircularProgressIndicator(
+            color: kPrimaryColor,
+          ),
+        ),
       ),
       error: (e, _) => Padding(
         padding: const EdgeInsets.all(16),
@@ -60,10 +65,10 @@ class ProductSearchResult extends ConsumerWidget {
               const SizedBox(height: 16),
               Text(
                 context.t.search.loadFailed,
-                style: appTextTheme.bodyLarge
-              )
+                style: appTextTheme.bodyLarge,
+              ),
             ],
-          )
+          ),
         ),
       ),
     );

@@ -1,0 +1,19 @@
+{ 
+ "search": {
+    "hint": "Wat wil je vandaag eten?",
+    "noResult": "Geen zoekresultaten",
+    "addToCart": "Toevoegen",
+    "loadFailed": "Laden mislukt"
+  },
+  "homepage": {
+    "hello": "Hallo",
+    "welcome": "Welkom!"
+  },
+  "navbar": {
+    "settings": "Instellingen",
+    "order": "Bestellen"
+  },
+  "cart": {
+    "addedToCart": "is toegevoegd aan de winkelwagen"
+  }
+}

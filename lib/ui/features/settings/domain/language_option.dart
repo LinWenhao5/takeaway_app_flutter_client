@@ -2,7 +2,7 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
 enum LanguageOption {
   english,
-  chinese,
+  netherlands,
 }
 
 extension LanguageOptionExt on LanguageOption {
@@ -10,8 +10,8 @@ extension LanguageOptionExt on LanguageOption {
     switch (this) {
       case LanguageOption.english:
         return 'English';
-      case LanguageOption.chinese:
-        return '中文';
+      case LanguageOption.netherlands:
+        return 'Nederlands';
     }
   }
 
@@ -19,8 +19,8 @@ extension LanguageOptionExt on LanguageOption {
     switch (this) {
       case LanguageOption.english:
         return AppLocale.en;
-      case LanguageOption.chinese:
-        return AppLocale.zh;
+      case LanguageOption.netherlands:
+        return AppLocale.nl;
     }
   }
 }

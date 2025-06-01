@@ -13,10 +13,10 @@ class LanguageSwitcher extends ConsumerWidget {
 
     final currentOption = locale == AppLocale.en
         ? LanguageOption.english
-        : LanguageOption.chinese;
+        : LanguageOption.netherlands;
 
     final nextOption = currentOption == LanguageOption.english
-        ? LanguageOption.chinese
+        ? LanguageOption.netherlands
         : LanguageOption.english;
 
     return IconButton(

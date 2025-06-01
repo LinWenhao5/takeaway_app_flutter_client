@@ -10,8 +10,8 @@
     "welcome": "Welcome!"
   },
   "navbar": {
-    "home": "Home",
-    "settings": "Settings"
+    "settings": "Settings",
+    "order": "Bestellen"
   },
   "cart": {
     "addedToCart": "has been added to the cart"

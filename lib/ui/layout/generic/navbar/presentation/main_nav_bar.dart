@@ -12,8 +12,8 @@ class MainNavBar extends ConsumerWidget {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
-          icon: const Icon(Icons.home),
-          label: context.t.navbar.home,
+          icon: const Icon(Icons.restaurant),
+          label: context.t.navbar.order,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.settings),
