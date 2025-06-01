@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_product/product_category.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/product_tile.dart';
 
 class CategoryTabView extends StatefulWidget {
@@ -80,7 +79,8 @@ class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderSt
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(category.name, style: Theme.of(context).textTheme.titleMedium),
+                    Text(category.name, style: Theme.of(context).textTheme.headlineMedium),
+                    const Divider(thickness: 1),
                     const SizedBox(height: 8),
                     ...category.products.map((p) => ProductTile(product: p)),
                   ],
