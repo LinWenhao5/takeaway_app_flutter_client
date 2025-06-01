@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 18 (9 per locale)
+/// Strings: 24 (12 per locale)
 ///
-/// Built on 2025-06-01 at 21:27 UTC
+/// Built on 2025-06-01 at 23:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHomepageEn homepage = _StringsHomepageEn._(_root);
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
 	late final _StringsCartEn cart = _StringsCartEn._(_root);
+	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 }
 
 // Path: search
@@ -165,6 +166,7 @@ class _StringsSearchEn {
 	String get noResult => 'No search results';
 	String get addToCart => 'Add';
 	String get loadFailed => 'Load failed';
+	String get tryAnotherKeyword => 'Try another keyword';
 }
 
 // Path: homepage
@@ -186,7 +188,7 @@ class _StringsNavbarEn {
 
 	// Translations
 	String get settings => 'Settings';
-	String get order => 'Bestellen';
+	String get order => 'Order';
 }
 
 // Path: cart
@@ -197,6 +199,17 @@ class _StringsCartEn {
 
 	// Translations
 	String get addedToCart => 'has been added to the cart';
+}
+
+// Path: errors
+class _StringsErrorsEn {
+	_StringsErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get connectionError => 'Connection error';
+	String get retry => 'Retry';
 }
 
 // Path: <root>
@@ -227,6 +240,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsHomepageNl homepage = _StringsHomepageNl._(_root);
 	@override late final _StringsNavbarNl navbar = _StringsNavbarNl._(_root);
 	@override late final _StringsCartNl cart = _StringsCartNl._(_root);
+	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 }
 
 // Path: search
@@ -240,6 +254,7 @@ class _StringsSearchNl implements _StringsSearchEn {
 	@override String get noResult => 'Geen zoekresultaten';
 	@override String get addToCart => 'Toevoegen';
 	@override String get loadFailed => 'Laden mislukt';
+	@override String get tryAnotherKeyword => 'Probeer een ander zoekwoord';
 }
 
 // Path: homepage
@@ -274,6 +289,17 @@ class _StringsCartNl implements _StringsCartEn {
 	@override String get addedToCart => 'is toegevoegd aan de winkelwagen';
 }
 
+// Path: errors
+class _StringsErrorsNl implements _StringsErrorsEn {
+	_StringsErrorsNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get connectionError => 'Verbindingsfout.';
+	@override String get retry => 'Probeer opnieuw';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -284,11 +310,14 @@ extension on Translations {
 			case 'search.noResult': return 'No search results';
 			case 'search.addToCart': return 'Add';
 			case 'search.loadFailed': return 'Load failed';
+			case 'search.tryAnotherKeyword': return 'Try another keyword';
 			case 'homepage.hello': return 'Hello';
 			case 'homepage.welcome': return 'Welcome!';
 			case 'navbar.settings': return 'Settings';
-			case 'navbar.order': return 'Bestellen';
+			case 'navbar.order': return 'Order';
 			case 'cart.addedToCart': return 'has been added to the cart';
+			case 'errors.connectionError': return 'Connection error';
+			case 'errors.retry': return 'Retry';
 			default: return null;
 		}
 	}
@@ -301,11 +330,14 @@ extension on _StringsNl {
 			case 'search.noResult': return 'Geen zoekresultaten';
 			case 'search.addToCart': return 'Toevoegen';
 			case 'search.loadFailed': return 'Laden mislukt';
+			case 'search.tryAnotherKeyword': return 'Probeer een ander zoekwoord';
 			case 'homepage.hello': return 'Hallo';
 			case 'homepage.welcome': return 'Welkom!';
 			case 'navbar.settings': return 'Instellingen';
 			case 'navbar.order': return 'Bestellen';
 			case 'cart.addedToCart': return 'is toegevoegd aan de winkelwagen';
+			case 'errors.connectionError': return 'Verbindingsfout.';
+			case 'errors.retry': return 'Probeer opnieuw';
 			default: return null;
 		}
 	}

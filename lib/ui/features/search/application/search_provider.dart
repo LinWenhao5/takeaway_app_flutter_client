@@ -10,3 +10,5 @@ final productSearchProvider = FutureProvider<List<Product>>((ref) {
   if (keyword.isEmpty) return Future.value([]);
   return ProductApi.searchProducts(keyword);
 });
+
+final isSearchActiveProvider = StateProvider<bool>((ref) => false);

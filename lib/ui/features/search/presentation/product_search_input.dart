@@ -14,25 +14,47 @@ class ProductSearchInput extends ConsumerStatefulWidget {
 class _ProductSearchInputState extends ConsumerState<ProductSearchInput> {
   Timer? _debounce;
   final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(_handleFocusChange);
+  }
 
   @override
   void dispose() {
     _debounce?.cancel();
     _controller.dispose();
+    _focusNode.removeListener(_handleFocusChange);
+    _focusNode.dispose();
     super.dispose();
+  }
+
+  void _handleFocusChange() {
+    if (!_focusNode.hasFocus && _controller.text.isEmpty) {
+      _setSearchActive(false);
+    }
   }
 
   void _onChanged(String value) {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       ref.read(searchKeywordProvider.notifier).state = value;
+      _setSearchActive(value.isNotEmpty);
     });
+    setState(() {});
   }
 
   void _clearInput() {
     _controller.clear();
     ref.read(searchKeywordProvider.notifier).state = '';
+    _setSearchActive(false);
     setState(() {});
+  }
+
+  void _setSearchActive(bool isActive) {
+    ref.read(isSearchActiveProvider.notifier).state = isActive;
   }
 
   @override
@@ -41,22 +63,18 @@ class _ProductSearchInputState extends ConsumerState<ProductSearchInput> {
       padding: const EdgeInsets.all(16.0),
       child: TextField(
         controller: _controller,
+        focusNode: _focusNode,
         decoration: InputDecoration(
           hintText: context.t.search.hint,
           prefixIcon: const Icon(Icons.search),
           suffixIcon: _controller.text.isNotEmpty
               ? IconButton(
                   icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    _clearInput();
-                  },
+                  onPressed: _clearInput,
                 )
               : null,
         ),
-        onChanged: (value) {
-          setState(() {});
-          _onChanged(value);
-        }
+        onChanged: _onChanged,
       ),
     );
   }

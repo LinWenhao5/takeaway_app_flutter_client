@@ -1,9 +1,10 @@
 { 
- "search": {
+  "search": {
     "hint": "Wat wil je vandaag eten?",
     "noResult": "Geen zoekresultaten",
     "addToCart": "Toevoegen",
-    "loadFailed": "Laden mislukt"
+    "loadFailed": "Laden mislukt",
+    "tryAnotherKeyword": "Probeer een ander zoekwoord"
   },
   "homepage": {
     "hello": "Hallo",
@@ -15,5 +16,9 @@
   },
   "cart": {
     "addedToCart": "is toegevoegd aan de winkelwagen"
+  },
+  "errors": {
+    "connectionError": "Verbindingsfout",
+    "retry": "Probeer opnieuw"
   }
 }

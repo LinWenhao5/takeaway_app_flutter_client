@@ -3,7 +3,8 @@
     "hint": "What do you want to eat today?",
     "noResult": "No search results",
     "addToCart": "Add",
-    "loadFailed": "Load failed"
+    "loadFailed": "Load failed",
+    "tryAnotherKeyword": "Try another keyword"
   },
   "homepage": {
     "hello": "Hello",
@@ -11,9 +12,13 @@
   },
   "navbar": {
     "settings": "Settings",
-    "order": "Bestellen"
+    "order": "Order"
   },
   "cart": {
     "addedToCart": "has been added to the cart"
+  },
+  "errors": {
+    "connectionError": "Connection error",
+    "retry": "Retry"
   }
 }
