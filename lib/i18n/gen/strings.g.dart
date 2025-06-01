@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 16 (8 per locale)
+/// Strings: 18 (9 per locale)
 ///
-/// Built on 2025-05-30 at 18:49 UTC
+/// Built on 2025-06-01 at 19:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -151,6 +151,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsSearchEn search = _StringsSearchEn._(_root);
 	late final _StringsHomepageEn homepage = _StringsHomepageEn._(_root);
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
+	late final _StringsCartEn cart = _StringsCartEn._(_root);
 }
 
 // Path: search
@@ -188,6 +189,16 @@ class _StringsNavbarEn {
 	String get settings => 'Settings';
 }
 
+// Path: cart
+class _StringsCartEn {
+	_StringsCartEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get addedToCart => 'has been added to the cart';
+}
+
 // Path: <root>
 class _StringsZh implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -215,6 +226,7 @@ class _StringsZh implements Translations {
 	@override late final _StringsSearchZh search = _StringsSearchZh._(_root);
 	@override late final _StringsHomepageZh homepage = _StringsHomepageZh._(_root);
 	@override late final _StringsNavbarZh navbar = _StringsNavbarZh._(_root);
+	@override late final _StringsCartZh cart = _StringsCartZh._(_root);
 }
 
 // Path: search
@@ -252,6 +264,16 @@ class _StringsNavbarZh implements _StringsNavbarEn {
 	@override String get settings => '设置';
 }
 
+// Path: cart
+class _StringsCartZh implements _StringsCartEn {
+	_StringsCartZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get addedToCart => '已加入购物车';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -266,6 +288,7 @@ extension on Translations {
 			case 'homepage.welcome': return 'Welcome!';
 			case 'navbar.home': return 'Home';
 			case 'navbar.settings': return 'Settings';
+			case 'cart.addedToCart': return 'has been added to the cart';
 			default: return null;
 		}
 	}
@@ -282,6 +305,7 @@ extension on _StringsZh {
 			case 'homepage.welcome': return '欢迎！';
 			case 'navbar.home': return '首页';
 			case 'navbar.settings': return '设置';
+			case 'cart.addedToCart': return '已加入购物车';
 			default: return null;
 		}
 	}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/application/search_provider.dart';
-import 'package:takeaway_app_flutter_client/ui/features/search/presentation/product_result_tile.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/product_tile.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
@@ -40,7 +40,7 @@ class ProductSearchResult extends ConsumerWidget {
                 separatorBuilder: (context, index) => const Divider(),
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return ProductResultTile(product: product);
+                  return ProductTile(product: product);
                 },
               ),
             ),

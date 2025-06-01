@@ -6,9 +6,9 @@ import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/padding.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
-class ProductResultTile extends StatelessWidget {
+class ProductTile extends StatelessWidget {
   final dynamic product;
-  const ProductResultTile({super.key, required this.product});
+  const ProductTile({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,11 @@ class ProductResultTile extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.shopping_cart_outlined, size: 22, color: kPrimaryColor),
             tooltip: t.search.addToCart,
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${product.name} ${context.t.cart.addedToCart}')),
+              );
+            },
           ),
         ],
       ),

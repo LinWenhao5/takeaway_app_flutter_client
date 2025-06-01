@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/application/category_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/presentation/product_tab_view.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/product_search.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final categoryAsync = ref.watch(categoryWithProductsProvider);
     return Column(
       children: [
         const ProductSearch(),
         Expanded(
-          child: Center(
-            child: Text(
-              context.t.homepage.hello,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+          child: categoryAsync.when(
+            data: (categories) => CategoryTabView(categories: categories),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (e, stack) {
+        
+              return Center(child: Text(e.toString()));
+            },
           ),
         ),
       ],

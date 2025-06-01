@@ -12,5 +12,8 @@
   "navbar": {
     "home": "Home",
     "settings": "Settings"
+  },
+  "cart": {
+    "addedToCart": "has been added to the cart"
   }
 }
