@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 
-const TabBarTheme customTabBarTheme = TabBarTheme(
+const TabBarThemeData customTabBarTheme = TabBarThemeData(
   labelColor: kPrimaryColor,
   unselectedLabelColor: Colors.grey,
   labelStyle: kTitleMedium,
