@@ -20,5 +20,33 @@
   "errors": {
     "connectionError": "Verbindingsfout",
     "retry": "Probeer opnieuw"
+  },
+  "login": {
+    "title": "Welkom terug!",
+    "emailLabel": "E-mail",
+    "emailHint": "Voer uw e-mail in",
+    "passwordLabel": "Wachtwoord",
+    "passwordHint": "Voer uw wachtwoord in",
+    "loginButton": "Inloggen",
+    "successMessage": "Inloggen succesvol!",
+    "errorMessage": "Vul alle velden in",
+    "registerLink": "Nog niet geregistreerd? Meld u hier aan."
+  },
+  "register": {
+    "title": "Account aanmaken",
+    "emailLabel": "E-mail",
+    "emailHint": "Voer uw e-mail in",
+    "passwordLabel": "Wachtwoord",
+    "passwordHint": "Voer uw wachtwoord in",
+    "confirmPasswordLabel": "Bevestig wachtwoord",
+    "confirmPasswordHint": "Bevestig uw wachtwoord",
+    "captchaLabel": "Verificatiecode",
+    "captchaHint": "Voer de verificatiecode in",
+    "sendCaptchaButton": "Verzend code",
+    "captchaSentMessage": "Code succesvol verzonden!",
+    "registerButton": "Registreren",
+    "successMessage": "Registratie succesvol!",
+    "passwordMismatchMessage": "Wachtwoorden komen niet overeen",
+    "errorMessage": "Vul alle velden in"
   }
 }

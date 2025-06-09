@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 24 (12 per locale)
+/// Strings: 72 (36 per locale)
 ///
-/// Built on 2025-06-01 at 23:24 UTC
+/// Built on 2025-06-09 at 13:04 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -153,6 +153,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
 	late final _StringsCartEn cart = _StringsCartEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
+	late final _StringsLoginEn login = _StringsLoginEn._(_root);
+	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
 }
 
 // Path: search
@@ -212,6 +214,48 @@ class _StringsErrorsEn {
 	String get retry => 'Retry';
 }
 
+// Path: login
+class _StringsLoginEn {
+	_StringsLoginEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Welcome Back!';
+	String get emailLabel => 'Email';
+	String get emailHint => 'Enter your email';
+	String get passwordLabel => 'Password';
+	String get passwordHint => 'Enter your password';
+	String get loginButton => 'Login';
+	String get successMessage => 'Login successful!';
+	String get errorMessage => 'Please fill in all fields';
+	String get registerLink => 'Not registered yet? Click here to sign up';
+}
+
+// Path: register
+class _StringsRegisterEn {
+	_StringsRegisterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Create an Account';
+	String get emailLabel => 'Email';
+	String get emailHint => 'Enter your email';
+	String get passwordLabel => 'Password';
+	String get passwordHint => 'Enter your password';
+	String get confirmPasswordLabel => 'Confirm Password';
+	String get confirmPasswordHint => 'Confirm your password';
+	String get captchaLabel => 'Verification Code';
+	String get captchaHint => 'Enter the verification code';
+	String get sendCaptchaButton => 'Send Code';
+	String get captchaSentMessage => 'Code sent successfully!';
+	String get registerButton => 'Register';
+	String get successMessage => 'Registration successful!';
+	String get passwordMismatchMessage => 'Passwords do not match';
+	String get errorMessage => 'Please fill in all fields';
+}
+
 // Path: <root>
 class _StringsNl implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -241,6 +285,8 @@ class _StringsNl implements Translations {
 	@override late final _StringsNavbarNl navbar = _StringsNavbarNl._(_root);
 	@override late final _StringsCartNl cart = _StringsCartNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
+	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
+	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
 }
 
 // Path: search
@@ -296,8 +342,50 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get connectionError => 'Verbindingsfout.';
+	@override String get connectionError => 'Verbindingsfout';
 	@override String get retry => 'Probeer opnieuw';
+}
+
+// Path: login
+class _StringsLoginNl implements _StringsLoginEn {
+	_StringsLoginNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Welkom terug!';
+	@override String get emailLabel => 'E-mail';
+	@override String get emailHint => 'Voer uw e-mail in';
+	@override String get passwordLabel => 'Wachtwoord';
+	@override String get passwordHint => 'Voer uw wachtwoord in';
+	@override String get loginButton => 'Inloggen';
+	@override String get successMessage => 'Inloggen succesvol!';
+	@override String get errorMessage => 'Vul alle velden in';
+	@override String get registerLink => 'Nog niet geregistreerd? Meld u hier aan.';
+}
+
+// Path: register
+class _StringsRegisterNl implements _StringsRegisterEn {
+	_StringsRegisterNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Account aanmaken';
+	@override String get emailLabel => 'E-mail';
+	@override String get emailHint => 'Voer uw e-mail in';
+	@override String get passwordLabel => 'Wachtwoord';
+	@override String get passwordHint => 'Voer uw wachtwoord in';
+	@override String get confirmPasswordLabel => 'Bevestig wachtwoord';
+	@override String get confirmPasswordHint => 'Bevestig uw wachtwoord';
+	@override String get captchaLabel => 'Verificatiecode';
+	@override String get captchaHint => 'Voer de verificatiecode in';
+	@override String get sendCaptchaButton => 'Verzend code';
+	@override String get captchaSentMessage => 'Code succesvol verzonden!';
+	@override String get registerButton => 'Registreren';
+	@override String get successMessage => 'Registratie succesvol!';
+	@override String get passwordMismatchMessage => 'Wachtwoorden komen niet overeen';
+	@override String get errorMessage => 'Vul alle velden in';
 }
 
 /// Flat map(s) containing all translations.
@@ -318,6 +406,30 @@ extension on Translations {
 			case 'cart.addedToCart': return 'has been added to the cart';
 			case 'errors.connectionError': return 'Connection error';
 			case 'errors.retry': return 'Retry';
+			case 'login.title': return 'Welcome Back!';
+			case 'login.emailLabel': return 'Email';
+			case 'login.emailHint': return 'Enter your email';
+			case 'login.passwordLabel': return 'Password';
+			case 'login.passwordHint': return 'Enter your password';
+			case 'login.loginButton': return 'Login';
+			case 'login.successMessage': return 'Login successful!';
+			case 'login.errorMessage': return 'Please fill in all fields';
+			case 'login.registerLink': return 'Not registered yet? Click here to sign up';
+			case 'register.title': return 'Create an Account';
+			case 'register.emailLabel': return 'Email';
+			case 'register.emailHint': return 'Enter your email';
+			case 'register.passwordLabel': return 'Password';
+			case 'register.passwordHint': return 'Enter your password';
+			case 'register.confirmPasswordLabel': return 'Confirm Password';
+			case 'register.confirmPasswordHint': return 'Confirm your password';
+			case 'register.captchaLabel': return 'Verification Code';
+			case 'register.captchaHint': return 'Enter the verification code';
+			case 'register.sendCaptchaButton': return 'Send Code';
+			case 'register.captchaSentMessage': return 'Code sent successfully!';
+			case 'register.registerButton': return 'Register';
+			case 'register.successMessage': return 'Registration successful!';
+			case 'register.passwordMismatchMessage': return 'Passwords do not match';
+			case 'register.errorMessage': return 'Please fill in all fields';
 			default: return null;
 		}
 	}
@@ -336,8 +448,32 @@ extension on _StringsNl {
 			case 'navbar.settings': return 'Instellingen';
 			case 'navbar.order': return 'Bestellen';
 			case 'cart.addedToCart': return 'is toegevoegd aan de winkelwagen';
-			case 'errors.connectionError': return 'Verbindingsfout.';
+			case 'errors.connectionError': return 'Verbindingsfout';
 			case 'errors.retry': return 'Probeer opnieuw';
+			case 'login.title': return 'Welkom terug!';
+			case 'login.emailLabel': return 'E-mail';
+			case 'login.emailHint': return 'Voer uw e-mail in';
+			case 'login.passwordLabel': return 'Wachtwoord';
+			case 'login.passwordHint': return 'Voer uw wachtwoord in';
+			case 'login.loginButton': return 'Inloggen';
+			case 'login.successMessage': return 'Inloggen succesvol!';
+			case 'login.errorMessage': return 'Vul alle velden in';
+			case 'login.registerLink': return 'Nog niet geregistreerd? Meld u hier aan.';
+			case 'register.title': return 'Account aanmaken';
+			case 'register.emailLabel': return 'E-mail';
+			case 'register.emailHint': return 'Voer uw e-mail in';
+			case 'register.passwordLabel': return 'Wachtwoord';
+			case 'register.passwordHint': return 'Voer uw wachtwoord in';
+			case 'register.confirmPasswordLabel': return 'Bevestig wachtwoord';
+			case 'register.confirmPasswordHint': return 'Bevestig uw wachtwoord';
+			case 'register.captchaLabel': return 'Verificatiecode';
+			case 'register.captchaHint': return 'Voer de verificatiecode in';
+			case 'register.sendCaptchaButton': return 'Verzend code';
+			case 'register.captchaSentMessage': return 'Code succesvol verzonden!';
+			case 'register.registerButton': return 'Registreren';
+			case 'register.successMessage': return 'Registratie succesvol!';
+			case 'register.passwordMismatchMessage': return 'Wachtwoorden komen niet overeen';
+			case 'register.errorMessage': return 'Vul alle velden in';
 			default: return null;
 		}
 	}

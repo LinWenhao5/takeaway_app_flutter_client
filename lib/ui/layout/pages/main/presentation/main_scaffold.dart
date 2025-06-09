@@ -24,6 +24,13 @@ class MainScaffold extends ConsumerWidget {
           title: Text(context.t.homepage.hello),
           actions: [
             LanguageSwitcher(),
+            IconButton(
+              icon: const Icon(Icons.login),
+              onPressed: () {
+                // Navigate to the login page
+                Navigator.pushNamed(context, '/login');
+              },
+            ),
           ],
         ),
         body: pagesList[currentIndex],

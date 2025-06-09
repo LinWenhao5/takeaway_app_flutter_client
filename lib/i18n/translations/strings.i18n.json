@@ -20,5 +20,33 @@
   "errors": {
     "connectionError": "Connection error",
     "retry": "Retry"
+  },
+  "login": {
+    "title": "Welcome Back!",
+    "emailLabel": "Email",
+    "emailHint": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordHint": "Enter your password",
+    "loginButton": "Login",
+    "successMessage": "Login successful!",
+    "errorMessage": "Please fill in all fields",
+    "registerLink": "Not registered yet? Click here to sign up"
+  },
+  "register": {
+    "title": "Create an Account",
+    "emailLabel": "Email",
+    "emailHint": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordHint": "Enter your password",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordHint": "Confirm your password",
+    "captchaLabel": "Verification Code",
+    "captchaHint": "Enter the verification code",
+    "sendCaptchaButton": "Send Code",
+    "captchaSentMessage": "Code sent successfully!",
+    "registerButton": "Register",
+    "successMessage": "Registration successful!",
+    "passwordMismatchMessage": "Passwords do not match",
+    "errorMessage": "Please fill in all fields"
   }
 }

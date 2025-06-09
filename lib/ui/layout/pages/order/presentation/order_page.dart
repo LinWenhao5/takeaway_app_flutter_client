@@ -8,14 +8,14 @@ import 'package:takeaway_app_flutter_client/ui/features/search/presentation/prod
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/product_search_result.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/error/error_display_widget.dart';
 
-class HomePage extends ConsumerStatefulWidget {
-  const HomePage({super.key});
+class OrderPage extends ConsumerStatefulWidget {
+  const OrderPage({super.key});
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
+  ConsumerState<OrderPage> createState() => _OrderPageState();
 }
 
-class _HomePageState extends ConsumerState<HomePage> {
+class _OrderPageState extends ConsumerState<OrderPage> {
   @override
   void initState() {
     super.initState();

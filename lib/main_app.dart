@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 
 
@@ -15,6 +17,10 @@ class TakeawayApp extends ConsumerWidget {
       theme: lightTheme,
       darkTheme: darkTheme, 
       home: const MainScaffold(),
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+      },
     );
   }
 }
