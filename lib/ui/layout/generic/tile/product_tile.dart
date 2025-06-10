@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/padding.dart';

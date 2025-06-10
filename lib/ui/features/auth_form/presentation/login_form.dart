@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 import 'email_input.dart';
 import 'password_input.dart';
 import 'register_link.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 
 class SearchErrorWidget extends StatelessWidget {
 
