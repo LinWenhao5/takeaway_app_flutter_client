@@ -25,12 +25,12 @@ class RegisterForm extends StatelessWidget {
               children: [
                 Text(
                   context.t.register.title,
-                  style: appTextTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 24),
                 Text(
                   context.t.register.emailLabel,
-                  style: appTextTheme.labelMedium,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 const SizedBox(height: 8),
                 TextField(
@@ -43,7 +43,7 @@ class RegisterForm extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   context.t.register.passwordLabel,
-                  style: appTextTheme.labelMedium,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 const SizedBox(height: 8),
                 TextField(
@@ -57,7 +57,7 @@ class RegisterForm extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   context.t.register.confirmPasswordLabel,
-                  style: appTextTheme.labelMedium,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 const SizedBox(height: 8),
                 TextField(
@@ -71,7 +71,7 @@ class RegisterForm extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   context.t.register.captchaLabel,
-                  style: appTextTheme.labelMedium,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
                 const SizedBox(height: 8),
                 Row(
@@ -134,7 +134,7 @@ class RegisterForm extends StatelessWidget {
                     },
                     child: Text(
                       context.t.register.registerButton,
-                      style: appTextTheme.bodyMedium?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.white,
                       ),
                     ),

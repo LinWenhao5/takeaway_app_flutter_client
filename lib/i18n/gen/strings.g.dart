@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 72 (36 per locale)
+/// Strings: 76 (38 per locale)
 ///
-/// Built on 2025-06-09 at 13:04 UTC
+/// Built on 2025-06-10 at 14:35 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -229,6 +229,8 @@ class _StringsLoginEn {
 	String get loginButton => 'Login';
 	String get successMessage => 'Login successful!';
 	String get errorMessage => 'Please fill in all fields';
+	String get invalidCredentialsMessage => 'Invalid email or password.';
+	String get genericErrorMessage => 'An error occurred. Please try again.';
 	String get registerLink => 'Not registered yet? Click here to sign up';
 }
 
@@ -361,6 +363,8 @@ class _StringsLoginNl implements _StringsLoginEn {
 	@override String get loginButton => 'Inloggen';
 	@override String get successMessage => 'Inloggen succesvol!';
 	@override String get errorMessage => 'Vul alle velden in';
+	@override String get invalidCredentialsMessage => 'Ongeldige e-mail of wachtwoord.';
+	@override String get genericErrorMessage => 'Er is een fout opgetreden. Probeer het opnieuw.';
 	@override String get registerLink => 'Nog niet geregistreerd? Meld u hier aan.';
 }
 
@@ -414,6 +418,8 @@ extension on Translations {
 			case 'login.loginButton': return 'Login';
 			case 'login.successMessage': return 'Login successful!';
 			case 'login.errorMessage': return 'Please fill in all fields';
+			case 'login.invalidCredentialsMessage': return 'Invalid email or password.';
+			case 'login.genericErrorMessage': return 'An error occurred. Please try again.';
 			case 'login.registerLink': return 'Not registered yet? Click here to sign up';
 			case 'register.title': return 'Create an Account';
 			case 'register.emailLabel': return 'Email';
@@ -458,6 +464,8 @@ extension on _StringsNl {
 			case 'login.loginButton': return 'Inloggen';
 			case 'login.successMessage': return 'Inloggen succesvol!';
 			case 'login.errorMessage': return 'Vul alle velden in';
+			case 'login.invalidCredentialsMessage': return 'Ongeldige e-mail of wachtwoord.';
+			case 'login.genericErrorMessage': return 'Er is een fout opgetreden. Probeer het opnieuw.';
 			case 'login.registerLink': return 'Nog niet geregistreerd? Meld u hier aan.';
 			case 'register.title': return 'Account aanmaken';
 			case 'register.emailLabel': return 'E-mail';

@@ -19,7 +19,7 @@ class SearchErrorWidget extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               context.t.search.loadFailed,
-              style: appTextTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
           ],

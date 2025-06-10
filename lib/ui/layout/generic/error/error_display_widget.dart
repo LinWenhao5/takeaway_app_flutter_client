@@ -27,7 +27,7 @@ class ErrorDisplayWidget extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             errorMessage,
-            style: appTextTheme.headlineLarge,
+            style: Theme.of(context).textTheme.headlineLarge,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),

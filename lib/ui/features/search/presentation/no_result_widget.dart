@@ -20,12 +20,12 @@ class NoResultWidget extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             t.search.noResult,
-            style: appTextTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 8),
           Text(
             t.search.tryAnotherKeyword,
-            style: appTextTheme.bodyMedium!.copyWith(
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Colors.grey,
             ),
           ),

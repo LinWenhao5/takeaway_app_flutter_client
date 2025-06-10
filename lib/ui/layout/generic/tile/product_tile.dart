@@ -21,20 +21,20 @@ class ProductTile extends StatelessWidget {
       ),
       title: Text(
         product.name,
-        style: appTextTheme.titleMedium,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
       subtitle: Text(
         product.description,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: appTextTheme.bodySmall,
+        style: Theme.of(context).textTheme.bodySmall,
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             '€${product.price}',
-            style: appTextTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(width: 8),
           IconButton(

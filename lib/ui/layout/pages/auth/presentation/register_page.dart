@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/ui/features/register_form/presentation/register_form.dart';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/register_form.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
