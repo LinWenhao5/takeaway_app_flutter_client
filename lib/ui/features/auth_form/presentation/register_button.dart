@@ -41,14 +41,14 @@ class RegisterButton extends ConsumerWidget {
 
           if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty || captcha.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('All fields are required')),
+              SnackBar(content: Text(context.t.register.errorMessage)),
             );
             return;
           }
 
           if (password != confirmPassword) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Passwords do not match')),
+              SnackBar(content: Text(context.t.register.passwordMismatchMessage)),
             );
             return;
           }

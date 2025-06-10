@@ -18,7 +18,7 @@ final ThemeData lightTheme = ThemeData(
 
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primaryColor: kPrimaryColor,
+  primaryColor: kPrimaryColorDark,
   textTheme: appTextTheme,
   appBarTheme: darkAppBarTheme,
   bottomNavigationBarTheme: darkNavBarTheme,
