@@ -30,11 +30,11 @@ class LoginButton extends ConsumerWidget {
                 ),
               ),
               onPressed: () async {
-                final email = emailController.text;
-                final password = passwordController.text;
+                final email = emailController.text.trim();
+                final password = passwordController.text.trim();
 
                 if (email.isNotEmpty && password.isNotEmpty) {
-                  await authNotifier.login(email, password);
+                  await authNotifier.login(email, password, context);
 
                   if (!context.mounted) return;
 
@@ -45,9 +45,8 @@ class LoginButton extends ConsumerWidget {
                     );
                     Navigator.pop(context);
                   } else if (updatedAuthState.errorMessage != null) {
-                    final errorMessage = authNotifier.getErrorMessage(context);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(errorMessage)),
+                      SnackBar(content: Text(updatedAuthState.errorMessage!)),
                     );
                   }
                 } else {

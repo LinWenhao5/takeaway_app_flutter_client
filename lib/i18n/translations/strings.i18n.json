@@ -31,11 +31,15 @@
     "successMessage": "Login successful!",
     "errorMessage": "Please fill in all fields",
     "invalidCredentialsMessage": "Invalid email or password.",
+    "invalidEmailFormatMessage": "Invalid email format.",
+    "invalidPasswordMessage": "Invalid password.",
     "genericErrorMessage": "An error occurred. Please try again.",
     "registerLink": "Not registered yet? Click here to sign up"
   },
   "register": {
     "title": "Create an Account",
+    "nameLabel": "Name",
+    "nameHint": "Enter your name",
     "emailLabel": "Email",
     "emailHint": "Enter your email",
     "passwordLabel": "Password",
@@ -48,7 +52,10 @@
     "captchaSentMessage": "Code sent successfully!",
     "registerButton": "Register",
     "successMessage": "Registration successful!",
-    "passwordMismatchMessage": "Passwords do not match",
+    "passwordMismatchMessage": "Passwords do not match.",
+    "emailTakenMessage": "The email has already been taken.",
+    "invalidCaptchaMessage": "The verification code is invalid.",
+    "genericErrorMessage": "An error occurred. Please try again.",
     "errorMessage": "Please fill in all fields"
   }
 }

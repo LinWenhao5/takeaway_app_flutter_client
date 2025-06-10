@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 76 (38 per locale)
+/// Strings: 90 (45 per locale)
 ///
-/// Built on 2025-06-10 at 14:35 UTC
+/// Built on 2025-06-10 at 23:00 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -230,6 +230,8 @@ class _StringsLoginEn {
 	String get successMessage => 'Login successful!';
 	String get errorMessage => 'Please fill in all fields';
 	String get invalidCredentialsMessage => 'Invalid email or password.';
+	String get invalidEmailFormatMessage => 'Invalid email format.';
+	String get invalidPasswordMessage => 'Invalid password.';
 	String get genericErrorMessage => 'An error occurred. Please try again.';
 	String get registerLink => 'Not registered yet? Click here to sign up';
 }
@@ -242,6 +244,8 @@ class _StringsRegisterEn {
 
 	// Translations
 	String get title => 'Create an Account';
+	String get nameLabel => 'Name';
+	String get nameHint => 'Enter your name';
 	String get emailLabel => 'Email';
 	String get emailHint => 'Enter your email';
 	String get passwordLabel => 'Password';
@@ -254,7 +258,10 @@ class _StringsRegisterEn {
 	String get captchaSentMessage => 'Code sent successfully!';
 	String get registerButton => 'Register';
 	String get successMessage => 'Registration successful!';
-	String get passwordMismatchMessage => 'Passwords do not match';
+	String get passwordMismatchMessage => 'Passwords do not match.';
+	String get emailTakenMessage => 'The email has already been taken.';
+	String get invalidCaptchaMessage => 'The verification code is invalid.';
+	String get genericErrorMessage => 'An error occurred. Please try again.';
 	String get errorMessage => 'Please fill in all fields';
 }
 
@@ -364,6 +371,8 @@ class _StringsLoginNl implements _StringsLoginEn {
 	@override String get successMessage => 'Inloggen succesvol!';
 	@override String get errorMessage => 'Vul alle velden in';
 	@override String get invalidCredentialsMessage => 'Ongeldige e-mail of wachtwoord.';
+	@override String get invalidEmailFormatMessage => 'Ongeldig e-mailformaat.';
+	@override String get invalidPasswordMessage => 'Ongeldig wachtwoord.';
 	@override String get genericErrorMessage => 'Er is een fout opgetreden. Probeer het opnieuw.';
 	@override String get registerLink => 'Nog niet geregistreerd? Meld u hier aan.';
 }
@@ -376,6 +385,8 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 
 	// Translations
 	@override String get title => 'Account aanmaken';
+	@override String get nameLabel => 'Naam';
+	@override String get nameHint => 'Voer uw naam in';
 	@override String get emailLabel => 'E-mail';
 	@override String get emailHint => 'Voer uw e-mail in';
 	@override String get passwordLabel => 'Wachtwoord';
@@ -388,7 +399,10 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 	@override String get captchaSentMessage => 'Code succesvol verzonden!';
 	@override String get registerButton => 'Registreren';
 	@override String get successMessage => 'Registratie succesvol!';
-	@override String get passwordMismatchMessage => 'Wachtwoorden komen niet overeen';
+	@override String get passwordMismatchMessage => 'Wachtwoorden komen niet overeen.';
+	@override String get emailTakenMessage => 'Het e-mailadres is al in gebruik.';
+	@override String get invalidCaptchaMessage => 'De verificatiecode is ongeldig.';
+	@override String get genericErrorMessage => 'Er is een fout opgetreden. Probeer het opnieuw.';
 	@override String get errorMessage => 'Vul alle velden in';
 }
 
@@ -419,9 +433,13 @@ extension on Translations {
 			case 'login.successMessage': return 'Login successful!';
 			case 'login.errorMessage': return 'Please fill in all fields';
 			case 'login.invalidCredentialsMessage': return 'Invalid email or password.';
+			case 'login.invalidEmailFormatMessage': return 'Invalid email format.';
+			case 'login.invalidPasswordMessage': return 'Invalid password.';
 			case 'login.genericErrorMessage': return 'An error occurred. Please try again.';
 			case 'login.registerLink': return 'Not registered yet? Click here to sign up';
 			case 'register.title': return 'Create an Account';
+			case 'register.nameLabel': return 'Name';
+			case 'register.nameHint': return 'Enter your name';
 			case 'register.emailLabel': return 'Email';
 			case 'register.emailHint': return 'Enter your email';
 			case 'register.passwordLabel': return 'Password';
@@ -434,7 +452,10 @@ extension on Translations {
 			case 'register.captchaSentMessage': return 'Code sent successfully!';
 			case 'register.registerButton': return 'Register';
 			case 'register.successMessage': return 'Registration successful!';
-			case 'register.passwordMismatchMessage': return 'Passwords do not match';
+			case 'register.passwordMismatchMessage': return 'Passwords do not match.';
+			case 'register.emailTakenMessage': return 'The email has already been taken.';
+			case 'register.invalidCaptchaMessage': return 'The verification code is invalid.';
+			case 'register.genericErrorMessage': return 'An error occurred. Please try again.';
 			case 'register.errorMessage': return 'Please fill in all fields';
 			default: return null;
 		}
@@ -465,9 +486,13 @@ extension on _StringsNl {
 			case 'login.successMessage': return 'Inloggen succesvol!';
 			case 'login.errorMessage': return 'Vul alle velden in';
 			case 'login.invalidCredentialsMessage': return 'Ongeldige e-mail of wachtwoord.';
+			case 'login.invalidEmailFormatMessage': return 'Ongeldig e-mailformaat.';
+			case 'login.invalidPasswordMessage': return 'Ongeldig wachtwoord.';
 			case 'login.genericErrorMessage': return 'Er is een fout opgetreden. Probeer het opnieuw.';
 			case 'login.registerLink': return 'Nog niet geregistreerd? Meld u hier aan.';
 			case 'register.title': return 'Account aanmaken';
+			case 'register.nameLabel': return 'Naam';
+			case 'register.nameHint': return 'Voer uw naam in';
 			case 'register.emailLabel': return 'E-mail';
 			case 'register.emailHint': return 'Voer uw e-mail in';
 			case 'register.passwordLabel': return 'Wachtwoord';
@@ -480,7 +505,10 @@ extension on _StringsNl {
 			case 'register.captchaSentMessage': return 'Code succesvol verzonden!';
 			case 'register.registerButton': return 'Registreren';
 			case 'register.successMessage': return 'Registratie succesvol!';
-			case 'register.passwordMismatchMessage': return 'Wachtwoorden komen niet overeen';
+			case 'register.passwordMismatchMessage': return 'Wachtwoorden komen niet overeen.';
+			case 'register.emailTakenMessage': return 'Het e-mailadres is al in gebruik.';
+			case 'register.invalidCaptchaMessage': return 'De verificatiecode is ongeldig.';
+			case 'register.genericErrorMessage': return 'Er is een fout opgetreden. Probeer het opnieuw.';
 			case 'register.errorMessage': return 'Vul alle velden in';
 			default: return null;
 		}
