@@ -54,7 +54,7 @@ class RegisterButton extends ConsumerWidget {
           }
 
           try {
-            await ref.read(authProvider.notifier).register(
+            await ref.read(registerProvider.notifier).register(
                   name,
                   email,
                   password,
@@ -64,7 +64,7 @@ class RegisterButton extends ConsumerWidget {
 
             if (!context.mounted) return;
 
-            final updatedAuthState = ref.read(authProvider);
+            final updatedAuthState = ref.read(registerProvider);
 
             if (updatedAuthState.errorMessage != null) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -78,7 +78,7 @@ class RegisterButton extends ConsumerWidget {
             }
           } catch (e) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(context.t.register.genericErrorMessage)),
+              SnackBar(content: Text(context.t.errors.genericErrorMessage)),
             );
           }
         },

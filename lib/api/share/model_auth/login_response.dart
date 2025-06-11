@@ -1,6 +1,9 @@
-class LoginResponse {
+import 'package:takeaway_app_flutter_client/api/share/utils/error_utils.dart';
+
+class LoginResponse extends ErrorUtils {
   final String? token;
   final String message;
+  @override
   final Map<String, List<String>>? errors;
 
   LoginResponse({
@@ -13,21 +16,7 @@ class LoginResponse {
     return LoginResponse(
       token: json['token'],
       message: json['message'],
-      errors: json['errors'] != null
-          ? (json['errors'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(key, List<String>.from(value as List)),
-            )
-          : null,
+      errors: json['errors'],
     );
-  }
-
-  String? getFirstError() {
-    if (errors != null && errors!.isNotEmpty) {
-      final firstErrorList = errors!.values.first;
-      if (firstErrorList.isNotEmpty) {
-        return firstErrorList.first;
-      }
-    }
-    return null;
   }
 }

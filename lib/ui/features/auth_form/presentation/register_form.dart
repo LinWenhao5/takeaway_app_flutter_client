@@ -41,7 +41,10 @@ class RegisterForm extends StatelessWidget {
                 const SizedBox(height: 16),
                 ConfirmPasswordInput(controller: confirmPasswordController),
                 const SizedBox(height: 16),
-                CaptchaInput(controller: captchaController),
+                CaptchaInput(
+                  controller: captchaController,
+                  emailController: emailController
+                ),
                 const SizedBox(height: 24),
                 RegisterButton(
                   nameController: nameController,

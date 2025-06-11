@@ -15,8 +15,8 @@ class LoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authProvider);
-    final authNotifier = ref.read(authProvider.notifier);
+    final authState = ref.watch(loginProvider);
+    final authNotifier = ref.read(loginProvider.notifier);
 
     return Center(
       child: authState.isLoading
@@ -38,7 +38,7 @@ class LoginButton extends ConsumerWidget {
 
                   if (!context.mounted) return;
 
-                  final updatedAuthState = ref.read(authProvider);
+                  final updatedAuthState = ref.read(loginProvider);
                   if (updatedAuthState.token != null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(context.t.login.successMessage)),

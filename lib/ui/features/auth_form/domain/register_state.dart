@@ -1,23 +1,19 @@
-class AuthState {
-  final String? token;
+class RegisterState {
   final bool isLoading;
   final String? errorMessage;
 
-  AuthState({
-    this.token,
+  RegisterState({
     this.isLoading = false,
     this.errorMessage,
   });
 
-  AuthState copyWith({
-    String? token,
+  RegisterState copyWith({
     bool? isLoading,
     String? errorMessage,
   }) {
-    return AuthState(
-      token: token ?? this.token,
+    return RegisterState(
       isLoading: isLoading ?? this.isLoading,
-      errorMessage: errorMessage,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }

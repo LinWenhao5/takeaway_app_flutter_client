@@ -19,7 +19,14 @@
   },
   "errors": {
     "connectionError": "Verbindingsfout",
-    "retry": "Probeer opnieuw"
+    "retry": "Probeer opnieuw",
+    "invalidEmailMessage": "Het e-mailadres is ongeldig.",
+    "genericErrorMessage": "Er is een fout opgetreden. Probeer het opnieuw.",
+    "invalidCredentialsMessage": "Ongeldige e-mail of wachtwoord.",
+    "invalidEmailFormatMessage": "Ongeldig e-mailformaat.",
+    "invalidPasswordMessage": "Ongeldig wachtwoord.",
+    "emailTakenMessage": "Het e-mailadres is al in gebruik.",
+    "invalidCaptchaMessage": "De verificatiecode is ongeldig."
   },
   "login": {
     "title": "Welkom terug!",
@@ -30,10 +37,6 @@
     "loginButton": "Inloggen",
     "successMessage": "Inloggen succesvol!",
     "errorMessage": "Vul alle velden in",
-    "invalidCredentialsMessage": "Ongeldige e-mail of wachtwoord.",
-    "invalidEmailFormatMessage": "Ongeldig e-mailformaat.",
-    "invalidPasswordMessage": "Ongeldig wachtwoord.",
-    "genericErrorMessage": "Er is een fout opgetreden. Probeer het opnieuw.",
     "registerLink": "Nog niet geregistreerd? Meld u hier aan."
   },
   "register": {
@@ -53,9 +56,6 @@
     "registerButton": "Registreren",
     "successMessage": "Registratie succesvol!",
     "passwordMismatchMessage": "Wachtwoorden komen niet overeen.",
-    "emailTakenMessage": "Het e-mailadres is al in gebruik.",
-    "invalidCaptchaMessage": "De verificatiecode is ongeldig.",
-    "genericErrorMessage": "Er is een fout opgetreden. Probeer het opnieuw.",
     "errorMessage": "Vul alle velden in"
   }
 }

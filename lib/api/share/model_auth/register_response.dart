@@ -1,5 +1,8 @@
-class RegisterResponse {
+import 'package:takeaway_app_flutter_client/api/share/utils/error_utils.dart';
+
+class RegisterResponse extends ErrorUtils {
   final String? message;
+  @override
   final Map<String, List<String>>? errors;
 
   RegisterResponse({this.message, this.errors});
@@ -9,15 +12,5 @@ class RegisterResponse {
       message: json['message'],
       errors: json['errors']
     );
-  }
-
-  String? getFirstError() {
-    if (errors != null && errors!.isNotEmpty) {
-      final firstErrorList = errors!.values.first;
-      if (firstErrorList.isNotEmpty) {
-        return firstErrorList.first;
-      }
-    }
-    return null;
   }
 }
