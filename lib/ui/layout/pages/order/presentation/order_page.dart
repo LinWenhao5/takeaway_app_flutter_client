@@ -49,7 +49,11 @@ class _OrderPageState extends ConsumerState<OrderPage> {
               },
               child: categoryAsync.when(
                 data: (categories) => CategoryTabView(categories: categories),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                loading: () => Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 error: (e, stack) => ErrorDisplayWidget(
                   errorMessage: context.t.errors.connectionError,
                   onRetry: () async {

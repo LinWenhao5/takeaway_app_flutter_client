@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
 class NoResultWidget extends StatelessWidget {
@@ -13,7 +12,7 @@ class NoResultWidget extends StatelessWidget {
         children: [
           Icon(
             Icons.sentiment_dissatisfied,
-            color: kPrimaryColor,
+            color: Theme.of(context).primaryColor,
             size: 64,
           ),
           const SizedBox(height: 16),

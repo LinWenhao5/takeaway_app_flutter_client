@@ -35,7 +35,7 @@ class ErrorDisplayWidget extends StatelessWidget {
             icon: const Icon(Icons.refresh),
             label: Text(context.t.errors.retry),
             style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor,
+              backgroundColor: Theme.of(context).primaryColor,
               foregroundColor: Colors.white,
             ),
           ),

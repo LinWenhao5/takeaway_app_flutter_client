@@ -17,7 +17,7 @@ class RegisterLink extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: kPrimaryColor,
                 decoration: TextDecoration.underline,
-                decorationColor: kPrimaryColor,
+                decorationColor: Theme.of(context).primaryColor,
               ),
         ),
       ),

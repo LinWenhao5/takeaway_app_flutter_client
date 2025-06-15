@@ -44,7 +44,6 @@ class CaptchaInput extends ConsumerWidget {
                   ? null
                   : () async {
                       final email = emailController.text;
-                      print('Email: $email');
                       if (email.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(context.t.errors.invalidEmailMessage)),
@@ -67,10 +66,12 @@ class CaptchaInput extends ConsumerWidget {
                       }
                     },
               child: captchaState.isLoading
-                  ? const SizedBox(
+                  ? SizedBox(
                       width: 16,
                       height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
+                      child: CircularProgressIndicator(
+                        color: Theme.of(context).primaryColor,
+                      ),
                     )
                   : Text(context.t.register.sendCaptchaButton),
             ),

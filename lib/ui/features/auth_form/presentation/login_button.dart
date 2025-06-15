@@ -20,7 +20,9 @@ class LoginButton extends ConsumerWidget {
 
     return Center(
       child: authState.isLoading
-          ? const CircularProgressIndicator()
+          ? CircularProgressIndicator(
+            color: Theme.of(context).primaryColor
+          )
           : ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).primaryColor,

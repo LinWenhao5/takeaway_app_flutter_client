@@ -4,7 +4,6 @@ import 'package:takeaway_app_flutter_client/ui/features/search/application/searc
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/no_result_widget.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/search_error_widget.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/tile/product_tile.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart'; 
 
 class ProductSearchResult extends ConsumerWidget {
@@ -41,11 +40,11 @@ class ProductSearchResult extends ConsumerWidget {
                 ),
               ),
             ),
-      loading: () => const Padding(
-        padding: EdgeInsets.all(32),
+      loading: () => Padding(
+        padding: const EdgeInsets.all(32),
         child: Center(
           child: CircularProgressIndicator(
-            color: kPrimaryColor,
+            color: Theme.of(context).primaryColor
           ),
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/padding.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
@@ -37,7 +36,7 @@ class ProductTile extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined, size: 22, color: kPrimaryColor),
+            icon: Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
             tooltip: t.search.addToCart,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(

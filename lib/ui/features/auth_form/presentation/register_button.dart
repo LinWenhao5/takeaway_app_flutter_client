@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_provider.dart';
 
 class RegisterButton extends ConsumerWidget {
@@ -25,7 +24,7 @@ class RegisterButton extends ConsumerWidget {
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: kPrimaryColor,
+          backgroundColor: Theme.of(context).primaryColor,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
