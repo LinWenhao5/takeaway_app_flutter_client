@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'email_input.dart';
-import 'password_input.dart';
+import '../share/email_input.dart';
+import '../share/password_input.dart';
 import 'register_link.dart';
 import 'login_button.dart';
 
@@ -36,7 +36,12 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 const SizedBox(height: 24),
                 EmailInput(controller: emailController),
                 const SizedBox(height: 16),
-                PasswordInput(controller: passwordController),
+                PasswordInput(
+                  controller: passwordController,
+                  label: context.t.register.passwordLabel,
+                  hintText: context.t.register.passwordHint,
+                  prefixIcon: const Icon(Icons.lock),
+                ),
                 const SizedBox(height: 16),
                 const RegisterLink(),
                 const SizedBox(height: 24),

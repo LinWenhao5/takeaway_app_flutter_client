@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../application/auth_provider.dart';
+import '../../application/auth_provider.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
 class LoginButton extends ConsumerWidget {

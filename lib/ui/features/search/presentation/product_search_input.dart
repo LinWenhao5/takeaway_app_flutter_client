@@ -26,8 +26,9 @@ class _ProductSearchInputState extends ConsumerState<ProductSearchInput> {
   void dispose() {
     _debounce?.cancel();
     _controller.dispose();
-    _focusNode.removeListener(_handleFocusChange);
-    _focusNode.dispose();
+    _focusNode
+      ..removeListener(_handleFocusChange)
+      ..dispose();
     super.dispose();
   }
 
@@ -43,14 +44,12 @@ class _ProductSearchInputState extends ConsumerState<ProductSearchInput> {
       ref.read(searchKeywordProvider.notifier).state = value;
       _setSearchActive(value.isNotEmpty);
     });
-    setState(() {});
   }
 
   void _clearInput() {
     _controller.clear();
     ref.read(searchKeywordProvider.notifier).state = '';
     _setSearchActive(false);
-    setState(() {});
   }
 
   void _setSearchActive(bool isActive) {

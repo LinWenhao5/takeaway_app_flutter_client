@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/login_form.dart';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/login/login_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

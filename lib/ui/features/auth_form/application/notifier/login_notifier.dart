@@ -4,8 +4,8 @@ import 'package:takeaway_app_flutter_client/api/api_auth/auth_api.dart';
 import 'package:takeaway_app_flutter_client/api/api_client.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_auth/login_response.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/domain/login_state.dart';
-import 'token_storage.dart';
-import 'auth_error_mapper.dart';
+import '../token_storage.dart';
+import '../auth_error_mapper.dart';
 
 class LoginNotifier extends StateNotifier<LoginState> {
   LoginNotifier() : super(LoginState());

@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/api/api_auth/auth_api.dart';
 import 'package:takeaway_app_flutter_client/api/api_client.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_auth/register_response.dart';
-import 'package:takeaway_app_flutter_client/ui/features/auth_form/domain/register_state.dart';
-import 'auth_error_mapper.dart';
+import 'package:takeaway_app_flutter_client/api/share/model_auth/captcha_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_error_mapper.dart';
+import '../../domain/captcha_state.dart';
 
-class RegisterNotifier extends StateNotifier<RegisterState> {
-  RegisterNotifier() : super(RegisterState());
+class CaptchaNotifier extends StateNotifier<CaptchaState> {
+  CaptchaNotifier() : super(CaptchaState());
 
-  Future<void> register(
-      String name, String email, String password, String captcha, BuildContext context) async {
+  Future<void> generateCaptcha(String email, BuildContext context) async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
-      await AuthApi.register(name, email, password, captcha);
-      state = state.copyWith(isLoading: false);
+      final captcha = await AuthApi.captcha(email);
+      state = state.copyWith(isLoading: false, captchaMessage: captcha.message);
     } catch (e) {
       if (!context.mounted) return;
-      final errorMessage = _handleError(context, e, mapRegisterErrorToLocalizedMessage);
+      final errorMessage = _handleError(context, e, mapCaptchaErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);
     }
   }
@@ -31,8 +30,8 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       try {
         final response = exception.responseBody;
         if (response != null) {
-          final registerResponse = RegisterResponse.fromJson(response);
-          return registerResponse.getFirstError() ?? errorMapper(context, exception.toString());
+          final captchaResponse = CaptchaResponse.fromJson(response);
+          return captchaResponse.getFirstError() ?? errorMapper(context, exception.toString());
         }
       } catch (_) {
         return errorMapper(context, exception.toString());

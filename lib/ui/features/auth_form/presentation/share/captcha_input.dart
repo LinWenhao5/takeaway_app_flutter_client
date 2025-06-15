@@ -4,20 +4,24 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_provider.dart';
 
 class CaptchaInput extends ConsumerWidget {
-
   final TextEditingController controller;
-  final TextEditingController emailController; 
+  final TextEditingController emailController;
+  final ValueChanged<String>? onChanged;
 
   const CaptchaInput({
-    super.key, 
-    required this.controller, 
-    required this.emailController
+    super.key,
+    required this.controller,
+    required this.emailController,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final captchaState = ref.watch(captchaProvider);
     final captchaNotifier = ref.read(captchaProvider.notifier);
+
+    final remainingTime = ref.watch(captchaTimerProvider);
+    final captchaTimerNotifier = ref.read(captchaTimerProvider.notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,6 +36,7 @@ class CaptchaInput extends ConsumerWidget {
             Expanded(
               child: TextField(
                 controller: controller,
+                onChanged: onChanged,
                 decoration: InputDecoration(
                   hintText: context.t.register.captchaHint,
                   prefixIcon: const Icon(Icons.security),
@@ -40,7 +45,7 @@ class CaptchaInput extends ConsumerWidget {
             ),
             const SizedBox(width: 8),
             ElevatedButton(
-              onPressed: captchaState.isLoading
+              onPressed: (remainingTime > 0 || captchaState.isLoading)
                   ? null
                   : () async {
                       final email = emailController.text;
@@ -63,17 +68,23 @@ class CaptchaInput extends ConsumerWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(context.t.register.captchaSentMessage)),
                         );
+                        captchaTimerNotifier.startTimer();
                       }
                     },
               child: captchaState.isLoading
-                  ? SizedBox(
+                  ? const SizedBox(
                       width: 16,
                       height: 16,
                       child: CircularProgressIndicator(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.white,
+                        strokeWidth: 2,
                       ),
                     )
-                  : Text(context.t.register.sendCaptchaButton),
+                  : Text(
+                      remainingTime > 0
+                          ? '${remainingTime}s'
+                          : context.t.register.sendCaptchaButton,
+                    ),
             ),
           ],
         ),
