@@ -1,22 +1,19 @@
-import 'package:takeaway_app_flutter_client/api/share/utils/error_utils.dart';
-
-class LoginResponse extends ErrorUtils {
+class LoginResponse{
   final String? token;
   final String message;
-  @override
-  final Map<String, List<String>>? errors;
+  final String? error;
 
   LoginResponse({
     this.token,
     required this.message,
-    this.errors,
+    this.error,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
       token: json['token'],
       message: json['message'],
-      errors: json['errors'],
+      error: json['error'],
     );
   }
 }

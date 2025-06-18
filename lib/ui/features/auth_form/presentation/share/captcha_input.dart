@@ -64,7 +64,7 @@ class CaptchaInput extends ConsumerWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(captchaState.errorMessage!)),
                         );
-                      } else {
+                      } else if (captchaState.captchaMessage != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(context.t.register.captchaSentMessage)),
                         );

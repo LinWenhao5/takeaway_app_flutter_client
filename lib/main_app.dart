@@ -5,6 +5,8 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/lo
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class TakeawayApp extends ConsumerWidget {
   const TakeawayApp({super.key});
 
@@ -12,6 +14,7 @@ class TakeawayApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return DismissKeyboard(
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         darkTheme: darkTheme,

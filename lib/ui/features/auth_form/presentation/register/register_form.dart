@@ -17,64 +17,56 @@ class RegisterForm extends ConsumerWidget {
     final formNotifier = ref.read(registerFormProvider.notifier);
 
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 80),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  context.t.register.title,
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                const SizedBox(height: 24),
-                NameInput(
-                  controller: formState.nameController,
-                  onChanged: formNotifier.updateName,
-                ),
-                const SizedBox(height: 16),
-                EmailInput(
-                  controller: formState.emailController,
-                  onChanged: formNotifier.updateEmail,
-                ),
-                const SizedBox(height: 16),
-                PasswordInput(
-                  controller: formState.passwordController,
-                  onChanged: formNotifier.updatePassword,
-                  label: context.t.register.passwordLabel,
-                  hintText: context.t.register.passwordHint,
-                  prefixIcon: const Icon(Icons.lock),
-                ),
-                const SizedBox(height: 16),
-                PasswordInput(
-                  controller: formState.confirmPasswordController,
-                  onChanged: formNotifier.updateConfirmPassword,  
-                  label: context.t.register.confirmPasswordLabel,
-                  hintText: context.t.register.confirmPasswordHint,
-                  prefixIcon: const Icon(Icons.lock_outline),
-                ),
-                const SizedBox(height: 16),
-                CaptchaInput(
-                  controller: formState.captchaController,
-                  emailController: formState.emailController,
-                  onChanged: formNotifier.updateCaptcha,
-                ),
-                const SizedBox(height: 24),
-                RegisterButton(
-                  nameController: formState.nameController,
-                  emailController: formState.emailController,
-                  passwordController: formState.passwordController,
-                  confirmPasswordController: formState.confirmPasswordController,
-                  captchaController: formState.captchaController,
-                ),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 80),
+            Text(
+              context.t.register.title,
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
-          ),
-          const SizedBox(height: 80),
-        ],
+            const SizedBox(height: 24),
+            NameInput(
+              controller: formState.nameController,
+              onChanged: (value) => formNotifier.updateField('name', value),
+            ),
+            const SizedBox(height: 16),
+            EmailInput(
+              controller: formState.emailController,
+              onChanged: (value) => formNotifier.updateField('email', value),
+            ),
+            const SizedBox(height: 16),
+            PasswordInput(
+              controller: formState.passwordController,
+              onChanged: (value) => formNotifier.updateField('password', value),
+              label: context.t.register.passwordLabel,
+              hintText: context.t.register.passwordHint,
+              prefixIcon: const Icon(Icons.lock),
+            ),
+            const SizedBox(height: 16),
+            PasswordInput(
+              controller: formState.confirmPasswordController,
+              onChanged: (value) =>
+                  formNotifier.updateField('confirmPassword', value),
+              label: context.t.register.confirmPasswordLabel,
+              hintText: context.t.register.confirmPasswordHint,
+              prefixIcon: const Icon(Icons.lock_outline),
+            ),
+            const SizedBox(height: 16),
+            CaptchaInput(
+              controller: formState.captchaController,
+              emailController: formState.emailController,
+              onChanged: (value) => formNotifier.updateField('captcha', value),
+            ),
+            const SizedBox(height: 24),
+            RegisterButton(
+              controllers: formState.controllers,
+            ),
+            const SizedBox(height: 80),
+          ],
+        ),
       ),
     );
   }

@@ -4,19 +4,11 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_provider.dart';
 
 class RegisterButton extends ConsumerWidget {
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final TextEditingController confirmPasswordController;
-  final TextEditingController captchaController;
+  final Map<String, TextEditingController> controllers;
 
   const RegisterButton({
     super.key,
-    required this.nameController,
-    required this.emailController,
-    required this.passwordController,
-    required this.confirmPasswordController,
-    required this.captchaController,
+    required this.controllers,
   });
 
   @override
@@ -31,14 +23,14 @@ class RegisterButton extends ConsumerWidget {
           ),
         ),
         onPressed: () async {
-          final name = nameController.text.trim();
-          final email = emailController.text.trim();
-          final password = passwordController.text.trim();
-          final confirmPassword = confirmPasswordController.text.trim();
-          final captcha = captchaController.text.trim();
+          final name = controllers['name']!.text.trim();
+          final email = controllers['email']!.text.trim();
+          final password = controllers['password']!.text.trim();
+          final confirmPassword = controllers['confirmPassword']!.text.trim();
+          final captcha = controllers['captcha']!.text.trim();
 
-
-          if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty || captcha.isEmpty) {
+          if ([name, email, password, confirmPassword, captcha]
+              .any((field) => field.isEmpty)) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(context.t.register.errorMessage)),
             );

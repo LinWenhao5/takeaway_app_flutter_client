@@ -2,75 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RegisterFormState {
-  final TextEditingController nameController;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final TextEditingController confirmPasswordController;
-  final TextEditingController captchaController;
+  final Map<String, TextEditingController> controllers;
 
   RegisterFormState({
-    required this.nameController,
-    required this.emailController,
-    required this.passwordController,
-    required this.confirmPasswordController,
-    required this.captchaController,
+    required this.controllers,
   });
 
   RegisterFormState copyWith({
-    TextEditingController? nameController,
-    TextEditingController? emailController,
-    TextEditingController? passwordController,
-    TextEditingController? confirmPasswordController,
-    TextEditingController? captchaController,
+    Map<String, TextEditingController>? controllers,
   }) {
     return RegisterFormState(
-      nameController: nameController ?? this.nameController,
-      emailController: emailController ?? this.emailController,
-      passwordController: passwordController ?? this.passwordController,
-      confirmPasswordController:
-          confirmPasswordController ?? this.confirmPasswordController,
-      captchaController: captchaController ?? this.captchaController,
+      controllers: controllers ?? this.controllers,
     );
   }
+
+  TextEditingController get nameController => controllers['name']!;
+  TextEditingController get emailController => controllers['email']!;
+  TextEditingController get passwordController => controllers['password']!;
+  TextEditingController get confirmPasswordController =>
+      controllers['confirmPassword']!;
+  TextEditingController get captchaController => controllers['captcha']!;
 }
 
 class RegisterFormNotifier extends StateNotifier<RegisterFormState> {
   RegisterFormNotifier()
       : super(RegisterFormState(
-          nameController: TextEditingController(),
-          emailController: TextEditingController(),
-          passwordController: TextEditingController(),
-          confirmPasswordController: TextEditingController(),
-          captchaController: TextEditingController(),
+          controllers: {
+            'name': TextEditingController(),
+            'email': TextEditingController(),
+            'password': TextEditingController(),
+            'confirmPassword': TextEditingController(),
+            'captcha': TextEditingController(),
+          },
         ));
 
-  void updateName(String name) {
-    state.nameController.text = name;
-  }
-
-  void updateEmail(String email) {
-    state.emailController.text = email;
-  }
-
-  void updatePassword(String password) {
-    state.passwordController.text = password;
-  }
-
-  void updateConfirmPassword(String confirmPassword) {
-    state.confirmPasswordController.text = confirmPassword;
-  }
-
-  void updateCaptcha(String captcha) {
-    state.captchaController.text = captcha;
+  void updateField(String field, String value) {
+    final controller = state.controllers[field];
+    if (controller != null) {
+      controller.value = TextEditingValue(
+        text: value,
+        selection: TextSelection.collapsed(offset: value.length),
+      );
+    }
   }
 
   @override
   void dispose() {
-    state.nameController.dispose();
-    state.emailController.dispose();
-    state.passwordController.dispose();
-    state.confirmPasswordController.dispose();
-    state.captchaController.dispose();
+    for (final controller in state.controllers.values) {
+      controller.dispose();
+    }
     super.dispose();
   }
 }

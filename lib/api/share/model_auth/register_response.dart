@@ -1,16 +1,14 @@
-import 'package:takeaway_app_flutter_client/api/share/utils/error_utils.dart';
-
-class RegisterResponse extends ErrorUtils {
+class  RegisterResponse {
   final String? message;
-  @override
-  final Map<String, List<String>>? errors;
+  final String? error;
 
-  RegisterResponse({this.message, this.errors});
+  RegisterResponse({this.message, this.error});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
     return RegisterResponse(
       message: json['message'],
-      errors: json['errors']
+      error: json['error']
     );
   }
+
 }

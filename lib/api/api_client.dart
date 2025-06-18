@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:takeaway_app_flutter_client/main_app.dart';
 import 'dart:convert';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/token_storage.dart';
 
 class ApiClient {
   static const String baseUrl = String.fromEnvironment(
@@ -7,28 +10,49 @@ class ApiClient {
     defaultValue: 'https://takeawayappserver-production.up.railway.app/api',
   );
 
+  static Future<Map<String, String>> _getHeaders() async {
+    final token = await TokenStorage.getToken();
+    return {
+      'Accept': 'application/json',
+      if (token != null) 'Authorization': 'Bearer $token',
+    };
+  }
+
   static Future<dynamic> get(String path, {Map<String, String>? params}) async {
     final uri = Uri.parse('$baseUrl$path').replace(queryParameters: params);
-    final response = await http.get(uri, headers: {
-      'Accept': 'application/json',
-    });
+
+    final headers = await _getHeaders();
+
+    final response = await http.get(uri, headers: headers);
     return _processResponse(response);
   }
 
   static Future<dynamic> post(String path, {Map<String, dynamic>? body}) async {
     final uri = Uri.parse('$baseUrl$path');
+
+    final headers = await _getHeaders();
+    headers['Content-Type'] = 'application/json';
+
     final response = await http.post(
       uri,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: headers,
       body: json.encode(body),
     );
     return _processResponse(response);
   }
 
   static dynamic _processResponse(http.Response response) {
+    if (response.statusCode == 403) {
+      TokenStorage.clearToken();
+
+      _redirectToLogin();
+
+      throw ApiException(
+        statusCode: response.statusCode,
+        responseBody: 'Unauthorized: Redirecting to login',
+      );
+    }
+
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return json.decode(response.body);
     } else {
@@ -37,6 +61,18 @@ class ApiClient {
         responseBody: json.decode(response.body),
       );
     }
+  }
+
+  static void _redirectToLogin() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final context = navigatorKey.currentContext;
+      if (context != null) {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/login',
+          (route) => false,
+        );
+      }
+    });
   }
 }
 
