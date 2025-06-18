@@ -1,9 +1,11 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:takeaway_app_flutter_client/config/app_config.dart';
 
 class ApiClient {
-  static String get baseUrl => AppConfig.apiBaseUrl;
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'https://takeawayappserver-production.up.railway.app/api',
+  );
 
   static Future<dynamic> get(String path, {Map<String, String>? params}) async {
     final uri = Uri.parse('$baseUrl$path').replace(queryParameters: params);
