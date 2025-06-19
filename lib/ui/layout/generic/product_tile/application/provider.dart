@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/api/api_cart/cart_api.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_cart/add_to_cart_response.dart';
-import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/error_mapper.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/quantity_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';
 
@@ -21,11 +21,3 @@ final addToCartProvider = FutureProvider.family<AddToCartResponse, Map<String, d
 final quantityProvider = StateNotifierProvider.family<QuantityNotifier, int, int>((ref, productId) {
   return QuantityNotifier();
 });
-
-
-String mapAddToCartErrorToLocalizedMessage(BuildContext context, String error) {
-  if (error.contains('Unauthorized')) {
-    return context.t.errors.unauthorizedMessage;
-  }
-  return context.t.errors.genericErrorMessage;
-}
