@@ -12,8 +12,8 @@ class ProductImageSection extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(kListTileRadius),
       child: product.media.isNotEmpty
-          ? ProductImage(media: product.media)
-          : const Icon(Icons.image_not_supported, size: 48),
+          ? ProductImage(media: product.media.first.path)
+          : const Icon(Icons.image_not_supported, size: 45),
     );
   }
 }

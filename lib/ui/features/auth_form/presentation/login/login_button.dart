@@ -24,13 +24,6 @@ class LoginButton extends ConsumerWidget {
             color: Theme.of(context).primaryColor
           )
           : ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).primaryColor,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
               onPressed: () async {
                 final email = emailController.text.trim();
                 final password = passwordController.text.trim();

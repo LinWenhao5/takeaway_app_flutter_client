@@ -19,6 +19,13 @@ class MainScaffold extends ConsumerWidget {
         actions: [
           LanguageSwitcher(),
           IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              // Navigate to the cart page
+              Navigator.pushNamed(context, '/cart');
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.login),
             onPressed: () {
               // Navigate to the login page

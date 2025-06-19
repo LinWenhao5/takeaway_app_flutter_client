@@ -5,6 +5,7 @@ import 'package:takeaway_app_flutter_client/theme/preset/nav_bar_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/text_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/tab_bar_theme.dart';
+import 'package:takeaway_app_flutter_client/theme/preset/elevated_button_theme.dart'; // 引入 ElevatedButtonTheme
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: kPrimaryColor,
@@ -14,6 +15,7 @@ final ThemeData lightTheme = ThemeData(
   bottomNavigationBarTheme: lightNavBarTheme,
   inputDecorationTheme: appInputDecorationThemeLight,
   tabBarTheme: customTabBarTheme,
+  elevatedButtonTheme: elevatedButtonThemeLight,
 );
 
 final ThemeData darkTheme = ThemeData(
@@ -24,4 +26,5 @@ final ThemeData darkTheme = ThemeData(
   bottomNavigationBarTheme: darkNavBarTheme,
   inputDecorationTheme: appInputDecorationThemeDark,
   tabBarTheme: customTabBarTheme,
+  elevatedButtonTheme: elevatedButtonThemeDark,
 );

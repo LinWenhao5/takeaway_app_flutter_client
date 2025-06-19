@@ -15,13 +15,6 @@ class RegisterButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).primaryColor,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
         onPressed: () async {
           final name = controllers['name']!.text.trim();
           final email = controllers['email']!.text.trim();

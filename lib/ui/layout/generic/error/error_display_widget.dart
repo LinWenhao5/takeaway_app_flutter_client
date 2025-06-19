@@ -34,10 +34,6 @@ class ErrorDisplayWidget extends StatelessWidget {
             onPressed: onRetry,
             icon: const Icon(Icons.refresh),
             label: Text(context.t.errors.retry),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor,
-              foregroundColor: Colors.white,
-            ),
           ),
         ],
       ),

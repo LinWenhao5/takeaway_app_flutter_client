@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -22,6 +23,7 @@ class TakeawayApp extends ConsumerWidget {
         routes: {
           '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
+          '/cart': (context) => const CartPage(),
         },
       ),
     );
