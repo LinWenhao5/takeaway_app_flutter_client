@@ -15,7 +15,7 @@
     "order": "Bestellen"
   },
   "cart": {
-    "addedToCart": "is toegevoegd aan de winkelwagen"
+    "addedToCart": "{productName} is toegevoegd aan de winkelwagen"
   },
   "errors": {
     "connectionError": "Verbindingsfout",
@@ -26,7 +26,8 @@
     "invalidEmailFormatMessage": "Ongeldig e-mailformaat.",
     "invalidPasswordMessage": "Ongeldig wachtwoord.",
     "emailTakenMessage": "Het e-mailadres is al in gebruik.",
-    "invalidCaptchaMessage": "De verificatiecode is ongeldig."
+    "invalidCaptchaMessage": "De verificatiecode is ongeldig.",
+    "unauthorizedMessage": "U bent niet geautoriseerd. Log in en probeer het opnieuw."
   },
   "login": {
     "title": "Welkom terug!",

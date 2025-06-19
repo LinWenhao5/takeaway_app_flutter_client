@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 90 (45 per locale)
+/// Strings: 92 (46 per locale)
 ///
-/// Built on 2025-06-11 at 23:13 UTC
+/// Built on 2025-06-19 at 13:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -200,7 +200,7 @@ class _StringsCartEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get addedToCart => 'has been added to the cart';
+	String get addedToCart => '{productName} has been added to the cart';
 }
 
 // Path: errors
@@ -219,6 +219,7 @@ class _StringsErrorsEn {
 	String get invalidPasswordMessage => 'Invalid password.';
 	String get emailTakenMessage => 'The email has already been taken.';
 	String get invalidCaptchaMessage => 'The verification code is invalid.';
+	String get unauthorizedMessage => 'You are not authorized. Please log in and try again.';
 }
 
 // Path: login
@@ -341,7 +342,7 @@ class _StringsCartNl implements _StringsCartEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get addedToCart => 'is toegevoegd aan de winkelwagen';
+	@override String get addedToCart => '{productName} is toegevoegd aan de winkelwagen';
 }
 
 // Path: errors
@@ -360,6 +361,7 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override String get invalidPasswordMessage => 'Ongeldig wachtwoord.';
 	@override String get emailTakenMessage => 'Het e-mailadres is al in gebruik.';
 	@override String get invalidCaptchaMessage => 'De verificatiecode is ongeldig.';
+	@override String get unauthorizedMessage => 'U bent niet geautoriseerd. Log in en probeer het opnieuw.';
 }
 
 // Path: login
@@ -421,7 +423,7 @@ extension on Translations {
 			case 'homepage.welcome': return 'Welcome!';
 			case 'navbar.settings': return 'Settings';
 			case 'navbar.order': return 'Order';
-			case 'cart.addedToCart': return 'has been added to the cart';
+			case 'cart.addedToCart': return '{productName} has been added to the cart';
 			case 'errors.connectionError': return 'Connection error';
 			case 'errors.retry': return 'Retry';
 			case 'errors.invalidEmailMessage': return 'The email address is invalid.';
@@ -431,6 +433,7 @@ extension on Translations {
 			case 'errors.invalidPasswordMessage': return 'Invalid password.';
 			case 'errors.emailTakenMessage': return 'The email has already been taken.';
 			case 'errors.invalidCaptchaMessage': return 'The verification code is invalid.';
+			case 'errors.unauthorizedMessage': return 'You are not authorized. Please log in and try again.';
 			case 'login.title': return 'Welcome Back!';
 			case 'login.emailLabel': return 'Email';
 			case 'login.emailHint': return 'Enter your email';
@@ -474,7 +477,7 @@ extension on _StringsNl {
 			case 'homepage.welcome': return 'Welkom!';
 			case 'navbar.settings': return 'Instellingen';
 			case 'navbar.order': return 'Bestellen';
-			case 'cart.addedToCart': return 'is toegevoegd aan de winkelwagen';
+			case 'cart.addedToCart': return '{productName} is toegevoegd aan de winkelwagen';
 			case 'errors.connectionError': return 'Verbindingsfout';
 			case 'errors.retry': return 'Probeer opnieuw';
 			case 'errors.invalidEmailMessage': return 'Het e-mailadres is ongeldig.';
@@ -484,6 +487,7 @@ extension on _StringsNl {
 			case 'errors.invalidPasswordMessage': return 'Ongeldig wachtwoord.';
 			case 'errors.emailTakenMessage': return 'Het e-mailadres is al in gebruik.';
 			case 'errors.invalidCaptchaMessage': return 'De verificatiecode is ongeldig.';
+			case 'errors.unauthorizedMessage': return 'U bent niet geautoriseerd. Log in en probeer het opnieuw.';
 			case 'login.title': return 'Welkom terug!';
 			case 'login.emailLabel': return 'E-mail';
 			case 'login.emailHint': return 'Voer uw e-mail in';

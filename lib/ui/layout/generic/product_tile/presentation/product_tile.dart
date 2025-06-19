@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/api/share/model_product/product.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/padding.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/add_to_cart_provider.dart';
 
-class ProductTile extends StatelessWidget {
-  final dynamic product;
+class ProductTile extends ConsumerWidget {
+  final Product product;
   const ProductTile({super.key, required this.product});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(kListTileRadius),
@@ -38,10 +41,29 @@ class ProductTile extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
             tooltip: t.search.addToCart,
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('${product.name} ${context.t.cart.addedToCart}')),
-              );
+            onPressed: () async {
+              final scaffoldMessenger = ScaffoldMessenger.of(context);
+              try {
+                await ref.read(addToCartProvider({
+                  'productId': product.id,
+                  'quantity': 1,
+                  'context': context,
+                }).future);
+
+                if (!context.mounted) return;
+
+                scaffoldMessenger.showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        context.t.cart.addedToCart.replaceAll('{productName}', product.name),
+                      ),
+                    ),
+                  );
+              } catch (e) {
+                scaffoldMessenger.showSnackBar(
+                    SnackBar(content: Text(e.toString())),
+                );
+              }
             },
           ),
         ],

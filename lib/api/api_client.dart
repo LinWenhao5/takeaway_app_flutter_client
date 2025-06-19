@@ -42,7 +42,7 @@ class ApiClient {
   }
 
   static dynamic _processResponse(http.Response response) {
-    if (response.statusCode == 403) {
+    if (response.statusCode == 401) {
       TokenStorage.clearToken();
 
       _redirectToLogin();
@@ -67,10 +67,7 @@ class ApiClient {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final context = navigatorKey.currentContext;
       if (context != null) {
-        Navigator.of(context).pushNamedAndRemoveUntil(
-          '/login',
-          (route) => false,
-        );
+        Navigator.of(context).pushNamed('/login');
       }
     });
   }

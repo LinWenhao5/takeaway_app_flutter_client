@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/application/search_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/no_result_widget.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/search_error_widget.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/generic/tile/product_tile.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/presentation/product_tile.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart'; 
 
 class ProductSearchResult extends ConsumerWidget {
