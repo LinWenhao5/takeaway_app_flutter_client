@@ -9,50 +9,77 @@ class CartView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartAsyncValue = ref.watch(cartProvider);
+    final cartAsyncValue = ref.watch(fetchCartProvider);
 
-    return cartAsyncValue.when(
-      data: (cartResponse) {
-        if (cartResponse.cart.isEmpty) {
-          return const Center(child: Text('Your cart is empty.'));
-        }
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: cartResponse.cart.length,
-                itemBuilder: (context, index) {
-                  final item = cartResponse.cart[index];
-                  return CartItemCard(item: item);
-                },
+    return RefreshIndicator(
+      onRefresh: () async {
+        ref.invalidate(fetchCartProvider);
+      },
+      child: cartAsyncValue.when(
+        data: (cartResponse) {
+          if (cartResponse.cart.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 80,
+                    color: Colors.grey.shade400,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Your cart is empty',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Add items to your cart to see them here.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-            ),
-            const Divider(),
-            CartSummary(
-              totalQuantity: cartResponse.totalQuantity,
-              totalPrice: cartResponse.totalPrice,
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // 结算逻辑
-                },
-                child: const Text(
-                  'Proceed to Checkout',
-                  style: TextStyle(fontSize: 16),
+            );
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: cartResponse.cart.length,
+                  itemBuilder: (context, index) {
+                    final item = cartResponse.cart[index];
+                    return CartItemCard(item: item);
+                  },
                 ),
               ),
-            ),
-          ],
-        );
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => Center(
-        child: Text('Failed to load cart: $error'),
+              const Divider(),
+              CartSummary(
+                totalQuantity: cartResponse.totalQuantity,
+                totalPrice: cartResponse.totalPrice,
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // 结算逻辑
+                  },
+                  child: const Text(
+                    'Proceed to Checkout',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Center(
+          child: Text('Failed to load cart: $error'),
+        ),
       ),
     );
   }

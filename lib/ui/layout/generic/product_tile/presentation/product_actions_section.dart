@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_product/product.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/quantity_notifier.dart';
 
 class ProductActionsSection extends StatelessWidget {
@@ -46,7 +45,7 @@ class ProductActionsSection extends StatelessWidget {
           onPressed: () async {
             final scaffoldMessenger = ScaffoldMessenger.of(context);
             try {
-              await ref.read(addToCartProvider({
+              await ref.read(addProductToCartProvider({
                 'productId': product.id,
                 'quantity': quantity,
                 'context': context,
@@ -56,7 +55,7 @@ class ProductActionsSection extends StatelessWidget {
 
               quantityNotifier.reset();
 
-              ref.invalidate(cartProvider);
+              ref.invalidate(fetchCartProvider);
 
               scaffoldMessenger.showSnackBar(
                 SnackBar(
