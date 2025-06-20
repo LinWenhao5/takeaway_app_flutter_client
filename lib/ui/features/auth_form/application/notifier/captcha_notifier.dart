@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/api/api_auth/auth_api.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_error_mapper.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';
-import '../../domain/captcha_state.dart';
+import '../state/captcha_state.dart';
 
 class CaptchaNotifier extends StateNotifier<CaptchaState> {
   CaptchaNotifier() : super(CaptchaState());

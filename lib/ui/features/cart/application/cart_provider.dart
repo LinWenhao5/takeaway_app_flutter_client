@@ -1,23 +1,23 @@
-import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/api/api_cart/cart_api.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/add_to_cart_response.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/get_cart_response.dart';
-import 'package:takeaway_app_flutter_client/ui/features/cart/application/error_mapper.dart';
-import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/add_cart_notifier.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/add_cart_state.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/delete_cart_item_notifier.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/delete_cart_item_state.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/fetch_cart_notifier.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/fetch_cart_state.dart';
 
-final fetchCartProvider = FutureProvider<GetCartResponse>((ref) async {
-  return await CartApi.getCart();
-});
+final addToCartProvider =
+    StateNotifierProvider<AddToCartNotifier, AddToCartState>(
+  (ref) => AddToCartNotifier(),
+);
 
-final addProductToCartProvider = FutureProvider.family<AddToCartResponse, Map<String, dynamic>>((ref, params) async {
-  final productId = params['productId'] as int;
-  final quantity = params['quantity'] as int;
-  final context = params['context'] as BuildContext;
+final fetchCartProvider =
+    StateNotifierProvider<FetchCartNotifier, FetchCartState>(
+  (ref) => FetchCartNotifier(),
+);
 
-  try {
-    return await CartApi.addToCart(productId, quantity);
-  } catch (e) {
-    throw handleError(context, e, mapAddToCartErrorToLocalizedMessage);
-  }
-});
+final deleteCartItemProvider =
+    StateNotifierProvider<DeleteCartItemNotifier, DeleteCartItemState>(
+  (ref) => DeleteCartItemNotifier(),
+);

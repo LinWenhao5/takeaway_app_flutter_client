@@ -1,13 +1,11 @@
 class  RegisterResponse {
   final String? message;
-  final String? error;
 
-  RegisterResponse({this.message, this.error});
+  RegisterResponse({this.message});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
     return RegisterResponse(
-      message: json['message'],
-      error: json['error']
+      message: json['message']
     );
   }
 

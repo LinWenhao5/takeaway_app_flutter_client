@@ -1,5 +1,6 @@
 import 'package:takeaway_app_flutter_client/api/api_client.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_cart/add_to_cart_response.dart';
+import 'package:takeaway_app_flutter_client/api/share/model_cart/delete_from_cart_response.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_cart/get_cart_response.dart';
 
 class CartApi {
@@ -22,6 +23,20 @@ class CartApi {
     try {
       final response = await ApiClient.get('/cart');
       return GetCartResponse.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<DeleteFromCartResponse> deleteFromCart(int productId) async {
+    try {
+      final response = await ApiClient.delete(
+        '/cart/remove',
+        body: {
+          'product_id': productId,
+        },
+      );
+      return DeleteFromCartResponse.fromJson(response);
     } catch (e) {
       rethrow;
     }

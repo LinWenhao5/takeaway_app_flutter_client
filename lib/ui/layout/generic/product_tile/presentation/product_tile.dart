@@ -29,8 +29,7 @@ class ProductTile extends ConsumerWidget {
           ProductActionsSection(
             product: product,
             quantity: quantity,
-            quantityNotifier: quantityNotifier,
-            ref: ref,
+            quantityNotifier: quantityNotifier
           ),
         ],
       ),

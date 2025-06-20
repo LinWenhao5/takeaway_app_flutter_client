@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_cart/cart_item.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
 
-class CartItemCard extends StatelessWidget {
+class CartItemCard extends ConsumerWidget {
   final CartItem item;
   const CartItemCard({super.key, required this.item});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Accessing the delete cart item notifier
+    final deleteCartNotifier = ref.read(deleteCartItemProvider.notifier);
+    // Accessing the fetch cart notifier
+    final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
@@ -20,15 +27,16 @@ class CartItemCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // 商品图片
+            // Product image
             ProductImage(media: item.image),
             const SizedBox(width: 12),
-            // 商品信息
+            // Product details
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Product name
                   Text(
                     item.name,
                     style: Theme.of(context).textTheme.titleLarge,
@@ -36,6 +44,7 @@ class CartItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
+                  // Product description
                   Text(
                     item.description,
                     style: Theme.of(context).textTheme.bodySmall,
@@ -43,6 +52,7 @@ class CartItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
+                  // Product price
                   Text(
                     'Price: €${item.price}',
                     style: Theme.of(context).textTheme.bodyMedium,
@@ -51,46 +61,48 @@ class CartItemCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            // 小计和操作按钮
+            // Subtotal and action buttons
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // 小计金额
+                // Subtotal amount
                 Text(
                   '€${item.subtotal}',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 8),
-                // 数量调整按钮
+                // Quantity adjustment buttons
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
                       icon: const Icon(Icons.remove_circle_outline),
                       onPressed: () {
-                        // 减少数量逻辑
+                        // Logic to decrease quantity
                       },
                     ),
                     Text(
-                      item.quantity,
+                      item.quantity.toString(),
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     IconButton(
                       icon: const Icon(Icons.add_circle_outline),
                       onPressed: () {
-                        // 增加数量逻辑
+                        // Logic to increase quantity
                       },
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
-                // 删除按钮
+                // Delete button
                 IconButton(
                   icon: Icon(Icons.delete, color: Theme.of(context).primaryColor),
-                  onPressed: () {
-                    // 删除逻辑
-                    print('Delete item with id: ${item.id}');
+                  onPressed: () async {
+                    // Delete the cart item
+                    await deleteCartNotifier.deleteCartItem(item.id, context);
+                    // Refresh the cart after deletion
+                    fetchCartNotifier.fetchCart(context);
                   },
                 ),
               ],

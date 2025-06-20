@@ -41,6 +41,22 @@ class ApiClient {
     return _processResponse(response);
   }
 
+  static Future<dynamic> delete(String path, {Map<String, dynamic>? body}) async {
+    final uri = Uri.parse('$baseUrl$path');
+
+    final headers = await _getHeaders();
+    headers['Content-Type'] = 'application/json';
+
+    final request = http.Request('DELETE', uri)
+      ..headers.addAll(headers)
+      ..body = json.encode(body);
+
+    final response = await http.Client().send(request);
+    final responseBody = await response.stream.bytesToString();
+
+    return _processResponse(http.Response(responseBody, response.statusCode));
+  }
+
   static dynamic _processResponse(http.Response response) {
     if (response.statusCode == 401) {
       TokenStorage.clearToken();

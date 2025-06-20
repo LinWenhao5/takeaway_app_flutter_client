@@ -9,15 +9,58 @@ class CartView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartAsyncValue = ref.watch(fetchCartProvider);
+    final cartState = ref.watch(fetchCartProvider);
+    final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (cartState.getCartResponse == null && !cartState.isLoading && cartState.errorMessage == null) {
+        fetchCartNotifier.fetchCart(context);
+      }
+    });
 
     return RefreshIndicator(
       onRefresh: () async {
-        ref.invalidate(fetchCartProvider);
+        fetchCartNotifier.fetchCart(context);
       },
-      child: cartAsyncValue.when(
-        data: (cartResponse) {
-          if (cartResponse.cart.isEmpty) {
+      child: Builder(
+        builder: (context) {
+          if (cartState.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (cartState.errorMessage != null) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.error_outline,
+                    size: 80,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    cartState.errorMessage!,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      fetchCartNotifier.fetchCart(context);
+                    },
+                    child: const Text('Retry'),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          if (cartState.getCartResponse == null || cartState.getCartResponse!.cart.isEmpty) {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -43,6 +86,7 @@ class CartView extends ConsumerWidget {
             );
           }
 
+          final cartResponse = cartState.getCartResponse!;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -76,10 +120,6 @@ class CartView extends ConsumerWidget {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Center(
-          child: Text('Failed to load cart: $error'),
-        ),
       ),
     );
   }
