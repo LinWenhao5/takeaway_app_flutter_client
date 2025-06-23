@@ -14,8 +14,6 @@ class CartItemCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Accessing the delete cart item notifier
     final deleteCartNotifier = ref.read(deleteCartItemProvider.notifier);
-    // Accessing the fetch cart notifier
-    final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
 
     return Dismissible(
       key: ValueKey(item.id),
@@ -28,7 +26,15 @@ class CartItemCard extends ConsumerWidget {
       ),
       onDismissed: (direction) async {
         await deleteCartNotifier.deleteCartItem(item.id, context);
-        fetchCartNotifier.fetchCart(context);
+        ref.read(cartItemsProvider.notifier).removeItem(item.id);
+
+        final updatedItems = ref.read(cartItemsProvider);
+        final totalQuantity = updatedItems.fold(0, (sum, item) => sum + int.parse(item.quantity));
+        final totalPrice = updatedItems.fold(0.0, (sum, item) => sum + double.parse(item.price) * int.parse(item.quantity));
+        ref.read(cartSummaryProvider.notifier).updateSummary(
+          totalQuantity.toString(),
+          totalPrice.toStringAsFixed(2),
+        );
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8.0),

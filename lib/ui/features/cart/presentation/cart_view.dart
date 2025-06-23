@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'cart_item_card.dart';
@@ -11,11 +10,11 @@ class CartView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartState = ref.watch(fetchCartProvider);
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (cartState.getCartResponse == null && !cartState.isLoading && cartState.errorMessage == null) {
+      // 仅在初次加载时调用 fetchCart
+      if (ref.read(cartItemsProvider).isEmpty && !ref.read(fetchCartProvider).isLoading) {
         fetchCartNotifier.fetchCart(context);
       }
     });
@@ -24,48 +23,10 @@ class CartView extends ConsumerWidget {
       onRefresh: () async {
         fetchCartNotifier.fetchCart(context);
       },
-      child: Builder(
-        builder: (context) {
-          if (cartState.isLoading) {
-            return Center(
-              child: SpinKitWave(
-                  color: Theme.of(context).primaryColor,
-                  size: 40.0,
-                ),
-            );
-          }
-
-          if (cartState.errorMessage != null) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.error_outline,
-                    size: 80,
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    cartState.errorMessage!,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      fetchCartNotifier.fetchCart(context);
-                    },
-                    child: Text(context.t.errors.retry),
-                  ),
-                ],
-              ),
-            );
-          }
-
-          if (cartState.getCartResponse == null || cartState.getCartResponse!.cart.isEmpty) {
+      child: Consumer(
+        builder: (context, ref, _) {
+          final cartItems = ref.watch(cartItemsProvider); // 局部状态
+          if (cartItems.isEmpty) {
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,23 +52,27 @@ class CartView extends ConsumerWidget {
             );
           }
 
-          final cartResponse = cartState.getCartResponse!;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: cartResponse.cart.length,
+                  itemCount: cartItems.length,
                   itemBuilder: (context, index) {
-                    final item = cartResponse.cart[index];
+                    final item = cartItems[index];
                     return CartItemCard(item: item);
                   },
                 ),
               ),
               const Divider(),
-              CartSummary(
-                totalQuantity: cartResponse.totalQuantity,
-                totalPrice: cartResponse.totalPrice,
+              Consumer(
+                builder: (context, ref, _) {
+                  final cartSummary = ref.watch(cartSummaryProvider); // 局部状态
+                  return CartSummary(
+                    totalQuantity: cartSummary.totalQuantity,
+                    totalPrice: cartSummary.totalPrice,
+                  );
+                },
               ),
               const SizedBox(height: 16),
               SizedBox(
