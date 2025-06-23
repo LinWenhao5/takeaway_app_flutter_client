@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
-import 'cart_item_card.dart';
+import 'cart_item_card/cart_item_card.dart';
 import 'cart_summary.dart';
 
 class CartView extends ConsumerWidget {
