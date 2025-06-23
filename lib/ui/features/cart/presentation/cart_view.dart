@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'cart_item_card.dart';
 import 'cart_summary.dart';
@@ -25,8 +27,11 @@ class CartView extends ConsumerWidget {
       child: Builder(
         builder: (context) {
           if (cartState.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: SpinKitWave(
+                  color: Theme.of(context).primaryColor,
+                  size: 40.0,
+                ),
             );
           }
 
@@ -53,7 +58,7 @@ class CartView extends ConsumerWidget {
                     onPressed: () {
                       fetchCartNotifier.fetchCart(context);
                     },
-                    child: const Text('Retry'),
+                    child: Text(context.t.errors.retry),
                   ),
                 ],
               ),
@@ -72,12 +77,12 @@ class CartView extends ConsumerWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Your cart is empty',
+                    context.t.cart.emptyCartMessage,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Add items to your cart to see them here.',
+                    context.t.cart.addItemsMessage,
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
@@ -111,9 +116,9 @@ class CartView extends ConsumerWidget {
                   onPressed: () {
                     // 结算逻辑
                   },
-                  child: const Text(
-                    'Proceed to Checkout',
-                    style: TextStyle(fontSize: 16),
+                  child: Text(
+                    context.t.cart.proceedToCheckout,
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ),

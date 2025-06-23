@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_provider.dart';
 
@@ -72,12 +73,12 @@ class CaptchaInput extends ConsumerWidget {
                       }
                     },
               child: captchaState.isLoading
-                  ? const SizedBox(
+                  ? SizedBox(
                       width: 16,
                       height: 16,
-                      child: CircularProgressIndicator(
+                      child: SpinKitFadingCircle(
                         color: Colors.white,
-                        strokeWidth: 2,
+                        size: 20.0,
                       ),
                     )
                   : Text(

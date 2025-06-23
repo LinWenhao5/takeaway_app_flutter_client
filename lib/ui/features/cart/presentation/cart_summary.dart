@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 
 class CartSummary extends StatelessWidget {
@@ -17,11 +18,11 @@ class CartSummary extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Total Quantity: $totalQuantity',
+          '${context.t.cart.totalQuantity}: $totalQuantity',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         Text(
-          'Total Price: €$totalPrice',
+          '${context.t.cart.totalPrice}: €$totalPrice',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             color:kPrimaryColor,
           ),

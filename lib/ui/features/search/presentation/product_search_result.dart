@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/application/search_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/no_result_widget.dart';
 import 'package:takeaway_app_flutter_client/ui/features/search/presentation/search_error_widget.dart';
@@ -43,8 +44,9 @@ class ProductSearchResult extends ConsumerWidget {
       loading: () => Padding(
         padding: const EdgeInsets.all(32),
         child: Center(
-          child: CircularProgressIndicator(
-            color: Theme.of(context).primaryColor
+          child: SpinKitThreeBounce(
+            color: Theme.of(context).primaryColor,
+            size: 40.0,
           ),
         ),
       ),

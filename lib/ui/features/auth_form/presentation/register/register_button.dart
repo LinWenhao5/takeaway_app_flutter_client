@@ -25,14 +25,14 @@ class RegisterButton extends ConsumerWidget {
           if ([name, email, password, confirmPassword, captcha]
               .any((field) => field.isEmpty)) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(context.t.register.errorMessage)),
+              SnackBar(content: Text(context.t.register.errorMessage), duration: Duration(seconds: 2),),
             );
             return;
           }
 
           if (password != confirmPassword) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(context.t.register.passwordMismatchMessage)),
+              SnackBar(content: Text(context.t.register.passwordMismatchMessage), duration: Duration(seconds: 2),),
             );
             return;
           }

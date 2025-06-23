@@ -1,77 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/api/share/model_product/product.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/quantity_notifier.dart';
 
 class ProductActionsSection extends ConsumerWidget {
-  final Product product; // The product being displayed
-  final int quantity; // The current quantity selected by the user
-  final QuantityNotifier quantityNotifier; // Notifier to manage quantity changes
+  final Product product;
 
   const ProductActionsSection({
     super.key,
     required this.product,
-    required this.quantity,
-    required this.quantityNotifier,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Watch the state of addToCartProvider to handle loading and error states
-    final addToCartState = ref.watch(addToCartProvider);
+    final isButtonLoading = ref.watch(loadingProvider(product.id));
+    final loadingNotifier = ref.read(loadingProvider(product.id).notifier);
     final addToCartNotifier = ref.read(addToCartProvider.notifier);
+
+    final quantity = ref.watch(quantityProvider(product.id));
+    final quantityNotifier = ref.read(quantityProvider(product.id).notifier);
 
     return Column(
       children: [
         Row(
           children: [
-            // Button to decrement the quantity
             IconButton(
               icon: const Icon(Icons.remove_circle_outline),
               onPressed: quantityNotifier.decrement,
             ),
-            // Display the current quantity
             Text(
               '$quantity',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            // Button to increment the quantity
             IconButton(
               icon: const Icon(Icons.add_circle_outline),
               onPressed: quantityNotifier.increment,
             ),
           ],
         ),
-        // Button to add the product to the cart
         IconButton(
-          icon: Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
-          tooltip: context.t.search.addToCart, // Tooltip for accessibility
-          onPressed: addToCartState.isLoading
+          icon: isButtonLoading
+              ? SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: SpinKitFadingCircle(
+                    size: 22,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                )
+              : Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
+          tooltip: context.t.search.addToCart,
+          onPressed: isButtonLoading
               ? null
               : () async {
+                  loadingNotifier.setLoading(true);
+
                   final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-                  // Add the product to the cart
                   await addToCartNotifier.addToCart(
                     context,
                     product.id,
                     quantity,
                   );
 
-                  // Check if the context is still valid
                   if (!context.mounted) return;
 
-                  // Get the updated state
                   final updatedAddToCartState = ref.read(addToCartProvider);
 
-                  // Show a success or error message based on the result
                   if (updatedAddToCartState.isSuccess) {
-                    // Reset the quantity after adding to the cart
                     quantityNotifier.reset();
-
-                    // Refresh the cart data
                     await ref.read(fetchCartProvider.notifier).fetchCart(context);
 
                     scaffoldMessenger.showSnackBar(
@@ -79,15 +79,18 @@ class ProductActionsSection extends ConsumerWidget {
                         content: Text(
                           context.t.cart.addedToCart.replaceAll('{productName}', product.name),
                         ),
+                        duration: const Duration(milliseconds: 500),
                       ),
                     );
                   } else if (updatedAddToCartState.errorMessage != null) {
                     scaffoldMessenger.showSnackBar(
                       SnackBar(
-                        content: Text(updatedAddToCartState.errorMessage!)
+                        content: Text(updatedAddToCartState.errorMessage!),
                       ),
                     );
                   }
+
+                  loadingNotifier.setLoading(false);
                 },
         ),
       ],

@@ -1,62 +1,68 @@
 { 
   "search": {
-    "hint": "Wat wil je vandaag eten?",
-    "noResult": "Geen zoekresultaten",
-    "addToCart": "Toevoegen",
-    "loadFailed": "Laden mislukt",
+    "hint": "Waar heb je vandaag trek in?",
+    "noResult": "Geen resultaten gevonden",
+    "addToCart": "Toevoegen aan winkelwagen",
+    "loadFailed": "Het laden is mislukt",
     "tryAnotherKeyword": "Probeer een ander zoekwoord"
   },
   "homepage": {
-    "hello": "Hallo",
-    "welcome": "Welkom!"
+    "hello": "Hoi",
+    "welcome": "Welkom bij ons!"
   },
   "navbar": {
     "settings": "Instellingen",
-    "order": "Bestellen"
+    "order": "Bestellingen"
   },
   "cart": {
-    "addedToCart": "{productName} is toegevoegd aan de winkelwagen"
+    "emptyCartMessage": "Je winkelwagen is leeg!",
+    "addItemsMessage": "Voeg wat items toe om ze hier te zien.",
+    "addedToCart": "{productName} is succesvol toegevoegd aan je winkelwagen!",
+    "totalQuantity": "Aantal items",
+    "totalPrice": "Totaal bedrag",
+    "price": "Prijs",
+    "proceedToCheckout": "Ga naar afrekenen"
   },
   "errors": {
-    "connectionError": "Verbindingsfout",
-    "retry": "Probeer opnieuw",
-    "invalidEmailMessage": "Het e-mailadres is ongeldig.",
-    "genericErrorMessage": "Er is een fout opgetreden. Probeer het opnieuw.",
-    "invalidCredentialsMessage": "Ongeldige e-mail of wachtwoord.",
-    "invalidEmailFormatMessage": "Ongeldig e-mailformaat.",
-    "invalidPasswordMessage": "Ongeldig wachtwoord.",
-    "emailTakenMessage": "Het e-mailadres is al in gebruik.",
-    "invalidCaptchaMessage": "De verificatiecode is ongeldig.",
-    "unauthorizedMessage": "U bent niet geautoriseerd. Log in en probeer het opnieuw."
+    "connectionError": "Er is een verbindingsprobleem opgetreden",
+    "retry": "Klik hier om opnieuw te proberen",
+    "invalidEmailMessage": "Het ingevoerde e-mailadres is ongeldig.",
+    "genericErrorMessage": "Er is iets misgegaan. Probeer het later opnieuw.",
+    "invalidCredentialsMessage": "De ingevoerde gegevens zijn onjuist.",
+    "invalidEmailFormatMessage": "Het e-mailadres heeft een ongeldig formaat.",
+    "invalidPasswordMessage": "Het wachtwoord voldoet niet aan de vereisten.",
+    "emailTakenMessage": "Dit e-mailadres is al geregistreerd.",
+    "invalidCaptchaMessage": "De ingevoerde verificatiecode is ongeldig.",
+    "unauthorizedMessage": "Je hebt geen toegang. Log in en probeer het opnieuw."
   },
   "login": {
-    "title": "Welkom terug!",
-    "emailLabel": "E-mail",
-    "emailHint": "Voer uw e-mail in",
+    "title": "Fijn je weer te zien!",
+    "emailLabel": "E-mailadres",
+    "emailHint": "Vul je e-mailadres in",
     "passwordLabel": "Wachtwoord",
-    "passwordHint": "Voer uw wachtwoord in",
+    "passwordHint": "Vul je wachtwoord in",
     "loginButton": "Inloggen",
-    "successMessage": "Inloggen succesvol!",
-    "errorMessage": "Vul alle velden in",
-    "registerLink": "Nog niet geregistreerd? Meld u hier aan."
+    "successMessage": "Je bent succesvol ingelogd!",
+    "errorMessage": "Vul alle verplichte velden in",
+    "registerLink": "Nog geen account? Registreer je hier."
   },
   "register": {
-    "title": "Account aanmaken",
-    "nameLabel": "Naam",
-    "nameHint": "Voer uw naam in",
-    "emailLabel": "E-mail",
-    "emailHint": "Voer uw e-mail in",
+    "title": "Maak een nieuw account aan",
+    "nameLabel": "Volledige naam",
+    "nameHint": "Vul je volledige naam in",
+    "emailLabel": "E-mailadres",
+    "emailHint": "Vul je e-mailadres in",
     "passwordLabel": "Wachtwoord",
-    "passwordHint": "Voer uw wachtwoord in",
+    "passwordHint": "Kies een sterk wachtwoord",
     "confirmPasswordLabel": "Bevestig wachtwoord",
-    "confirmPasswordHint": "Bevestig uw wachtwoord",
+    "confirmPasswordHint": "Herhaal je wachtwoord",
     "captchaLabel": "Verificatiecode",
-    "captchaHint": "Voer de verificatiecode in",
-    "sendCaptchaButton": "Verzend code",
-    "captchaSentMessage": "Code succesvol verzonden!",
+    "captchaHint": "Vul de verificatiecode in",
+    "sendCaptchaButton": "Code verzenden",
+    "captchaSentMessage": "De code is succesvol verzonden!",
     "registerButton": "Registreren",
-    "successMessage": "Registratie succesvol!",
-    "passwordMismatchMessage": "Wachtwoorden komen niet overeen.",
-    "errorMessage": "Vul alle velden in"
+    "successMessage": "Je account is succesvol aangemaakt!",
+    "passwordMismatchMessage": "De wachtwoorden komen niet overeen.",
+    "errorMessage": "Vul alle verplichte velden in om verder te gaan"
   }
 }

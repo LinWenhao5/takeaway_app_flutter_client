@@ -1,62 +1,68 @@
 {
   "search": {
-    "hint": "What do you want to eat today?",
-    "noResult": "No search results",
-    "addToCart": "Add",
-    "loadFailed": "Load failed",
-    "tryAnotherKeyword": "Try another keyword"
+    "hint": "What are you craving today?",
+    "noResult": "No results found",
+    "addToCart": "Add to cart",
+    "loadFailed": "Failed to load",
+    "tryAnotherKeyword": "Try a different keyword"
   },
   "homepage": {
-    "hello": "Hello",
-    "welcome": "Welcome!"
+    "hello": "Hi there",
+    "welcome": "Welcome to our app!"
   },
   "navbar": {
     "settings": "Settings",
-    "order": "Order"
+    "order": "Orders"
   },
   "cart": {
-    "addedToCart": "{productName} has been added to the cart"
+    "emptyCartMessage": "Your cart is empty!",
+    "addItemsMessage": "Go ahead and add some items to see them here.",
+    "addedToCart": "{productName} has been successfully added to your cart!",
+    "totalQuantity": "Items in Cart",
+    "totalPrice": "Total Amount",
+    "price": "Price",
+    "proceedToCheckout": "Proceed to Checkout"
   },
   "errors": {
-    "connectionError": "Connection error",
-    "retry": "Retry",
-    "invalidEmailMessage": "The email address is invalid.",
-    "genericErrorMessage": "An unexpected error occurred. Please try again.",
-    "invalidCredentialsMessage": "Invalid email or password.",
-    "invalidEmailFormatMessage": "Invalid email format.",
-    "invalidPasswordMessage": "Invalid password.",
-    "emailTakenMessage": "The email has already been taken.",
-    "invalidCaptchaMessage": "The verification code is invalid.",
-    "unauthorizedMessage": "You are not authorized. Please log in and try again."
+    "connectionError": "There was a connection issue.",
+    "retry": "Tap here to retry",
+    "invalidEmailMessage": "The email address you entered is invalid.",
+    "genericErrorMessage": "Something went wrong. Please try again later.",
+    "invalidCredentialsMessage": "The credentials you entered are incorrect.",
+    "invalidEmailFormatMessage": "The email format is invalid.",
+    "invalidPasswordMessage": "The password does not meet the requirements.",
+    "emailTakenMessage": "This email is already registered.",
+    "invalidCaptchaMessage": "The verification code you entered is invalid.",
+    "unauthorizedMessage": "You don't have access. Please log in and try again."
   },
   "login": {
-    "title": "Welcome Back!",
-    "emailLabel": "Email",
-    "emailHint": "Enter your email",
+    "title": "Welcome back!",
+    "emailLabel": "Email Address",
+    "emailHint": "Enter your email address",
     "passwordLabel": "Password",
     "passwordHint": "Enter your password",
-    "loginButton": "Login",
-    "successMessage": "Login successful!",
-    "errorMessage": "Please fill in all fields",
-    "registerLink": "Not registered yet? Click here to sign up"
+    "loginButton": "Log In",
+    "successMessage": "You have successfully logged in!",
+    "errorMessage": "Please complete all required fields",
+    "registerLink": "Don't have an account yet? Sign up here."
   },
   "register": {
-    "title": "Create an Account",
-    "nameLabel": "Name",
-    "nameHint": "Enter your name",
-    "emailLabel": "Email",
-    "emailHint": "Enter your email",
+    "title": "Create a New Account",
+    "nameLabel": "Full Name",
+    "nameHint": "Enter your full name",
+    "emailLabel": "Email Address",
+    "emailHint": "Enter your email address",
     "passwordLabel": "Password",
-    "passwordHint": "Enter your password",
+    "passwordHint": "Choose a strong password",
     "confirmPasswordLabel": "Confirm Password",
-    "confirmPasswordHint": "Confirm your password",
+    "confirmPasswordHint": "Re-enter your password",
     "captchaLabel": "Verification Code",
     "captchaHint": "Enter the verification code",
     "sendCaptchaButton": "Send Code",
-    "captchaSentMessage": "Code sent successfully!",
-    "registerButton": "Register",
-    "successMessage": "Registration successful!",
-    "passwordMismatchMessage": "Passwords do not match.",
-    "errorMessage": "Please fill in all fields"
+    "captchaSentMessage": "Verification code sent successfully!",
+    "registerButton": "Sign Up",
+    "successMessage": "Your account has been created successfully!",
+    "passwordMismatchMessage": "The passwords do not match.",
+    "errorMessage": "Please fill in all required fields to proceed"
   }
 }

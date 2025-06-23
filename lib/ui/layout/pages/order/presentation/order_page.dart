@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/product_list/application/category_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/product_list/presentation/product_tab_view.dart';
@@ -50,8 +51,9 @@ class _OrderPageState extends ConsumerState<OrderPage> {
               child: categoryAsync.when(
                 data: (categories) => CategoryTabView(categories: categories),
                 loading: () => Center(
-                  child: CircularProgressIndicator(
+                  child: SpinKitWave(
                     color: Theme.of(context).primaryColor,
+                    size: 40.0,
                   ),
                 ),
                 error: (e, stack) => ErrorDisplayWidget(

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 92 (46 per locale)
+/// Strings: 104 (52 per locale)
 ///
-/// Built on 2025-06-19 at 13:52 UTC
+/// Built on 2025-06-20 at 17:26 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -164,11 +164,11 @@ class _StringsSearchEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get hint => 'What do you want to eat today?';
-	String get noResult => 'No search results';
-	String get addToCart => 'Add';
-	String get loadFailed => 'Load failed';
-	String get tryAnotherKeyword => 'Try another keyword';
+	String get hint => 'What are you craving today?';
+	String get noResult => 'No results found';
+	String get addToCart => 'Add to cart';
+	String get loadFailed => 'Failed to load';
+	String get tryAnotherKeyword => 'Try a different keyword';
 }
 
 // Path: homepage
@@ -178,8 +178,8 @@ class _StringsHomepageEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get hello => 'Hello';
-	String get welcome => 'Welcome!';
+	String get hello => 'Hi there';
+	String get welcome => 'Welcome to our app!';
 }
 
 // Path: navbar
@@ -190,7 +190,7 @@ class _StringsNavbarEn {
 
 	// Translations
 	String get settings => 'Settings';
-	String get order => 'Order';
+	String get order => 'Orders';
 }
 
 // Path: cart
@@ -200,7 +200,13 @@ class _StringsCartEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get addedToCart => '{productName} has been added to the cart';
+	String get emptyCartMessage => 'Your cart is empty!';
+	String get addItemsMessage => 'Go ahead and add some items to see them here.';
+	String get addedToCart => '{productName} has been successfully added to your cart!';
+	String get totalQuantity => 'Items in Cart';
+	String get totalPrice => 'Total Amount';
+	String get price => 'Price';
+	String get proceedToCheckout => 'Proceed to Checkout';
 }
 
 // Path: errors
@@ -210,16 +216,16 @@ class _StringsErrorsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get connectionError => 'Connection error';
-	String get retry => 'Retry';
-	String get invalidEmailMessage => 'The email address is invalid.';
-	String get genericErrorMessage => 'An unexpected error occurred. Please try again.';
-	String get invalidCredentialsMessage => 'Invalid email or password.';
-	String get invalidEmailFormatMessage => 'Invalid email format.';
-	String get invalidPasswordMessage => 'Invalid password.';
-	String get emailTakenMessage => 'The email has already been taken.';
-	String get invalidCaptchaMessage => 'The verification code is invalid.';
-	String get unauthorizedMessage => 'You are not authorized. Please log in and try again.';
+	String get connectionError => 'There was a connection issue.';
+	String get retry => 'Tap here to retry';
+	String get invalidEmailMessage => 'The email address you entered is invalid.';
+	String get genericErrorMessage => 'Something went wrong. Please try again later.';
+	String get invalidCredentialsMessage => 'The credentials you entered are incorrect.';
+	String get invalidEmailFormatMessage => 'The email format is invalid.';
+	String get invalidPasswordMessage => 'The password does not meet the requirements.';
+	String get emailTakenMessage => 'This email is already registered.';
+	String get invalidCaptchaMessage => 'The verification code you entered is invalid.';
+	String get unauthorizedMessage => 'You don\'t have access. Please log in and try again.';
 }
 
 // Path: login
@@ -229,15 +235,15 @@ class _StringsLoginEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Welcome Back!';
-	String get emailLabel => 'Email';
-	String get emailHint => 'Enter your email';
+	String get title => 'Welcome back!';
+	String get emailLabel => 'Email Address';
+	String get emailHint => 'Enter your email address';
 	String get passwordLabel => 'Password';
 	String get passwordHint => 'Enter your password';
-	String get loginButton => 'Login';
-	String get successMessage => 'Login successful!';
-	String get errorMessage => 'Please fill in all fields';
-	String get registerLink => 'Not registered yet? Click here to sign up';
+	String get loginButton => 'Log In';
+	String get successMessage => 'You have successfully logged in!';
+	String get errorMessage => 'Please complete all required fields';
+	String get registerLink => 'Don\'t have an account yet? Sign up here.';
 }
 
 // Path: register
@@ -247,23 +253,23 @@ class _StringsRegisterEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Create an Account';
-	String get nameLabel => 'Name';
-	String get nameHint => 'Enter your name';
-	String get emailLabel => 'Email';
-	String get emailHint => 'Enter your email';
+	String get title => 'Create a New Account';
+	String get nameLabel => 'Full Name';
+	String get nameHint => 'Enter your full name';
+	String get emailLabel => 'Email Address';
+	String get emailHint => 'Enter your email address';
 	String get passwordLabel => 'Password';
-	String get passwordHint => 'Enter your password';
+	String get passwordHint => 'Choose a strong password';
 	String get confirmPasswordLabel => 'Confirm Password';
-	String get confirmPasswordHint => 'Confirm your password';
+	String get confirmPasswordHint => 'Re-enter your password';
 	String get captchaLabel => 'Verification Code';
 	String get captchaHint => 'Enter the verification code';
 	String get sendCaptchaButton => 'Send Code';
-	String get captchaSentMessage => 'Code sent successfully!';
-	String get registerButton => 'Register';
-	String get successMessage => 'Registration successful!';
-	String get passwordMismatchMessage => 'Passwords do not match.';
-	String get errorMessage => 'Please fill in all fields';
+	String get captchaSentMessage => 'Verification code sent successfully!';
+	String get registerButton => 'Sign Up';
+	String get successMessage => 'Your account has been created successfully!';
+	String get passwordMismatchMessage => 'The passwords do not match.';
+	String get errorMessage => 'Please fill in all required fields to proceed';
 }
 
 // Path: <root>
@@ -306,10 +312,10 @@ class _StringsSearchNl implements _StringsSearchEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get hint => 'Wat wil je vandaag eten?';
-	@override String get noResult => 'Geen zoekresultaten';
-	@override String get addToCart => 'Toevoegen';
-	@override String get loadFailed => 'Laden mislukt';
+	@override String get hint => 'Waar heb je vandaag trek in?';
+	@override String get noResult => 'Geen resultaten gevonden';
+	@override String get addToCart => 'Toevoegen aan winkelwagen';
+	@override String get loadFailed => 'Het laden is mislukt';
 	@override String get tryAnotherKeyword => 'Probeer een ander zoekwoord';
 }
 
@@ -320,8 +326,8 @@ class _StringsHomepageNl implements _StringsHomepageEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get hello => 'Hallo';
-	@override String get welcome => 'Welkom!';
+	@override String get hello => 'Hoi';
+	@override String get welcome => 'Welkom bij ons!';
 }
 
 // Path: navbar
@@ -332,7 +338,7 @@ class _StringsNavbarNl implements _StringsNavbarEn {
 
 	// Translations
 	@override String get settings => 'Instellingen';
-	@override String get order => 'Bestellen';
+	@override String get order => 'Bestellingen';
 }
 
 // Path: cart
@@ -342,7 +348,13 @@ class _StringsCartNl implements _StringsCartEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get addedToCart => '{productName} is toegevoegd aan de winkelwagen';
+	@override String get emptyCartMessage => 'Je winkelwagen is leeg!';
+	@override String get addItemsMessage => 'Voeg wat items toe om ze hier te zien.';
+	@override String get addedToCart => '{productName} is succesvol toegevoegd aan je winkelwagen!';
+	@override String get totalQuantity => 'Aantal items';
+	@override String get totalPrice => 'Totaal bedrag';
+	@override String get price => 'Prijs';
+	@override String get proceedToCheckout => 'Ga naar afrekenen';
 }
 
 // Path: errors
@@ -352,16 +364,16 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get connectionError => 'Verbindingsfout';
-	@override String get retry => 'Probeer opnieuw';
-	@override String get invalidEmailMessage => 'Het e-mailadres is ongeldig.';
-	@override String get genericErrorMessage => 'Er is een fout opgetreden. Probeer het opnieuw.';
-	@override String get invalidCredentialsMessage => 'Ongeldige e-mail of wachtwoord.';
-	@override String get invalidEmailFormatMessage => 'Ongeldig e-mailformaat.';
-	@override String get invalidPasswordMessage => 'Ongeldig wachtwoord.';
-	@override String get emailTakenMessage => 'Het e-mailadres is al in gebruik.';
-	@override String get invalidCaptchaMessage => 'De verificatiecode is ongeldig.';
-	@override String get unauthorizedMessage => 'U bent niet geautoriseerd. Log in en probeer het opnieuw.';
+	@override String get connectionError => 'Er is een verbindingsprobleem opgetreden';
+	@override String get retry => 'Klik hier om opnieuw te proberen';
+	@override String get invalidEmailMessage => 'Het ingevoerde e-mailadres is ongeldig.';
+	@override String get genericErrorMessage => 'Er is iets misgegaan. Probeer het later opnieuw.';
+	@override String get invalidCredentialsMessage => 'De ingevoerde gegevens zijn onjuist.';
+	@override String get invalidEmailFormatMessage => 'Het e-mailadres heeft een ongeldig formaat.';
+	@override String get invalidPasswordMessage => 'Het wachtwoord voldoet niet aan de vereisten.';
+	@override String get emailTakenMessage => 'Dit e-mailadres is al geregistreerd.';
+	@override String get invalidCaptchaMessage => 'De ingevoerde verificatiecode is ongeldig.';
+	@override String get unauthorizedMessage => 'Je hebt geen toegang. Log in en probeer het opnieuw.';
 }
 
 // Path: login
@@ -371,15 +383,15 @@ class _StringsLoginNl implements _StringsLoginEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Welkom terug!';
-	@override String get emailLabel => 'E-mail';
-	@override String get emailHint => 'Voer uw e-mail in';
+	@override String get title => 'Fijn je weer te zien!';
+	@override String get emailLabel => 'E-mailadres';
+	@override String get emailHint => 'Vul je e-mailadres in';
 	@override String get passwordLabel => 'Wachtwoord';
-	@override String get passwordHint => 'Voer uw wachtwoord in';
+	@override String get passwordHint => 'Vul je wachtwoord in';
 	@override String get loginButton => 'Inloggen';
-	@override String get successMessage => 'Inloggen succesvol!';
-	@override String get errorMessage => 'Vul alle velden in';
-	@override String get registerLink => 'Nog niet geregistreerd? Meld u hier aan.';
+	@override String get successMessage => 'Je bent succesvol ingelogd!';
+	@override String get errorMessage => 'Vul alle verplichte velden in';
+	@override String get registerLink => 'Nog geen account? Registreer je hier.';
 }
 
 // Path: register
@@ -389,23 +401,23 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Account aanmaken';
-	@override String get nameLabel => 'Naam';
-	@override String get nameHint => 'Voer uw naam in';
-	@override String get emailLabel => 'E-mail';
-	@override String get emailHint => 'Voer uw e-mail in';
+	@override String get title => 'Maak een nieuw account aan';
+	@override String get nameLabel => 'Volledige naam';
+	@override String get nameHint => 'Vul je volledige naam in';
+	@override String get emailLabel => 'E-mailadres';
+	@override String get emailHint => 'Vul je e-mailadres in';
 	@override String get passwordLabel => 'Wachtwoord';
-	@override String get passwordHint => 'Voer uw wachtwoord in';
+	@override String get passwordHint => 'Kies een sterk wachtwoord';
 	@override String get confirmPasswordLabel => 'Bevestig wachtwoord';
-	@override String get confirmPasswordHint => 'Bevestig uw wachtwoord';
+	@override String get confirmPasswordHint => 'Herhaal je wachtwoord';
 	@override String get captchaLabel => 'Verificatiecode';
-	@override String get captchaHint => 'Voer de verificatiecode in';
-	@override String get sendCaptchaButton => 'Verzend code';
-	@override String get captchaSentMessage => 'Code succesvol verzonden!';
+	@override String get captchaHint => 'Vul de verificatiecode in';
+	@override String get sendCaptchaButton => 'Code verzenden';
+	@override String get captchaSentMessage => 'De code is succesvol verzonden!';
 	@override String get registerButton => 'Registreren';
-	@override String get successMessage => 'Registratie succesvol!';
-	@override String get passwordMismatchMessage => 'Wachtwoorden komen niet overeen.';
-	@override String get errorMessage => 'Vul alle velden in';
+	@override String get successMessage => 'Je account is succesvol aangemaakt!';
+	@override String get passwordMismatchMessage => 'De wachtwoorden komen niet overeen.';
+	@override String get errorMessage => 'Vul alle verplichte velden in om verder te gaan';
 }
 
 /// Flat map(s) containing all translations.
@@ -414,52 +426,58 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'search.hint': return 'What do you want to eat today?';
-			case 'search.noResult': return 'No search results';
-			case 'search.addToCart': return 'Add';
-			case 'search.loadFailed': return 'Load failed';
-			case 'search.tryAnotherKeyword': return 'Try another keyword';
-			case 'homepage.hello': return 'Hello';
-			case 'homepage.welcome': return 'Welcome!';
+			case 'search.hint': return 'What are you craving today?';
+			case 'search.noResult': return 'No results found';
+			case 'search.addToCart': return 'Add to cart';
+			case 'search.loadFailed': return 'Failed to load';
+			case 'search.tryAnotherKeyword': return 'Try a different keyword';
+			case 'homepage.hello': return 'Hi there';
+			case 'homepage.welcome': return 'Welcome to our app!';
 			case 'navbar.settings': return 'Settings';
-			case 'navbar.order': return 'Order';
-			case 'cart.addedToCart': return '{productName} has been added to the cart';
-			case 'errors.connectionError': return 'Connection error';
-			case 'errors.retry': return 'Retry';
-			case 'errors.invalidEmailMessage': return 'The email address is invalid.';
-			case 'errors.genericErrorMessage': return 'An unexpected error occurred. Please try again.';
-			case 'errors.invalidCredentialsMessage': return 'Invalid email or password.';
-			case 'errors.invalidEmailFormatMessage': return 'Invalid email format.';
-			case 'errors.invalidPasswordMessage': return 'Invalid password.';
-			case 'errors.emailTakenMessage': return 'The email has already been taken.';
-			case 'errors.invalidCaptchaMessage': return 'The verification code is invalid.';
-			case 'errors.unauthorizedMessage': return 'You are not authorized. Please log in and try again.';
-			case 'login.title': return 'Welcome Back!';
-			case 'login.emailLabel': return 'Email';
-			case 'login.emailHint': return 'Enter your email';
+			case 'navbar.order': return 'Orders';
+			case 'cart.emptyCartMessage': return 'Your cart is empty!';
+			case 'cart.addItemsMessage': return 'Go ahead and add some items to see them here.';
+			case 'cart.addedToCart': return '{productName} has been successfully added to your cart!';
+			case 'cart.totalQuantity': return 'Items in Cart';
+			case 'cart.totalPrice': return 'Total Amount';
+			case 'cart.price': return 'Price';
+			case 'cart.proceedToCheckout': return 'Proceed to Checkout';
+			case 'errors.connectionError': return 'There was a connection issue.';
+			case 'errors.retry': return 'Tap here to retry';
+			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
+			case 'errors.genericErrorMessage': return 'Something went wrong. Please try again later.';
+			case 'errors.invalidCredentialsMessage': return 'The credentials you entered are incorrect.';
+			case 'errors.invalidEmailFormatMessage': return 'The email format is invalid.';
+			case 'errors.invalidPasswordMessage': return 'The password does not meet the requirements.';
+			case 'errors.emailTakenMessage': return 'This email is already registered.';
+			case 'errors.invalidCaptchaMessage': return 'The verification code you entered is invalid.';
+			case 'errors.unauthorizedMessage': return 'You don\'t have access. Please log in and try again.';
+			case 'login.title': return 'Welcome back!';
+			case 'login.emailLabel': return 'Email Address';
+			case 'login.emailHint': return 'Enter your email address';
 			case 'login.passwordLabel': return 'Password';
 			case 'login.passwordHint': return 'Enter your password';
-			case 'login.loginButton': return 'Login';
-			case 'login.successMessage': return 'Login successful!';
-			case 'login.errorMessage': return 'Please fill in all fields';
-			case 'login.registerLink': return 'Not registered yet? Click here to sign up';
-			case 'register.title': return 'Create an Account';
-			case 'register.nameLabel': return 'Name';
-			case 'register.nameHint': return 'Enter your name';
-			case 'register.emailLabel': return 'Email';
-			case 'register.emailHint': return 'Enter your email';
+			case 'login.loginButton': return 'Log In';
+			case 'login.successMessage': return 'You have successfully logged in!';
+			case 'login.errorMessage': return 'Please complete all required fields';
+			case 'login.registerLink': return 'Don\'t have an account yet? Sign up here.';
+			case 'register.title': return 'Create a New Account';
+			case 'register.nameLabel': return 'Full Name';
+			case 'register.nameHint': return 'Enter your full name';
+			case 'register.emailLabel': return 'Email Address';
+			case 'register.emailHint': return 'Enter your email address';
 			case 'register.passwordLabel': return 'Password';
-			case 'register.passwordHint': return 'Enter your password';
+			case 'register.passwordHint': return 'Choose a strong password';
 			case 'register.confirmPasswordLabel': return 'Confirm Password';
-			case 'register.confirmPasswordHint': return 'Confirm your password';
+			case 'register.confirmPasswordHint': return 'Re-enter your password';
 			case 'register.captchaLabel': return 'Verification Code';
 			case 'register.captchaHint': return 'Enter the verification code';
 			case 'register.sendCaptchaButton': return 'Send Code';
-			case 'register.captchaSentMessage': return 'Code sent successfully!';
-			case 'register.registerButton': return 'Register';
-			case 'register.successMessage': return 'Registration successful!';
-			case 'register.passwordMismatchMessage': return 'Passwords do not match.';
-			case 'register.errorMessage': return 'Please fill in all fields';
+			case 'register.captchaSentMessage': return 'Verification code sent successfully!';
+			case 'register.registerButton': return 'Sign Up';
+			case 'register.successMessage': return 'Your account has been created successfully!';
+			case 'register.passwordMismatchMessage': return 'The passwords do not match.';
+			case 'register.errorMessage': return 'Please fill in all required fields to proceed';
 			default: return null;
 		}
 	}
@@ -468,52 +486,58 @@ extension on Translations {
 extension on _StringsNl {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'search.hint': return 'Wat wil je vandaag eten?';
-			case 'search.noResult': return 'Geen zoekresultaten';
-			case 'search.addToCart': return 'Toevoegen';
-			case 'search.loadFailed': return 'Laden mislukt';
+			case 'search.hint': return 'Waar heb je vandaag trek in?';
+			case 'search.noResult': return 'Geen resultaten gevonden';
+			case 'search.addToCart': return 'Toevoegen aan winkelwagen';
+			case 'search.loadFailed': return 'Het laden is mislukt';
 			case 'search.tryAnotherKeyword': return 'Probeer een ander zoekwoord';
-			case 'homepage.hello': return 'Hallo';
-			case 'homepage.welcome': return 'Welkom!';
+			case 'homepage.hello': return 'Hoi';
+			case 'homepage.welcome': return 'Welkom bij ons!';
 			case 'navbar.settings': return 'Instellingen';
-			case 'navbar.order': return 'Bestellen';
-			case 'cart.addedToCart': return '{productName} is toegevoegd aan de winkelwagen';
-			case 'errors.connectionError': return 'Verbindingsfout';
-			case 'errors.retry': return 'Probeer opnieuw';
-			case 'errors.invalidEmailMessage': return 'Het e-mailadres is ongeldig.';
-			case 'errors.genericErrorMessage': return 'Er is een fout opgetreden. Probeer het opnieuw.';
-			case 'errors.invalidCredentialsMessage': return 'Ongeldige e-mail of wachtwoord.';
-			case 'errors.invalidEmailFormatMessage': return 'Ongeldig e-mailformaat.';
-			case 'errors.invalidPasswordMessage': return 'Ongeldig wachtwoord.';
-			case 'errors.emailTakenMessage': return 'Het e-mailadres is al in gebruik.';
-			case 'errors.invalidCaptchaMessage': return 'De verificatiecode is ongeldig.';
-			case 'errors.unauthorizedMessage': return 'U bent niet geautoriseerd. Log in en probeer het opnieuw.';
-			case 'login.title': return 'Welkom terug!';
-			case 'login.emailLabel': return 'E-mail';
-			case 'login.emailHint': return 'Voer uw e-mail in';
+			case 'navbar.order': return 'Bestellingen';
+			case 'cart.emptyCartMessage': return 'Je winkelwagen is leeg!';
+			case 'cart.addItemsMessage': return 'Voeg wat items toe om ze hier te zien.';
+			case 'cart.addedToCart': return '{productName} is succesvol toegevoegd aan je winkelwagen!';
+			case 'cart.totalQuantity': return 'Aantal items';
+			case 'cart.totalPrice': return 'Totaal bedrag';
+			case 'cart.price': return 'Prijs';
+			case 'cart.proceedToCheckout': return 'Ga naar afrekenen';
+			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
+			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
+			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';
+			case 'errors.genericErrorMessage': return 'Er is iets misgegaan. Probeer het later opnieuw.';
+			case 'errors.invalidCredentialsMessage': return 'De ingevoerde gegevens zijn onjuist.';
+			case 'errors.invalidEmailFormatMessage': return 'Het e-mailadres heeft een ongeldig formaat.';
+			case 'errors.invalidPasswordMessage': return 'Het wachtwoord voldoet niet aan de vereisten.';
+			case 'errors.emailTakenMessage': return 'Dit e-mailadres is al geregistreerd.';
+			case 'errors.invalidCaptchaMessage': return 'De ingevoerde verificatiecode is ongeldig.';
+			case 'errors.unauthorizedMessage': return 'Je hebt geen toegang. Log in en probeer het opnieuw.';
+			case 'login.title': return 'Fijn je weer te zien!';
+			case 'login.emailLabel': return 'E-mailadres';
+			case 'login.emailHint': return 'Vul je e-mailadres in';
 			case 'login.passwordLabel': return 'Wachtwoord';
-			case 'login.passwordHint': return 'Voer uw wachtwoord in';
+			case 'login.passwordHint': return 'Vul je wachtwoord in';
 			case 'login.loginButton': return 'Inloggen';
-			case 'login.successMessage': return 'Inloggen succesvol!';
-			case 'login.errorMessage': return 'Vul alle velden in';
-			case 'login.registerLink': return 'Nog niet geregistreerd? Meld u hier aan.';
-			case 'register.title': return 'Account aanmaken';
-			case 'register.nameLabel': return 'Naam';
-			case 'register.nameHint': return 'Voer uw naam in';
-			case 'register.emailLabel': return 'E-mail';
-			case 'register.emailHint': return 'Voer uw e-mail in';
+			case 'login.successMessage': return 'Je bent succesvol ingelogd!';
+			case 'login.errorMessage': return 'Vul alle verplichte velden in';
+			case 'login.registerLink': return 'Nog geen account? Registreer je hier.';
+			case 'register.title': return 'Maak een nieuw account aan';
+			case 'register.nameLabel': return 'Volledige naam';
+			case 'register.nameHint': return 'Vul je volledige naam in';
+			case 'register.emailLabel': return 'E-mailadres';
+			case 'register.emailHint': return 'Vul je e-mailadres in';
 			case 'register.passwordLabel': return 'Wachtwoord';
-			case 'register.passwordHint': return 'Voer uw wachtwoord in';
+			case 'register.passwordHint': return 'Kies een sterk wachtwoord';
 			case 'register.confirmPasswordLabel': return 'Bevestig wachtwoord';
-			case 'register.confirmPasswordHint': return 'Bevestig uw wachtwoord';
+			case 'register.confirmPasswordHint': return 'Herhaal je wachtwoord';
 			case 'register.captchaLabel': return 'Verificatiecode';
-			case 'register.captchaHint': return 'Voer de verificatiecode in';
-			case 'register.sendCaptchaButton': return 'Verzend code';
-			case 'register.captchaSentMessage': return 'Code succesvol verzonden!';
+			case 'register.captchaHint': return 'Vul de verificatiecode in';
+			case 'register.sendCaptchaButton': return 'Code verzenden';
+			case 'register.captchaSentMessage': return 'De code is succesvol verzonden!';
 			case 'register.registerButton': return 'Registreren';
-			case 'register.successMessage': return 'Registratie succesvol!';
-			case 'register.passwordMismatchMessage': return 'Wachtwoorden komen niet overeen.';
-			case 'register.errorMessage': return 'Vul alle velden in';
+			case 'register.successMessage': return 'Je account is succesvol aangemaakt!';
+			case 'register.passwordMismatchMessage': return 'De wachtwoorden komen niet overeen.';
+			case 'register.errorMessage': return 'Vul alle verplichte velden in om verder te gaan';
 			default: return null;
 		}
 	}

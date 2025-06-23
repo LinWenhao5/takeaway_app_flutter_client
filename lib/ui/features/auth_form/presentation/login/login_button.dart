@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../application/auth_provider.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
@@ -20,8 +21,9 @@ class LoginButton extends ConsumerWidget {
 
     return Center(
       child: authState.isLoading
-          ? CircularProgressIndicator(
-            color: Theme.of(context).primaryColor
+          ? SpinKitFadingCircle(
+            color: Theme.of(context).primaryColor,
+            size: 40.0,
           )
           : ElevatedButton(
               onPressed: () async {
