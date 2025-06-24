@@ -16,15 +16,28 @@ class LoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(loginProvider, (previous, next) {
+      if (!next.isLoading && next.token != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.t.login.successMessage)),
+        );
+        Navigator.pop(context);
+      } else if (!next.isLoading && next.errorMessage != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.errorMessage!)),
+        );
+      }
+    });
+
     final authState = ref.watch(loginProvider);
     final authNotifier = ref.read(loginProvider.notifier);
 
     return Center(
       child: authState.isLoading
           ? SpinKitFadingCircle(
-            color: Theme.of(context).primaryColor,
-            size: 40.0,
-          )
+              color: Theme.of(context).primaryColor,
+              size: 40.0,
+            )
           : ElevatedButton(
               onPressed: () async {
                 final email = emailController.text.trim();
@@ -32,20 +45,6 @@ class LoginButton extends ConsumerWidget {
 
                 if (email.isNotEmpty && password.isNotEmpty) {
                   await authNotifier.login(email, password, context);
-
-                  if (!context.mounted) return;
-
-                  final updatedAuthState = ref.read(loginProvider);
-                  if (updatedAuthState.token != null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(context.t.login.successMessage)),
-                    );
-                    Navigator.pop(context);
-                  } else if (updatedAuthState.errorMessage != null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(updatedAuthState.errorMessage!)),
-                    );
-                  }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(context.t.login.errorMessage)),

@@ -6,6 +6,7 @@ import 'package:takeaway_app_flutter_client/api/share/model_auth/register_respon
 class AuthApi {
   static Future<LoginResponse> login(String email, String password) async {
     try {
+      ApiClient.shouldRedirectOn401 = false; 
       final data = await ApiClient.post('/customer/login', body: {'email': email, 'password': password});
       return LoginResponse.fromJson(data);
     } catch (e) {

@@ -16,7 +16,6 @@ class LoginNotifier extends StateNotifier<LoginState> {
       state = state.copyWith(token: response.token, isLoading: false);
       await TokenStorage.saveToken(response.token!);
     } catch (e) {
-      if (!context.mounted) return;
       final errorMessage = handleError(context, e, mapLoginErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);
     }

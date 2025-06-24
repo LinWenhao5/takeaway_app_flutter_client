@@ -24,6 +24,23 @@ class CaptchaInput extends ConsumerWidget {
     final remainingTime = ref.watch(captchaTimerProvider);
     final captchaTimerNotifier = ref.read(captchaTimerProvider.notifier);
 
+    ref.listen(
+      captchaProvider,
+      (previous, next) {
+        if (!context.mounted) return;
+        if (next.errorMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(next.errorMessage!)),
+          );
+        } else if (next.captchaMessage != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(context.t.register.captchaSentMessage)),
+          );
+          captchaTimerNotifier.startTimer();
+        }
+      },
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,21 +73,7 @@ class CaptchaInput extends ConsumerWidget {
                         );
                         return;
                       }
-
                       await captchaNotifier.generateCaptcha(email, context);
-
-                      if (!context.mounted) return;
-
-                      if (captchaState.errorMessage != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(captchaState.errorMessage!)),
-                        );
-                      } else if (captchaState.captchaMessage != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.t.register.captchaSentMessage)),
-                        );
-                        captchaTimerNotifier.startTimer();
-                      }
                     },
               child: captchaState.isLoading
                   ? SizedBox(

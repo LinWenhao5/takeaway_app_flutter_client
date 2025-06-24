@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/token_storage.dart';
 
 class ApiClient {
+  static bool shouldRedirectOn401 = true;
+
   static const String baseUrl = String.fromEnvironment(
     'API_BASE_URL',
     defaultValue: 'https://takeawayappserver-production.up.railway.app/api',
@@ -61,12 +63,9 @@ class ApiClient {
     if (response.statusCode == 401) {
       TokenStorage.clearToken();
 
-      _redirectToLogin();
-
-      throw ApiException(
-        statusCode: response.statusCode,
-        responseBody: 'Unauthorized: Redirecting to login',
-      );
+      if (shouldRedirectOn401) {
+        _redirectToLogin();
+      }
     }
 
     if (response.statusCode >= 200 && response.statusCode < 300) {

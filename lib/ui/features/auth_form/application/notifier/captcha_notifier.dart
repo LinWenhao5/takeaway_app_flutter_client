@@ -14,7 +14,6 @@ class CaptchaNotifier extends StateNotifier<CaptchaState> {
       final captcha = await AuthApi.captcha(email);
       state = state.copyWith(isLoading: false, captchaMessage: captcha.message);
     } catch (e) {
-      if (!context.mounted) return;
       final errorMessage = handleError(context, e, mapCaptchaErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage, captchaMessage: null);
     }
