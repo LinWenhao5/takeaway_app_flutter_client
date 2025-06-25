@@ -1,4 +1,4 @@
-import 'package:takeaway_app_flutter_client/api/share/model_cart/get_cart_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/get_cart_response.dart';
 
 class FetchCartState {
   final bool isLoading;

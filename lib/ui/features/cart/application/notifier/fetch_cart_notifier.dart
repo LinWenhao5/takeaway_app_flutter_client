@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/api/api_cart/cart_api.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/infrastructure/cart_api.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/fetch_cart_state.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/error_mapper.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';

@@ -1,4 +1,4 @@
-import 'package:takeaway_app_flutter_client/api/share/model_product/product_media.dart';
+import 'package:takeaway_app_flutter_client/ui/features/search/domain/product_media.dart';
 
 class Product {
   final int id;

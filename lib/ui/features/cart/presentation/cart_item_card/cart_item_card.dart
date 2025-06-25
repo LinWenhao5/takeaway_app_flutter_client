@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'cart_item_details.dart';
 import 'cart_item_quantity.dart';
 import 'cart_item_dismissible.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/cart_item.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/cart_item.dart';
 
 class CartItemCard extends ConsumerWidget {
   final CartItem item;

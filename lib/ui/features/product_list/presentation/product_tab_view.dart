@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_product/product_category.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product_category.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/presentation/product_tile.dart';
 
 class CategoryTabView extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:takeaway_app_flutter_client/api/api_client.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/add_to_cart_response.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/delete_from_cart_response.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/get_cart_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/add_to_cart_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/delete_from_cart_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/get_cart_response.dart';
 
 class CartApi {
   static Future<AddToCartResponse> addToCart(int productId, int quantity) async {

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_product/product.dart';
+import 'package:takeaway_app_flutter_client/ui/features/search/domain/product.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
 class ProductActionsSection extends ConsumerWidget {

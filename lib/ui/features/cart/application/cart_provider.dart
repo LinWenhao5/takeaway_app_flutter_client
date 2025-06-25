@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_cart/cart_item.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/domain/cart_item.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/add_cart_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/add_cart_state.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/delete_cart_item_notifier.dart';

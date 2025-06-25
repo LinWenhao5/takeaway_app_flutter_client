@@ -1,5 +1,5 @@
 import 'package:takeaway_app_flutter_client/api/api_client.dart';
-import 'package:takeaway_app_flutter_client/api/share/model_product/product_category.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product_category.dart';
 
 class ProductCategoryApi {
   static Future<List<ProductCategory>> fetchCategoriesWithProducts() async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/api/api_auth/auth_api.dart';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/infrastructure/auth_api.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/state/login_state.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';
 import '../token_storage.dart';
