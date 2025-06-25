@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:takeaway_app_flutter_client/api/api_exception.dart';
 import 'package:takeaway_app_flutter_client/main_app.dart';
 import 'dart:convert';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/token_storage.dart';
@@ -87,16 +88,3 @@ class ApiClient {
     });
   }
 }
-
-class ApiException implements Exception {
-  final int statusCode;
-  final dynamic responseBody;
-
-  ApiException({required this.statusCode, required this.responseBody});
-
-  @override
-  String toString() {
-    return 'ApiException: $statusCode, $responseBody';
-  }
-}
-
