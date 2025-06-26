@@ -16,12 +16,37 @@ class ProductActionsSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isButtonLoading = ref.watch(loadingProvider(product.id));
-    final loadingNotifier = ref.read(loadingProvider(product.id).notifier);
-    final addToCartNotifier = ref.read(addToCartProvider.notifier);
+    final addToCartNotifier = ref.read(addToCartProvider(product.id).notifier);
+    final addToCartState = ref.watch(addToCartProvider(product.id));
 
     final quantity = ref.watch(quantityProvider(product.id));
     final quantityNotifier = ref.read(quantityProvider(product.id).notifier);
+
+    ref.listen(
+      addToCartProvider(product.id),
+      (previous, next) async {
+        final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+        if (next.isSuccess && next.isLoading == false) {
+          quantityNotifier.reset();
+          await ref.read(fetchCartProvider.notifier).fetchCart(context);
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text(
+                context.t.cart.addedToCart.replaceAll('{productName}', product.name),
+              ),
+              duration: const Duration(milliseconds: 500),
+            ),
+          );
+        } else if (next.errorMessage != null && next.isLoading == false) {
+          scaffoldMessenger.showSnackBar(
+            SnackBar(
+              content: Text(next.errorMessage!),
+            ),
+          );
+        }
+      },
+    );
 
     return Column(
       children: [
@@ -42,7 +67,7 @@ class ProductActionsSection extends ConsumerWidget {
           ],
         ),
         IconButton(
-          icon: isButtonLoading
+          icon: addToCartState.isLoading
               ? SizedBox(
                   width: 22,
                   height: 22,
@@ -53,44 +78,14 @@ class ProductActionsSection extends ConsumerWidget {
                 )
               : Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
           tooltip: context.t.search.addToCart,
-          onPressed: isButtonLoading
+          onPressed: addToCartState.isLoading
               ? null
               : () async {
-                  loadingNotifier.setLoading(true);
-
-                  final scaffoldMessenger = ScaffoldMessenger.of(context);
-
                   await addToCartNotifier.addToCart(
                     context,
                     product.id,
                     quantity,
                   );
-
-                  if (!context.mounted) return;
-
-                  final updatedAddToCartState = ref.read(addToCartProvider);
-
-                  if (updatedAddToCartState.isSuccess) {
-                    quantityNotifier.reset();
-                    await ref.read(fetchCartProvider.notifier).fetchCart(context);
-
-                    scaffoldMessenger.showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          context.t.cart.addedToCart.replaceAll('{productName}', product.name),
-                        ),
-                        duration: const Duration(milliseconds: 500),
-                      ),
-                    );
-                  } else if (updatedAddToCartState.errorMessage != null) {
-                    scaffoldMessenger.showSnackBar(
-                      SnackBar(
-                        content: Text(updatedAddToCartState.errorMessage!),
-                      ),
-                    );
-                  }
-
-                  loadingNotifier.setLoading(false);
                 },
         ),
       ],

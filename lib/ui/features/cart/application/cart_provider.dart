@@ -9,9 +9,8 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/d
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/fetch_cart_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/fetch_cart_state.dart';
 
-final addToCartProvider =
-    StateNotifierProvider<AddToCartNotifier, AddToCartState>(
-  (ref) => AddToCartNotifier(),
+final addToCartProvider = StateNotifierProvider.family<AddToCartNotifier, AddToCartState, int>(
+  (ref, productId) => AddToCartNotifier(),
 );
 
 final fetchCartProvider =
