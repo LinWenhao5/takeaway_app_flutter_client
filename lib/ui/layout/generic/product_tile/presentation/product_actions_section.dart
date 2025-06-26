@@ -22,32 +22,6 @@ class ProductActionsSection extends ConsumerWidget {
     final quantity = ref.watch(quantityProvider(product.id));
     final quantityNotifier = ref.read(quantityProvider(product.id).notifier);
 
-    ref.listen(
-      addToCartProvider(product.id),
-      (previous, next) async {
-        final scaffoldMessenger = ScaffoldMessenger.of(context);
-
-        if (next.isSuccess && next.isLoading == false) {
-          quantityNotifier.reset();
-          await ref.read(fetchCartProvider.notifier).fetchCart(context);
-          scaffoldMessenger.showSnackBar(
-            SnackBar(
-              content: Text(
-                context.t.cart.addedToCart.replaceAll('{productName}', product.name),
-              ),
-              duration: const Duration(milliseconds: 500),
-            ),
-          );
-        } else if (next.errorMessage != null && next.isLoading == false) {
-          scaffoldMessenger.showSnackBar(
-            SnackBar(
-              content: Text(next.errorMessage!),
-            ),
-          );
-        }
-      },
-    );
-
     return Column(
       children: [
         Row(
@@ -81,12 +55,36 @@ class ProductActionsSection extends ConsumerWidget {
           onPressed: addToCartState.isLoading
               ? null
               : () async {
+                  final scaffoldMessenger = ScaffoldMessenger.of(context);
+
                   await addToCartNotifier.addToCart(
                     context,
                     product.id,
                     quantity,
                   );
-                },
+
+                  final updatedAddToCartState = ref.read(addToCartProvider(product.id));
+
+                  if (updatedAddToCartState.isSuccess) {
+                    quantityNotifier.reset();
+                    await ref.read(fetchCartProvider.notifier).fetchCart(context);
+
+                    scaffoldMessenger.showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          context.t.cart.addedToCart.replaceAll('{productName}', product.name),
+                        ),
+                        duration: const Duration(milliseconds: 500),
+                      ),
+                    );
+                  } else if (updatedAddToCartState.errorMessage != null) {
+                    scaffoldMessenger.showSnackBar(
+                      SnackBar(
+                        content: Text(updatedAddToCartState.errorMessage!),
+                      ),
+                    );
+                  }
+              }
         ),
       ],
     );
