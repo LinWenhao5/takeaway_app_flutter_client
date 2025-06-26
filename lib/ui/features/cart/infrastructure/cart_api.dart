@@ -41,4 +41,19 @@ class CartApi {
       rethrow;
     }
   }
+
+  static Future<DeleteFromCartResponse> deleteQuantityFromCart(int productId, int quantity) async {
+    try {
+      final response = await ApiClient.delete(
+        '/cart/remove-quantity',
+        body: {
+          'product_id': productId,
+          'quantity': quantity,
+        },
+      );
+      return DeleteFromCartResponse.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

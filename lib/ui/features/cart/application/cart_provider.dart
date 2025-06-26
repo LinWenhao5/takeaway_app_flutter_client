@@ -18,9 +18,8 @@ final fetchCartProvider =
   (ref) => FetchCartNotifier(ref),
 );
 
-final deleteCartItemProvider =
-    StateNotifierProvider<DeleteCartItemNotifier, DeleteCartItemState>(
-  (ref) => DeleteCartItemNotifier(),
+final deleteCartItemProvider = StateNotifierProvider.family<DeleteCartItemNotifier, DeleteCartItemState, int>(
+  (ref, productId) => DeleteCartItemNotifier(),
 );
 
 final cartItemsProvider = StateNotifierProvider<CartItemsNotifier, List<CartItem>>(

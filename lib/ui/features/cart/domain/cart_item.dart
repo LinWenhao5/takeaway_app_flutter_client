@@ -28,4 +28,24 @@ class CartItem {
       subtotal: json['subtotal'],
     );
   }
+
+  CartItem copyWith({
+    int? id,
+    String? name,
+    String? description,
+    String? price,
+    String? image,
+    String? quantity,
+    String? subtotal,
+  }) {
+    return CartItem(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      quantity: quantity ?? this.quantity,
+      subtotal: subtotal ?? this.subtotal,
+    );
+  }
 }

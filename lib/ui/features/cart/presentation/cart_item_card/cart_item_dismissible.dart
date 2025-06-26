@@ -10,7 +10,7 @@ class CartItemDismissible extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final deleteCartNotifier = ref.read(deleteCartItemProvider.notifier);
+    final deleteCartNotifier = ref.read(deleteCartItemProvider(item.id).notifier);
 
     return Dismissible(
       key: ValueKey(item.id),

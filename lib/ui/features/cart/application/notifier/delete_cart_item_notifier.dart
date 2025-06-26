@@ -18,4 +18,15 @@ class DeleteCartItemNotifier extends StateNotifier<DeleteCartItemState> {
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);
     }
   }
+
+  Future<void> deleteCartItemQuantity(int productId, int quantity, BuildContext context) async {
+    state = state.copyWith(isLoading: true, errorMessage: null, isSuccess: false);
+    try {
+      await CartApi.deleteQuantityFromCart(productId, quantity);
+      state = state.copyWith(isLoading: false, isSuccess: true);
+    } catch (e) {
+      final errorMessage = handleError(context, e, mapCartErrorToLocalizedMessage);
+      state = state.copyWith(isLoading: false, errorMessage: errorMessage);
+    }
+  }
 }
