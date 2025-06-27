@@ -15,8 +15,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       await AuthApi.register(name, email, password, captcha);
       state = state.copyWith(isLoading: false);
     } catch (e) {
-      if (!context.mounted) return;
-      final errorMessage = handleError(context, e, mapRegisterErrorToLocalizedMessage);
+      final errorMessage = handleError(e, mapRegisterErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);
     }
   }

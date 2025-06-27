@@ -10,17 +10,21 @@ class LocaleNotifier extends StateNotifier<AppLocale> {
   static const _key = 'locale';
 
   LocaleNotifier() : super(AppLocale.en) {
-    _load();
+    load();
   }
 
-  Future<void> _load() async {
+  Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
     final code = prefs.getString(_key);
     if (code != null) {
-      state = AppLocale.values.firstWhere(
+      final locale = AppLocale.values.firstWhere(
         (e) => e.languageCode == code,
         orElse: () => AppLocale.en,
       );
+      state = locale;
+      LocaleSettings.setLocale(locale);
+    } else {
+      LocaleSettings.setLocale(state);
     }
   }
 
@@ -28,5 +32,6 @@ class LocaleNotifier extends StateNotifier<AppLocale> {
     state = locale;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_key, locale.languageCode);
+    LocaleSettings.setLocale(locale);
   }
 }

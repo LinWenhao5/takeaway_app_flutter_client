@@ -15,13 +15,13 @@ class CartView extends ConsumerWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // 仅在初次加载时调用 fetchCart
       if (ref.read(cartItemsProvider).isEmpty && !ref.read(fetchCartProvider).isLoading) {
-        fetchCartNotifier.fetchCart(context);
+        fetchCartNotifier.fetchCart();
       }
     });
 
     return RefreshIndicator(
       onRefresh: () async {
-        fetchCartNotifier.fetchCart(context);
+        fetchCartNotifier.fetchCart();
       },
       child: Consumer(
         builder: (context, ref, _) {

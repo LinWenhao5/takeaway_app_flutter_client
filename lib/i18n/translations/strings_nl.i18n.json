@@ -64,5 +64,12 @@
     "successMessage": "Je account is succesvol aangemaakt!",
     "passwordMismatchMessage": "De wachtwoorden komen niet overeen.",
     "errorMessage": "Vul alle verplichte velden in om verder te gaan"
+  },
+  "settings": {
+    "language": "Taal",
+    "theme": "Thema",
+    "themeSystem": "Systeem",
+    "themeLight": "Licht",
+    "themeDark": "Donker"
   }
 }

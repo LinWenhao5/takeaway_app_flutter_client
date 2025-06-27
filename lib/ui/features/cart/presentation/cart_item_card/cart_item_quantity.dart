@@ -60,11 +60,11 @@ class CartItemQuantity extends ConsumerWidget {
                 final currentQuantity = int.parse(item.quantity);
                 if (currentQuantity > 1) {
                   await ref.read(deleteCartItemProvider(item.id).notifier)
-                      .deleteCartItemQuantity(item.id, 1, context);
+                      .deleteCartItemQuantity(item.id, 1);
                   _updateLocalCartAndSummary(ref, item.id, currentQuantity - 1);
                 } else {
                   await ref.read(deleteCartItemProvider(item.id).notifier)
-                      .deleteCartItem(item.id, context);
+                      .deleteCartItem(item.id);
                   _removeLocalCartAndSummary(ref, item.id);
                 }
               },
@@ -78,7 +78,7 @@ class CartItemQuantity extends ConsumerWidget {
               onPressed: () async {
                 final currentQuantity = int.parse(item.quantity);
                 await ref.read(addToCartProvider(item.id).notifier)
-                    .addToCart(context, item.id, 1);
+                    .addToCart(item.id, 1);
                 _updateLocalCartAndSummary(ref, item.id, currentQuantity + 1);
               },
             ),

@@ -58,7 +58,6 @@ class ProductActionsSection extends ConsumerWidget {
                   final scaffoldMessenger = ScaffoldMessenger.of(context);
 
                   await addToCartNotifier.addToCart(
-                    context,
                     product.id,
                     quantity,
                   );
@@ -67,7 +66,7 @@ class ProductActionsSection extends ConsumerWidget {
 
                   if (updatedAddToCartState.isSuccess) {
                     quantityNotifier.reset();
-                    await ref.read(fetchCartProvider.notifier).fetchCart(context);
+                    await ref.read(fetchCartProvider.notifier).fetchCart();
 
                     scaffoldMessenger.showSnackBar(
                       SnackBar(

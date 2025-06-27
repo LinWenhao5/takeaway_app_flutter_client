@@ -44,7 +44,7 @@ class LoginButton extends ConsumerWidget {
                 final password = passwordController.text.trim();
 
                 if (email.isNotEmpty && password.isNotEmpty) {
-                  await authNotifier.login(email, password, context);
+                  await authNotifier.login(email, password);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(context.t.login.errorMessage)),

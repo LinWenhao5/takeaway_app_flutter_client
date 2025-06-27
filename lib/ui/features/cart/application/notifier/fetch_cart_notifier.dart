@@ -11,7 +11,7 @@ class FetchCartNotifier extends StateNotifier<FetchCartState> {
 
   final Ref ref;
 
-  Future<void> fetchCart(BuildContext context) async {
+  Future<void> fetchCart() async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       final cartResponse = await CartApi.getCart();
@@ -23,7 +23,7 @@ class FetchCartNotifier extends StateNotifier<FetchCartState> {
         cartResponse.totalPrice,
       );
     } catch (e) {
-      final errorMessage = handleError(context, e, mapCartErrorToLocalizedMessage);
+      final errorMessage = handleError(e, mapCartErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);
     }
   }

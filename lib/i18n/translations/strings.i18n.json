@@ -64,5 +64,12 @@
     "successMessage": "Your account has been created successfully!",
     "passwordMismatchMessage": "The passwords do not match.",
     "errorMessage": "Please fill in all required fields to proceed"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark"
   }
 }

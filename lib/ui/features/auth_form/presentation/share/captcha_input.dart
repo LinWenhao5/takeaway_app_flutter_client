@@ -73,7 +73,7 @@ class CaptchaInput extends ConsumerWidget {
                         );
                         return;
                       }
-                      await captchaNotifier.generateCaptcha(email, context);
+                      await captchaNotifier.generateCaptcha(email);
                     },
               child: captchaState.isLoading
                   ? SizedBox(

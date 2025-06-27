@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 104 (52 per locale)
+/// Strings: 114 (57 per locale)
 ///
-/// Built on 2025-06-20 at 17:26 UTC
+/// Built on 2025-06-27 at 16:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -155,6 +155,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
+	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
 }
 
 // Path: search
@@ -272,6 +273,20 @@ class _StringsRegisterEn {
 	String get errorMessage => 'Please fill in all required fields to proceed';
 }
 
+// Path: settings
+class _StringsSettingsEn {
+	_StringsSettingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get language => 'Language';
+	String get theme => 'Theme';
+	String get themeSystem => 'System';
+	String get themeLight => 'Light';
+	String get themeDark => 'Dark';
+}
+
 // Path: <root>
 class _StringsNl implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -303,6 +318,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
+	@override late final _StringsSettingsNl settings = _StringsSettingsNl._(_root);
 }
 
 // Path: search
@@ -420,6 +436,20 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 	@override String get errorMessage => 'Vul alle verplichte velden in om verder te gaan';
 }
 
+// Path: settings
+class _StringsSettingsNl implements _StringsSettingsEn {
+	_StringsSettingsNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get language => 'Taal';
+	@override String get theme => 'Thema';
+	@override String get themeSystem => 'Systeem';
+	@override String get themeLight => 'Licht';
+	@override String get themeDark => 'Donker';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -478,6 +508,11 @@ extension on Translations {
 			case 'register.successMessage': return 'Your account has been created successfully!';
 			case 'register.passwordMismatchMessage': return 'The passwords do not match.';
 			case 'register.errorMessage': return 'Please fill in all required fields to proceed';
+			case 'settings.language': return 'Language';
+			case 'settings.theme': return 'Theme';
+			case 'settings.themeSystem': return 'System';
+			case 'settings.themeLight': return 'Light';
+			case 'settings.themeDark': return 'Dark';
 			default: return null;
 		}
 	}
@@ -538,6 +573,11 @@ extension on _StringsNl {
 			case 'register.successMessage': return 'Je account is succesvol aangemaakt!';
 			case 'register.passwordMismatchMessage': return 'De wachtwoorden komen niet overeen.';
 			case 'register.errorMessage': return 'Vul alle verplichte velden in om verder te gaan';
+			case 'settings.language': return 'Taal';
+			case 'settings.theme': return 'Thema';
+			case 'settings.themeSystem': return 'Systeem';
+			case 'settings.themeLight': return 'Licht';
+			case 'settings.themeDark': return 'Donker';
 			default: return null;
 		}
 	}

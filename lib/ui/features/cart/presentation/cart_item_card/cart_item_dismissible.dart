@@ -23,7 +23,7 @@ class CartItemDismissible extends ConsumerWidget {
         child: const Icon(Icons.delete, color: Colors.white),
       ),
       onDismissed: (direction) async {
-        await deleteCartNotifier.deleteCartItem(item.id, context);
+        await deleteCartNotifier.deleteCartItem(item.id);
         ref.read(cartItemsProvider.notifier).removeItem(item.id);
 
         final updatedItems = ref.read(cartItemsProvider);
