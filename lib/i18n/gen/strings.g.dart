@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 114 (57 per locale)
+/// Strings: 136 (68 per locale)
 ///
-/// Built on 2025-06-27 at 16:23 UTC
+/// Built on 2025-06-27 at 22:50 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -285,6 +285,27 @@ class _StringsSettingsEn {
 	String get themeSystem => 'System';
 	String get themeLight => 'Light';
 	String get themeDark => 'Dark';
+	String get login_prompt => 'Sign in to start your delicious adventure 🍣';
+	String get sign_in_now => 'Sign In Now';
+	String get failed_to_load => 'Failed to load username';
+	late final _StringsSettingsGreetingsEn greetings = _StringsSettingsGreetingsEn._(_root);
+}
+
+// Path: settings.greetings
+class _StringsSettingsGreetingsEn {
+	_StringsSettingsGreetingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get early_morning => 'Up early? Wishing you a peaceful morning 🌙';
+	String get morning => 'Good morning! Hope you have a great start ☀️';
+	String get forenoon => 'Hope your morning is going well 🌤️';
+	String get noon => 'Happy lunch time! Enjoy your meal 🥪';
+	String get afternoon => 'Good afternoon! How about some fresh sushi? 🌞';
+	String get evening => 'Good evening! Treat yourself to sushi tonight 🌇';
+	String get night => 'Good night! Sweet dreams 🌙';
+	String get hello => 'Hello there! 👋';
 }
 
 // Path: <root>
@@ -448,6 +469,27 @@ class _StringsSettingsNl implements _StringsSettingsEn {
 	@override String get themeSystem => 'Systeem';
 	@override String get themeLight => 'Licht';
 	@override String get themeDark => 'Donker';
+	@override String get login_prompt => 'Log in om je heerlijke avontuur te beginnen 🍣';
+	@override String get sign_in_now => 'Nu inloggen';
+	@override String get failed_to_load => 'Gebruikersnaam laden mislukt';
+	@override late final _StringsSettingsGreetingsNl greetings = _StringsSettingsGreetingsNl._(_root);
+}
+
+// Path: settings.greetings
+class _StringsSettingsGreetingsNl implements _StringsSettingsGreetingsEn {
+	_StringsSettingsGreetingsNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get early_morning => 'Goedemorgen, vroege vogel! 🌙';
+	@override String get morning => 'Goedemorgen! ☀️';
+	@override String get forenoon => 'Fijne ochtend! 🌤️';
+	@override String get noon => 'Eet smakelijk tijdens de lunch! 🥪';
+	@override String get afternoon => 'Goedemiddag! Zin in verse sushi? 🌞';
+	@override String get evening => 'Goede avond! Trakteer jezelf op sushi vanavond 🌇';
+	@override String get night => 'Welterusten! 🌙';
+	@override String get hello => 'Hallo daar! 👋';
 }
 
 /// Flat map(s) containing all translations.
@@ -513,6 +555,17 @@ extension on Translations {
 			case 'settings.themeSystem': return 'System';
 			case 'settings.themeLight': return 'Light';
 			case 'settings.themeDark': return 'Dark';
+			case 'settings.login_prompt': return 'Sign in to start your delicious adventure 🍣';
+			case 'settings.sign_in_now': return 'Sign In Now';
+			case 'settings.failed_to_load': return 'Failed to load username';
+			case 'settings.greetings.early_morning': return 'Up early? Wishing you a peaceful morning 🌙';
+			case 'settings.greetings.morning': return 'Good morning! Hope you have a great start ☀️';
+			case 'settings.greetings.forenoon': return 'Hope your morning is going well 🌤️';
+			case 'settings.greetings.noon': return 'Happy lunch time! Enjoy your meal 🥪';
+			case 'settings.greetings.afternoon': return 'Good afternoon! How about some fresh sushi? 🌞';
+			case 'settings.greetings.evening': return 'Good evening! Treat yourself to sushi tonight 🌇';
+			case 'settings.greetings.night': return 'Good night! Sweet dreams 🌙';
+			case 'settings.greetings.hello': return 'Hello there! 👋';
 			default: return null;
 		}
 	}
@@ -578,6 +631,17 @@ extension on _StringsNl {
 			case 'settings.themeSystem': return 'Systeem';
 			case 'settings.themeLight': return 'Licht';
 			case 'settings.themeDark': return 'Donker';
+			case 'settings.login_prompt': return 'Log in om je heerlijke avontuur te beginnen 🍣';
+			case 'settings.sign_in_now': return 'Nu inloggen';
+			case 'settings.failed_to_load': return 'Gebruikersnaam laden mislukt';
+			case 'settings.greetings.early_morning': return 'Goedemorgen, vroege vogel! 🌙';
+			case 'settings.greetings.morning': return 'Goedemorgen! ☀️';
+			case 'settings.greetings.forenoon': return 'Fijne ochtend! 🌤️';
+			case 'settings.greetings.noon': return 'Eet smakelijk tijdens de lunch! 🥪';
+			case 'settings.greetings.afternoon': return 'Goedemiddag! Zin in verse sushi? 🌞';
+			case 'settings.greetings.evening': return 'Goede avond! Trakteer jezelf op sushi vanavond 🌇';
+			case 'settings.greetings.night': return 'Welterusten! 🌙';
+			case 'settings.greetings.hello': return 'Hallo daar! 👋';
 			default: return null;
 		}
 	}

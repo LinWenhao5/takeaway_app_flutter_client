@@ -21,7 +21,7 @@ class LoginButton extends ConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(context.t.login.successMessage)),
         );
-        Navigator.pop(context);
+        Navigator.pop(context, true);
       } else if (!next.isLoading && next.errorMessage != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(next.errorMessage!)),

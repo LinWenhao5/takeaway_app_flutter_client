@@ -70,6 +70,19 @@
     "theme": "Theme",
     "themeSystem": "System",
     "themeLight": "Light",
-    "themeDark": "Dark"
+    "themeDark": "Dark",
+    "login_prompt": "Sign in to start your delicious adventure 🍣",
+    "sign_in_now": "Sign In Now",
+    "failed_to_load": "Failed to load username",
+    "greetings": {
+      "early_morning": "Up early? Wishing you a peaceful morning 🌙",
+      "morning": "Good morning! Hope you have a great start ☀️",
+      "forenoon": "Hope your morning is going well 🌤️",
+      "noon": "Happy lunch time! Enjoy your meal 🥪",
+      "afternoon": "Good afternoon! How about some fresh sushi? 🌞",
+      "evening": "Good evening! Treat yourself to sushi tonight 🌇",
+      "night": "Good night! Sweet dreams 🌙",
+      "hello": "Hello there! 👋"
+    }
   }
 }

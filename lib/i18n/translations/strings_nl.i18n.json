@@ -70,6 +70,19 @@
     "theme": "Thema",
     "themeSystem": "Systeem",
     "themeLight": "Licht",
-    "themeDark": "Donker"
+    "themeDark": "Donker",
+    "login_prompt": "Log in om je heerlijke avontuur te beginnen 🍣",
+    "sign_in_now": "Nu inloggen",
+    "failed_to_load": "Gebruikersnaam laden mislukt",
+    "greetings": {
+      "early_morning": "Goedemorgen, vroege vogel! 🌙",
+      "morning": "Goedemorgen! ☀️",
+      "forenoon": "Fijne ochtend! 🌤️",
+      "noon": "Eet smakelijk tijdens de lunch! 🥪",
+      "afternoon": "Goedemiddag! Zin in verse sushi? 🌞",
+      "evening": "Goede avond! Trakteer jezelf op sushi vanavond 🌇",
+      "night": "Welterusten! 🌙",
+      "hello": "Hallo daar! 👋"
+    }
   }
 }
