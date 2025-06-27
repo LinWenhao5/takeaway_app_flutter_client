@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/application/theme_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
@@ -13,12 +14,15 @@ class TakeawayApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+    
     return DismissKeyboard(
       child: MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         darkTheme: darkTheme,
+        themeMode: themeMode,
         home: const MainScaffold(),
         routes: {
           '/login': (context) => const LoginPage(),

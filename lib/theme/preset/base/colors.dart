@@ -10,4 +10,4 @@ const Color kLightBackgroundColor = Colors.white;
 const Color kDarkBackgroundColor = Color(0xFF181818);
 
 const Color kLightNavBg = Colors.white;
-const Color kDarkNavBg = Color(0xFF222222);
+const Color kDarkNavBg = Color(0xFF181818);

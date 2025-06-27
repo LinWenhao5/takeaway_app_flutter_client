@@ -7,6 +7,10 @@ import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/tab_bar_theme.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/elevated_button_theme.dart';
 final ThemeData lightTheme = ThemeData(
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: kPrimaryColor,
+    brightness: Brightness.light,
+  ),
   primaryColor: kPrimaryColor,
   brightness: Brightness.light,
   textTheme: appTextTheme,
@@ -18,6 +22,11 @@ final ThemeData lightTheme = ThemeData(
 );
 
 final ThemeData darkTheme = ThemeData(
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: kPrimaryColorDark,
+    brightness: Brightness.dark,
+    surface: const Color(0xFF232323),
+  ),
   brightness: Brightness.dark,
   primaryColor: kPrimaryColorDark,
   textTheme: appTextTheme,
