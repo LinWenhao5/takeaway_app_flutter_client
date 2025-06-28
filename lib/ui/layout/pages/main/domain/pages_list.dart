@@ -1,7 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/order/presentation/order_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/settings/presentaion/settings_page.dart';
 
-final pagesList = [
-  const OrderPage(),
-  const SettingsPage(),
+class PageConfig {
+  final Widget page;
+  final String Function(BuildContext) titleBuilder;
+
+  const PageConfig({required this.page, required this.titleBuilder});
+}
+
+final pagesConfigList = [
+  PageConfig(
+    page: const OrderPage(),
+    titleBuilder: (context) => context.t.navbar.order,
+  ),
+  PageConfig(
+    page: const SettingsPage(),
+    titleBuilder: (context) => context.t.navbar.profile,
+  ),
 ];

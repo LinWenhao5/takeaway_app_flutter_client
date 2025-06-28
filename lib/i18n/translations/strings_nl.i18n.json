@@ -11,10 +11,11 @@
     "welcome": "Welkom bij ons!"
   },
   "navbar": {
-    "settings": "Instellingen",
+    "profile": "Mijn Profiel",
     "order": "Bestellingen"
   },
   "cart": {
+    "checkout_basket": "Afrekenmandje",
     "emptyCartMessage": "Je winkelwagen is leeg!",
     "addItemsMessage": "Voeg wat items toe om ze hier te zien.",
     "addedToCart": "{productName} is succesvol toegevoegd aan je winkelwagen!",

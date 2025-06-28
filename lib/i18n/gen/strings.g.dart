@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 136 (68 per locale)
+/// Strings: 138 (69 per locale)
 ///
-/// Built on 2025-06-27 at 22:50 UTC
+/// Built on 2025-06-28 at 11:48 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -190,7 +190,7 @@ class _StringsNavbarEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get settings => 'Settings';
+	String get profile => 'My Profile';
 	String get order => 'Orders';
 }
 
@@ -201,6 +201,7 @@ class _StringsCartEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get checkout_basket => 'Checkout Basket';
 	String get emptyCartMessage => 'Your cart is empty!';
 	String get addItemsMessage => 'Go ahead and add some items to see them here.';
 	String get addedToCart => '{productName} has been successfully added to your cart!';
@@ -374,7 +375,7 @@ class _StringsNavbarNl implements _StringsNavbarEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get settings => 'Instellingen';
+	@override String get profile => 'Mijn Profiel';
 	@override String get order => 'Bestellingen';
 }
 
@@ -385,6 +386,7 @@ class _StringsCartNl implements _StringsCartEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get checkout_basket => 'Afrekenmandje';
 	@override String get emptyCartMessage => 'Je winkelwagen is leeg!';
 	@override String get addItemsMessage => 'Voeg wat items toe om ze hier te zien.';
 	@override String get addedToCart => '{productName} is succesvol toegevoegd aan je winkelwagen!';
@@ -505,8 +507,9 @@ extension on Translations {
 			case 'search.tryAnotherKeyword': return 'Try a different keyword';
 			case 'homepage.hello': return 'Hi there';
 			case 'homepage.welcome': return 'Welcome to our app!';
-			case 'navbar.settings': return 'Settings';
+			case 'navbar.profile': return 'My Profile';
 			case 'navbar.order': return 'Orders';
+			case 'cart.checkout_basket': return 'Checkout Basket';
 			case 'cart.emptyCartMessage': return 'Your cart is empty!';
 			case 'cart.addItemsMessage': return 'Go ahead and add some items to see them here.';
 			case 'cart.addedToCart': return '{productName} has been successfully added to your cart!';
@@ -581,8 +584,9 @@ extension on _StringsNl {
 			case 'search.tryAnotherKeyword': return 'Probeer een ander zoekwoord';
 			case 'homepage.hello': return 'Hoi';
 			case 'homepage.welcome': return 'Welkom bij ons!';
-			case 'navbar.settings': return 'Instellingen';
+			case 'navbar.profile': return 'Mijn Profiel';
 			case 'navbar.order': return 'Bestellingen';
+			case 'cart.checkout_basket': return 'Afrekenmandje';
 			case 'cart.emptyCartMessage': return 'Je winkelwagen is leeg!';
 			case 'cart.addItemsMessage': return 'Voeg wat items toe om ze hier te zien.';
 			case 'cart.addedToCart': return '{productName} is succesvol toegevoegd aan je winkelwagen!';

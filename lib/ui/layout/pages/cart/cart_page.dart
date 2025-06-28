@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/presentation/cart_view.dart';
 
 class CartPage extends StatelessWidget {
@@ -8,7 +9,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Cart'),
+        title: Text(context.t.cart.checkout_basket),
       ),
       body: const Padding(
         padding: EdgeInsets.all(16.0),

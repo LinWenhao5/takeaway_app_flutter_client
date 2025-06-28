@@ -16,8 +16,8 @@ class MainNavBar extends ConsumerWidget {
           label: context.t.navbar.order,
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.settings),
-          label: context.t.navbar.settings,
+          icon: const Icon(Icons.account_circle_outlined),
+          label: context.t.navbar.profile,
         ),
       ],
       currentIndex: currentIndex,

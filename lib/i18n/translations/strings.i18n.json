@@ -11,10 +11,11 @@
     "welcome": "Welcome to our app!"
   },
   "navbar": {
-    "settings": "Settings",
+    "profile": "My Profile",
     "order": "Orders"
   },
   "cart": {
+    "checkout_basket": "Checkout Basket",
     "emptyCartMessage": "Your cart is empty!",
     "addItemsMessage": "Go ahead and add some items to see them here.",
     "addedToCart": "{productName} has been successfully added to your cart!",

@@ -44,7 +44,7 @@ class ProductSearchResult extends ConsumerWidget {
       loading: () => Padding(
         padding: const EdgeInsets.all(32),
         child: Center(
-          child: SpinKitThreeBounce(
+          child: SpinKitFadingCircle(
             color: Theme.of(context).primaryColor,
             size: 40.0,
           ),

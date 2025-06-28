@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import '../application/customer_account_provider.dart';
 
@@ -18,7 +19,13 @@ class GreetingSection extends ConsumerWidget {
       padding: const EdgeInsets.all(16.0),
       child: () {
         if (usernameState.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: 
+            SpinKitWave(
+              color: Theme.of(context).primaryColor,
+              size: 30.0,
+            )
+          );
         } else if (usernameState.username != null) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

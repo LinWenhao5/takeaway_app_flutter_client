@@ -14,7 +14,9 @@ class CartItemDetails extends StatelessWidget {
         // Product name
         Text(
           item.name,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+          ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

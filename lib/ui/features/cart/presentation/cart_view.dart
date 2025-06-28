@@ -13,7 +13,6 @@ class CartView extends ConsumerWidget {
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // 仅在初次加载时调用 fetchCart
       if (ref.read(cartItemsProvider).isEmpty && !ref.read(fetchCartProvider).isLoading) {
         fetchCartNotifier.fetchCart();
       }
@@ -25,7 +24,7 @@ class CartView extends ConsumerWidget {
       },
       child: Consumer(
         builder: (context, ref, _) {
-          final cartItems = ref.watch(cartItemsProvider); // 局部状态
+          final cartItems = ref.watch(cartItemsProvider);
           if (cartItems.isEmpty) {
             return Center(
               child: Column(
@@ -67,7 +66,7 @@ class CartView extends ConsumerWidget {
               const Divider(),
               Consumer(
                 builder: (context, ref, _) {
-                  final cartSummary = ref.watch(cartSummaryProvider); // 局部状态
+                  final cartSummary = ref.watch(cartSummaryProvider);
                   return CartSummary(
                     totalQuantity: cartSummary.totalQuantity,
                     totalPrice: cartSummary.totalPrice,

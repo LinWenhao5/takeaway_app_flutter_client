@@ -12,7 +12,9 @@ class ProductDetailsSection extends StatelessWidget {
       children: [
         Text(
           product.name,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(height: 4),
         Text(
