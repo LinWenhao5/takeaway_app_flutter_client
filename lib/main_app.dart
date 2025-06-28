@@ -7,6 +7,7 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/lo
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account_settings/account_settings_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -30,6 +31,7 @@ class TakeawayApp extends ConsumerWidget {
           '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
           '/cart': (context) => const CartPage(),
+          '/account_settings': (context) => const AccountSettingsPage(),
         },
       ),
     );

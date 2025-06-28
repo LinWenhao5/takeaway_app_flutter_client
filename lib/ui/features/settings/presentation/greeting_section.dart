@@ -14,7 +14,6 @@ class GreetingSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usernameState = ref.watch(usernameNotifierProvider);
 
-
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: () {
@@ -32,16 +31,16 @@ class GreetingSection extends ConsumerWidget {
             children: [
               Text(
                 getGreeting(context),
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 4),
               Text(
                 usernameState.username!,
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ],
           );
-        } else if (usernameState.errorCode == 401) {
+        } else {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,10 +65,6 @@ class GreetingSection extends ConsumerWidget {
               ),
             ],
           );
-        } else if (usernameState.error != null) {
-          return Text('Failed to load username', style: TextStyle(color: Colors.red));
-        } else {
-          return const SizedBox.shrink();
         }
       }(),
     );

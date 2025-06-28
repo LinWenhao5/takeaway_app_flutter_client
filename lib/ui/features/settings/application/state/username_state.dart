@@ -11,17 +11,19 @@ class UsernameState {
     this.errorCode,
   });
 
+  static const _unset = Object();
+
   UsernameState copyWith({
     bool? isLoading,
-    String? username,
-    String? error,
-    int? errorCode,
+    Object? username = _unset,
+    Object? error = _unset,
+    Object? errorCode = _unset,
   }) {
     return UsernameState(
       isLoading: isLoading ?? this.isLoading,
-      username: username ?? this.username,
-      error: error ?? this.error,
-      errorCode: errorCode ?? this.errorCode,
+      username: username == _unset ? this.username : username as String?,
+      error: error == _unset ? this.error : error as String?,
+      errorCode: errorCode == _unset ? this.errorCode : errorCode as int?,
     );
   }
 }

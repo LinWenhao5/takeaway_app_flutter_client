@@ -8,6 +8,10 @@ class UsernameNotifier extends StateNotifier<UsernameState> {
     fetchUsername();
   }
 
+  void reset() {
+    state = UsernameState(username: null, error: null, errorCode: 401);
+  }
+
   Future<void> fetchUsername() async {
     state = state.copyWith(isLoading: true, error: null, errorCode: null);
     try {
@@ -22,7 +26,7 @@ class UsernameNotifier extends StateNotifier<UsernameState> {
       } else {
         message = e.toString();
       }
-      state = state.copyWith(isLoading: false, error: message, errorCode: code);
+      state = state.copyWith(isLoading: false, username: null, error: message, errorCode: code);
     }
   }
 }
