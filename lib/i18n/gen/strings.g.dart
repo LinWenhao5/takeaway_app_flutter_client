@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 138 (69 per locale)
+/// Strings: 142 (71 per locale)
 ///
-/// Built on 2025-06-28 at 11:48 UTC
+/// Built on 2025-07-04 at 12:09 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -281,6 +281,8 @@ class _StringsSettingsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get account_settings => 'Account Settings';
+	String get address_management => 'Address Management';
 	String get language => 'Language';
 	String get theme => 'Theme';
 	String get themeSystem => 'System';
@@ -466,6 +468,8 @@ class _StringsSettingsNl implements _StringsSettingsEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get account_settings => 'Account Instellingen';
+	@override String get address_management => 'Beheer adressen';
 	@override String get language => 'Taal';
 	@override String get theme => 'Thema';
 	@override String get themeSystem => 'Systeem';
@@ -553,6 +557,8 @@ extension on Translations {
 			case 'register.successMessage': return 'Your account has been created successfully!';
 			case 'register.passwordMismatchMessage': return 'The passwords do not match.';
 			case 'register.errorMessage': return 'Please fill in all required fields to proceed';
+			case 'settings.account_settings': return 'Account Settings';
+			case 'settings.address_management': return 'Address Management';
 			case 'settings.language': return 'Language';
 			case 'settings.theme': return 'Theme';
 			case 'settings.themeSystem': return 'System';
@@ -630,6 +636,8 @@ extension on _StringsNl {
 			case 'register.successMessage': return 'Je account is succesvol aangemaakt!';
 			case 'register.passwordMismatchMessage': return 'De wachtwoorden komen niet overeen.';
 			case 'register.errorMessage': return 'Vul alle verplichte velden in om verder te gaan';
+			case 'settings.account_settings': return 'Account Instellingen';
+			case 'settings.address_management': return 'Beheer adressen';
 			case 'settings.language': return 'Taal';
 			case 'settings.theme': return 'Thema';
 			case 'settings.themeSystem': return 'Systeem';

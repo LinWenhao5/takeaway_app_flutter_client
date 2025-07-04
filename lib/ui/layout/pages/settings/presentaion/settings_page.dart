@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account_settings/account_settings_tile.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/settings/presentaion/settings_tile.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/language_segment.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/theme_segment.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/greeting_section.dart';
@@ -13,7 +13,7 @@ class SettingsPage extends ConsumerWidget {
     return ListView(
       children: [
         GreetingSection(),
-        AccountSettingsTile(),
+        SettingsTile(),
         const Divider(),
         ThemeSegment(),
         const Divider(),

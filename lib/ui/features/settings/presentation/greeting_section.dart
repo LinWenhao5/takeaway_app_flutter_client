@@ -30,12 +30,12 @@ class GreetingSection extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                getGreeting(context),
+                usernameState.username!,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 4),
               Text(
-                usernameState.username!,
+                getGreeting(context),
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ],

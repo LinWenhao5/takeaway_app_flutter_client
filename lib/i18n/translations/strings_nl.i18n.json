@@ -67,6 +67,8 @@
     "errorMessage": "Vul alle verplichte velden in om verder te gaan"
   },
   "settings": {
+    "account_settings": "Account Instellingen",
+    "address_management": "Beheer adressen",
     "language": "Taal",
     "theme": "Thema",
     "themeSystem": "Systeem",

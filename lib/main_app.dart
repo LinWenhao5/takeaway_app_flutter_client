@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/language_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/theme_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/address_management_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
-import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account_settings/account_settings_page.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account/account_settings_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -32,6 +33,7 @@ class TakeawayApp extends ConsumerWidget {
           '/register': (context) => const RegisterPage(),
           '/cart': (context) => const CartPage(),
           '/account_settings': (context) => const AccountSettingsPage(),
+          '/address_management': (context) => const AddressManagementPage(),
         },
       ),
     );

@@ -9,9 +9,9 @@ extension LanguageOptionExt on LanguageOption {
   String get label {
     switch (this) {
       case LanguageOption.english:
-        return 'English';
+        return '🇬🇧 English';
       case LanguageOption.netherlands:
-        return 'Nederlands';
+        return '🇳🇱 Nederlands';
     }
   }
 

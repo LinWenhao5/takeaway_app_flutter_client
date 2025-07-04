@@ -67,6 +67,8 @@
     "errorMessage": "Please fill in all required fields to proceed"
   },
   "settings": {
+    "account_settings": "Account Settings",
+    "address_management": "Address Management",
     "language": "Language",
     "theme": "Theme",
     "themeSystem": "System",
