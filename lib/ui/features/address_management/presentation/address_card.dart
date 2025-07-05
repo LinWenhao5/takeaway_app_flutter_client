@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import '../domain/address.dart';
 
 class AddressCard extends StatelessWidget {
@@ -100,11 +101,11 @@ class AddressCard extends StatelessWidget {
                   }
                 },
                 itemBuilder: (context) => [
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'edit',
                     child: ListTile(
                       leading: Icon(Icons.edit, size: 20),
-                      title: Text('Edit'),
+                      title: Text(context.t.address.editAddress),
                       contentPadding: EdgeInsets.zero,
                       dense: true,
                     ),
@@ -113,7 +114,7 @@ class AddressCard extends StatelessWidget {
                     value: 'delete',
                     child: ListTile(
                       leading: const Icon(Icons.delete_outline, color: Colors.red, size: 20),
-                      title: const Text('Delete', style: TextStyle(color: Colors.red)),
+                      title: Text(context.t.address.deleteAddress, style: TextStyle(color: Colors.red)),
                       contentPadding: EdgeInsets.zero,
                       dense: true,
                     ),

@@ -1,23 +1,29 @@
-class AddAddressState {
+enum AddressActionType { none, create, update, delete }
+
+class AddressActionState {
   final bool isLoading;
   final String? error;
   final bool success;
+  final AddressActionType action;
 
-  AddAddressState({
+  AddressActionState({
     this.isLoading = false,
     this.error,
     this.success = false,
+    this.action = AddressActionType.none,
   });
 
-  AddAddressState copyWith({
+  AddressActionState copyWith({
     bool? isLoading,
     String? error,
     bool? success,
+    AddressActionType? action,
   }) {
-    return AddAddressState(
+    return AddressActionState(
       isLoading: isLoading ?? this.isLoading,
       error: error,
       success: success ?? this.success,
+      action: action ?? this.action
     );
   }
 }

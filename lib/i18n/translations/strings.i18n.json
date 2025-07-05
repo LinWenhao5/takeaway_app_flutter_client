@@ -70,7 +70,10 @@
     "errorMessage": "Please fill in all required fields to proceed"
   },
   "address": {
-    "add_address": "Add Address",
+    "addAddress": "Add Address",
+    "editAddress": "Edit Address",
+    "deleteAddress": "Delete Address",
+    "saveAddress": "Save Address",
     "areaNotice": "Currently, delivery service is only available in the Purmerend area.",
     "formTitle": "Delivery Address for Your Order",
     "name": "Name",
@@ -93,8 +96,10 @@
     "cityHelper": "City of the delivery address",
     "country": "Country: Netherlands",
     "submit": "Submit",
-    "success": "Address added successfully!",
-    "required": "Required"
+    "required": "Required",
+    "addSuccess": "Address added successfully!",
+    "updateSuccess": "Address updated successfully!",
+    "deleteSuccess": "Address deleted successfully!"
   },
   "settings": {
     "account_settings": "Account Settings",

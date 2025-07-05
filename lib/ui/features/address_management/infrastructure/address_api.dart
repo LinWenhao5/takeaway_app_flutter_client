@@ -11,4 +11,12 @@ class AddressApi {
   static Future<void> createAddress(AddressCreateRequest data) async {
     await ApiClient.post('/address/create', body: data.toJson());
   }
+
+  static Future<void> deleteAddress(int id) async {
+    await ApiClient.delete('/address/$id');
+  }
+
+  static Future<void> updateAddress(int id, AddressCreateRequest data) async {
+    await ApiClient.put('/address/$id', body: data.toJson());
+  }
 }

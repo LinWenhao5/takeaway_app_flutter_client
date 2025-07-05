@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 198 (99 per locale)
+/// Strings: 208 (104 per locale)
 ///
-/// Built on 2025-07-04 at 20:49 UTC
+/// Built on 2025-07-05 at 11:10 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -285,7 +285,10 @@ class _StringsAddressEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get add_address => 'Add Address';
+	String get addAddress => 'Add Address';
+	String get editAddress => 'Edit Address';
+	String get deleteAddress => 'Delete Address';
+	String get saveAddress => 'Save Address';
 	String get areaNotice => 'Currently, delivery service is only available in the Purmerend area.';
 	String get formTitle => 'Delivery Address for Your Order';
 	String get name => 'Name';
@@ -308,8 +311,10 @@ class _StringsAddressEn {
 	String get cityHelper => 'City of the delivery address';
 	String get country => 'Country: Netherlands';
 	String get submit => 'Submit';
-	String get success => 'Address added successfully!';
 	String get required => 'Required';
+	String get addSuccess => 'Address added successfully!';
+	String get updateSuccess => 'Address updated successfully!';
+	String get deleteSuccess => 'Address deleted successfully!';
 }
 
 // Path: settings
@@ -510,7 +515,10 @@ class _StringsAddressNl implements _StringsAddressEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get add_address => 'Adres toevoegen';
+	@override String get addAddress => 'Adres toevoegen';
+	@override String get editAddress => 'Adres bewerken';
+	@override String get deleteAddress => 'Adres verwijderen';
+	@override String get saveAddress => 'Adres opslaan';
 	@override String get areaNotice => 'Momenteel is bezorging alleen mogelijk in het gebied Purmerend.';
 	@override String get formTitle => 'Bezorgadres voor uw bestelling';
 	@override String get name => 'Naam';
@@ -533,8 +541,10 @@ class _StringsAddressNl implements _StringsAddressEn {
 	@override String get cityHelper => 'Plaats van het bezorgadres';
 	@override String get country => 'Land: Nederland';
 	@override String get submit => 'Verzenden';
-	@override String get success => 'Adres succesvol toegevoegd!';
 	@override String get required => 'Verplicht';
+	@override String get addSuccess => 'Adres succesvol toegevoegd!';
+	@override String get updateSuccess => 'Adres succesvol bijgewerkt!';
+	@override String get deleteSuccess => 'Adres succesvol verwijderd!';
 }
 
 // Path: settings
@@ -636,7 +646,10 @@ extension on Translations {
 			case 'register.successMessage': return 'Your account has been created successfully!';
 			case 'register.passwordMismatchMessage': return 'The passwords do not match.';
 			case 'register.errorMessage': return 'Please fill in all required fields to proceed';
-			case 'address.add_address': return 'Add Address';
+			case 'address.addAddress': return 'Add Address';
+			case 'address.editAddress': return 'Edit Address';
+			case 'address.deleteAddress': return 'Delete Address';
+			case 'address.saveAddress': return 'Save Address';
 			case 'address.areaNotice': return 'Currently, delivery service is only available in the Purmerend area.';
 			case 'address.formTitle': return 'Delivery Address for Your Order';
 			case 'address.name': return 'Name';
@@ -659,8 +672,10 @@ extension on Translations {
 			case 'address.cityHelper': return 'City of the delivery address';
 			case 'address.country': return 'Country: Netherlands';
 			case 'address.submit': return 'Submit';
-			case 'address.success': return 'Address added successfully!';
 			case 'address.required': return 'Required';
+			case 'address.addSuccess': return 'Address added successfully!';
+			case 'address.updateSuccess': return 'Address updated successfully!';
+			case 'address.deleteSuccess': return 'Address deleted successfully!';
 			case 'settings.account_settings': return 'Account Settings';
 			case 'settings.address_management': return 'Address Management';
 			case 'settings.language': return 'Language';
@@ -743,7 +758,10 @@ extension on _StringsNl {
 			case 'register.successMessage': return 'Je account is succesvol aangemaakt!';
 			case 'register.passwordMismatchMessage': return 'De wachtwoorden komen niet overeen.';
 			case 'register.errorMessage': return 'Vul alle verplichte velden in om verder te gaan';
-			case 'address.add_address': return 'Adres toevoegen';
+			case 'address.addAddress': return 'Adres toevoegen';
+			case 'address.editAddress': return 'Adres bewerken';
+			case 'address.deleteAddress': return 'Adres verwijderen';
+			case 'address.saveAddress': return 'Adres opslaan';
 			case 'address.areaNotice': return 'Momenteel is bezorging alleen mogelijk in het gebied Purmerend.';
 			case 'address.formTitle': return 'Bezorgadres voor uw bestelling';
 			case 'address.name': return 'Naam';
@@ -766,8 +784,10 @@ extension on _StringsNl {
 			case 'address.cityHelper': return 'Plaats van het bezorgadres';
 			case 'address.country': return 'Land: Nederland';
 			case 'address.submit': return 'Verzenden';
-			case 'address.success': return 'Adres succesvol toegevoegd!';
 			case 'address.required': return 'Verplicht';
+			case 'address.addSuccess': return 'Adres succesvol toegevoegd!';
+			case 'address.updateSuccess': return 'Adres succesvol bijgewerkt!';
+			case 'address.deleteSuccess': return 'Adres succesvol verwijderd!';
 			case 'settings.account_settings': return 'Account Instellingen';
 			case 'settings.address_management': return 'Beheer adressen';
 			case 'settings.language': return 'Taal';

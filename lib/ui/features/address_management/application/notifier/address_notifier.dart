@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'address_state.dart';
-import '../infrastructure/address_api.dart';
-import '../domain/address.dart';
+import '../state/address_state.dart';
+import '../../infrastructure/address_api.dart';
+import '../../domain/address.dart';
 
 class AddressNotifier extends StateNotifier<AddressState> {
   AddressNotifier() : super(AddressState(isLoading: true)) {

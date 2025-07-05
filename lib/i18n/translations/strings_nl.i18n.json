@@ -70,7 +70,10 @@
     "errorMessage": "Vul alle verplichte velden in om verder te gaan"
   },
   "address": {
-    "add_address": "Adres toevoegen",
+    "addAddress": "Adres toevoegen",
+    "editAddress": "Adres bewerken",
+    "deleteAddress": "Adres verwijderen",
+    "saveAddress": "Adres opslaan",
     "areaNotice": "Momenteel is bezorging alleen mogelijk in het gebied Purmerend.",
     "formTitle": "Bezorgadres voor uw bestelling",
     "name": "Naam",
@@ -93,8 +96,10 @@
     "cityHelper": "Plaats van het bezorgadres",
     "country": "Land: Nederland",
     "submit": "Verzenden",
-    "success": "Adres succesvol toegevoegd!",
-    "required": "Verplicht"
+    "required": "Verplicht",
+    "addSuccess": "Adres succesvol toegevoegd!",
+    "updateSuccess": "Adres succesvol bijgewerkt!",
+    "deleteSuccess": "Adres succesvol verwijderd!"
   },
   "settings": {
     "account_settings": "Account Instellingen",

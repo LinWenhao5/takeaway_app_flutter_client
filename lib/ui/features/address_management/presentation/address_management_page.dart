@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/application/state/address_action_state.dart';
 import '../application/address_provider.dart';
 import '../domain/address.dart';
 import 'address_card.dart';
@@ -13,6 +14,23 @@ class AddressManagementPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(addressNotifierProvider);
     final notifier = ref.read(addressNotifierProvider.notifier);
+    final actionNotifier = ref.read(addressActionNotifierProvider.notifier);
+
+    ref.listen<AddressActionState>(addressActionNotifierProvider, (prev, next) async {
+      if (next.success && next.action == AddressActionType.delete) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.t.address.deleteSuccess)),
+        );
+        await notifier.fetchAddresses();
+        actionNotifier.reset();
+      }
+      if (next.error != null && next.action == AddressActionType.delete) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.error!)),
+        );
+        actionNotifier.reset();
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -20,12 +38,11 @@ class AddressManagementPage extends ConsumerWidget {
       ),
       body: state.isLoading
           ? Center(
-            child: 
-              SpinKitWave(
-                  color: Theme.of(context).primaryColor,
-                  size: 40.0,
-              )
-          )
+              child: SpinKitWave(
+                color: Theme.of(context).primaryColor,
+                size: 40.0,
+              ),
+            )
           : state.error != null
               ? Center(child: Text('Failed to load: ${state.error}'))
               : RefreshIndicator(
@@ -48,8 +65,7 @@ class AddressManagementPage extends ConsumerWidget {
                       }
                       return GridView.builder(
                         padding: const EdgeInsets.all(12),
-                        gridDelegate:
-                            SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: crossAxisCount,
                           crossAxisSpacing: 16,
                           mainAxisSpacing: 16,
@@ -61,10 +77,10 @@ class AddressManagementPage extends ConsumerWidget {
                           return AddressCard(
                             address: address,
                             onEdit: () {
-                              // TODO: Edit logic
+                              Navigator.of(context).pushNamed('/edit_address', arguments: address);
                             },
                             onDelete: () {
-                              // TODO: Delete logic
+                              actionNotifier.deleteAddress(address.id);
                             },
                           );
                         },
@@ -77,7 +93,7 @@ class AddressManagementPage extends ConsumerWidget {
           Navigator.of(context).pushNamed('/add_address');
         },
         icon: const Icon(Icons.add),
-        label: Text(context.t.address.add_address),
+        label: Text(context.t.address.addAddress),
       ),
     );
   }

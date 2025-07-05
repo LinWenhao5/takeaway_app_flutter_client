@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/domain/address.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/add_address_page.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/edit_address_page.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/language_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/theme_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/address_management_page.dart';
@@ -36,6 +38,10 @@ class TakeawayApp extends ConsumerWidget {
           '/account_settings': (context) => const AccountSettingsPage(),
           '/address_management': (context) => const AddressManagementPage(),
           '/add_address': (context) => const AddAddressPage(),
+          '/edit_address': (context) {
+            final args = ModalRoute.of(context)!.settings.arguments;
+            return EditAddressPage(address: args as Address);
+          },
         },
       ),
     );

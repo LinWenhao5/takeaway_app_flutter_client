@@ -60,6 +60,20 @@ class ApiClient {
     return _processResponse(http.Response(responseBody, response.statusCode));
   }
 
+  static Future<dynamic> put(String path, {Map<String, dynamic>? body}) async {
+    final uri = Uri.parse('$baseUrl$path');
+
+    final headers = await _getHeaders();
+    headers['Content-Type'] = 'application/json';
+
+    final response = await http.put(
+      uri,
+      headers: headers,
+      body: json.encode(body),
+    );
+    return _processResponse(response);
+  }
+
   static dynamic _processResponse(http.Response response) {
     if (response.statusCode == 401) {
       TokenStorage.clearToken();
