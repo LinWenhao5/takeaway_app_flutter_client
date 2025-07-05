@@ -34,7 +34,10 @@
     "invalidPasswordMessage": "Het wachtwoord voldoet niet aan de vereisten.",
     "emailTakenMessage": "Dit e-mailadres is al geregistreerd.",
     "invalidCaptchaMessage": "De ingevoerde verificatiecode is ongeldig.",
-    "unauthorizedMessage": "Je hebt geen toegang. Log in en probeer het opnieuw."
+    "unauthorizedMessage": "Je hebt geen toegang. Log in en probeer het opnieuw.",
+    "unsupportedPostcode": "Sorry, we bezorgen nog niet op deze postcode.",
+    "invalidPhone": "Ongeldig telefoonnummer.",
+    "invalidStreet": "Ongeldige straatnaam."
   },
   "login": {
     "title": "Fijn je weer te zien!",
@@ -65,6 +68,33 @@
     "successMessage": "Je account is succesvol aangemaakt!",
     "passwordMismatchMessage": "De wachtwoorden komen niet overeen.",
     "errorMessage": "Vul alle verplichte velden in om verder te gaan"
+  },
+  "address": {
+    "add_address": "Adres toevoegen",
+    "areaNotice": "Momenteel is bezorging alleen mogelijk in het gebied Purmerend.",
+    "formTitle": "Bezorgadres voor uw bestelling",
+    "name": "Naam",
+    "nameHint": "bijv. Jan Jansen",
+    "nameHelper": "Vul de volledige naam van de ontvanger in",
+    "phone": "Telefoon",
+    "phoneHint": "bijv. 06 12345678",
+    "phoneHelper": "Nederlands mobiel nummer, 10 cijfers",
+    "street": "Straat",
+    "streetHint": "bijv. Hoofdstraat",
+    "streetHelper": "Alleen straatnaam, geen huisnummer",
+    "postcode": "Postcode",
+    "postcodeHint": "bijv. 1234AB",
+    "postcodeHelper": "Nederlandse postcode, 6 tekens",
+    "houseNumber": "Huisnummer",
+    "houseNumberHint": "bijv. 10A",
+    "houseNumberHelper": "Huis- of appartementnummer",
+    "city": "Plaats",
+    "cityHint": "bijv. Amsterdam",
+    "cityHelper": "Plaats van het bezorgadres",
+    "country": "Land: Nederland",
+    "submit": "Verzenden",
+    "success": "Adres succesvol toegevoegd!",
+    "required": "Verplicht"
   },
   "settings": {
     "account_settings": "Account Instellingen",

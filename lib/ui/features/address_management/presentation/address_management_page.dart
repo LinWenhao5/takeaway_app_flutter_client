@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../settings/application/address_provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import '../application/address_provider.dart';
 import '../domain/address.dart';
 import 'address_card.dart';
 
@@ -14,34 +16,69 @@ class AddressManagementPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Address Management'),
+        title: Text(context.t.settings.address_management),
       ),
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+            child: 
+              SpinKitWave(
+                  color: Theme.of(context).primaryColor,
+                  size: 40.0,
+              )
+          )
           : state.error != null
               ? Center(child: Text('Failed to load: ${state.error}'))
               : RefreshIndicator(
                   onRefresh: () async {
                     await notifier.fetchAddresses();
                   },
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(12),
-                    itemCount: state.addresses.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (context, index) {
-                      final Address address = state.addresses[index];
-                      return AddressCard(
-                        address: address,
-                        onEdit: () {
-                          // TODO: Edit logic
-                        },
-                        onDelete: () {
-                          // TODO: Delete logic
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      int crossAxisCount;
+                      double aspectRatio;
+                      if (constraints.maxWidth > 1600) {
+                        crossAxisCount = 3;
+                        aspectRatio = 4;
+                      } else if (constraints.maxWidth > 1000) {
+                        crossAxisCount = 2;
+                        aspectRatio = 3.5;
+                      } else {
+                        crossAxisCount = 1;
+                        aspectRatio = 3;
+                      }
+                      return GridView.builder(
+                        padding: const EdgeInsets.all(12),
+                        gridDelegate:
+                            SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          childAspectRatio: aspectRatio,
+                        ),
+                        itemCount: state.addresses.length,
+                        itemBuilder: (context, index) {
+                          final Address address = state.addresses[index];
+                          return AddressCard(
+                            address: address,
+                            onEdit: () {
+                              // TODO: Edit logic
+                            },
+                            onDelete: () {
+                              // TODO: Delete logic
+                            },
+                          );
                         },
                       );
                     },
                   ),
                 ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/add_address');
+        },
+        icon: const Icon(Icons.add),
+        label: Text(context.t.address.add_address),
+      ),
     );
   }
 }

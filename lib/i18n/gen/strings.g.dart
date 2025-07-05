@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 142 (71 per locale)
+/// Strings: 198 (99 per locale)
 ///
-/// Built on 2025-07-04 at 12:09 UTC
+/// Built on 2025-07-04 at 20:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -155,6 +155,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
+	late final _StringsAddressEn address = _StringsAddressEn._(_root);
 	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
 }
 
@@ -228,6 +229,9 @@ class _StringsErrorsEn {
 	String get emailTakenMessage => 'This email is already registered.';
 	String get invalidCaptchaMessage => 'The verification code you entered is invalid.';
 	String get unauthorizedMessage => 'You don\'t have access. Please log in and try again.';
+	String get unsupportedPostcode => 'Sorry, we currently do not deliver to this postcode.';
+	String get invalidPhone => 'Invalid phone number.';
+	String get invalidStreet => 'Invalid street name.';
 }
 
 // Path: login
@@ -272,6 +276,40 @@ class _StringsRegisterEn {
 	String get successMessage => 'Your account has been created successfully!';
 	String get passwordMismatchMessage => 'The passwords do not match.';
 	String get errorMessage => 'Please fill in all required fields to proceed';
+}
+
+// Path: address
+class _StringsAddressEn {
+	_StringsAddressEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get add_address => 'Add Address';
+	String get areaNotice => 'Currently, delivery service is only available in the Purmerend area.';
+	String get formTitle => 'Delivery Address for Your Order';
+	String get name => 'Name';
+	String get nameHint => 'e.g. John Doe';
+	String get nameHelper => 'Please enter the recipient\'s full name';
+	String get phone => 'Phone';
+	String get phoneHint => 'e.g. 06 12345678';
+	String get phoneHelper => 'Dutch mobile number, 10 digits';
+	String get street => 'Street';
+	String get streetHint => 'e.g. Main Street';
+	String get streetHelper => 'Street name only, no house number';
+	String get postcode => 'Postcode';
+	String get postcodeHint => 'e.g. 1234AB';
+	String get postcodeHelper => 'Dutch postcode, 6 characters';
+	String get houseNumber => 'House Number';
+	String get houseNumberHint => 'e.g. 10A';
+	String get houseNumberHelper => 'House or apartment number';
+	String get city => 'City';
+	String get cityHint => 'e.g. Amsterdam';
+	String get cityHelper => 'City of the delivery address';
+	String get country => 'Country: Netherlands';
+	String get submit => 'Submit';
+	String get success => 'Address added successfully!';
+	String get required => 'Required';
 }
 
 // Path: settings
@@ -342,6 +380,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
+	@override late final _StringsAddressNl address = _StringsAddressNl._(_root);
 	@override late final _StringsSettingsNl settings = _StringsSettingsNl._(_root);
 }
 
@@ -415,6 +454,9 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override String get emailTakenMessage => 'Dit e-mailadres is al geregistreerd.';
 	@override String get invalidCaptchaMessage => 'De ingevoerde verificatiecode is ongeldig.';
 	@override String get unauthorizedMessage => 'Je hebt geen toegang. Log in en probeer het opnieuw.';
+	@override String get unsupportedPostcode => 'Sorry, we bezorgen nog niet op deze postcode.';
+	@override String get invalidPhone => 'Ongeldig telefoonnummer.';
+	@override String get invalidStreet => 'Ongeldige straatnaam.';
 }
 
 // Path: login
@@ -459,6 +501,40 @@ class _StringsRegisterNl implements _StringsRegisterEn {
 	@override String get successMessage => 'Je account is succesvol aangemaakt!';
 	@override String get passwordMismatchMessage => 'De wachtwoorden komen niet overeen.';
 	@override String get errorMessage => 'Vul alle verplichte velden in om verder te gaan';
+}
+
+// Path: address
+class _StringsAddressNl implements _StringsAddressEn {
+	_StringsAddressNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get add_address => 'Adres toevoegen';
+	@override String get areaNotice => 'Momenteel is bezorging alleen mogelijk in het gebied Purmerend.';
+	@override String get formTitle => 'Bezorgadres voor uw bestelling';
+	@override String get name => 'Naam';
+	@override String get nameHint => 'bijv. Jan Jansen';
+	@override String get nameHelper => 'Vul de volledige naam van de ontvanger in';
+	@override String get phone => 'Telefoon';
+	@override String get phoneHint => 'bijv. 06 12345678';
+	@override String get phoneHelper => 'Nederlands mobiel nummer, 10 cijfers';
+	@override String get street => 'Straat';
+	@override String get streetHint => 'bijv. Hoofdstraat';
+	@override String get streetHelper => 'Alleen straatnaam, geen huisnummer';
+	@override String get postcode => 'Postcode';
+	@override String get postcodeHint => 'bijv. 1234AB';
+	@override String get postcodeHelper => 'Nederlandse postcode, 6 tekens';
+	@override String get houseNumber => 'Huisnummer';
+	@override String get houseNumberHint => 'bijv. 10A';
+	@override String get houseNumberHelper => 'Huis- of appartementnummer';
+	@override String get city => 'Plaats';
+	@override String get cityHint => 'bijv. Amsterdam';
+	@override String get cityHelper => 'Plaats van het bezorgadres';
+	@override String get country => 'Land: Nederland';
+	@override String get submit => 'Verzenden';
+	@override String get success => 'Adres succesvol toegevoegd!';
+	@override String get required => 'Verplicht';
 }
 
 // Path: settings
@@ -531,6 +607,9 @@ extension on Translations {
 			case 'errors.emailTakenMessage': return 'This email is already registered.';
 			case 'errors.invalidCaptchaMessage': return 'The verification code you entered is invalid.';
 			case 'errors.unauthorizedMessage': return 'You don\'t have access. Please log in and try again.';
+			case 'errors.unsupportedPostcode': return 'Sorry, we currently do not deliver to this postcode.';
+			case 'errors.invalidPhone': return 'Invalid phone number.';
+			case 'errors.invalidStreet': return 'Invalid street name.';
 			case 'login.title': return 'Welcome back!';
 			case 'login.emailLabel': return 'Email Address';
 			case 'login.emailHint': return 'Enter your email address';
@@ -557,6 +636,31 @@ extension on Translations {
 			case 'register.successMessage': return 'Your account has been created successfully!';
 			case 'register.passwordMismatchMessage': return 'The passwords do not match.';
 			case 'register.errorMessage': return 'Please fill in all required fields to proceed';
+			case 'address.add_address': return 'Add Address';
+			case 'address.areaNotice': return 'Currently, delivery service is only available in the Purmerend area.';
+			case 'address.formTitle': return 'Delivery Address for Your Order';
+			case 'address.name': return 'Name';
+			case 'address.nameHint': return 'e.g. John Doe';
+			case 'address.nameHelper': return 'Please enter the recipient\'s full name';
+			case 'address.phone': return 'Phone';
+			case 'address.phoneHint': return 'e.g. 06 12345678';
+			case 'address.phoneHelper': return 'Dutch mobile number, 10 digits';
+			case 'address.street': return 'Street';
+			case 'address.streetHint': return 'e.g. Main Street';
+			case 'address.streetHelper': return 'Street name only, no house number';
+			case 'address.postcode': return 'Postcode';
+			case 'address.postcodeHint': return 'e.g. 1234AB';
+			case 'address.postcodeHelper': return 'Dutch postcode, 6 characters';
+			case 'address.houseNumber': return 'House Number';
+			case 'address.houseNumberHint': return 'e.g. 10A';
+			case 'address.houseNumberHelper': return 'House or apartment number';
+			case 'address.city': return 'City';
+			case 'address.cityHint': return 'e.g. Amsterdam';
+			case 'address.cityHelper': return 'City of the delivery address';
+			case 'address.country': return 'Country: Netherlands';
+			case 'address.submit': return 'Submit';
+			case 'address.success': return 'Address added successfully!';
+			case 'address.required': return 'Required';
 			case 'settings.account_settings': return 'Account Settings';
 			case 'settings.address_management': return 'Address Management';
 			case 'settings.language': return 'Language';
@@ -610,6 +714,9 @@ extension on _StringsNl {
 			case 'errors.emailTakenMessage': return 'Dit e-mailadres is al geregistreerd.';
 			case 'errors.invalidCaptchaMessage': return 'De ingevoerde verificatiecode is ongeldig.';
 			case 'errors.unauthorizedMessage': return 'Je hebt geen toegang. Log in en probeer het opnieuw.';
+			case 'errors.unsupportedPostcode': return 'Sorry, we bezorgen nog niet op deze postcode.';
+			case 'errors.invalidPhone': return 'Ongeldig telefoonnummer.';
+			case 'errors.invalidStreet': return 'Ongeldige straatnaam.';
 			case 'login.title': return 'Fijn je weer te zien!';
 			case 'login.emailLabel': return 'E-mailadres';
 			case 'login.emailHint': return 'Vul je e-mailadres in';
@@ -636,6 +743,31 @@ extension on _StringsNl {
 			case 'register.successMessage': return 'Je account is succesvol aangemaakt!';
 			case 'register.passwordMismatchMessage': return 'De wachtwoorden komen niet overeen.';
 			case 'register.errorMessage': return 'Vul alle verplichte velden in om verder te gaan';
+			case 'address.add_address': return 'Adres toevoegen';
+			case 'address.areaNotice': return 'Momenteel is bezorging alleen mogelijk in het gebied Purmerend.';
+			case 'address.formTitle': return 'Bezorgadres voor uw bestelling';
+			case 'address.name': return 'Naam';
+			case 'address.nameHint': return 'bijv. Jan Jansen';
+			case 'address.nameHelper': return 'Vul de volledige naam van de ontvanger in';
+			case 'address.phone': return 'Telefoon';
+			case 'address.phoneHint': return 'bijv. 06 12345678';
+			case 'address.phoneHelper': return 'Nederlands mobiel nummer, 10 cijfers';
+			case 'address.street': return 'Straat';
+			case 'address.streetHint': return 'bijv. Hoofdstraat';
+			case 'address.streetHelper': return 'Alleen straatnaam, geen huisnummer';
+			case 'address.postcode': return 'Postcode';
+			case 'address.postcodeHint': return 'bijv. 1234AB';
+			case 'address.postcodeHelper': return 'Nederlandse postcode, 6 tekens';
+			case 'address.houseNumber': return 'Huisnummer';
+			case 'address.houseNumberHint': return 'bijv. 10A';
+			case 'address.houseNumberHelper': return 'Huis- of appartementnummer';
+			case 'address.city': return 'Plaats';
+			case 'address.cityHint': return 'bijv. Amsterdam';
+			case 'address.cityHelper': return 'Plaats van het bezorgadres';
+			case 'address.country': return 'Land: Nederland';
+			case 'address.submit': return 'Verzenden';
+			case 'address.success': return 'Adres succesvol toegevoegd!';
+			case 'address.required': return 'Verplicht';
 			case 'settings.account_settings': return 'Account Instellingen';
 			case 'settings.address_management': return 'Beheer adressen';
 			case 'settings.language': return 'Taal';

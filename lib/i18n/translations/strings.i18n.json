@@ -34,7 +34,10 @@
     "invalidPasswordMessage": "The password does not meet the requirements.",
     "emailTakenMessage": "This email is already registered.",
     "invalidCaptchaMessage": "The verification code you entered is invalid.",
-    "unauthorizedMessage": "You don't have access. Please log in and try again."
+    "unauthorizedMessage": "You don't have access. Please log in and try again.",
+    "unsupportedPostcode": "Sorry, we currently do not deliver to this postcode.",
+    "invalidPhone": "Invalid phone number.",
+    "invalidStreet": "Invalid street name."
   },
   "login": {
     "title": "Welcome back!",
@@ -65,6 +68,33 @@
     "successMessage": "Your account has been created successfully!",
     "passwordMismatchMessage": "The passwords do not match.",
     "errorMessage": "Please fill in all required fields to proceed"
+  },
+  "address": {
+    "add_address": "Add Address",
+    "areaNotice": "Currently, delivery service is only available in the Purmerend area.",
+    "formTitle": "Delivery Address for Your Order",
+    "name": "Name",
+    "nameHint": "e.g. John Doe",
+    "nameHelper": "Please enter the recipient's full name",
+    "phone": "Phone",
+    "phoneHint": "e.g. 06 12345678",
+    "phoneHelper": "Dutch mobile number, 10 digits",
+    "street": "Street",
+    "streetHint": "e.g. Main Street",
+    "streetHelper": "Street name only, no house number",
+    "postcode": "Postcode",
+    "postcodeHint": "e.g. 1234AB",
+    "postcodeHelper": "Dutch postcode, 6 characters",
+    "houseNumber": "House Number",
+    "houseNumberHint": "e.g. 10A",
+    "houseNumberHelper": "House or apartment number",
+    "city": "City",
+    "cityHint": "e.g. Amsterdam",
+    "cityHelper": "City of the delivery address",
+    "country": "Country: Netherlands",
+    "submit": "Submit",
+    "success": "Address added successfully!",
+    "required": "Required"
   },
   "settings": {
     "account_settings": "Account Settings",

@@ -25,7 +25,7 @@ class AddressCard extends StatelessWidget {
           width: 1,
         ),
       ),
-      margin: EdgeInsets.zero,
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Stack(
         children: [
           ListTile(
@@ -33,35 +33,43 @@ class AddressCard extends StatelessWidget {
               backgroundColor: Colors.transparent,
               child: Icon(Icons.location_on_outlined, color: Theme.of(context).colorScheme.primary),
             ),
-            title: Text(
-              '${address.street} ${address.houseNumber}',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    '${address.street} ${address.houseNumber}',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
             subtitle: Padding(
-              padding: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 2),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     '${address.postcode} ${address.city}',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.8).toInt()),
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    'Recipient: ${address.name}',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  Text(
-                    'Phone: ${address.phone}',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    '${address.name}  ${address.phone}',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.7).toInt()),
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     address.country,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Colors.grey,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.6).toInt()),
                     ),
                   ),
                 ],
