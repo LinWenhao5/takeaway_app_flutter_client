@@ -6,7 +6,7 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/domain/get_cart_res
 class CartApi {
   static Future<AddToCartResponse> addToCart(int productId, int quantity) async {
     final response = await ApiClient.post(
-      '/cart/add',
+      '/cart',
       body: {
         'product_id': productId,
         'quantity': quantity,

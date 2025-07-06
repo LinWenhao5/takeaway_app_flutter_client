@@ -4,7 +4,7 @@ import 'package:takeaway_app_flutter_client/ui/features/address_management/appli
 import 'package:takeaway_app_flutter_client/ui/features/address_management/domain/address.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/domain/address_create_request.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/adress_form.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/address_form.dart';
 import '../application/address_provider.dart';
 
 class EditAddressPage extends ConsumerStatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/state/address_action_state.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/adress_form.dart';
+import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/address_form.dart';
 import '../application/address_provider.dart';
 
 class AddAddressPage extends ConsumerStatefulWidget {
