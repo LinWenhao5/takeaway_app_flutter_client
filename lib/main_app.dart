@@ -10,6 +10,7 @@ import 'package:takeaway_app_flutter_client/ui/features/address_management/prese
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/checkout/checkout_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account/account_settings_page.dart';
 
@@ -35,6 +36,7 @@ class TakeawayApp extends ConsumerWidget {
           '/login': (context) => const LoginPage(),
           '/register': (context) => const RegisterPage(),
           '/cart': (context) => const CartPage(),
+          '/checkout': (context) => const CheckoutPage(),
           '/account_settings': (context) => const AccountSettingsPage(),
           '/address_management': (context) => const AddressManagementPage(),
           '/add_address': (context) => const AddAddressPage(),

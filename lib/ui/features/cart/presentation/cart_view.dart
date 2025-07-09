@@ -78,7 +78,7 @@ class CartView extends ConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // 结算逻辑
+                    Navigator.pushNamed(context, '/checkout');
                   },
                   child: Text(
                     context.t.cart.proceedToCheckout,
