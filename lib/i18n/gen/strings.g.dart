@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 208 (104 per locale)
+/// Strings: 226 (113 per locale)
 ///
-/// Built on 2025-07-05 at 11:10 UTC
+/// Built on 2025-07-09 at 11:44 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHomepageEn homepage = _StringsHomepageEn._(_root);
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
 	late final _StringsCartEn cart = _StringsCartEn._(_root);
+	late final _StringsCheckoutEn checkout = _StringsCheckoutEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
@@ -210,6 +211,24 @@ class _StringsCartEn {
 	String get totalPrice => 'Total Amount';
 	String get price => 'Price';
 	String get proceedToCheckout => 'Proceed to Checkout';
+}
+
+// Path: checkout
+class _StringsCheckoutEn {
+	_StringsCheckoutEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get checkoutSummary => 'Checkout Summary';
+	String get orderItems => 'Order Items';
+	String get amount => 'Qty';
+	String get selectAddress => 'Select Delivery Address';
+	String get addAddress => 'Add Address';
+	String get subtotal => 'Subtotal';
+	String get submitOrder => 'Submit Order';
+	String get orderSuccess => 'Order submitted successfully!';
+	String get orderFailed => 'Order submission failed';
 }
 
 // Path: errors
@@ -382,6 +401,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsHomepageNl homepage = _StringsHomepageNl._(_root);
 	@override late final _StringsNavbarNl navbar = _StringsNavbarNl._(_root);
 	@override late final _StringsCartNl cart = _StringsCartNl._(_root);
+	@override late final _StringsCheckoutNl checkout = _StringsCheckoutNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
@@ -440,6 +460,24 @@ class _StringsCartNl implements _StringsCartEn {
 	@override String get totalPrice => 'Totaal bedrag';
 	@override String get price => 'Prijs';
 	@override String get proceedToCheckout => 'Ga naar afrekenen';
+}
+
+// Path: checkout
+class _StringsCheckoutNl implements _StringsCheckoutEn {
+	_StringsCheckoutNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get checkoutSummary => 'Afreken Overzicht';
+	@override String get orderItems => 'Bestelde artikelen';
+	@override String get amount => 'Aantal';
+	@override String get selectAddress => 'Selecteer bezorgadres';
+	@override String get addAddress => 'Adres toevoegen';
+	@override String get subtotal => 'Subtotaal';
+	@override String get submitOrder => 'Bestelling plaatsen';
+	@override String get orderSuccess => 'Bestelling succesvol geplaatst!';
+	@override String get orderFailed => 'Bestelling plaatsen mislukt';
 }
 
 // Path: errors
@@ -607,6 +645,15 @@ extension on Translations {
 			case 'cart.totalPrice': return 'Total Amount';
 			case 'cart.price': return 'Price';
 			case 'cart.proceedToCheckout': return 'Proceed to Checkout';
+			case 'checkout.checkoutSummary': return 'Checkout Summary';
+			case 'checkout.orderItems': return 'Order Items';
+			case 'checkout.amount': return 'Qty';
+			case 'checkout.selectAddress': return 'Select Delivery Address';
+			case 'checkout.addAddress': return 'Add Address';
+			case 'checkout.subtotal': return 'Subtotal';
+			case 'checkout.submitOrder': return 'Submit Order';
+			case 'checkout.orderSuccess': return 'Order submitted successfully!';
+			case 'checkout.orderFailed': return 'Order submission failed';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -719,6 +766,15 @@ extension on _StringsNl {
 			case 'cart.totalPrice': return 'Totaal bedrag';
 			case 'cart.price': return 'Prijs';
 			case 'cart.proceedToCheckout': return 'Ga naar afrekenen';
+			case 'checkout.checkoutSummary': return 'Afreken Overzicht';
+			case 'checkout.orderItems': return 'Bestelde artikelen';
+			case 'checkout.amount': return 'Aantal';
+			case 'checkout.selectAddress': return 'Selecteer bezorgadres';
+			case 'checkout.addAddress': return 'Adres toevoegen';
+			case 'checkout.subtotal': return 'Subtotaal';
+			case 'checkout.submitOrder': return 'Bestelling plaatsen';
+			case 'checkout.orderSuccess': return 'Bestelling succesvol geplaatst!';
+			case 'checkout.orderFailed': return 'Bestelling plaatsen mislukt';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 
@@ -18,10 +19,10 @@ class AddressSelector extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Select Delivery Address', style: Theme.of(context).textTheme.titleMedium),
+            Text(context.t.checkout.selectAddress, style: Theme.of(context).textTheme.titleMedium),
             IconButton(
               icon: const Icon(Icons.add_location_alt_outlined),
-              tooltip: 'Add Address',
+              tooltip: context.t.checkout.addAddress,
               onPressed: () {
                 Navigator.of(context).pushNamed('/add_address');
               },

@@ -24,6 +24,17 @@
     "price": "Prijs",
     "proceedToCheckout": "Ga naar afrekenen"
   },
+  "checkout": {
+    "checkoutSummary": "Afreken Overzicht",
+    "orderItems": "Bestelde artikelen",
+    "amount": "Aantal",
+    "selectAddress": "Selecteer bezorgadres",
+    "addAddress": "Adres toevoegen",
+    "subtotal": "Subtotaal",
+    "submitOrder": "Bestelling plaatsen",
+    "orderSuccess": "Bestelling succesvol geplaatst!",
+    "orderFailed": "Bestelling plaatsen mislukt"
+  },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",
     "retry": "Klik hier om opnieuw te proberen",

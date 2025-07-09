@@ -24,6 +24,17 @@
     "price": "Price",
     "proceedToCheckout": "Proceed to Checkout"
   },
+  "checkout": {
+    "checkoutSummary": "Checkout Summary",
+    "orderItems": "Order Items",
+    "amount": "Qty",
+    "selectAddress": "Select Delivery Address",
+    "addAddress": "Add Address",
+    "subtotal": "Subtotal",
+    "submitOrder": "Submit Order",
+    "orderSuccess": "Order submitted successfully!",
+    "orderFailed": "Order submission failed"
+  },
   "errors": {
     "connectionError": "There was a connection issue.",
     "retry": "Tap here to retry",

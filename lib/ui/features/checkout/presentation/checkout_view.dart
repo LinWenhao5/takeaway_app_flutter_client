@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
@@ -35,7 +36,7 @@ class CheckoutView extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Subtotal', style: Theme.of(context).textTheme.titleMedium),
+              Text(context.t.checkout.subtotal, style: Theme.of(context).textTheme.titleMedium),
               Text(
                 '€${cartSummary.totalPrice}',
                 style: Theme.of(context).textTheme.titleMedium,
@@ -47,11 +48,21 @@ class CheckoutView extends ConsumerWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: addresses.isNotEmpty && activeAddressId != null
-                  ? () {
-                      // TODO: Checkout logic with addresses[activeAddressId]
+                  ? () async {
+                      await ref.read(orderNotifierProvider.notifier).createOrder(activeAddressId);
+                      final orderState = ref.read(orderNotifierProvider);
+                      if (orderState.success) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(context.t.checkout.orderSuccess)),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(context.t.checkout.orderFailed)),
+                        );
+                      }
                     }
                   : null,
-              child: const Text('Submit Order'),
+              child: Text(context.t.checkout.submitOrder),
             ),
           ),
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 
 class CheckoutItemList extends ConsumerWidget {
@@ -19,14 +20,14 @@ class CheckoutItemList extends ConsumerWidget {
           // Title
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('Order Items', style: Theme.of(context).textTheme.titleMedium),
+            child: Text(context.t.checkout.orderItems, style: Theme.of(context).textTheme.titleMedium),
           );
         } else {
           final item = cartItems[index - 1];
           return ListTile(
             title: Text(item.name),
             trailing: Text('€${item.price}'),
-            subtitle: Text('Amount: ${item.quantity}'),
+            subtitle: Text('${context.t.checkout.amount}: ${item.quantity}'),
             dense: true,
           );
         }
