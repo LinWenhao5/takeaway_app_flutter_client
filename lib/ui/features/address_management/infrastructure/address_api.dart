@@ -4,19 +4,19 @@ import '../domain/address_response.dart';
 
 class AddressApi {
   static Future<AddressResponse> getAddresses() async {
-    final response = await ApiClient.get('/address');
+    final response = await ApiClient.get('/addresses');
     return AddressResponse.fromJson(response);
   }
 
   static Future<void> createAddress(AddressCreateRequest data) async {
-    await ApiClient.post('/address', body: data.toJson());
+    await ApiClient.post('/addresses', body: data.toJson());
   }
 
   static Future<void> deleteAddress(int id) async {
-    await ApiClient.delete('/address/$id');
+    await ApiClient.delete('/addresses/$id');
   }
 
   static Future<void> updateAddress(int id, AddressCreateRequest data) async {
-    await ApiClient.put('/address/$id', body: data.toJson());
+    await ApiClient.put('/addresses/$id', body: data.toJson());
   }
 }
