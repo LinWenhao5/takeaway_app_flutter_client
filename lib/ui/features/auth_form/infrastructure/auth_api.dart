@@ -5,8 +5,7 @@ import 'package:takeaway_app_flutter_client/ui/features/auth_form/domain/registe
 
 class AuthApi {
   static Future<LoginResponse> login(String email, String password) async {
-    ApiClient.shouldRedirectOn401 = false; 
-    final data = await ApiClient.post('/customer/login', body: {'email': email, 'password': password});
+    final data = await ApiClient.post('/customer/login', body: {'email': email, 'password': password}, shouldRedirectOn401: false);
     return LoginResponse.fromJson(data);
   
   }

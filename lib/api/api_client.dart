@@ -6,8 +6,6 @@ import 'dart:convert';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/token_storage.dart';
 
 class ApiClient {
-  static bool shouldRedirectOn401 = true;
-
   static const String baseUrl = String.fromEnvironment(
     'API_BASE_URL',
     defaultValue: 'https://takeawayappserver-production.up.railway.app/api',
@@ -21,32 +19,39 @@ class ApiClient {
     };
   }
 
-  static Future<dynamic> get(String path, {Map<String, String>? params}) async {
+  static Future<dynamic> get(
+    String path, {
+    Map<String, String>? params,
+    bool shouldRedirectOn401 = true,
+  }) async {
     final uri = Uri.parse('$baseUrl$path').replace(queryParameters: params);
-
     final headers = await _getHeaders();
-
     final response = await http.get(uri, headers: headers);
-    return _processResponse(response);
+    return _processResponse(response, shouldRedirectOn401: shouldRedirectOn401);
   }
 
-  static Future<dynamic> post(String path, {Map<String, dynamic>? body}) async {
+  static Future<dynamic> post(
+    String path, {
+    Map<String, dynamic>? body,
+    bool shouldRedirectOn401 = true,
+  }) async {
     final uri = Uri.parse('$baseUrl$path');
-
     final headers = await _getHeaders();
     headers['Content-Type'] = 'application/json';
-
     final response = await http.post(
       uri,
       headers: headers,
       body: json.encode(body),
     );
-    return _processResponse(response);
+    return _processResponse(response, shouldRedirectOn401: shouldRedirectOn401);
   }
 
-  static Future<dynamic> delete(String path, {Map<String, dynamic>? body}) async {
+  static Future<dynamic> delete(
+    String path, {
+    Map<String, dynamic>? body,
+    bool shouldRedirectOn401 = true,
+  }) async {
     final uri = Uri.parse('$baseUrl$path');
-
     final headers = await _getHeaders();
     headers['Content-Type'] = 'application/json';
 
@@ -57,12 +62,18 @@ class ApiClient {
     final response = await http.Client().send(request);
     final responseBody = await response.stream.bytesToString();
 
-    return _processResponse(http.Response(responseBody, response.statusCode));
+    return _processResponse(
+      http.Response(responseBody, response.statusCode),
+      shouldRedirectOn401: shouldRedirectOn401,
+    );
   }
 
-  static Future<dynamic> put(String path, {Map<String, dynamic>? body}) async {
+  static Future<dynamic> put(
+    String path, {
+    Map<String, dynamic>? body,
+    bool shouldRedirectOn401 = true,
+  }) async {
     final uri = Uri.parse('$baseUrl$path');
-
     final headers = await _getHeaders();
     headers['Content-Type'] = 'application/json';
 
@@ -71,13 +82,15 @@ class ApiClient {
       headers: headers,
       body: json.encode(body),
     );
-    return _processResponse(response);
+    return _processResponse(response, shouldRedirectOn401: shouldRedirectOn401);
   }
 
-  static dynamic _processResponse(http.Response response) {
+  static dynamic _processResponse(
+    http.Response response, {
+    bool shouldRedirectOn401 = true,
+  }) {
     if (response.statusCode == 401) {
       TokenStorage.clearToken();
-
       if (shouldRedirectOn401) {
         _redirectToLogin();
       }

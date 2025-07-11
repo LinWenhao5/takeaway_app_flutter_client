@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takeaway_app_flutter_client/ui/features/settings/application/customer_account_provider.dart';
 import '../../application/auth_provider.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
@@ -17,12 +18,13 @@ class LoginButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(loginProvider, (previous, next) {
-      if (!next.isLoading && next.token != null) {
+      if (next.success) {
+        ref.read(usernameNotifierProvider.notifier).fetchUsername();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(context.t.login.successMessage)),
         );
         Navigator.pop(context, true);
-      } else if (!next.isLoading && next.errorMessage != null) {
+      } else if (next.isLoading == false && !next.success) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(next.errorMessage!)),
         );

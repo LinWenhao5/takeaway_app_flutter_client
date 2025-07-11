@@ -51,10 +51,7 @@ class GreetingSection extends ConsumerWidget {
               const SizedBox(height: 8),
               TextButton(
                 onPressed: () async {
-                  final result = await Navigator.of(context).pushNamed('/login');
-                  if (result == true) {
-                    ref.read(usernameNotifierProvider.notifier).fetchUsername();
-                  }
+                  Navigator.of(context).pushNamed('/login');
                 },
                 child: Text(
                   context.t.settings.sign_in_now,

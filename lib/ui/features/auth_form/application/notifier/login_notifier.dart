@@ -9,14 +9,22 @@ class LoginNotifier extends StateNotifier<LoginState> {
   LoginNotifier() : super(LoginState());
 
   Future<void> login(String email, String password) async {
-    state = state.copyWith(isLoading: true, errorMessage: null);
+    state = state.copyWith(isLoading: true, errorMessage: null, success: false);
     try {
       final response = await AuthApi.login(email, password);
-      state = state.copyWith(token: response.token, isLoading: false);
       await TokenStorage.saveToken(response.token!);
+      state = state.copyWith(
+        token: response.token,
+        isLoading: false,
+        success: true,
+      );
     } catch (e) {
       final errorMessage = handleError(e, mapLoginErrorToLocalizedMessage);
-      state = state.copyWith(isLoading: false, errorMessage: errorMessage);
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: errorMessage,
+        success: false,
+      );
     }
   }
 }
