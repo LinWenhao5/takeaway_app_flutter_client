@@ -6,6 +6,7 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_pr
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_item_list.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/address_selector.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/submit_order_button.dart';
 
 class CheckoutView extends ConsumerWidget {
   const CheckoutView({super.key});
@@ -44,26 +45,9 @@ class CheckoutView extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 24),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: addresses.isNotEmpty && activeAddressId != null
-                  ? () async {
-                      await ref.read(orderNotifierProvider.notifier).createOrder(activeAddressId);
-                      final orderState = ref.read(orderNotifierProvider);
-                      if (orderState.success) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.t.checkout.orderSuccess)),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.t.checkout.orderFailed)),
-                        );
-                      }
-                    }
-                  : null,
-              child: Text(context.t.checkout.submitOrder),
-            ),
+          SubmitOrderButton(
+            enabled: addresses.isNotEmpty && activeAddressId != null,
+            activeAddressId: activeAddressId,
           ),
         ],
       ),

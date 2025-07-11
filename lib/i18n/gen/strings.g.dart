@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 226 (113 per locale)
+/// Strings: 228 (114 per locale)
 ///
-/// Built on 2025-07-09 at 11:44 UTC
+/// Built on 2025-07-11 at 11:15 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -229,6 +229,7 @@ class _StringsCheckoutEn {
 	String get submitOrder => 'Submit Order';
 	String get orderSuccess => 'Order submitted successfully!';
 	String get orderFailed => 'Order submission failed';
+	String get cannotOpenPaymentPage => 'Unable to open payment page';
 }
 
 // Path: errors
@@ -469,7 +470,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get checkoutSummary => 'Afreken Overzicht';
+	@override String get checkoutSummary => 'Afrekenoverzicht';
 	@override String get orderItems => 'Bestelde artikelen';
 	@override String get amount => 'Aantal';
 	@override String get selectAddress => 'Selecteer bezorgadres';
@@ -478,6 +479,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get submitOrder => 'Bestelling plaatsen';
 	@override String get orderSuccess => 'Bestelling succesvol geplaatst!';
 	@override String get orderFailed => 'Bestelling plaatsen mislukt';
+	@override String get cannotOpenPaymentPage => 'De betalingspagina kan niet geopend worden';
 }
 
 // Path: errors
@@ -654,6 +656,7 @@ extension on Translations {
 			case 'checkout.submitOrder': return 'Submit Order';
 			case 'checkout.orderSuccess': return 'Order submitted successfully!';
 			case 'checkout.orderFailed': return 'Order submission failed';
+			case 'checkout.cannotOpenPaymentPage': return 'Unable to open payment page';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -766,7 +769,7 @@ extension on _StringsNl {
 			case 'cart.totalPrice': return 'Totaal bedrag';
 			case 'cart.price': return 'Prijs';
 			case 'cart.proceedToCheckout': return 'Ga naar afrekenen';
-			case 'checkout.checkoutSummary': return 'Afreken Overzicht';
+			case 'checkout.checkoutSummary': return 'Afrekenoverzicht';
 			case 'checkout.orderItems': return 'Bestelde artikelen';
 			case 'checkout.amount': return 'Aantal';
 			case 'checkout.selectAddress': return 'Selecteer bezorgadres';
@@ -775,6 +778,7 @@ extension on _StringsNl {
 			case 'checkout.submitOrder': return 'Bestelling plaatsen';
 			case 'checkout.orderSuccess': return 'Bestelling succesvol geplaatst!';
 			case 'checkout.orderFailed': return 'Bestelling plaatsen mislukt';
+			case 'checkout.cannotOpenPaymentPage': return 'De betalingspagina kan niet geopend worden';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';

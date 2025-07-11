@@ -33,7 +33,8 @@
     "subtotal": "Subtotal",
     "submitOrder": "Submit Order",
     "orderSuccess": "Order submitted successfully!",
-    "orderFailed": "Order submission failed"
+    "orderFailed": "Order submission failed",
+    "cannotOpenPaymentPage": "Unable to open payment page"
   },
   "errors": {
     "connectionError": "There was a connection issue.",

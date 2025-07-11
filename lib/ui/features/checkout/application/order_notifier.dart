@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/order_state.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/infrastructure/order_api.dart';
 
-
 class OrderNotifier extends StateNotifier<OrderState> {
   OrderNotifier() : super(OrderState());
 
@@ -12,14 +11,18 @@ class OrderNotifier extends StateNotifier<OrderState> {
       success: false,
       error: null,
       action: OrderActionType.create,
+      orderId: null,
+      paymentUrl: null,
     );
     try {
-      await OrderApi.createOrder(addressId);
+      final response = await OrderApi.createOrder(addressId);
       state = state.copyWith(
         isLoading: false,
-        success: true,
+        success: response.success,
         error: null,
         action: OrderActionType.create,
+        orderId: response.orderId,
+        paymentUrl: response.paymentUrl,
       );
     } catch (e) {
       state = state.copyWith(
@@ -27,6 +30,8 @@ class OrderNotifier extends StateNotifier<OrderState> {
         success: false,
         error: e.toString(),
         action: OrderActionType.create,
+        orderId: null,
+        paymentUrl: null,
       );
     }
   }

@@ -47,3 +47,4 @@ app.*.map.json
 
 .env.dev.json
 .env.prod.json
+.env.test.json
