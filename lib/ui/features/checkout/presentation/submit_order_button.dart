@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:web/web.dart' as web;
 
 class SubmitOrderButton extends ConsumerWidget {
   final bool enabled;
@@ -22,7 +24,11 @@ class SubmitOrderButton extends ConsumerWidget {
       if (url != null && url.isNotEmpty) {
         final uri = Uri.parse(url);
         try {
-          await launchUrl(uri, mode: LaunchMode.externalApplication);
+          if (kIsWeb) {
+            web.window.open(url, '_blank');
+          } else {
+            await launchUrl(uri, mode: LaunchMode.platformDefault);
+          }
         } catch (e) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('${context.t.checkout.cannotOpenPaymentPage}\n$url')),
