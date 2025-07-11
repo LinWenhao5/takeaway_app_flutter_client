@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class OrderResultPage extends StatelessWidget {
+class CheckoutResultPage extends StatelessWidget {
   final String? orderId;
-  const OrderResultPage({super.key, this.orderId});
+  const CheckoutResultPage({super.key, this.orderId});
 
   @override
   Widget build(BuildContext context) {

@@ -21,10 +21,10 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
 
     if (kIsWeb) {
       final uri = Uri.base;
-      if (uri.path == '/order-result' && uri.queryParameters['order_id'] != null) {
+      if (uri.path == '/payment-callback' && uri.queryParameters['order_id'] != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           navigatorKey.currentState?.pushNamedAndRemoveUntil(
-            '/order-result',
+            '/checkout-result',
             ModalRoute.withName('/'),
             arguments: uri.queryParameters['order_id'],
           );
@@ -37,7 +37,7 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
       if (uri != null && uri.host == 'payment-callback') {
         final orderId = uri.queryParameters['order_id'];
         navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          '/order-result',
+          '/checkout-result',
           ModalRoute.withName('/'),
           arguments: orderId,
         );
