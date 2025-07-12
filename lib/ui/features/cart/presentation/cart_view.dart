@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/presentation/cart_buttom_bar.dart';
 import 'cart_item_card/cart_item_card.dart';
-import 'cart_summary.dart';
 
 class CartView extends ConsumerWidget {
   const CartView({super.key});
@@ -51,40 +51,28 @@ class CartView extends ConsumerWidget {
             );
           }
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          return Stack(
             children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: cartItems.length,
-                  itemBuilder: (context, index) {
-                    final item = cartItems[index];
-                    return CartItemCard(item: item);
-                  },
-                ),
-              ),
-              const Divider(),
-              Consumer(
-                builder: (context, ref, _) {
-                  final cartSummary = ref.watch(cartSummaryProvider);
-                  return CartSummary(
-                    totalQuantity: cartSummary.totalQuantity,
-                    totalPrice: cartSummary.totalPrice,
-                  );
-                },
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/checkout');
-                  },
-                  child: Text(
-                    context.t.cart.proceedToCheckout,
-                    style: const TextStyle(fontSize: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: cartItems.length,
+                      itemBuilder: (context, index) {
+                        final item = cartItems[index];
+                        return CartItemCard(item: item);
+                      },
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 80),
+                ],
+              ),
+              const Positioned(
+                left: 0,
+                right: 0,
+                bottom: 10,
+                child: CartBottomBar(),
               ),
             ],
           );

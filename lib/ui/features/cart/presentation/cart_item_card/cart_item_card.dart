@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 import 'cart_item_details.dart';
 import 'cart_item_quantity.dart';
 import 'cart_item_dismissible.dart';
@@ -14,20 +15,22 @@ class CartItemCard extends ConsumerWidget {
     return CartItemDismissible(
       item: item,
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: Colors.grey.shade300, width: 0.5),
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(kCardRadius),
+          border: Border.all(
+            color: Theme.of(context).dividerColor,
+            width: 2,
+          ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Product details
               Expanded(child: CartItemDetails(item: item)),
-              const SizedBox(width: 12),
-              // Quantity adjustment
+              const SizedBox(width: 16),
               CartItemQuantity(item: item),
             ],
           ),

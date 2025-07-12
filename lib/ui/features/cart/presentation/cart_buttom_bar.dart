@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
+
+class CartBottomBar extends ConsumerWidget {
+  const CartBottomBar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartSummary = ref.watch(cartSummaryProvider);
+    return Material(
+      elevation: 12,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(18)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '€${cartSummary.totalPrice}',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              height: 48,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  elevation: 0,
+                  textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
+                child: Text(
+                  context.t.cart.proceedToCheckout,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

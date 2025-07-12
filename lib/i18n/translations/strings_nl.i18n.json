@@ -2,7 +2,7 @@
   "search": {
     "hint": "Waar heb je vandaag trek in?",
     "noResult": "Geen resultaten gevonden",
-    "addToCart": "Toevoegen aan winkelwagen",
+    "addToCart": "Toevoegen",
     "loadFailed": "Het laden is mislukt",
     "tryAnotherKeyword": "Probeer een ander zoekwoord"
   },
@@ -19,10 +19,11 @@
     "emptyCartMessage": "Je winkelwagen is leeg!",
     "addItemsMessage": "Voeg wat items toe om ze hier te zien.",
     "addedToCart": "{productName} is succesvol toegevoegd aan je winkelwagen!",
-    "totalQuantity": "Aantal items",
+    "totalQuantity": "items",
     "totalPrice": "Totaal bedrag",
     "price": "Prijs",
-    "proceedToCheckout": "Ga naar afrekenen"
+    "proceedToCheckout": "Ga naar afrekenen",
+    "swipeToDelete": "Veeg om te verwijderen"
   },
   "checkout": {
     "checkoutSummary": "Afrekenoverzicht",

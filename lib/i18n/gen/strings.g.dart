@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 228 (114 per locale)
+/// Strings: 230 (115 per locale)
 ///
-/// Built on 2025-07-11 at 11:15 UTC
+/// Built on 2025-07-12 at 22:25 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -169,7 +169,7 @@ class _StringsSearchEn {
 	// Translations
 	String get hint => 'What are you craving today?';
 	String get noResult => 'No results found';
-	String get addToCart => 'Add to cart';
+	String get addToCart => 'Add';
 	String get loadFailed => 'Failed to load';
 	String get tryAnotherKeyword => 'Try a different keyword';
 }
@@ -207,10 +207,11 @@ class _StringsCartEn {
 	String get emptyCartMessage => 'Your cart is empty!';
 	String get addItemsMessage => 'Go ahead and add some items to see them here.';
 	String get addedToCart => '{productName} has been successfully added to your cart!';
-	String get totalQuantity => 'Items in Cart';
+	String get totalQuantity => 'items';
 	String get totalPrice => 'Total Amount';
 	String get price => 'Price';
 	String get proceedToCheckout => 'Proceed to Checkout';
+	String get swipeToDelete => 'Swipe to delete';
 }
 
 // Path: checkout
@@ -419,7 +420,7 @@ class _StringsSearchNl implements _StringsSearchEn {
 	// Translations
 	@override String get hint => 'Waar heb je vandaag trek in?';
 	@override String get noResult => 'Geen resultaten gevonden';
-	@override String get addToCart => 'Toevoegen aan winkelwagen';
+	@override String get addToCart => 'Toevoegen';
 	@override String get loadFailed => 'Het laden is mislukt';
 	@override String get tryAnotherKeyword => 'Probeer een ander zoekwoord';
 }
@@ -457,10 +458,11 @@ class _StringsCartNl implements _StringsCartEn {
 	@override String get emptyCartMessage => 'Je winkelwagen is leeg!';
 	@override String get addItemsMessage => 'Voeg wat items toe om ze hier te zien.';
 	@override String get addedToCart => '{productName} is succesvol toegevoegd aan je winkelwagen!';
-	@override String get totalQuantity => 'Aantal items';
+	@override String get totalQuantity => 'items';
 	@override String get totalPrice => 'Totaal bedrag';
 	@override String get price => 'Prijs';
 	@override String get proceedToCheckout => 'Ga naar afrekenen';
+	@override String get swipeToDelete => 'Veeg om te verwijderen';
 }
 
 // Path: checkout
@@ -632,7 +634,7 @@ extension on Translations {
 		switch (path) {
 			case 'search.hint': return 'What are you craving today?';
 			case 'search.noResult': return 'No results found';
-			case 'search.addToCart': return 'Add to cart';
+			case 'search.addToCart': return 'Add';
 			case 'search.loadFailed': return 'Failed to load';
 			case 'search.tryAnotherKeyword': return 'Try a different keyword';
 			case 'homepage.hello': return 'Hi there';
@@ -643,10 +645,11 @@ extension on Translations {
 			case 'cart.emptyCartMessage': return 'Your cart is empty!';
 			case 'cart.addItemsMessage': return 'Go ahead and add some items to see them here.';
 			case 'cart.addedToCart': return '{productName} has been successfully added to your cart!';
-			case 'cart.totalQuantity': return 'Items in Cart';
+			case 'cart.totalQuantity': return 'items';
 			case 'cart.totalPrice': return 'Total Amount';
 			case 'cart.price': return 'Price';
 			case 'cart.proceedToCheckout': return 'Proceed to Checkout';
+			case 'cart.swipeToDelete': return 'Swipe to delete';
 			case 'checkout.checkoutSummary': return 'Checkout Summary';
 			case 'checkout.orderItems': return 'Order Items';
 			case 'checkout.amount': return 'Qty';
@@ -754,7 +757,7 @@ extension on _StringsNl {
 		switch (path) {
 			case 'search.hint': return 'Waar heb je vandaag trek in?';
 			case 'search.noResult': return 'Geen resultaten gevonden';
-			case 'search.addToCart': return 'Toevoegen aan winkelwagen';
+			case 'search.addToCart': return 'Toevoegen';
 			case 'search.loadFailed': return 'Het laden is mislukt';
 			case 'search.tryAnotherKeyword': return 'Probeer een ander zoekwoord';
 			case 'homepage.hello': return 'Hoi';
@@ -765,10 +768,11 @@ extension on _StringsNl {
 			case 'cart.emptyCartMessage': return 'Je winkelwagen is leeg!';
 			case 'cart.addItemsMessage': return 'Voeg wat items toe om ze hier te zien.';
 			case 'cart.addedToCart': return '{productName} is succesvol toegevoegd aan je winkelwagen!';
-			case 'cart.totalQuantity': return 'Aantal items';
+			case 'cart.totalQuantity': return 'items';
 			case 'cart.totalPrice': return 'Totaal bedrag';
 			case 'cart.price': return 'Prijs';
 			case 'cart.proceedToCheckout': return 'Ga naar afrekenen';
+			case 'cart.swipeToDelete': return 'Veeg om te verwijderen';
 			case 'checkout.checkoutSummary': return 'Afrekenoverzicht';
 			case 'checkout.orderItems': return 'Bestelde artikelen';
 			case 'checkout.amount': return 'Aantal';

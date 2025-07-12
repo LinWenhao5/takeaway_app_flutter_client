@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/domain/cart_item.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 
@@ -17,10 +19,24 @@ class CartItemDismissible extends ConsumerWidget {
       direction: DismissDirection.endToStart,
       background: Container(
         margin: const EdgeInsets.symmetric(vertical: 8.0),
-        color: Colors.red,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(kCardRadius),
+        ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const Icon(Icons.delete, color: Colors.white),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SizedBox(width: 8),
+            Text(
+              context.t.cart.swipeToDelete,
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(width: 8),
+            Icon(Icons.delete, color: Colors.white),
+          ],
+        ),
       ),
       onDismissed: (direction) async {
         await deleteCartNotifier.deleteCartItem(item.id);

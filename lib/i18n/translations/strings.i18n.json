@@ -2,7 +2,7 @@
   "search": {
     "hint": "What are you craving today?",
     "noResult": "No results found",
-    "addToCart": "Add to cart",
+    "addToCart": "Add",
     "loadFailed": "Failed to load",
     "tryAnotherKeyword": "Try a different keyword"
   },
@@ -19,10 +19,11 @@
     "emptyCartMessage": "Your cart is empty!",
     "addItemsMessage": "Go ahead and add some items to see them here.",
     "addedToCart": "{productName} has been successfully added to your cart!",
-    "totalQuantity": "Items in Cart",
+    "totalQuantity": "items",
     "totalPrice": "Total Amount",
     "price": "Price",
-    "proceedToCheckout": "Proceed to Checkout"
+    "proceedToCheckout": "Proceed to Checkout",
+    "swipeToDelete": "Swipe to delete"
   },
   "checkout": {
     "checkoutSummary": "Checkout Summary",

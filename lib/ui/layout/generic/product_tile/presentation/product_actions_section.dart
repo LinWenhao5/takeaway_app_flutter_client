@@ -40,50 +40,53 @@ class ProductActionsSection extends ConsumerWidget {
             ),
           ],
         ),
-        IconButton(
-          icon: addToCartState.isLoading
-              ? SizedBox(
-                  width: 22,
-                  height: 22,
-                  child: SpinKitFadingCircle(
-                    size: 22,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                )
-              : Icon(Icons.shopping_cart_outlined, size: 22, color: Theme.of(context).primaryColor),
-          tooltip: context.t.search.addToCart,
-          onPressed: addToCartState.isLoading
-              ? null
-              : () async {
-                  final scaffoldMessenger = ScaffoldMessenger.of(context);
+        SizedBox(
+          width: 140,
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            ),
+            icon: addToCartState.isLoading
+                ? SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: SpinKitFadingCircle(
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                  )
+                : const Icon(Icons.add, size: 20),
+            label: Text(
+              context.t.search.addToCart,
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: Colors.white,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+            onPressed: addToCartState.isLoading
+                ? null
+                : () async {
+                    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-                  await addToCartNotifier.addToCart(
-                    product.id,
-                    quantity,
-                  );
+                    await addToCartNotifier.addToCart(
+                      product.id,
+                      quantity,
+                    );
 
-                  final updatedAddToCartState = ref.read(addToCartProvider(product.id));
+                    final updatedAddToCartState = ref.read(addToCartProvider(product.id));
 
-                  if (updatedAddToCartState.isSuccess) {
-                    quantityNotifier.reset();
-                    await ref.read(fetchCartProvider.notifier).fetchCart();
-
-                    scaffoldMessenger.showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          context.t.cart.addedToCart.replaceAll('{productName}', product.name),
+                    if (updatedAddToCartState.isSuccess) {
+                      quantityNotifier.reset();
+                      await ref.read(fetchCartProvider.notifier).fetchCart();
+                    } else if (updatedAddToCartState.errorMessage != null) {
+                      scaffoldMessenger.showSnackBar(
+                        SnackBar(
+                          content: Text(updatedAddToCartState.errorMessage!),
                         ),
-                        duration: const Duration(milliseconds: 500),
-                      ),
-                    );
-                  } else if (updatedAddToCartState.errorMessage != null) {
-                    scaffoldMessenger.showSnackBar(
-                      SnackBar(
-                        content: Text(updatedAddToCartState.errorMessage!),
-                      ),
-                    );
-                  }
-              }
+                      );
+                    }
+                },
+          ),
         ),
       ],
     );

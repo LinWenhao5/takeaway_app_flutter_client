@@ -3,7 +3,7 @@ import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 
 final InputDecorationTheme appInputDecorationThemeLight = InputDecorationTheme(
   filled: true,
-  fillColor: kLightBackgroundColor,
+  fillColor: Colors.white,
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(24),
     borderSide: const BorderSide(color: kPrimaryColor, width: 1),
@@ -26,7 +26,7 @@ final InputDecorationTheme appInputDecorationThemeLight = InputDecorationTheme(
 
 final InputDecorationTheme appInputDecorationThemeDark = InputDecorationTheme(
   filled: true,
-  fillColor: kDarkBackgroundColor,
+  fillColor: Color(0xFF181818),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(24),
     borderSide: const BorderSide(color: kAccentColor, width: 1),
