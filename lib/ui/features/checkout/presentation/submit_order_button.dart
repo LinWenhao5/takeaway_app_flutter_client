@@ -20,12 +20,15 @@ class SubmitOrderButton extends ConsumerWidget {
     if (orderState.success) {
       final url = orderState.paymentUrl;
       if (url != null && url.isNotEmpty) {
-        try {
-          final uri = Uri.parse(url);
-          await launchUrl(uri, mode: LaunchMode.platformDefault);
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('${context.t.checkout.cannotOpenPaymentPage}\n$url')),
+        final uri = Uri.parse(url);
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        }
+        if (context.mounted) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            '/manual-payment',
+            ModalRoute.withName('/'),
+            arguments: url,
           );
         }
       }

@@ -23,19 +23,28 @@
     "totalPrice": "Totaal bedrag",
     "price": "Prijs",
     "proceedToCheckout": "Ga naar afrekenen",
+    "goToBasket": "Naar winkelmand",
     "swipeToDelete": "Veeg om te verwijderen"
   },
   "checkout": {
     "checkoutSummary": "Afrekenoverzicht",
-    "orderItems": "Bestelde artikelen",
+    "orderItems": "Bestelde gerechten",
     "amount": "Aantal",
     "selectAddress": "Selecteer bezorgadres",
     "addAddress": "Adres toevoegen",
+    "paymentMethod": "Betaalmethode",
     "subtotal": "Subtotaal",
     "submitOrder": "Bestelling plaatsen",
     "orderSuccess": "Bestelling succesvol geplaatst!",
     "orderFailed": "Bestelling plaatsen mislukt",
     "cannotOpenPaymentPage": "De betalingspagina kan niet geopend worden"
+  },
+  "payment": {
+    "paymentTitle": "Betaling",
+    "paymentExpired": "Pagina verlopen",
+    "paymentInstruction": "Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:",
+    "copyLink": "Link kopiëren",
+    "linkCopied": "Link gekopieerd"
   },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",

@@ -7,6 +7,7 @@ import 'package:takeaway_app_flutter_client/ui/features/checkout/application/pro
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_item_list.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/address_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/submit_order_button.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/payment_method_selector.dart';
 
 class CheckoutView extends ConsumerWidget {
   const CheckoutView({super.key});
@@ -25,31 +26,39 @@ class CheckoutView extends ConsumerWidget {
     final activeAddressId = ref.watch(selectedAddressIdProvider);
     final addresses = ref.watch(addressNotifierProvider).addresses;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const CheckoutItemList(),
-          const SizedBox(height: 32),
-          const AddressSelector(),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Align(
+      alignment: Alignment.topCenter,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 600),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(context.t.checkout.subtotal, style: Theme.of(context).textTheme.titleMedium),
-              Text(
-                '€${cartSummary.totalPrice}',
-                style: Theme.of(context).textTheme.titleMedium,
+              const CheckoutItemList(),
+              const SizedBox(height: 32),
+              const AddressSelector(),
+              const SizedBox(height: 32),
+              const PaymentMethodSelector(),
+              const SizedBox(height: 32),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(context.t.checkout.subtotal, style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    '€${cartSummary.totalPrice}',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              SubmitOrderButton(
+                enabled: addresses.isNotEmpty && activeAddressId != null,
+                activeAddressId: activeAddressId,
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          SubmitOrderButton(
-            enabled: addresses.isNotEmpty && activeAddressId != null,
-            activeAddressId: activeAddressId,
-          ),
-        ],
+        ),
       ),
     );
   }

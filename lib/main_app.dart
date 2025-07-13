@@ -13,7 +13,8 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart'
 import 'package:takeaway_app_flutter_client/ui/layout/pages/checkout/checkout_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account/account_settings_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/checkout/checkout_result_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/manual_payment_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/payment_result_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -45,9 +46,13 @@ class TakeawayApp extends ConsumerWidget {
             final args = ModalRoute.of(context)!.settings.arguments;
             return EditAddressPage(address: args as Address);
           },
-          '/checkout-result': (context) {
+          '/payment-result': (context) {
             final orderId = ModalRoute.of(context)!.settings.arguments as String?;
-            return CheckoutResultPage(orderId: orderId);
+            return PaymentResultPage(orderId: orderId);
+          },
+          '/manual-payment': (context) {
+            final url = ModalRoute.of(context)!.settings.arguments as String?;
+            return ManualPaymentPage(paymentUrl: url);
           },
         },
       ),

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 230 (115 per locale)
+/// Strings: 244 (122 per locale)
 ///
-/// Built on 2025-07-12 at 22:25 UTC
+/// Built on 2025-07-13 at 13:54 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -153,6 +153,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsNavbarEn navbar = _StringsNavbarEn._(_root);
 	late final _StringsCartEn cart = _StringsCartEn._(_root);
 	late final _StringsCheckoutEn checkout = _StringsCheckoutEn._(_root);
+	late final _StringsPaymentEn payment = _StringsPaymentEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
@@ -211,6 +212,7 @@ class _StringsCartEn {
 	String get totalPrice => 'Total Amount';
 	String get price => 'Price';
 	String get proceedToCheckout => 'Proceed to Checkout';
+	String get goToBasket => 'Go to Basket';
 	String get swipeToDelete => 'Swipe to delete';
 }
 
@@ -222,15 +224,30 @@ class _StringsCheckoutEn {
 
 	// Translations
 	String get checkoutSummary => 'Checkout Summary';
-	String get orderItems => 'Order Items';
+	String get orderItems => 'Ordered Dishes';
 	String get amount => 'Qty';
 	String get selectAddress => 'Select Delivery Address';
 	String get addAddress => 'Add Address';
+	String get paymentMethod => 'Payment Method';
 	String get subtotal => 'Subtotal';
 	String get submitOrder => 'Submit Order';
 	String get orderSuccess => 'Order submitted successfully!';
 	String get orderFailed => 'Order submission failed';
 	String get cannotOpenPaymentPage => 'Unable to open payment page';
+}
+
+// Path: payment
+class _StringsPaymentEn {
+	_StringsPaymentEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get paymentTitle => 'Payment';
+	String get paymentExpired => 'Page expired';
+	String get paymentInstruction => 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
+	String get copyLink => 'Copy Link';
+	String get linkCopied => 'Link copied';
 }
 
 // Path: errors
@@ -404,6 +421,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsNavbarNl navbar = _StringsNavbarNl._(_root);
 	@override late final _StringsCartNl cart = _StringsCartNl._(_root);
 	@override late final _StringsCheckoutNl checkout = _StringsCheckoutNl._(_root);
+	@override late final _StringsPaymentNl payment = _StringsPaymentNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
@@ -462,6 +480,7 @@ class _StringsCartNl implements _StringsCartEn {
 	@override String get totalPrice => 'Totaal bedrag';
 	@override String get price => 'Prijs';
 	@override String get proceedToCheckout => 'Ga naar afrekenen';
+	@override String get goToBasket => 'Naar winkelmand';
 	@override String get swipeToDelete => 'Veeg om te verwijderen';
 }
 
@@ -473,15 +492,30 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 
 	// Translations
 	@override String get checkoutSummary => 'Afrekenoverzicht';
-	@override String get orderItems => 'Bestelde artikelen';
+	@override String get orderItems => 'Bestelde gerechten';
 	@override String get amount => 'Aantal';
 	@override String get selectAddress => 'Selecteer bezorgadres';
 	@override String get addAddress => 'Adres toevoegen';
+	@override String get paymentMethod => 'Betaalmethode';
 	@override String get subtotal => 'Subtotaal';
 	@override String get submitOrder => 'Bestelling plaatsen';
 	@override String get orderSuccess => 'Bestelling succesvol geplaatst!';
 	@override String get orderFailed => 'Bestelling plaatsen mislukt';
 	@override String get cannotOpenPaymentPage => 'De betalingspagina kan niet geopend worden';
+}
+
+// Path: payment
+class _StringsPaymentNl implements _StringsPaymentEn {
+	_StringsPaymentNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get paymentTitle => 'Betaling';
+	@override String get paymentExpired => 'Pagina verlopen';
+	@override String get paymentInstruction => 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
+	@override String get copyLink => 'Link kopiëren';
+	@override String get linkCopied => 'Link gekopieerd';
 }
 
 // Path: errors
@@ -649,17 +683,24 @@ extension on Translations {
 			case 'cart.totalPrice': return 'Total Amount';
 			case 'cart.price': return 'Price';
 			case 'cart.proceedToCheckout': return 'Proceed to Checkout';
+			case 'cart.goToBasket': return 'Go to Basket';
 			case 'cart.swipeToDelete': return 'Swipe to delete';
 			case 'checkout.checkoutSummary': return 'Checkout Summary';
-			case 'checkout.orderItems': return 'Order Items';
+			case 'checkout.orderItems': return 'Ordered Dishes';
 			case 'checkout.amount': return 'Qty';
 			case 'checkout.selectAddress': return 'Select Delivery Address';
 			case 'checkout.addAddress': return 'Add Address';
+			case 'checkout.paymentMethod': return 'Payment Method';
 			case 'checkout.subtotal': return 'Subtotal';
 			case 'checkout.submitOrder': return 'Submit Order';
 			case 'checkout.orderSuccess': return 'Order submitted successfully!';
 			case 'checkout.orderFailed': return 'Order submission failed';
 			case 'checkout.cannotOpenPaymentPage': return 'Unable to open payment page';
+			case 'payment.paymentTitle': return 'Payment';
+			case 'payment.paymentExpired': return 'Page expired';
+			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
+			case 'payment.copyLink': return 'Copy Link';
+			case 'payment.linkCopied': return 'Link copied';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -772,17 +813,24 @@ extension on _StringsNl {
 			case 'cart.totalPrice': return 'Totaal bedrag';
 			case 'cart.price': return 'Prijs';
 			case 'cart.proceedToCheckout': return 'Ga naar afrekenen';
+			case 'cart.goToBasket': return 'Naar winkelmand';
 			case 'cart.swipeToDelete': return 'Veeg om te verwijderen';
 			case 'checkout.checkoutSummary': return 'Afrekenoverzicht';
-			case 'checkout.orderItems': return 'Bestelde artikelen';
+			case 'checkout.orderItems': return 'Bestelde gerechten';
 			case 'checkout.amount': return 'Aantal';
 			case 'checkout.selectAddress': return 'Selecteer bezorgadres';
 			case 'checkout.addAddress': return 'Adres toevoegen';
+			case 'checkout.paymentMethod': return 'Betaalmethode';
 			case 'checkout.subtotal': return 'Subtotaal';
 			case 'checkout.submitOrder': return 'Bestelling plaatsen';
 			case 'checkout.orderSuccess': return 'Bestelling succesvol geplaatst!';
 			case 'checkout.orderFailed': return 'Bestelling plaatsen mislukt';
 			case 'checkout.cannotOpenPaymentPage': return 'De betalingspagina kan niet geopend worden';
+			case 'payment.paymentTitle': return 'Betaling';
+			case 'payment.paymentExpired': return 'Pagina verlopen';
+			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
+			case 'payment.copyLink': return 'Link kopiëren';
+			case 'payment.linkCopied': return 'Link gekopieerd';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';

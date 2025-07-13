@@ -23,19 +23,28 @@
     "totalPrice": "Total Amount",
     "price": "Price",
     "proceedToCheckout": "Proceed to Checkout",
+    "goToBasket": "Go to Basket",
     "swipeToDelete": "Swipe to delete"
   },
   "checkout": {
     "checkoutSummary": "Checkout Summary",
-    "orderItems": "Order Items",
+    "orderItems": "Ordered Dishes",
     "amount": "Qty",
     "selectAddress": "Select Delivery Address",
     "addAddress": "Add Address",
+    "paymentMethod": "Payment Method",
     "subtotal": "Subtotal",
     "submitOrder": "Submit Order",
     "orderSuccess": "Order submitted successfully!",
     "orderFailed": "Order submission failed",
     "cannotOpenPaymentPage": "Unable to open payment page"
+  },
+  "payment": {
+    "paymentTitle": "Payment",
+    "paymentExpired": "Page expired",
+    "paymentInstruction": "If you are not redirected automatically, please click the button below or copy the link to go to the payment page:",
+    "copyLink": "Copy Link",
+    "linkCopied": "Link copied"
   },
   "errors": {
     "connectionError": "There was a connection issue.",

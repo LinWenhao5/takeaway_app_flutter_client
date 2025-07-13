@@ -13,75 +13,81 @@ class BasketBar extends StatelessWidget {
       left: 0,
       right: 0,
       bottom: 16,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Material(
-          elevation: 6,
-          borderRadius: BorderRadius.circular(24),
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(24),
-            onTap: () {
-              Navigator.pushNamed(context, '/cart');
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.shopping_basket,
-                          color: Theme.of(context).colorScheme.secondary,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 480),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Material(
+              elevation: 6,
+              borderRadius: BorderRadius.circular(24),
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(24),
+                onTap: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.shopping_basket,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                            const SizedBox(width: 10),
+                            Flexible(
+                              child: Text(
+                                '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      color: Theme.of(context).colorScheme.onSurface,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Text(
+                              '€${cartSummary.totalPrice}',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            const SizedBox(width: 8),
+                          ],
                         ),
-                        const SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: Theme.of(context).colorScheme.onSurface,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.secondary,
+                          foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
                           ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          elevation: 0,
                         ),
-                        const SizedBox(width: 16),
-                        Text(
-                          '€${cartSummary.totalPrice}',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context).colorScheme.primary,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/cart');
+                        },
+                        child: Text(
+                          context.t.cart.goToBasket,
+                          style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                color: Theme.of(context).colorScheme.onSecondary,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
-                        const SizedBox(width: 8),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.secondary,
-                      foregroundColor: Theme.of(context).colorScheme.onSecondary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                      elevation: 0,
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/cart');
-                    },
-                    child: Text(
-                      context.t.cart.proceedToCheckout,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onSecondary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

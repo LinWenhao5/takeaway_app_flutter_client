@@ -51,30 +51,36 @@ class CartView extends ConsumerWidget {
             );
           }
 
-          return Stack(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          return Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 600),
+              child: Stack(
                 children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: cartItems.length,
-                      itemBuilder: (context, index) {
-                        final item = cartItems[index];
-                        return CartItemCard(item: item);
-                      },
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: cartItems.length,
+                          itemBuilder: (context, index) {
+                            final item = cartItems[index];
+                            return CartItemCard(item: item);
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 80),
+                    ],
                   ),
-                  const SizedBox(height: 80),
+                  const Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 10,
+                    child: CartBottomBar(),
+                  ),
                 ],
               ),
-              const Positioned(
-                left: 0,
-                right: 0,
-                bottom: 10,
-                child: CartBottomBar(),
-              ),
-            ],
+            ),
           );
         },
       ),

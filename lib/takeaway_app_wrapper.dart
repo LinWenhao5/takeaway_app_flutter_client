@@ -24,7 +24,7 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
       if (uri.path == '/payment-callback' && uri.queryParameters['order_id'] != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           navigatorKey.currentState?.pushNamedAndRemoveUntil(
-            '/checkout-result',
+            '/payment-result',
             ModalRoute.withName('/'),
             arguments: uri.queryParameters['order_id'],
           );
