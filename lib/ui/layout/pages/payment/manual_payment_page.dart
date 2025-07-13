@@ -80,7 +80,7 @@ class ManualPaymentPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colorScheme.primary,
                     foregroundColor: colorScheme.onPrimary,
-                    elevation: 0, // 扁平化无阴影
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
