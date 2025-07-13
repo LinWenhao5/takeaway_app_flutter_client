@@ -37,7 +37,7 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
       if (uri != null && uri.host == 'payment-callback') {
         final orderId = uri.queryParameters['order_id'];
         navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          '/checkout-result',
+          '/payment-result',
           ModalRoute.withName('/'),
           arguments: orderId,
         );

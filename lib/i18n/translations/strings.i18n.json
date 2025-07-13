@@ -44,7 +44,9 @@
     "paymentExpired": "Page expired",
     "paymentInstruction": "If you are not redirected automatically, please click the button below or copy the link to go to the payment page:",
     "copyLink": "Copy Link",
-    "linkCopied": "Link copied"
+    "linkCopied": "Link copied",
+    "openLink": "Open payment page",
+    "paymentOpenFailed": "Unable to open payment page"
   },
   "errors": {
     "connectionError": "There was a connection issue.",

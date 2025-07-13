@@ -44,7 +44,9 @@
     "paymentExpired": "Pagina verlopen",
     "paymentInstruction": "Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:",
     "copyLink": "Link kopiëren",
-    "linkCopied": "Link gekopieerd"
+    "linkCopied": "Link gekopieerd",
+    "openLink": "Open betaalpagina",
+    "paymentOpenFailed": "Kan de betaalpagina niet openen"
   },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",

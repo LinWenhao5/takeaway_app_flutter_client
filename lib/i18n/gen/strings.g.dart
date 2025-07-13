@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 244 (122 per locale)
+/// Strings: 248 (124 per locale)
 ///
-/// Built on 2025-07-13 at 13:54 UTC
+/// Built on 2025-07-13 at 14:21 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -248,6 +248,8 @@ class _StringsPaymentEn {
 	String get paymentInstruction => 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
 	String get copyLink => 'Copy Link';
 	String get linkCopied => 'Link copied';
+	String get openLink => 'Open payment page';
+	String get paymentOpenFailed => 'Unable to open payment page';
 }
 
 // Path: errors
@@ -516,6 +518,8 @@ class _StringsPaymentNl implements _StringsPaymentEn {
 	@override String get paymentInstruction => 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
 	@override String get copyLink => 'Link kopiëren';
 	@override String get linkCopied => 'Link gekopieerd';
+	@override String get openLink => 'Open betaalpagina';
+	@override String get paymentOpenFailed => 'Kan de betaalpagina niet openen';
 }
 
 // Path: errors
@@ -701,6 +705,8 @@ extension on Translations {
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
 			case 'payment.copyLink': return 'Copy Link';
 			case 'payment.linkCopied': return 'Link copied';
+			case 'payment.openLink': return 'Open payment page';
+			case 'payment.paymentOpenFailed': return 'Unable to open payment page';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -831,6 +837,8 @@ extension on _StringsNl {
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
 			case 'payment.copyLink': return 'Link kopiëren';
 			case 'payment.linkCopied': return 'Link gekopieerd';
+			case 'payment.openLink': return 'Open betaalpagina';
+			case 'payment.paymentOpenFailed': return 'Kan de betaalpagina niet openen';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';
