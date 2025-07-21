@@ -48,6 +48,22 @@
     "openLink": "Open payment page",
     "paymentOpenFailed": "Unable to open payment page"
   },
+  "orderStatus": {
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    "delivering": "Delivering",
+    "completed": "Completed",
+    "unknown": "Unknown status"
+  },
+  "orderResult": {
+    "title": "Payment Result",
+    "orderId": "Order Number",
+    "status": "Status",
+    "noOrderId": "No order number found",
+    "noOrderInfo": "No order information available",
+    "goToOrderPage": "Order Overview",
+    "timeout": "Fetching order status took too long, please try again later."
+  },
   "errors": {
     "connectionError": "There was a connection issue.",
     "retry": "Tap here to retry",

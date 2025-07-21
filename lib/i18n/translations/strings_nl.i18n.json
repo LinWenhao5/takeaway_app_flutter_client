@@ -48,6 +48,22 @@
     "openLink": "Open betaalpagina",
     "paymentOpenFailed": "Kan de betaalpagina niet openen"
   },
+  "orderStatus": {
+    "paid": "Betaald",
+    "unpaid": "Niet betaald",
+    "delivering": "Bezorging bezig",
+    "completed": "Voltooid",
+    "unknown": "Onbekende status"
+  },
+  "orderResult": {
+    "title": "Betalingsresultaat",
+    "orderId": "Bestelnummer",
+    "status": "Status",
+    "noOrderId": "Geen bestelnummer gevonden",
+    "noOrderInfo": "Geen bestelgegevens beschikbaar",
+    "goToOrderPage": "Naar besteloverzich",
+    "timeout": "Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw."
+  },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",
     "retry": "Klik hier om opnieuw te proberen",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,6 +23,8 @@ class SubmitOrderButton extends ConsumerWidget {
       if (url != null && url.isNotEmpty) {
         final uri = Uri.parse(url);
         if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.platformDefault);
+        } else {
           await launchUrl(uri, mode: LaunchMode.externalApplication);
         }
         if (context.mounted) {
@@ -32,6 +35,8 @@ class SubmitOrderButton extends ConsumerWidget {
           );
         }
       }
+      ref.read(cartItemsProvider.notifier).setItems([]);
+      ref.read(cartSummaryProvider.notifier).updateSummary("0", "0.00");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(context.t.checkout.orderSuccess)),
       );

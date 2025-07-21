@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 248 (124 per locale)
+/// Strings: 272 (136 per locale)
 ///
-/// Built on 2025-07-13 at 14:21 UTC
+/// Built on 2025-07-21 at 12:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsCartEn cart = _StringsCartEn._(_root);
 	late final _StringsCheckoutEn checkout = _StringsCheckoutEn._(_root);
 	late final _StringsPaymentEn payment = _StringsPaymentEn._(_root);
+	late final _StringsOrderStatusEn orderStatus = _StringsOrderStatusEn._(_root);
+	late final _StringsOrderResultEn orderResult = _StringsOrderResultEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
@@ -250,6 +252,36 @@ class _StringsPaymentEn {
 	String get linkCopied => 'Link copied';
 	String get openLink => 'Open payment page';
 	String get paymentOpenFailed => 'Unable to open payment page';
+}
+
+// Path: orderStatus
+class _StringsOrderStatusEn {
+	_StringsOrderStatusEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get paid => 'Paid';
+	String get unpaid => 'Unpaid';
+	String get delivering => 'Delivering';
+	String get completed => 'Completed';
+	String get unknown => 'Unknown status';
+}
+
+// Path: orderResult
+class _StringsOrderResultEn {
+	_StringsOrderResultEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Payment Result';
+	String get orderId => 'Order Number';
+	String get status => 'Status';
+	String get noOrderId => 'No order number found';
+	String get noOrderInfo => 'No order information available';
+	String get goToOrderPage => 'Order Overview';
+	String get timeout => 'Fetching order status took too long, please try again later.';
 }
 
 // Path: errors
@@ -424,6 +456,8 @@ class _StringsNl implements Translations {
 	@override late final _StringsCartNl cart = _StringsCartNl._(_root);
 	@override late final _StringsCheckoutNl checkout = _StringsCheckoutNl._(_root);
 	@override late final _StringsPaymentNl payment = _StringsPaymentNl._(_root);
+	@override late final _StringsOrderStatusNl orderStatus = _StringsOrderStatusNl._(_root);
+	@override late final _StringsOrderResultNl orderResult = _StringsOrderResultNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
@@ -520,6 +554,36 @@ class _StringsPaymentNl implements _StringsPaymentEn {
 	@override String get linkCopied => 'Link gekopieerd';
 	@override String get openLink => 'Open betaalpagina';
 	@override String get paymentOpenFailed => 'Kan de betaalpagina niet openen';
+}
+
+// Path: orderStatus
+class _StringsOrderStatusNl implements _StringsOrderStatusEn {
+	_StringsOrderStatusNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get paid => 'Betaald';
+	@override String get unpaid => 'Niet betaald';
+	@override String get delivering => 'Bezorging bezig';
+	@override String get completed => 'Voltooid';
+	@override String get unknown => 'Onbekende status';
+}
+
+// Path: orderResult
+class _StringsOrderResultNl implements _StringsOrderResultEn {
+	_StringsOrderResultNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Betalingsresultaat';
+	@override String get orderId => 'Bestelnummer';
+	@override String get status => 'Status';
+	@override String get noOrderId => 'Geen bestelnummer gevonden';
+	@override String get noOrderInfo => 'Geen bestelgegevens beschikbaar';
+	@override String get goToOrderPage => 'Naar besteloverzich';
+	@override String get timeout => 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
 }
 
 // Path: errors
@@ -707,6 +771,18 @@ extension on Translations {
 			case 'payment.linkCopied': return 'Link copied';
 			case 'payment.openLink': return 'Open payment page';
 			case 'payment.paymentOpenFailed': return 'Unable to open payment page';
+			case 'orderStatus.paid': return 'Paid';
+			case 'orderStatus.unpaid': return 'Unpaid';
+			case 'orderStatus.delivering': return 'Delivering';
+			case 'orderStatus.completed': return 'Completed';
+			case 'orderStatus.unknown': return 'Unknown status';
+			case 'orderResult.title': return 'Payment Result';
+			case 'orderResult.orderId': return 'Order Number';
+			case 'orderResult.status': return 'Status';
+			case 'orderResult.noOrderId': return 'No order number found';
+			case 'orderResult.noOrderInfo': return 'No order information available';
+			case 'orderResult.goToOrderPage': return 'Order Overview';
+			case 'orderResult.timeout': return 'Fetching order status took too long, please try again later.';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -839,6 +915,18 @@ extension on _StringsNl {
 			case 'payment.linkCopied': return 'Link gekopieerd';
 			case 'payment.openLink': return 'Open betaalpagina';
 			case 'payment.paymentOpenFailed': return 'Kan de betaalpagina niet openen';
+			case 'orderStatus.paid': return 'Betaald';
+			case 'orderStatus.unpaid': return 'Niet betaald';
+			case 'orderStatus.delivering': return 'Bezorging bezig';
+			case 'orderStatus.completed': return 'Voltooid';
+			case 'orderStatus.unknown': return 'Onbekende status';
+			case 'orderResult.title': return 'Betalingsresultaat';
+			case 'orderResult.orderId': return 'Bestelnummer';
+			case 'orderResult.status': return 'Status';
+			case 'orderResult.noOrderId': return 'Geen bestelnummer gevonden';
+			case 'orderResult.noOrderInfo': return 'Geen bestelgegevens beschikbaar';
+			case 'orderResult.goToOrderPage': return 'Naar besteloverzich';
+			case 'orderResult.timeout': return 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';

@@ -13,8 +13,8 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart'
 import 'package:takeaway_app_flutter_client/ui/layout/pages/checkout/checkout_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account/account_settings_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/manual_payment_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/payment_result_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/manual_payment_page.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/payment_result_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -47,7 +47,13 @@ class TakeawayApp extends ConsumerWidget {
             return EditAddressPage(address: args as Address);
           },
           '/payment-result': (context) {
-            final orderId = ModalRoute.of(context)!.settings.arguments as String?;
+            final args = ModalRoute.of(context)!.settings.arguments;
+            int? orderId;
+            if (args is int) {
+              orderId = args;
+            } else if (args is String) {
+              orderId = int.tryParse(args);
+            }
             return PaymentResultPage(orderId: orderId);
           },
           '/manual-payment': (context) {
