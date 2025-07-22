@@ -42,9 +42,11 @@ class ProductActionsSection extends ConsumerWidget {
         ),
         SizedBox(
           width: 140,
-          child: ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
+          child: OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              side: BorderSide(color: Theme.of(context).colorScheme.primary),
+              foregroundColor: Theme.of(context).colorScheme.primary,
             ),
             icon: addToCartState.isLoading
                 ? SizedBox(
@@ -52,14 +54,14 @@ class ProductActionsSection extends ConsumerWidget {
                     height: 18,
                     child: SpinKitFadingCircle(
                       size: 18,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   )
-                : const Icon(Icons.add, size: 20),
+                : Icon(Icons.add, size: 20, color: Theme.of(context).colorScheme.primary),
             label: Text(
               context.t.search.addToCart,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
               ),
               overflow: TextOverflow.ellipsis,
             ),

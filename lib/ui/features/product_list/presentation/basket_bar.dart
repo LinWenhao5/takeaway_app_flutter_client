@@ -22,7 +22,7 @@ class BasketBar extends StatelessWidget {
             child: Material(
               elevation: 6,
               borderRadius: BorderRadius.circular(24),
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              color: Theme.of(context).colorScheme.primaryContainer,
               child: InkWell(
                 borderRadius: BorderRadius.circular(24),
                 onTap: () {
@@ -38,7 +38,7 @@ class BasketBar extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.shopping_basket,
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: Theme.of(context).colorScheme.onPrimaryContainer,
                             ),
                             const SizedBox(width: 10),
                             Flexible(
@@ -56,7 +56,7 @@ class BasketBar extends StatelessWidget {
                             Text(
                               '€${cartSummary.totalPrice}',
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color: Theme.of(context).colorScheme.secondary,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
@@ -66,8 +66,8 @@ class BasketBar extends StatelessWidget {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.secondary,
-                          foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
+                          foregroundColor: Theme.of(context).colorScheme.onPrimary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
@@ -80,7 +80,7 @@ class BasketBar extends StatelessWidget {
                         child: Text(
                           context.t.cart.goToBasket,
                           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                color: Theme.of(context).colorScheme.onSecondary,
+                                color: Theme.of(context).colorScheme.onPrimary,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),

@@ -15,7 +15,7 @@ class CartBottomBar extends ConsumerWidget {
         constraints: BoxConstraints(maxWidth: 480),
         child: Material(
           elevation: 12,
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          color: Theme.of(context).colorScheme.primaryContainer,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(18)),
           ),
@@ -30,7 +30,7 @@ class CartBottomBar extends ConsumerWidget {
                       Text(
                         '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -38,7 +38,7 @@ class CartBottomBar extends ConsumerWidget {
                       Text(
                         '€${cartSummary.totalPrice}',
                         style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.secondary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -50,7 +50,7 @@ class CartBottomBar extends ConsumerWidget {
                   height: 48,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
@@ -64,7 +64,7 @@ class CartBottomBar extends ConsumerWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSecondary,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
