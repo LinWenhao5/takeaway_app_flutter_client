@@ -46,4 +46,11 @@ class OrderHistoryNotifier extends StateNotifier<OrderHistoryState> {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
   }
+
+  void reset() {
+    _page = 1;
+    _hasMore = true;
+    _orders = [];
+    state = OrderHistoryState();
+  }
 }

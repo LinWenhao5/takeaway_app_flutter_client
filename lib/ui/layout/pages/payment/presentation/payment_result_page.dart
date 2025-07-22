@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/order_status_ultils.dart';
 import '../application/provider.dart';
 
@@ -82,7 +83,8 @@ class _PaymentResultPageState extends ConsumerState<PaymentResultPage> {
                               ),
                               const SizedBox(height: 24),
                               ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
+                                  await ref.read(orderHistoryProvider.notifier).fetchOrderHistory(refresh: true);
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                     '/order-history',
                                     ModalRoute.withName('/'),

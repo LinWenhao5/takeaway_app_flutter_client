@@ -17,6 +17,7 @@ class AccountSettingsPage extends ConsumerWidget {
           label: const Text('Log Out'),
           onPressed: () async {
             await ref.read(logoutNotifierProvider.notifier).logout();
+            
             Navigator.pop(context);
           },
         ),
