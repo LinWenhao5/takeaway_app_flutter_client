@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 272 (136 per locale)
+/// Strings: 288 (144 per locale)
 ///
-/// Built on 2025-07-21 at 12:23 UTC
+/// Built on 2025-07-22 at 18:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -156,6 +156,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsPaymentEn payment = _StringsPaymentEn._(_root);
 	late final _StringsOrderStatusEn orderStatus = _StringsOrderStatusEn._(_root);
 	late final _StringsOrderResultEn orderResult = _StringsOrderResultEn._(_root);
+	late final _StringsOrderHistoryEn orderHistory = _StringsOrderHistoryEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
@@ -284,6 +285,22 @@ class _StringsOrderResultEn {
 	String get timeout => 'Fetching order status took too long, please try again later.';
 }
 
+// Path: orderHistory
+class _StringsOrderHistoryEn {
+	_StringsOrderHistoryEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get orderHistory => 'Order History';
+	String get today => 'Today\'s Orders';
+	String get past => 'Past Orders';
+	String get noOrders => 'No orders';
+	String get placedAt => 'Placed at:';
+	String get orderId => 'Order #';
+	String get loadingMore => 'Loading more...';
+}
+
 // Path: errors
 class _StringsErrorsEn {
 	_StringsErrorsEn._(this._root);
@@ -398,6 +415,7 @@ class _StringsSettingsEn {
 	// Translations
 	String get account_settings => 'Account Settings';
 	String get address_management => 'Address Management';
+	String get order_history => 'Order History';
 	String get language => 'Language';
 	String get theme => 'Theme';
 	String get themeSystem => 'System';
@@ -458,6 +476,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsPaymentNl payment = _StringsPaymentNl._(_root);
 	@override late final _StringsOrderStatusNl orderStatus = _StringsOrderStatusNl._(_root);
 	@override late final _StringsOrderResultNl orderResult = _StringsOrderResultNl._(_root);
+	@override late final _StringsOrderHistoryNl orderHistory = _StringsOrderHistoryNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
@@ -586,6 +605,22 @@ class _StringsOrderResultNl implements _StringsOrderResultEn {
 	@override String get timeout => 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
 }
 
+// Path: orderHistory
+class _StringsOrderHistoryNl implements _StringsOrderHistoryEn {
+	_StringsOrderHistoryNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get orderHistory => 'Bestelgeschiedenis';
+	@override String get today => 'Bestellingen van vandaag';
+	@override String get past => 'Eerdere bestellingen';
+	@override String get noOrders => 'Geen bestellingen';
+	@override String get placedAt => 'Besteld om:';
+	@override String get orderId => 'Bestelling #';
+	@override String get loadingMore => 'Meer laden...';
+}
+
 // Path: errors
 class _StringsErrorsNl implements _StringsErrorsEn {
 	_StringsErrorsNl._(this._root);
@@ -700,6 +735,7 @@ class _StringsSettingsNl implements _StringsSettingsEn {
 	// Translations
 	@override String get account_settings => 'Account Instellingen';
 	@override String get address_management => 'Beheer adressen';
+	@override String get order_history => 'Bestelgeschiedenis';
 	@override String get language => 'Taal';
 	@override String get theme => 'Thema';
 	@override String get themeSystem => 'Systeem';
@@ -783,6 +819,13 @@ extension on Translations {
 			case 'orderResult.noOrderInfo': return 'No order information available';
 			case 'orderResult.goToOrderPage': return 'Order Overview';
 			case 'orderResult.timeout': return 'Fetching order status took too long, please try again later.';
+			case 'orderHistory.orderHistory': return 'Order History';
+			case 'orderHistory.today': return 'Today\'s Orders';
+			case 'orderHistory.past': return 'Past Orders';
+			case 'orderHistory.noOrders': return 'No orders';
+			case 'orderHistory.placedAt': return 'Placed at:';
+			case 'orderHistory.orderId': return 'Order #';
+			case 'orderHistory.loadingMore': return 'Loading more...';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -854,6 +897,7 @@ extension on Translations {
 			case 'address.deleteSuccess': return 'Address deleted successfully!';
 			case 'settings.account_settings': return 'Account Settings';
 			case 'settings.address_management': return 'Address Management';
+			case 'settings.order_history': return 'Order History';
 			case 'settings.language': return 'Language';
 			case 'settings.theme': return 'Theme';
 			case 'settings.themeSystem': return 'System';
@@ -927,6 +971,13 @@ extension on _StringsNl {
 			case 'orderResult.noOrderInfo': return 'Geen bestelgegevens beschikbaar';
 			case 'orderResult.goToOrderPage': return 'Naar besteloverzich';
 			case 'orderResult.timeout': return 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
+			case 'orderHistory.orderHistory': return 'Bestelgeschiedenis';
+			case 'orderHistory.today': return 'Bestellingen van vandaag';
+			case 'orderHistory.past': return 'Eerdere bestellingen';
+			case 'orderHistory.noOrders': return 'Geen bestellingen';
+			case 'orderHistory.placedAt': return 'Besteld om:';
+			case 'orderHistory.orderId': return 'Bestelling #';
+			case 'orderHistory.loadingMore': return 'Meer laden...';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';
@@ -998,6 +1049,7 @@ extension on _StringsNl {
 			case 'address.deleteSuccess': return 'Adres succesvol verwijderd!';
 			case 'settings.account_settings': return 'Account Instellingen';
 			case 'settings.address_management': return 'Beheer adressen';
+			case 'settings.order_history': return 'Bestelgeschiedenis';
 			case 'settings.language': return 'Taal';
 			case 'settings.theme': return 'Thema';
 			case 'settings.themeSystem': return 'Systeem';

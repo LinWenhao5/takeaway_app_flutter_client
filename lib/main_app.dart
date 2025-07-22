@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/theme/theme.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/domain/address.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/add_address_page.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/edit_address_page.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/language_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/settings/application/theme_provider.dart';
-import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/address_management_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/checkout/checkout_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/main/presentation/main_scaffold.dart';
-import 'package:takeaway_app_flutter_client/ui/features/settings/presentation/account/account_settings_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/manual_payment_page.dart';
-import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/payment_result_page.dart';
+import 'package:takeaway_app_flutter_client/app_routes.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -34,33 +24,7 @@ class TakeawayApp extends ConsumerWidget {
         darkTheme: darkTheme,
         themeMode: themeMode,
         home: const MainScaffold(),
-        routes: {
-          '/login': (context) => const LoginPage(),
-          '/register': (context) => const RegisterPage(),
-          '/cart': (context) => const CartPage(),
-          '/checkout': (context) => const CheckoutPage(),
-          '/account_settings': (context) => const AccountSettingsPage(),
-          '/address_management': (context) => const AddressManagementPage(),
-          '/add_address': (context) => const AddAddressPage(),
-          '/edit_address': (context) {
-            final args = ModalRoute.of(context)!.settings.arguments;
-            return EditAddressPage(address: args as Address);
-          },
-          '/payment-result': (context) {
-            final args = ModalRoute.of(context)!.settings.arguments;
-            int? orderId;
-            if (args is int) {
-              orderId = args;
-            } else if (args is String) {
-              orderId = int.tryParse(args);
-            }
-            return PaymentResultPage(orderId: orderId);
-          },
-          '/manual-payment': (context) {
-            final url = ModalRoute.of(context)!.settings.arguments as String?;
-            return ManualPaymentPage(paymentUrl: url);
-          },
-        },
+        routes: appRoutes,
       ),
     );
   }

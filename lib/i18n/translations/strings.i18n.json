@@ -64,6 +64,15 @@
     "goToOrderPage": "Order Overview",
     "timeout": "Fetching order status took too long, please try again later."
   },
+  "orderHistory": {
+    "orderHistory": "Order History",
+    "today": "Today's Orders",
+    "past": "Past Orders",
+    "noOrders": "No orders",
+    "placedAt": "Placed at:",
+    "orderId": "Order #",
+    "loadingMore": "Loading more..."
+  },
   "errors": {
     "connectionError": "There was a connection issue.",
     "retry": "Tap here to retry",
@@ -144,6 +153,7 @@
   "settings": {
     "account_settings": "Account Settings",
     "address_management": "Address Management",
+    "order_history": "Order History",
     "language": "Language",
     "theme": "Theme",
     "themeSystem": "System",

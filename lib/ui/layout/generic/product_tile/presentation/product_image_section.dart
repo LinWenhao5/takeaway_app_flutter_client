@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:takeaway_app_flutter_client/ui/features/search/domain/product.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/image/product_image.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 

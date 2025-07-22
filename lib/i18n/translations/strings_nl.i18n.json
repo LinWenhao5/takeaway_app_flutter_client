@@ -64,6 +64,15 @@
     "goToOrderPage": "Naar besteloverzich",
     "timeout": "Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw."
   },
+  "orderHistory": {
+    "orderHistory": "Bestelgeschiedenis",
+    "today": "Bestellingen van vandaag",
+    "past": "Eerdere bestellingen",
+    "noOrders": "Geen bestellingen",
+    "placedAt": "Besteld om:",
+    "orderId": "Bestelling #",
+    "loadingMore": "Meer laden..."
+  },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",
     "retry": "Klik hier om opnieuw te proberen",
@@ -144,6 +153,7 @@
   "settings": {
     "account_settings": "Account Instellingen",
     "address_management": "Beheer adressen",
+    "order_history": "Bestelgeschiedenis",
     "language": "Taal",
     "theme": "Thema",
     "themeSystem": "Systeem",

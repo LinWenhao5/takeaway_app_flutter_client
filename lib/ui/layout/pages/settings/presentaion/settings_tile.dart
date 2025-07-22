@@ -21,7 +21,15 @@ class SettingsTile extends ConsumerWidget {
           title: Text(context.t.settings.account_settings),
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
-            Navigator.of(context).pushNamed('/account_settings');
+            Navigator.of(context).pushNamed('/account-settings');
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.receipt_long),
+          title: Text(context.t.settings.order_history),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () {
+            Navigator.of(context).pushNamed('/order-history');
           },
         ),
         ListTile(
@@ -29,7 +37,7 @@ class SettingsTile extends ConsumerWidget {
           title: Text(context.t.settings.address_management),
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
-            Navigator.of(context).pushNamed('/address_management');
+            Navigator.of(context).pushNamed('/address-management');
           },
         ),
       ],

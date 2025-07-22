@@ -20,6 +20,8 @@ dependencies:
   app_links: ^6.4.0
   flutter_svg: ^2.0.0
   flutter_launcher_icons: ^0.13.1
+  web_socket_channel: ^2.4.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

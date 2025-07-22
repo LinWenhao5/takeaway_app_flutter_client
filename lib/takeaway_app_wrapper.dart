@@ -26,7 +26,7 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
           navigatorKey.currentState?.pushNamedAndRemoveUntil(
             '/payment-result',
             ModalRoute.withName('/'),
-            arguments: uri.queryParameters['order_id'],
+            arguments: int.tryParse(uri.queryParameters['order_id'] ?? '') ?? 0,
           );
         });
       }
@@ -35,11 +35,10 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
     _appLinks = AppLinks();
     _sub = _appLinks.uriLinkStream.listen((Uri? uri) {
       if (uri != null && uri.host == 'payment-callback') {
-        final orderId = uri.queryParameters['order_id'];
         navigatorKey.currentState?.pushNamedAndRemoveUntil(
           '/payment-result',
           ModalRoute.withName('/'),
-          arguments: orderId,
+          arguments: int.tryParse(uri.queryParameters['order_id'] ?? '') ?? 0,
         );
       }
     });

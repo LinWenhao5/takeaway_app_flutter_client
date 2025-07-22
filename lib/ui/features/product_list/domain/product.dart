@@ -1,4 +1,4 @@
-import 'package:takeaway_app_flutter_client/ui/features/search/domain/product_media.dart';
+import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product_media.dart';
 
 class Product {
   final int id;
@@ -6,6 +6,7 @@ class Product {
   final String description;
   final double price;
   final List<ProductMedia> media;
+  final Map<String, dynamic>? pivot;
 
   Product({
     required this.id,
@@ -13,6 +14,7 @@ class Product {
     required this.description,
     required this.price,
     required this.media,
+    this.pivot,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -26,5 +28,6 @@ class Product {
                 ?.map((e) => ProductMedia.fromJson(e))
                 .toList() ??
             [],
+        pivot: json['pivot'],
       );
 }

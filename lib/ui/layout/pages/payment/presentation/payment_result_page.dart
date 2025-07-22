@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -16,39 +14,14 @@ class PaymentResultPage extends ConsumerStatefulWidget {
 }
 
 class _PaymentResultPageState extends ConsumerState<PaymentResultPage> {
-  Timer? _timer;
-  int pollCount = 0;
-  static const maxPoll = 15;
-
   @override
   void initState() {
     super.initState();
     if (widget.orderId != null) {
-      _startPolling();
+      Future.delayed(const Duration(seconds: 1), () {
+        ref.read(paymentNotifierProvider.notifier).fetchOrderStatus(widget.orderId!);
+      });
     }
-  }
-
-  void _startPolling() {
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      pollCount++;
-      ref.read(paymentNotifierProvider.notifier).fetchOrderStatus(widget.orderId!);
-      final state = ref.read(paymentNotifierProvider);
-      if (state.data != null && state.data!.status != 'unpaid') {
-        timer.cancel();
-      }
-      if (pollCount >= maxPoll) {
-        timer.cancel();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(context.t.orderResult.timeout)),
-        );
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
   }
 
   @override
@@ -89,7 +62,7 @@ class _PaymentResultPageState extends ConsumerState<PaymentResultPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                OrderStatusUtils.getStatusIcon(state.data!.status),
+                                OrderStatusUtils.getPaymentStatusIcon(state.data!.status),
                                 color: OrderStatusUtils.getStatusColor(state.data!.status),
                                 size: 64,
                               ),
@@ -110,7 +83,10 @@ class _PaymentResultPageState extends ConsumerState<PaymentResultPage> {
                               const SizedBox(height: 24),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Navigate to order details page
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                    '/order-history',
+                                    ModalRoute.withName('/'),
+                                  );
                                 },
                                 child: Text(
                                   context.t.orderResult.goToOrderPage,

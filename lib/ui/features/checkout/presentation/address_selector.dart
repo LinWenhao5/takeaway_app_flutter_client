@@ -24,7 +24,7 @@ class AddressSelector extends ConsumerWidget {
               icon: const Icon(Icons.add_location_alt_outlined),
               tooltip: context.t.checkout.addAddress,
               onPressed: () {
-                Navigator.of(context).pushNamed('/add_address');
+                Navigator.of(context).pushNamed('/add-address');
               },
             ),
           ],

@@ -21,7 +21,7 @@ class CartItemCard extends ConsumerWidget {
           borderRadius: BorderRadius.circular(kCardRadius),
           border: Border.all(
             color: Theme.of(context).dividerColor,
-            width: 2,
+            width: 1,
           ),
         ),
         child: Padding(

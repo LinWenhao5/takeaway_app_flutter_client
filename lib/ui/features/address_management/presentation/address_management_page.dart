@@ -77,7 +77,7 @@ class AddressManagementPage extends ConsumerWidget {
                           return AddressCard(
                             address: address,
                             onEdit: () {
-                              Navigator.of(context).pushNamed('/edit_address', arguments: address);
+                              Navigator.of(context).pushNamed('/edit-address', arguments: address);
                             },
                             onDelete: () {
                               actionNotifier.deleteAddress(address.id);
@@ -90,7 +90,7 @@ class AddressManagementPage extends ConsumerWidget {
                 ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).pushNamed('/add_address');
+          Navigator.of(context).pushNamed('/add-address');
         },
         icon: const Icon(Icons.add),
         label: Text(context.t.address.addAddress),
