@@ -21,6 +21,11 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final notifier = ref.read(orderHistoryProvider.notifier);
+      notifier.fetchOrderHistory();
+    });
+
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
         final notifier = ref.read(orderHistoryProvider.notifier);
@@ -64,10 +69,6 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
     }
     if (state.error != null) {
       return Center(child: Text(context.t.errors.genericErrorMessage));
-    }
-
-    if (state.data == null && !state.isLoading && state.error == null) {
-      Future.microtask(() => notifier.fetchOrderHistory());
     }
 
     return RefreshIndicator(

@@ -18,6 +18,8 @@ class OrderHistoryNotifier extends StateNotifier<OrderHistoryState> {
       _orders = [];
       _hasMore = true;
     }
+
+    if (state.isLoading) return; // Prevent multiple simultaneous requests
     if (!_hasMore) return;
 
     state = state.copyWith(isLoading: true, error: null);
