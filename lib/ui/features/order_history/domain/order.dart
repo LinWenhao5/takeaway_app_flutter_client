@@ -1,5 +1,6 @@
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/address_snapshot.dart';
 import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product.dart';
+import 'package:takeaway_app_flutter_client/ui/utils/datetime_util.dart';
 
 class Order {
   final int id;
@@ -30,4 +31,6 @@ class Order {
           .toList(),
     );
   }
+
+   String get createdAtAmsterdam => DateTimeUtil.formatToAmsterdam(createdAt);
 }

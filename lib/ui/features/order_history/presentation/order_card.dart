@@ -44,7 +44,7 @@ class OrderCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      '${context.t.orderHistory.placedAt} ${order.createdAt.substring(0, 16).replaceFirst('T', ' ')}',
+                      '${context.t.orderHistory.placedAt} ${order.createdAtAmsterdam}',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withAlpha((255 * 0.7).toInt()),
                         fontSize: 13,

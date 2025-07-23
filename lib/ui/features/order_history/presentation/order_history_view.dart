@@ -6,31 +6,55 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_card.dart';
+import 'package:takeaway_app_flutter_client/ui/utils/datetime_util.dart';
 
-class OrderHistoryView extends ConsumerWidget {
+class OrderHistoryView extends ConsumerStatefulWidget {
   const OrderHistoryView({super.key});
 
+  @override
+  ConsumerState<OrderHistoryView> createState() => _OrderHistoryViewState();
+}
+
+class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
+        final notifier = ref.read(orderHistoryProvider.notifier);
+        notifier.fetchOrderHistory();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   List<Order> todayOrders(List<Order> orders) {
-    final today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    final today = DateTimeUtil.todayInAmsterdam();
     return orders.where((o) {
-      final orderDate = DateFormat('yyyy-MM-dd').format(DateTime.parse(o.createdAt));
+      final orderDate = DateFormat('yyyy-MM-dd').format(DateTime.parse(o.createdAtAmsterdam));
       return orderDate == today;
     }).toList();
   }
 
   List<Order> pastOrders(List<Order> orders) {
-    final today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    final today = DateTimeUtil.todayInAmsterdam();
     return orders.where((o) {
-      final orderDate = DateFormat('yyyy-MM-dd').format(DateTime.parse(o.createdAt));
+      final orderDate = DateFormat('yyyy-MM-dd').format(DateTime.parse(o.createdAtAmsterdam));
       return orderDate != today;
     }).toList();
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final state = ref.watch(orderHistoryProvider);
     final notifier = ref.read(orderHistoryProvider.notifier);
-    final scrollController = ScrollController();
 
     if (state.isLoading && (state.data == null || state.data!.orders.data.isEmpty)) {
       return Center(child: SpinKitWave(
@@ -52,6 +76,7 @@ class OrderHistoryView extends ConsumerWidget {
       },
       child: (state.data == null || state.data!.orders.data.isEmpty)
           ? ListView(
+              controller: _scrollController,
               physics: const AlwaysScrollableScrollPhysics(),
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.3),
@@ -59,6 +84,7 @@ class OrderHistoryView extends ConsumerWidget {
               ],
             )
           : ListView(
+              controller: _scrollController,
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.only(bottom: 32),
               children: [
