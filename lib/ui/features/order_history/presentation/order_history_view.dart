@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
-import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_card.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_section.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/loading_more_indicator.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/datetime_util.dart';
 
 class OrderHistoryView extends ConsumerStatefulWidget {
@@ -17,19 +18,25 @@ class OrderHistoryView extends ConsumerStatefulWidget {
 
 class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
   final ScrollController _scrollController = ScrollController();
+  bool _isPagingLoading = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final notifier = ref.read(orderHistoryProvider.notifier);
-      notifier.fetchOrderHistory();
+      ref.read(orderHistoryProvider.notifier).fetchOrderHistory();
     });
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
-        final notifier = ref.read(orderHistoryProvider.notifier);
-        notifier.fetchOrderHistory();
+    _scrollController.addListener(() async {
+      final state = ref.read(orderHistoryProvider);
+      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 50) {
+        if (!_isPagingLoading && !state.isLoading && state.data!.orders.nextPageUrl != null) {
+          _isPagingLoading = true;
+          await ref.read(orderHistoryProvider.notifier).fetchOrderHistory();
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _isPagingLoading = false;
+          });
+        }
       }
     });
   }
@@ -71,6 +78,9 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
       return Center(child: Text(context.t.errors.genericErrorMessage));
     }
 
+    final today = todayOrders(state.data!.orders.data);
+    final past = pastOrders(state.data!.orders.data);
+
     return RefreshIndicator(
       onRefresh: () async {
         await notifier.fetchOrderHistory(refresh: true);
@@ -90,79 +100,13 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
               padding: const EdgeInsets.only(bottom: 32),
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: 500,
-                  ),
+                  constraints: BoxConstraints(minHeight: 500),
                   child: Column(
                     children: [
-                      if (todayOrders(state.data!.orders.data).isNotEmpty) ...[
-                        Align(
-                          alignment: Alignment.center,
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 500),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
-                                  child: Text(
-                                    context.t.orderHistory.today,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                ...todayOrders(state.data!.orders.data).map((order) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 12),
-                                  child: OrderCard(order: order),
-                                )),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                      if (pastOrders(state.data!.orders.data).isNotEmpty) ...[
-                        Align(
-                          alignment: Alignment.center,
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 500),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
-                                  child: Text(
-                                    context.t.orderHistory.past,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                ...pastOrders(state.data!.orders.data).map((order) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 12),
-                                  child: OrderCard(order: order),
-                                )),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                      OrderSection(title: context.t.orderHistory.today, orders: today),
+                      OrderSection(title: context.t.orderHistory.past, orders: past),
                       if (state.data!.orders.nextPageUrl != null)
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            children: [
-                              const CircularProgressIndicator(strokeWidth: 2),
-                              const SizedBox(height: 8),
-                              Text(
-                                context.t.orderHistory.loadingMore,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ],
-                          ),
-                        ),
+                        const LoadingMoreIndicator(),
                     ],
                   ),
                 ),
