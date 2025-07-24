@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
-import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_card.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_list/order_card.dart';
 
 class OrderSection extends StatelessWidget {
   final String title;
@@ -32,7 +32,13 @@ class OrderSection extends StatelessWidget {
             ),
             ...orders.map((order) => Padding(
               padding: const EdgeInsets.only(bottom: 12),
-              child: OrderCard(order: order),
+              child: OrderCard(order: order, onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  '/order-detail',
+                  arguments: order.id,
+                );
+              }),
             )),
           ],
         ),

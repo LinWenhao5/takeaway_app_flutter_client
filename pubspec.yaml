@@ -23,6 +23,7 @@ dependencies:
   web_socket_channel: ^2.4.0
   intl: ^0.18.1
   timezone: ^0.10.1
+  step_progress_indicator: ^1.0.2
 
 dev_dependencies:
   flutter_test:

@@ -12,7 +12,8 @@
   },
   "navbar": {
     "profile": "Mijn Profiel",
-    "order": "Bestellingen"
+    "order": "Plaats Bestelling",
+    "orderHistory": "Bestelgeschiedenis"
   },
   "cart": {
     "checkout_basket": "Afrekenmandje",
@@ -46,7 +47,8 @@
     "copyLink": "Link kopiëren",
     "linkCopied": "Link gekopieerd",
     "openLink": "Open betaalpagina",
-    "paymentOpenFailed": "Kan de betaalpagina niet openen"
+    "paymentOpenFailed": "Kan de betaalpagina niet openen",
+    "payNow": "Betaal nu"
   },
   "orderStatus": {
     "paid": "Betaald",
@@ -71,7 +73,10 @@
     "noOrders": "Geen bestellingen",
     "placedAt": "Besteld om:",
     "orderId": "Bestelling #",
-    "loadingMore": "Meer laden..."
+    "loadingMore": "Meer laden...",
+    "deliveryAddress": "Bezorgadres",
+    "products": "Producten",
+    "totalPrice": "Totaal bedrag"
   },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",
@@ -86,7 +91,8 @@
     "unauthorizedMessage": "Je hebt geen toegang. Log in en probeer het opnieuw.",
     "unsupportedPostcode": "Sorry, we bezorgen nog niet op deze postcode.",
     "invalidPhone": "Ongeldig telefoonnummer.",
-    "invalidStreet": "Ongeldige straatnaam."
+    "invalidStreet": "Ongeldige straatnaam.",
+    "missingOrderParam": "Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw."
   },
   "login": {
     "title": "Fijn je weer te zien!",

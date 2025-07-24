@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 288 (144 per locale)
+/// Strings: 300 (150 per locale)
 ///
-/// Built on 2025-07-22 at 18:33 UTC
+/// Built on 2025-07-24 at 17:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -197,7 +197,8 @@ class _StringsNavbarEn {
 
 	// Translations
 	String get profile => 'My Profile';
-	String get order => 'Orders';
+	String get order => 'Place Order';
+	String get orderHistory => 'Order History';
 }
 
 // Path: cart
@@ -253,6 +254,7 @@ class _StringsPaymentEn {
 	String get linkCopied => 'Link copied';
 	String get openLink => 'Open payment page';
 	String get paymentOpenFailed => 'Unable to open payment page';
+	String get payNow => 'Pay Now';
 }
 
 // Path: orderStatus
@@ -299,6 +301,9 @@ class _StringsOrderHistoryEn {
 	String get placedAt => 'Placed at:';
 	String get orderId => 'Order #';
 	String get loadingMore => 'Loading more...';
+	String get deliveryAddress => 'Delivery Address';
+	String get products => 'Products';
+	String get totalPrice => 'Total Price';
 }
 
 // Path: errors
@@ -321,6 +326,7 @@ class _StringsErrorsEn {
 	String get unsupportedPostcode => 'Sorry, we currently do not deliver to this postcode.';
 	String get invalidPhone => 'Invalid phone number.';
 	String get invalidStreet => 'Invalid street name.';
+	String get missingOrderParam => 'Oops, something went wrong with your order. Please go back and try again.';
 }
 
 // Path: login
@@ -517,7 +523,8 @@ class _StringsNavbarNl implements _StringsNavbarEn {
 
 	// Translations
 	@override String get profile => 'Mijn Profiel';
-	@override String get order => 'Bestellingen';
+	@override String get order => 'Plaats Bestelling';
+	@override String get orderHistory => 'Bestelgeschiedenis';
 }
 
 // Path: cart
@@ -573,6 +580,7 @@ class _StringsPaymentNl implements _StringsPaymentEn {
 	@override String get linkCopied => 'Link gekopieerd';
 	@override String get openLink => 'Open betaalpagina';
 	@override String get paymentOpenFailed => 'Kan de betaalpagina niet openen';
+	@override String get payNow => 'Betaal nu';
 }
 
 // Path: orderStatus
@@ -619,6 +627,9 @@ class _StringsOrderHistoryNl implements _StringsOrderHistoryEn {
 	@override String get placedAt => 'Besteld om:';
 	@override String get orderId => 'Bestelling #';
 	@override String get loadingMore => 'Meer laden...';
+	@override String get deliveryAddress => 'Bezorgadres';
+	@override String get products => 'Producten';
+	@override String get totalPrice => 'Totaal bedrag';
 }
 
 // Path: errors
@@ -641,6 +652,7 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override String get unsupportedPostcode => 'Sorry, we bezorgen nog niet op deze postcode.';
 	@override String get invalidPhone => 'Ongeldig telefoonnummer.';
 	@override String get invalidStreet => 'Ongeldige straatnaam.';
+	@override String get missingOrderParam => 'Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw.';
 }
 
 // Path: login
@@ -778,7 +790,8 @@ extension on Translations {
 			case 'homepage.hello': return 'Hi there';
 			case 'homepage.welcome': return 'Welcome to our app!';
 			case 'navbar.profile': return 'My Profile';
-			case 'navbar.order': return 'Orders';
+			case 'navbar.order': return 'Place Order';
+			case 'navbar.orderHistory': return 'Order History';
 			case 'cart.checkout_basket': return 'Checkout Basket';
 			case 'cart.emptyCartMessage': return 'Your cart is empty!';
 			case 'cart.addItemsMessage': return 'Go ahead and add some items to see them here.';
@@ -807,6 +820,7 @@ extension on Translations {
 			case 'payment.linkCopied': return 'Link copied';
 			case 'payment.openLink': return 'Open payment page';
 			case 'payment.paymentOpenFailed': return 'Unable to open payment page';
+			case 'payment.payNow': return 'Pay Now';
 			case 'orderStatus.paid': return 'Paid';
 			case 'orderStatus.unpaid': return 'Unpaid';
 			case 'orderStatus.delivering': return 'Delivering';
@@ -826,6 +840,9 @@ extension on Translations {
 			case 'orderHistory.placedAt': return 'Placed at:';
 			case 'orderHistory.orderId': return 'Order #';
 			case 'orderHistory.loadingMore': return 'Loading more...';
+			case 'orderHistory.deliveryAddress': return 'Delivery Address';
+			case 'orderHistory.products': return 'Products';
+			case 'orderHistory.totalPrice': return 'Total Price';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -839,6 +856,7 @@ extension on Translations {
 			case 'errors.unsupportedPostcode': return 'Sorry, we currently do not deliver to this postcode.';
 			case 'errors.invalidPhone': return 'Invalid phone number.';
 			case 'errors.invalidStreet': return 'Invalid street name.';
+			case 'errors.missingOrderParam': return 'Oops, something went wrong with your order. Please go back and try again.';
 			case 'login.title': return 'Welcome back!';
 			case 'login.emailLabel': return 'Email Address';
 			case 'login.emailHint': return 'Enter your email address';
@@ -930,7 +948,8 @@ extension on _StringsNl {
 			case 'homepage.hello': return 'Hoi';
 			case 'homepage.welcome': return 'Welkom bij ons!';
 			case 'navbar.profile': return 'Mijn Profiel';
-			case 'navbar.order': return 'Bestellingen';
+			case 'navbar.order': return 'Plaats Bestelling';
+			case 'navbar.orderHistory': return 'Bestelgeschiedenis';
 			case 'cart.checkout_basket': return 'Afrekenmandje';
 			case 'cart.emptyCartMessage': return 'Je winkelwagen is leeg!';
 			case 'cart.addItemsMessage': return 'Voeg wat items toe om ze hier te zien.';
@@ -959,6 +978,7 @@ extension on _StringsNl {
 			case 'payment.linkCopied': return 'Link gekopieerd';
 			case 'payment.openLink': return 'Open betaalpagina';
 			case 'payment.paymentOpenFailed': return 'Kan de betaalpagina niet openen';
+			case 'payment.payNow': return 'Betaal nu';
 			case 'orderStatus.paid': return 'Betaald';
 			case 'orderStatus.unpaid': return 'Niet betaald';
 			case 'orderStatus.delivering': return 'Bezorging bezig';
@@ -978,6 +998,9 @@ extension on _StringsNl {
 			case 'orderHistory.placedAt': return 'Besteld om:';
 			case 'orderHistory.orderId': return 'Bestelling #';
 			case 'orderHistory.loadingMore': return 'Meer laden...';
+			case 'orderHistory.deliveryAddress': return 'Bezorgadres';
+			case 'orderHistory.products': return 'Producten';
+			case 'orderHistory.totalPrice': return 'Totaal bedrag';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';
@@ -991,6 +1014,7 @@ extension on _StringsNl {
 			case 'errors.unsupportedPostcode': return 'Sorry, we bezorgen nog niet op deze postcode.';
 			case 'errors.invalidPhone': return 'Ongeldig telefoonnummer.';
 			case 'errors.invalidStreet': return 'Ongeldige straatnaam.';
+			case 'errors.missingOrderParam': return 'Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw.';
 			case 'login.title': return 'Fijn je weer te zien!';
 			case 'login.emailLabel': return 'E-mailadres';
 			case 'login.emailHint': return 'Vul je e-mailadres in';

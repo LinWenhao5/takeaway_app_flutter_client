@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
-import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_section.dart';
-import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/loading_more_indicator.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_list/order_section.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_list/loading_more_indicator.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/datetime_util.dart';
 
 class OrderHistoryView extends ConsumerStatefulWidget {
@@ -77,6 +77,9 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
     if (state.error != null) {
       return Center(child: Text(context.t.errors.genericErrorMessage));
     }
+    if (state.data == null) {
+      return SizedBox.shrink();
+    }
 
     final today = todayOrders(state.data!.orders.data);
     final past = pastOrders(state.data!.orders.data);
@@ -85,7 +88,7 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
       onRefresh: () async {
         await notifier.fetchOrderHistory(refresh: true);
       },
-      child: (state.data == null || state.data!.orders.data.isEmpty)
+      child: (state.data!.orders.data.isEmpty)
           ? ListView(
               controller: _scrollController,
               physics: const AlwaysScrollableScrollPhysics(),

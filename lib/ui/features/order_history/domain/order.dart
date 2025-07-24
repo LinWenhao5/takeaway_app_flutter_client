@@ -26,7 +26,7 @@ class Order {
       totalPrice: json['total_price'],
       createdAt: json['created_at'],
       address: AddressSnapshot.fromJson(json['address_snapshot']),
-      products: (json['products'] as List<dynamic>)
+      products: (json['products'] as List<dynamic>? ?? [])
           .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );

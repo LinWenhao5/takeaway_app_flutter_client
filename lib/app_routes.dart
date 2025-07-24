@@ -8,6 +8,7 @@ import 'package:takeaway_app_flutter_client/ui/features/address_management/prese
 import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/add_address_page.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/presentation/edit_address_page.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/domain/address.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/order_history/order_detail_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/order_history/order_histroy_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/payment_result_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation/manual_payment_page.dart';
@@ -33,4 +34,8 @@ final Map<String, WidgetBuilder> appRoutes = {
     return ManualPaymentPage(paymentUrl: url);
   },
   '/order-history': (context) => const OrderHistoryPage(),
+  '/order-detail': (context) {
+    final orderId = ModalRoute.of(context)!.settings.arguments as int?;
+    return OrderDetailPage(orderId: orderId);
+  },
 };

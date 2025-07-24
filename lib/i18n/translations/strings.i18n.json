@@ -12,7 +12,8 @@
   },
   "navbar": {
     "profile": "My Profile",
-    "order": "Orders"
+    "order": "Place Order",
+    "orderHistory": "Order History"
   },
   "cart": {
     "checkout_basket": "Checkout Basket",
@@ -46,7 +47,8 @@
     "copyLink": "Copy Link",
     "linkCopied": "Link copied",
     "openLink": "Open payment page",
-    "paymentOpenFailed": "Unable to open payment page"
+    "paymentOpenFailed": "Unable to open payment page",
+    "payNow": "Pay Now"
   },
   "orderStatus": {
     "paid": "Paid",
@@ -71,7 +73,10 @@
     "noOrders": "No orders",
     "placedAt": "Placed at:",
     "orderId": "Order #",
-    "loadingMore": "Loading more..."
+    "loadingMore": "Loading more...",
+    "deliveryAddress": "Delivery Address",
+    "products": "Products",
+    "totalPrice": "Total Price"
   },
   "errors": {
     "connectionError": "There was a connection issue.",
@@ -86,7 +91,8 @@
     "unauthorizedMessage": "You don't have access. Please log in and try again.",
     "unsupportedPostcode": "Sorry, we currently do not deliver to this postcode.",
     "invalidPhone": "Invalid phone number.",
-    "invalidStreet": "Invalid street name."
+    "invalidStreet": "Invalid street name.",
+    "missingOrderParam": "Oops, something went wrong with your order. Please go back and try again."
   },
   "login": {
     "title": "Welcome back!",
