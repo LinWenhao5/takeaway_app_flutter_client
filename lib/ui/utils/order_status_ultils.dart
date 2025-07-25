@@ -1,64 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 
 class OrderStatusUtils {
-  static Color getStatusColor(String status) {
+  static List<OrderStatus> getSteps(OrderType orderType) {
+    if (orderType == OrderType.pickup) {
+      return [
+        OrderStatus.unpaid,
+        OrderStatus.paid,
+        OrderStatus.waitingPickup,
+        OrderStatus.completed,
+      ];
+    } else {
+      // delivery
+      return [
+        OrderStatus.unpaid,
+        OrderStatus.paid,
+        OrderStatus.delivering,
+        OrderStatus.completed,
+      ];
+    }
+  }
+
+  static Color getStatusColor(OrderStatus status) {
     switch (status) {
-      case 'paid':
+      case OrderStatus.paid:
         return Colors.green;
-      case 'unpaid':
+      case OrderStatus.unpaid:
         return Colors.orange;
-      case 'delivering':
+      case OrderStatus.delivering:
         return Colors.blue;
-      case 'completed':
+      case OrderStatus.waitingPickup:
+        return Colors.purple;
+      case OrderStatus.completed:
         return Colors.grey;
-      default:
-        return Colors.black54;
     }
   }
 
-  static String getStatusText(BuildContext context, String status) {
+  static String getStatusText(BuildContext context, OrderStatus status) {
     switch (status) {
-      case 'paid':
+      case OrderStatus.paid:
         return context.t.orderStatus.paid;
-      case 'unpaid':
+      case OrderStatus.unpaid:
         return context.t.orderStatus.unpaid;
-      case 'delivering':
+      case OrderStatus.delivering:
         return context.t.orderStatus.delivering;
-      case 'completed':
+      case OrderStatus.waitingPickup:
+        return context.t.orderStatus.waitingPickup;
+      case OrderStatus.completed:
         return context.t.orderStatus.completed;
-      default:
-        return context.t.orderStatus.unknown;
     }
   }
 
-  static IconData getPaymentStatusIcon(String status) {
+  static IconData getPaymentStatusIcon(OrderStatus status) {
     switch (status) {
-      case 'paid':
+      case OrderStatus.paid:
         return Icons.check_circle;
-      case 'unpaid':
+      case OrderStatus.unpaid:
         return Icons.hourglass_top;
-      case 'delivering':
+      case OrderStatus.delivering:
         return Icons.local_shipping;
-      case 'completed':
+      case OrderStatus.waitingPickup:
+        return Icons.store;
+      case OrderStatus.completed:
         return Icons.done_all;
-      default:
-        return Icons.help_outline;
     }
   }
 
-  static IconData getOrderStatusIcon(String status) {
+  static IconData getOrderStatusIcon(OrderStatus status) {
     switch (status) {
-      case 'paid':
+      case OrderStatus.paid:
         return Icons.receipt_long;
-      case 'unpaid':
+      case OrderStatus.unpaid:
         return Icons.receipt;
-      case 'delivering':
+      case OrderStatus.delivering:
         return Icons.local_shipping;
-      case 'completed':
+      case OrderStatus.waitingPickup:
+        return Icons.store;
+      case OrderStatus.completed:
         return Icons.check_circle_outline;
-      default:
-        return Icons.description;
     }
   }
 }

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 300 (150 per locale)
+/// Strings: 306 (153 per locale)
 ///
-/// Built on 2025-07-24 at 17:58 UTC
+/// Built on 2025-07-25 at 16:02 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -155,6 +155,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsCheckoutEn checkout = _StringsCheckoutEn._(_root);
 	late final _StringsPaymentEn payment = _StringsPaymentEn._(_root);
 	late final _StringsOrderStatusEn orderStatus = _StringsOrderStatusEn._(_root);
+	late final _StringsOrderTypeEn orderType = _StringsOrderTypeEn._(_root);
 	late final _StringsOrderResultEn orderResult = _StringsOrderResultEn._(_root);
 	late final _StringsOrderHistoryEn orderHistory = _StringsOrderHistoryEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
@@ -266,9 +267,21 @@ class _StringsOrderStatusEn {
 	// Translations
 	String get paid => 'Paid';
 	String get unpaid => 'Unpaid';
+	String get waitingPickup => 'Waiting for pickup';
 	String get delivering => 'Delivering';
 	String get completed => 'Completed';
 	String get unknown => 'Unknown status';
+}
+
+// Path: orderType
+class _StringsOrderTypeEn {
+	_StringsOrderTypeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get delivery => 'Delivery';
+	String get pickup => 'Pickup';
 }
 
 // Path: orderResult
@@ -481,6 +494,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsCheckoutNl checkout = _StringsCheckoutNl._(_root);
 	@override late final _StringsPaymentNl payment = _StringsPaymentNl._(_root);
 	@override late final _StringsOrderStatusNl orderStatus = _StringsOrderStatusNl._(_root);
+	@override late final _StringsOrderTypeNl orderType = _StringsOrderTypeNl._(_root);
 	@override late final _StringsOrderResultNl orderResult = _StringsOrderResultNl._(_root);
 	@override late final _StringsOrderHistoryNl orderHistory = _StringsOrderHistoryNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
@@ -592,9 +606,21 @@ class _StringsOrderStatusNl implements _StringsOrderStatusEn {
 	// Translations
 	@override String get paid => 'Betaald';
 	@override String get unpaid => 'Niet betaald';
+	@override String get waitingPickup => 'Wachten op afhalen';
 	@override String get delivering => 'Bezorging bezig';
 	@override String get completed => 'Voltooid';
 	@override String get unknown => 'Onbekende status';
+}
+
+// Path: orderType
+class _StringsOrderTypeNl implements _StringsOrderTypeEn {
+	_StringsOrderTypeNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get delivery => 'Bezorging';
+	@override String get pickup => 'Afhalen';
 }
 
 // Path: orderResult
@@ -823,9 +849,12 @@ extension on Translations {
 			case 'payment.payNow': return 'Pay Now';
 			case 'orderStatus.paid': return 'Paid';
 			case 'orderStatus.unpaid': return 'Unpaid';
+			case 'orderStatus.waitingPickup': return 'Waiting for pickup';
 			case 'orderStatus.delivering': return 'Delivering';
 			case 'orderStatus.completed': return 'Completed';
 			case 'orderStatus.unknown': return 'Unknown status';
+			case 'orderType.delivery': return 'Delivery';
+			case 'orderType.pickup': return 'Pickup';
 			case 'orderResult.title': return 'Payment Result';
 			case 'orderResult.orderId': return 'Order Number';
 			case 'orderResult.status': return 'Status';
@@ -981,9 +1010,12 @@ extension on _StringsNl {
 			case 'payment.payNow': return 'Betaal nu';
 			case 'orderStatus.paid': return 'Betaald';
 			case 'orderStatus.unpaid': return 'Niet betaald';
+			case 'orderStatus.waitingPickup': return 'Wachten op afhalen';
 			case 'orderStatus.delivering': return 'Bezorging bezig';
 			case 'orderStatus.completed': return 'Voltooid';
 			case 'orderStatus.unknown': return 'Onbekende status';
+			case 'orderType.delivery': return 'Bezorging';
+			case 'orderType.pickup': return 'Afhalen';
 			case 'orderResult.title': return 'Betalingsresultaat';
 			case 'orderResult.orderId': return 'Bestelnummer';
 			case 'orderResult.status': return 'Status';

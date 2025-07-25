@@ -53,9 +53,14 @@
   "orderStatus": {
     "paid": "Betaald",
     "unpaid": "Niet betaald",
+    "waitingPickup": "Wachten op afhalen",
     "delivering": "Bezorging bezig",
     "completed": "Voltooid",
     "unknown": "Onbekende status"
+  },
+  "orderType": {
+    "delivery": "Bezorging",
+    "pickup": "Afhalen"
   },
   "orderResult": {
     "title": "Betalingsresultaat",

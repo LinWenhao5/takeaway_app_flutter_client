@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/order_status_ultils.dart';
 
 class OrderStatusLine extends StatelessWidget {
-  final String status;
-  const OrderStatusLine({required this.status, super.key});
+  final OrderStatus status;
+  final OrderType orderType;
+  const OrderStatusLine({required this.status, required this.orderType, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final steps = [
-      {'key': 'unpaid', 'label': context.t.orderStatus.unpaid},
-      {'key': 'paid', 'label': context.t.orderStatus.paid},
-      {'key': 'delivering', 'label': context.t.orderStatus.delivering},
-      {'key': 'completed', 'label': context.t.orderStatus.completed},
-    ];
-    int currentIndex = steps.indexWhere((s) => s['key'] == status);
+    final steps = OrderStatusUtils.getSteps(orderType);
+    int currentIndex = steps.indexOf(status);
     if (currentIndex == -1) currentIndex = 0;
 
     return Column(
@@ -36,19 +33,19 @@ class OrderStatusLine extends StatelessWidget {
             final idx = steps.indexOf(s);
             final isActive = idx == currentIndex;
             final color = isActive
-                ? OrderStatusUtils.getStatusColor(s['key'] as String)
+                ? OrderStatusUtils.getStatusColor(s)
                 : Theme.of(context).dividerColor;
             return Expanded(
               child: Column(
                 children: [
                   Icon(
-                    OrderStatusUtils.getOrderStatusIcon(s['key'] as String),
+                    OrderStatusUtils.getOrderStatusIcon(s),
                     color: color,
                     size: 22,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    s['label'] as String,
+                    OrderStatusUtils.getStatusText(context, s),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: color,

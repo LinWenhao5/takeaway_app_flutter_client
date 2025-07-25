@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/order_status_ultils.dart';
 
@@ -98,6 +99,26 @@ class OrderCard extends StatelessWidget {
                                 fontSize: 16,
                               ),
                             ),
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: order.orderType == OrderType.delivery
+                                    ? theme.colorScheme.primary.withAlpha((255 * 0.12).toInt())
+                                    : Colors.orange.withAlpha((255 * 0.12).toInt()),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                order.orderType == OrderType.delivery ? context.t.orderType.delivery : context.t.orderType.pickup,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: order.orderType == OrderType.delivery
+                                      ? theme.colorScheme.primary
+                                      : Colors.orange,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
                             const Spacer(),
                             Text(
                               '€${order.totalPrice}',
@@ -142,15 +163,15 @@ class OrderCard extends StatelessWidget {
                               ),
                             )),
                         const SizedBox(height: 8),
-                        // 地址信息
-                        Text(
-                          '${order.address.street} ${order.address.houseNumber}, ${order.address.city}',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withAlpha((255 * 0.5).toInt()),
-                            fontSize: 12,
+                        if (order.address != null)
+                          Text(
+                            '${order.address!.street} ${order.address!.houseNumber}, ${order.address!.city}',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.colorScheme.onSurface.withAlpha((255 * 0.5).toInt()),
+                              fontSize: 12,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
                       ],
                     ),
                   ),

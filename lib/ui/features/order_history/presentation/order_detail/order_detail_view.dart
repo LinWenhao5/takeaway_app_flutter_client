@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_status_line.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_product_list.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_address_info.dart';
@@ -88,24 +90,51 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
             physics: const AlwaysScrollableScrollPhysics(),
             children: [
               Center(
-                child: Text(
-                  '${context.t.orderHistory.orderId}${order.id}',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      '${context.t.orderHistory.orderId}${order.id}',
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: order.orderType == OrderType.delivery
+                            ? Theme.of(context).colorScheme.primary.withAlpha((255 * 0.12).toInt())
+                            : Colors.orange.withAlpha((255 * 0.12).toInt()),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        order.orderType == OrderType.delivery
+                            ? context.t.orderType.delivery
+                            : context.t.orderType.pickup,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: order.orderType == OrderType.delivery
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.orange,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 40),
-              OrderStatusLine(status: order.status),
+              OrderStatusLine(status: order.status, orderType: order.orderType),
               const SizedBox(height: 20),
-              OrderAddressInfo(address: order.address),
+              if (order.orderType == OrderType.delivery)
+                OrderAddressInfo(address: order.address),
               const Divider(height: 32, thickness: 1),
               OrderProductList(products: order.products), 
               const Divider(height: 32),
               OrderPriceInfo(totalPrice: order.totalPrice),
-              if (order.status == 'unpaid') ...[
+              if (order.status == OrderStatus.unpaid) ...[
                 const SizedBox(height: 32),
                 ElevatedButton.icon(
                   onPressed: () {

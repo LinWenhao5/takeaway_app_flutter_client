@@ -53,9 +53,14 @@
   "orderStatus": {
     "paid": "Paid",
     "unpaid": "Unpaid",
+    "waitingPickup": "Waiting for pickup",
     "delivering": "Delivering",
     "completed": "Completed",
     "unknown": "Unknown status"
+  },
+  "orderType": {
+    "delivery": "Delivery",
+    "pickup": "Pickup"
   },
   "orderResult": {
     "title": "Payment Result",
