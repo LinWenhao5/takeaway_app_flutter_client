@@ -31,7 +31,6 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final state = ref.watch(orderDetailProvider);
 
     return RefreshIndicator(
@@ -45,7 +44,7 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.4),
                 Center(
                   child: SpinKitWave(
-                    color: theme.colorScheme.primary,
+                    color: Theme.of(context).primaryColor,
                     size: 40.0,
                   ),
                 ),
@@ -61,7 +60,7 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                   child: Text(
                     context.t.errors.genericErrorMessage,
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],
@@ -77,7 +76,7 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                   child: Text(
                     context.t.orderHistory.noOrders,
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],
@@ -91,8 +90,8 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               Center(
                 child: Text(
                   '${context.t.orderHistory.orderId}${order.id}',
-                  style: theme.textTheme.headlineLarge?.copyWith(
-                    color: theme.colorScheme.primary,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.2,
                   ),
@@ -103,9 +102,9 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               const SizedBox(height: 20),
               OrderAddressInfo(address: order.address),
               const Divider(height: 32, thickness: 1),
+              OrderProductList(products: order.products), 
+              const Divider(height: 32),
               OrderPriceInfo(totalPrice: order.totalPrice),
-              const Divider(height: 32, thickness: 1),
-              OrderProductList(products: order.products),
               if (order.status == 'unpaid') ...[
                 const SizedBox(height: 32),
                 ElevatedButton.icon(
@@ -115,7 +114,7 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                   icon: const Icon(Icons.payment),
                   label: Text(context.t.payment.payNow),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.primary,
+                    backgroundColor: Theme.of(context).primaryColor,
                     minimumSize: const Size(double.infinity, 48),
                   ),
                 ),

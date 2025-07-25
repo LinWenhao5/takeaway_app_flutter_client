@@ -9,7 +9,6 @@ class OrderStatusLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final steps = [
       {'key': 'unpaid', 'label': context.t.orderStatus.unpaid},
       {'key': 'paid', 'label': context.t.orderStatus.paid},
@@ -38,7 +37,7 @@ class OrderStatusLine extends StatelessWidget {
             final isActive = idx == currentIndex;
             final color = isActive
                 ? OrderStatusUtils.getStatusColor(s['key'] as String)
-                : theme.dividerColor;
+                : Theme.of(context).dividerColor;
             return Expanded(
               child: Column(
                 children: [
@@ -51,7 +50,7 @@ class OrderStatusLine extends StatelessWidget {
                   Text(
                     s['label'] as String,
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.bodySmall?.copyWith(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: color,
                       fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
                       fontSize: 12,

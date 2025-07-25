@@ -70,7 +70,7 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
 
     if (state.isLoading && (state.data == null || state.data!.orders.data.isEmpty)) {
       return Center(child: SpinKitWave(
-        color: Theme.of(context).colorScheme.primary,
+        color: Theme.of(context).primaryColor,
         size: 32,
       ));
     }

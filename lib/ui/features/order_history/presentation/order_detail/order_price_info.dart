@@ -6,17 +6,16 @@ class OrderPriceInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Row(
       children: [
-        Icon(Icons.attach_money, color: theme.colorScheme.primary),
+        Icon(Icons.attach_money, color: Theme.of(context).colorScheme.primary),
         const SizedBox(width: 4),
-        Text('Total Price', style: theme.textTheme.titleMedium),
+        Text('Total Price', style: Theme.of(context).textTheme.titleMedium),
         const Spacer(),
         Text(
           '€$totalPrice',
-          style: theme.textTheme.titleLarge?.copyWith(
-            color: theme.colorScheme.primary,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.bold,
           ),
         ),
