@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 306 (153 per locale)
+/// Strings: 312 (156 per locale)
 ///
-/// Built on 2025-07-25 at 16:02 UTC
+/// Built on 2025-07-26 at 13:47 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -158,6 +158,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsOrderTypeEn orderType = _StringsOrderTypeEn._(_root);
 	late final _StringsOrderResultEn orderResult = _StringsOrderResultEn._(_root);
 	late final _StringsOrderHistoryEn orderHistory = _StringsOrderHistoryEn._(_root);
+	late final _StringsOrderDetailsEn orderDetails = _StringsOrderDetailsEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
@@ -267,7 +268,7 @@ class _StringsOrderStatusEn {
 	// Translations
 	String get paid => 'Paid';
 	String get unpaid => 'Unpaid';
-	String get waitingPickup => 'Waiting for pickup';
+	String get waitingPickup => 'Ready for pickup';
 	String get delivering => 'Delivering';
 	String get completed => 'Completed';
 	String get unknown => 'Unknown status';
@@ -317,6 +318,18 @@ class _StringsOrderHistoryEn {
 	String get deliveryAddress => 'Delivery Address';
 	String get products => 'Products';
 	String get totalPrice => 'Total Price';
+}
+
+// Path: orderDetails
+class _StringsOrderDetailsEn {
+	_StringsOrderDetailsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get orderDetails => 'Order Details';
+	String get totalPrice => 'Total Price';
+	String get products => 'Dishes';
 }
 
 // Path: errors
@@ -497,6 +510,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsOrderTypeNl orderType = _StringsOrderTypeNl._(_root);
 	@override late final _StringsOrderResultNl orderResult = _StringsOrderResultNl._(_root);
 	@override late final _StringsOrderHistoryNl orderHistory = _StringsOrderHistoryNl._(_root);
+	@override late final _StringsOrderDetailsNl orderDetails = _StringsOrderDetailsNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
@@ -606,7 +620,7 @@ class _StringsOrderStatusNl implements _StringsOrderStatusEn {
 	// Translations
 	@override String get paid => 'Betaald';
 	@override String get unpaid => 'Niet betaald';
-	@override String get waitingPickup => 'Wachten op afhalen';
+	@override String get waitingPickup => 'Klaar voor Afhalen';
 	@override String get delivering => 'Bezorging bezig';
 	@override String get completed => 'Voltooid';
 	@override String get unknown => 'Onbekende status';
@@ -619,7 +633,7 @@ class _StringsOrderTypeNl implements _StringsOrderTypeEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
-	@override String get delivery => 'Bezorging';
+	@override String get delivery => 'Bezorgen';
 	@override String get pickup => 'Afhalen';
 }
 
@@ -656,6 +670,18 @@ class _StringsOrderHistoryNl implements _StringsOrderHistoryEn {
 	@override String get deliveryAddress => 'Bezorgadres';
 	@override String get products => 'Producten';
 	@override String get totalPrice => 'Totaal bedrag';
+}
+
+// Path: orderDetails
+class _StringsOrderDetailsNl implements _StringsOrderDetailsEn {
+	_StringsOrderDetailsNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get orderDetails => 'Bestelgegevens';
+	@override String get totalPrice => 'Totaal bedrag';
+	@override String get products => 'Gerechten';
 }
 
 // Path: errors
@@ -849,7 +875,7 @@ extension on Translations {
 			case 'payment.payNow': return 'Pay Now';
 			case 'orderStatus.paid': return 'Paid';
 			case 'orderStatus.unpaid': return 'Unpaid';
-			case 'orderStatus.waitingPickup': return 'Waiting for pickup';
+			case 'orderStatus.waitingPickup': return 'Ready for pickup';
 			case 'orderStatus.delivering': return 'Delivering';
 			case 'orderStatus.completed': return 'Completed';
 			case 'orderStatus.unknown': return 'Unknown status';
@@ -872,6 +898,9 @@ extension on Translations {
 			case 'orderHistory.deliveryAddress': return 'Delivery Address';
 			case 'orderHistory.products': return 'Products';
 			case 'orderHistory.totalPrice': return 'Total Price';
+			case 'orderDetails.orderDetails': return 'Order Details';
+			case 'orderDetails.totalPrice': return 'Total Price';
+			case 'orderDetails.products': return 'Dishes';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -1010,11 +1039,11 @@ extension on _StringsNl {
 			case 'payment.payNow': return 'Betaal nu';
 			case 'orderStatus.paid': return 'Betaald';
 			case 'orderStatus.unpaid': return 'Niet betaald';
-			case 'orderStatus.waitingPickup': return 'Wachten op afhalen';
+			case 'orderStatus.waitingPickup': return 'Klaar voor Afhalen';
 			case 'orderStatus.delivering': return 'Bezorging bezig';
 			case 'orderStatus.completed': return 'Voltooid';
 			case 'orderStatus.unknown': return 'Onbekende status';
-			case 'orderType.delivery': return 'Bezorging';
+			case 'orderType.delivery': return 'Bezorgen';
 			case 'orderType.pickup': return 'Afhalen';
 			case 'orderResult.title': return 'Betalingsresultaat';
 			case 'orderResult.orderId': return 'Bestelnummer';
@@ -1033,6 +1062,9 @@ extension on _StringsNl {
 			case 'orderHistory.deliveryAddress': return 'Bezorgadres';
 			case 'orderHistory.products': return 'Producten';
 			case 'orderHistory.totalPrice': return 'Totaal bedrag';
+			case 'orderDetails.orderDetails': return 'Bestelgegevens';
+			case 'orderDetails.totalPrice': return 'Totaal bedrag';
+			case 'orderDetails.products': return 'Gerechten';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';

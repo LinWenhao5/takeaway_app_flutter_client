@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
 class OrderProductList extends StatelessWidget {
   final List products;
@@ -10,9 +11,9 @@ class OrderProductList extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(Icons.fastfood, size: 20, color: Theme.of(context).colorScheme.primary),
+            Icon(Icons.set_meal, size: 20, color: Theme.of(context).colorScheme.primary),
             const SizedBox(width: 8),
-            Text('Products', style: Theme.of(context).textTheme.titleSmall),
+            Text(context.t.orderDetails.products, style: Theme.of(context).textTheme.titleSmall),
           ],
         ),
         const SizedBox(height: 8),

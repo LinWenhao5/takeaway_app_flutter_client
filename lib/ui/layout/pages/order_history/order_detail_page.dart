@@ -9,7 +9,7 @@ class OrderDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Order Details')),
+      appBar: AppBar(title: Text(context.t.orderDetails.orderDetails)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: orderId == null

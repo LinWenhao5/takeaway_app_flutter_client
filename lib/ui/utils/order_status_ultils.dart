@@ -28,13 +28,13 @@ class OrderStatusUtils {
       case OrderStatus.paid:
         return Colors.green;
       case OrderStatus.unpaid:
-        return Colors.orange;
-      case OrderStatus.delivering:
-        return Colors.blue;
-      case OrderStatus.waitingPickup:
-        return Colors.purple;
-      case OrderStatus.completed:
         return Colors.grey;
+      case OrderStatus.delivering:
+        return Colors.lightBlueAccent;
+      case OrderStatus.waitingPickup:
+        return Colors.orange;
+      case OrderStatus.completed:
+        return Colors.blue;
     }
   }
 
