@@ -9,11 +9,13 @@ class OrderApi {
   static Future<OrderCreateResponse> createOrder({
     required OrderType orderType,
     int? addressId,
+    required String reserveTime,
   }) async {
     final platform = getPlatform();
     final host = kIsWeb ? Uri.base.origin : null;
     final body = <String, dynamic>{
       'order_type': orderType.value,
+      'reserve_time': reserveTime,
       'platform': platform,
       if (host != null) 'host': host,
       if (orderType == OrderType.delivery && addressId != null) 'address_id': addressId,

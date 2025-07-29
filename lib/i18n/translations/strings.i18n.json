@@ -42,7 +42,8 @@
     "selectPickupTimeTitle": "Please select a pickup time",
     "selectDeliveryTimeTitle": "Please select a delivery time",
     "cancelButton": "Cancel",
-    "selectTimeHint": "Please select a time"
+    "selectTimeHint": "Please select a time",
+    "closedMessage": "The restaurant is currently closed."
   },
   "payment": {
     "paymentTitle": "Payment",

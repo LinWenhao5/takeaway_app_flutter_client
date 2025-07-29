@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 320 (160 per locale)
+/// Strings: 322 (161 per locale)
 ///
-/// Built on 2025-07-29 at 13:44 UTC
+/// Built on 2025-07-29 at 21:35 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -244,6 +244,7 @@ class _StringsCheckoutEn {
 	String get selectDeliveryTimeTitle => 'Please select a delivery time';
 	String get cancelButton => 'Cancel';
 	String get selectTimeHint => 'Please select a time';
+	String get closedMessage => 'The restaurant is currently closed.';
 }
 
 // Path: payment
@@ -600,6 +601,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get selectDeliveryTimeTitle => 'Selecteer een bezorgtijd';
 	@override String get cancelButton => 'Annuleren';
 	@override String get selectTimeHint => 'Selecteer een tijd';
+	@override String get closedMessage => 'De restaurant is momenteel gesloten.';
 }
 
 // Path: payment
@@ -877,6 +879,7 @@ extension on Translations {
 			case 'checkout.selectDeliveryTimeTitle': return 'Please select a delivery time';
 			case 'checkout.cancelButton': return 'Cancel';
 			case 'checkout.selectTimeHint': return 'Please select a time';
+			case 'checkout.closedMessage': return 'The restaurant is currently closed.';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
@@ -1045,6 +1048,7 @@ extension on _StringsNl {
 			case 'checkout.selectDeliveryTimeTitle': return 'Selecteer een bezorgtijd';
 			case 'checkout.cancelButton': return 'Annuleren';
 			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
+			case 'checkout.closedMessage': return 'De restaurant is momenteel gesloten.';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';

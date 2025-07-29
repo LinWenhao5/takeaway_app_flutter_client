@@ -9,6 +9,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
   Future<void> createOrder({
     required OrderType orderType,
     int? addressId,
+    required String reserveTime,
   }) async {
     state = state.copyWith(
       isLoading: true,
@@ -22,6 +23,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
       final response = await OrderApi.createOrder(
         orderType: orderType,
         addressId: addressId,
+        reserveTime: reserveTime,
       );
       state = state.copyWith(
         isLoading: false,

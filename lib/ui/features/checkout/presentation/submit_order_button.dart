@@ -10,18 +10,21 @@ class SubmitOrderButton extends ConsumerWidget {
   final bool enabled;
   final int? activeAddressId;
   final OrderType orderType;
+  final String reserveTime;
 
   const SubmitOrderButton({
     super.key,
     required this.enabled,
     required this.activeAddressId,
     required this.orderType,
+    required this.reserveTime,
   });
 
   Future<void> _handleSubmit(BuildContext context, WidgetRef ref) async {
     await ref.read(orderNotifierProvider.notifier).createOrder(
           orderType: orderType,
           addressId: orderType == OrderType.delivery ? activeAddressId : null,
+          reserveTime: reserveTime,
     );
     final orderState = ref.read(orderNotifierProvider);
     if (orderState.success) {

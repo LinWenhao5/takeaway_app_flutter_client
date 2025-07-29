@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/available_times_response.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/available_time_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_item_list.dart';
@@ -36,6 +37,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
     final cartSummary = ref.watch(cartSummaryProvider);
     final activeAddressId = ref.watch(selectedAddressIdProvider);
     final addresses = ref.watch(addressNotifierProvider).addresses;
+    final availableTimesAsync = ref.watch(availableTimesProvider(_selectedType));
 
     return Align(
       alignment: Alignment.topCenter,
@@ -64,6 +66,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                     _selectedTime = time;
                   });
                 },
+                availableTimesAsync: availableTimesAsync,
               ),
             ),
           ],
@@ -73,13 +76,14 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
   }
 }
 
-class CheckoutContent extends StatelessWidget {
+class CheckoutContent extends ConsumerWidget {
   final OrderType orderType;
   final List addresses;
   final int? activeAddressId;
   final dynamic cartSummary;
   final String? selectedTime;
   final ValueChanged<String?> onTimeChanged;
+  final AsyncValue<AvailableTimesResponse> availableTimesAsync;
 
   const CheckoutContent({
     super.key,
@@ -89,35 +93,52 @@ class CheckoutContent extends StatelessWidget {
     required this.cartSummary,
     required this.selectedTime,
     required this.onTimeChanged,
+    required this.availableTimesAsync,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const CheckoutItemList(),
-          const SizedBox(height: 32),
-          if (orderType == OrderType.delivery) ...[
-            const AddressSelector(),
-            const SizedBox(height: 32),
-          ],
-          AvailableTimeSelector(
-            orderType: orderType,
-            selectedTime: selectedTime,
-            onChanged: onTimeChanged,
+  Widget build(BuildContext context, WidgetRef ref) {
+    return RefreshIndicator(
+      onRefresh: () async {
+        final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
+        await fetchCartNotifier.fetchCart();
+        ref.invalidate(availableTimesProvider(orderType));
+      },
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height,
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CheckoutItemList(),
+              const SizedBox(height: 32),
+              if (orderType == OrderType.delivery) ...[
+                const AddressSelector(),
+                const SizedBox(height: 32),
+              ],
+              AvailableTimeSelector(
+                orderType: orderType,
+                selectedTime: selectedTime,
+                onChanged: onTimeChanged,
+                availableTimesAsync: availableTimesAsync,
+              ),
+              const SizedBox(height: 32),
+              const PaymentMethodSelector(),
+              const SizedBox(height: 24),
+              SubmitOrderButton(
+                enabled: (selectedTime != null) &&
+                    (orderType == OrderType.pickup || (addresses.isNotEmpty && activeAddressId != null)),
+                activeAddressId: orderType == OrderType.delivery ? activeAddressId : null,
+                orderType: orderType,
+                reserveTime: selectedTime ?? '',
+              ),
+            ],
           ),
-          const SizedBox(height: 32),
-          const PaymentMethodSelector(),
-          const SizedBox(height: 24),
-          SubmitOrderButton(
-            enabled: orderType == OrderType.pickup || (addresses.isNotEmpty && activeAddressId != null),
-            activeAddressId: orderType == OrderType.delivery ? activeAddressId : null,
-            orderType: orderType,
-          ),
-        ],
+        ),
       ),
     );
   }

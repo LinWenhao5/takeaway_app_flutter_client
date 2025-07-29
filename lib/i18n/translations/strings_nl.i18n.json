@@ -42,7 +42,8 @@
     "selectPickupTimeTitle": "Selecteer een afhaaltijd",
     "selectDeliveryTimeTitle": "Selecteer een bezorgtijd",
     "cancelButton": "Annuleren",
-    "selectTimeHint": "Selecteer een tijd"
+    "selectTimeHint": "Selecteer een tijd",
+    "closedMessage": "De restaurant is momenteel gesloten."
   },
   "payment": {
     "paymentTitle": "Betaling",
