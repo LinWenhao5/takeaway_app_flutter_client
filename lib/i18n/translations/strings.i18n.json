@@ -38,7 +38,11 @@
     "submitOrder": "Submit Order",
     "orderSuccess": "Order submitted successfully!",
     "orderFailed": "Order submission failed",
-    "cannotOpenPaymentPage": "Unable to open payment page"
+    "cannotOpenPaymentPage": "Unable to open payment page",
+    "selectPickupTimeTitle": "Please select a pickup time",
+    "selectDeliveryTimeTitle": "Please select a delivery time",
+    "cancelButton": "Cancel",
+    "selectTimeHint": "Please select a time"
   },
   "payment": {
     "paymentTitle": "Payment",

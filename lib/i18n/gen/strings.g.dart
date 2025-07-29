@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 312 (156 per locale)
+/// Strings: 320 (160 per locale)
 ///
-/// Built on 2025-07-26 at 13:47 UTC
+/// Built on 2025-07-29 at 13:44 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -240,6 +240,10 @@ class _StringsCheckoutEn {
 	String get orderSuccess => 'Order submitted successfully!';
 	String get orderFailed => 'Order submission failed';
 	String get cannotOpenPaymentPage => 'Unable to open payment page';
+	String get selectPickupTimeTitle => 'Please select a pickup time';
+	String get selectDeliveryTimeTitle => 'Please select a delivery time';
+	String get cancelButton => 'Cancel';
+	String get selectTimeHint => 'Please select a time';
 }
 
 // Path: payment
@@ -592,6 +596,10 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get orderSuccess => 'Bestelling succesvol geplaatst!';
 	@override String get orderFailed => 'Bestelling plaatsen mislukt';
 	@override String get cannotOpenPaymentPage => 'De betalingspagina kan niet geopend worden';
+	@override String get selectPickupTimeTitle => 'Selecteer een afhaaltijd';
+	@override String get selectDeliveryTimeTitle => 'Selecteer een bezorgtijd';
+	@override String get cancelButton => 'Annuleren';
+	@override String get selectTimeHint => 'Selecteer een tijd';
 }
 
 // Path: payment
@@ -865,6 +873,10 @@ extension on Translations {
 			case 'checkout.orderSuccess': return 'Order submitted successfully!';
 			case 'checkout.orderFailed': return 'Order submission failed';
 			case 'checkout.cannotOpenPaymentPage': return 'Unable to open payment page';
+			case 'checkout.selectPickupTimeTitle': return 'Please select a pickup time';
+			case 'checkout.selectDeliveryTimeTitle': return 'Please select a delivery time';
+			case 'checkout.cancelButton': return 'Cancel';
+			case 'checkout.selectTimeHint': return 'Please select a time';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
@@ -1029,6 +1041,10 @@ extension on _StringsNl {
 			case 'checkout.orderSuccess': return 'Bestelling succesvol geplaatst!';
 			case 'checkout.orderFailed': return 'Bestelling plaatsen mislukt';
 			case 'checkout.cannotOpenPaymentPage': return 'De betalingspagina kan niet geopend worden';
+			case 'checkout.selectPickupTimeTitle': return 'Selecteer een afhaaltijd';
+			case 'checkout.selectDeliveryTimeTitle': return 'Selecteer een bezorgtijd';
+			case 'checkout.cancelButton': return 'Annuleren';
+			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';

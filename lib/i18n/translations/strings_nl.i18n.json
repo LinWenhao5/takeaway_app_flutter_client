@@ -38,7 +38,11 @@
     "submitOrder": "Bestelling plaatsen",
     "orderSuccess": "Bestelling succesvol geplaatst!",
     "orderFailed": "Bestelling plaatsen mislukt",
-    "cannotOpenPaymentPage": "De betalingspagina kan niet geopend worden"
+    "cannotOpenPaymentPage": "De betalingspagina kan niet geopend worden",
+    "selectPickupTimeTitle": "Selecteer een afhaaltijd",
+    "selectDeliveryTimeTitle": "Selecteer een bezorgtijd",
+    "cancelButton": "Annuleren",
+    "selectTimeHint": "Selecteer een tijd"
   },
   "payment": {
     "paymentTitle": "Betaling",

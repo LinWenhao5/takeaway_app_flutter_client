@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/available_time_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_item_list.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/address_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/order_type_selector.dart';
@@ -21,6 +21,7 @@ class CheckoutView extends ConsumerStatefulWidget {
 
 class _CheckoutViewState extends ConsumerState<CheckoutView> {
   OrderType _selectedType = OrderType.delivery;
+  String? _selectedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
               onChanged: (type) {
                 setState(() {
                   _selectedType = type;
+                  _selectedTime = null;
                 });
               },
             ),
@@ -56,6 +58,12 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                 addresses: addresses,
                 activeAddressId: activeAddressId,
                 cartSummary: cartSummary,
+                selectedTime: _selectedTime,
+                onTimeChanged: (time) {
+                  setState(() {
+                    _selectedTime = time;
+                  });
+                },
               ),
             ),
           ],
@@ -70,6 +78,8 @@ class CheckoutContent extends StatelessWidget {
   final List addresses;
   final int? activeAddressId;
   final dynamic cartSummary;
+  final String? selectedTime;
+  final ValueChanged<String?> onTimeChanged;
 
   const CheckoutContent({
     super.key,
@@ -77,6 +87,8 @@ class CheckoutContent extends StatelessWidget {
     required this.addresses,
     required this.activeAddressId,
     required this.cartSummary,
+    required this.selectedTime,
+    required this.onTimeChanged,
   });
 
   @override
@@ -92,18 +104,13 @@ class CheckoutContent extends StatelessWidget {
             const AddressSelector(),
             const SizedBox(height: 32),
           ],
-          const PaymentMethodSelector(),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(context.t.checkout.subtotal, style: Theme.of(context).textTheme.titleMedium),
-              Text(
-                '€${cartSummary.totalPrice}',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ],
+          AvailableTimeSelector(
+            orderType: orderType,
+            selectedTime: selectedTime,
+            onChanged: onTimeChanged,
           ),
+          const SizedBox(height: 32),
+          const PaymentMethodSelector(),
           const SizedBox(height: 24),
           SubmitOrderButton(
             enabled: orderType == OrderType.pickup || (addresses.isNotEmpty && activeAddressId != null),
