@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_reserve_time_info.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_status_line.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_product_list.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_address_info.dart';
@@ -127,9 +128,12 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               ),
               const SizedBox(height: 40),
               OrderStatusLine(status: order.status, orderType: order.orderType),
-              const SizedBox(height: 20),
-              if (order.orderType == OrderType.delivery)
+              const Divider(height: 32, thickness: 1),
+              OrderReserveTimeInfo(reserveTime: order.reserveTimeAmsterdam),
+              if (order.orderType == OrderType.delivery) ...[
+                const Divider(height: 32, thickness: 1),
                 OrderAddressInfo(address: order.address),
+              ],
               const Divider(height: 32, thickness: 1),
               OrderProductList(products: order.products), 
               const Divider(height: 32),

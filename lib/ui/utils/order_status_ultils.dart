@@ -9,7 +9,6 @@ class OrderStatusUtils {
       return [
         OrderStatus.unpaid,
         OrderStatus.paid,
-        OrderStatus.waitingPickup,
         OrderStatus.completed,
       ];
     } else {
@@ -31,8 +30,6 @@ class OrderStatusUtils {
         return Colors.grey;
       case OrderStatus.delivering:
         return Colors.lightBlueAccent;
-      case OrderStatus.waitingPickup:
-        return Colors.orange;
       case OrderStatus.completed:
         return Colors.blue;
     }
@@ -46,8 +43,6 @@ class OrderStatusUtils {
         return context.t.orderStatus.unpaid;
       case OrderStatus.delivering:
         return context.t.orderStatus.delivering;
-      case OrderStatus.waitingPickup:
-        return context.t.orderStatus.waitingPickup;
       case OrderStatus.completed:
         return context.t.orderStatus.completed;
     }
@@ -61,8 +56,6 @@ class OrderStatusUtils {
         return Icons.hourglass_top;
       case OrderStatus.delivering:
         return Icons.local_shipping;
-      case OrderStatus.waitingPickup:
-        return Icons.store;
       case OrderStatus.completed:
         return Icons.done_all;
     }
@@ -76,8 +69,6 @@ class OrderStatusUtils {
         return Icons.receipt;
       case OrderStatus.delivering:
         return Icons.local_shipping;
-      case OrderStatus.waitingPickup:
-        return Icons.store;
       case OrderStatus.completed:
         return Icons.check_circle_outline;
     }

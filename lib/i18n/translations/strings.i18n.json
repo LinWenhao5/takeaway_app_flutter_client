@@ -45,7 +45,7 @@
     "reserveTimeTitle": "Reserve a time",
     "selectTimeHint": "Please select a time",
     "selectTimeError": "Please select a valid time",
-    "closedMessage": "The restaurant is closed on this day"
+    "closedMessage": "The restaurant is closed today or currently not open."
   },
   "payment": {
     "paymentTitle": "Payment",
@@ -60,7 +60,6 @@
   "orderStatus": {
     "paid": "Paid",
     "unpaid": "Unpaid",
-    "waitingPickup": "Ready for pickup",
     "delivering": "Delivering",
     "completed": "Completed",
     "unknown": "Unknown status"
@@ -91,6 +90,7 @@
     "totalPrice": "Total Price"
   },
   "orderDetails": {
+    "reserveTime": "Reserved Time",
     "orderDetails": "Order Details",
     "totalPrice": "Total Price",
     "products": "Dishes"
@@ -198,6 +198,8 @@
   },
   "common": {
     "today": "Today",
-    "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    "tomorrow": "Tomorrow",
+    "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
   }
 }

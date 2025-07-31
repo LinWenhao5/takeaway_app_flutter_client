@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 342 (171 per locale)
+/// Strings: 368 (184 per locale)
 ///
-/// Built on 2025-07-31 at 13:51 UTC
+/// Built on 2025-07-31 at 20:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -247,7 +247,7 @@ class _StringsCheckoutEn {
 	String get reserveTimeTitle => 'Reserve a time';
 	String get selectTimeHint => 'Please select a time';
 	String get selectTimeError => 'Please select a valid time';
-	String get closedMessage => 'The restaurant is closed on this day';
+	String get closedMessage => 'The restaurant is closed today or currently not open.';
 }
 
 // Path: payment
@@ -276,7 +276,6 @@ class _StringsOrderStatusEn {
 	// Translations
 	String get paid => 'Paid';
 	String get unpaid => 'Unpaid';
-	String get waitingPickup => 'Ready for pickup';
 	String get delivering => 'Delivering';
 	String get completed => 'Completed';
 	String get unknown => 'Unknown status';
@@ -335,6 +334,7 @@ class _StringsOrderDetailsEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get reserveTime => 'Reserved Time';
 	String get orderDetails => 'Order Details';
 	String get totalPrice => 'Total Price';
 	String get products => 'Dishes';
@@ -475,6 +475,7 @@ class _StringsCommonEn {
 
 	// Translations
 	String get today => 'Today';
+	String get tomorrow => 'Tomorrow';
 	List<String> get weekdays => [
 		'Monday',
 		'Tuesday',
@@ -483,6 +484,20 @@ class _StringsCommonEn {
 		'Friday',
 		'Saturday',
 		'Sunday',
+	];
+	List<String> get months => [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
 	];
 }
 
@@ -626,7 +641,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get reserveTimeTitle => 'Reserveer een tijd';
 	@override String get selectTimeHint => 'Selecteer een tijd';
 	@override String get selectTimeError => 'Selecteer een geldige tijd';
-	@override String get closedMessage => 'Het restaurant is gesloten op deze dag';
+	@override String get closedMessage => 'Het restaurant is vandaag gesloten of momenteel niet geopend.';
 }
 
 // Path: payment
@@ -655,7 +670,6 @@ class _StringsOrderStatusNl implements _StringsOrderStatusEn {
 	// Translations
 	@override String get paid => 'Betaald';
 	@override String get unpaid => 'Niet betaald';
-	@override String get waitingPickup => 'Klaar voor Afhalen';
 	@override String get delivering => 'Bezorging bezig';
 	@override String get completed => 'Voltooid';
 	@override String get unknown => 'Onbekende status';
@@ -684,7 +698,7 @@ class _StringsOrderResultNl implements _StringsOrderResultEn {
 	@override String get status => 'Status';
 	@override String get noOrderId => 'Geen bestelnummer gevonden';
 	@override String get noOrderInfo => 'Geen bestelgegevens beschikbaar';
-	@override String get goToOrderPage => 'Naar besteloverzich';
+	@override String get goToOrderPage => 'Naar besteloverzicht';
 	@override String get timeout => 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
 }
 
@@ -714,6 +728,7 @@ class _StringsOrderDetailsNl implements _StringsOrderDetailsEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get reserveTime => 'Gereseveerde Tijd';
 	@override String get orderDetails => 'Bestelgegevens';
 	@override String get totalPrice => 'Totaal bedrag';
 	@override String get products => 'Gerechten';
@@ -854,6 +869,7 @@ class _StringsCommonNl implements _StringsCommonEn {
 
 	// Translations
 	@override String get today => 'Vandaag';
+	@override String get tomorrow => 'Morgen';
 	@override List<String> get weekdays => [
 		'Maandag',
 		'Dinsdag',
@@ -862,6 +878,20 @@ class _StringsCommonNl implements _StringsCommonEn {
 		'Vrijdag',
 		'Zaterdag',
 		'Zondag',
+	];
+	@override List<String> get months => [
+		'januari',
+		'februari',
+		'maart',
+		'april',
+		'mei',
+		'juni',
+		'juli',
+		'augustus',
+		'september',
+		'oktober',
+		'november',
+		'december',
 	];
 }
 
@@ -925,7 +955,7 @@ extension on Translations {
 			case 'checkout.reserveTimeTitle': return 'Reserve a time';
 			case 'checkout.selectTimeHint': return 'Please select a time';
 			case 'checkout.selectTimeError': return 'Please select a valid time';
-			case 'checkout.closedMessage': return 'The restaurant is closed on this day';
+			case 'checkout.closedMessage': return 'The restaurant is closed today or currently not open.';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
@@ -936,7 +966,6 @@ extension on Translations {
 			case 'payment.payNow': return 'Pay Now';
 			case 'orderStatus.paid': return 'Paid';
 			case 'orderStatus.unpaid': return 'Unpaid';
-			case 'orderStatus.waitingPickup': return 'Ready for pickup';
 			case 'orderStatus.delivering': return 'Delivering';
 			case 'orderStatus.completed': return 'Completed';
 			case 'orderStatus.unknown': return 'Unknown status';
@@ -959,6 +988,7 @@ extension on Translations {
 			case 'orderHistory.deliveryAddress': return 'Delivery Address';
 			case 'orderHistory.products': return 'Products';
 			case 'orderHistory.totalPrice': return 'Total Price';
+			case 'orderDetails.reserveTime': return 'Reserved Time';
 			case 'orderDetails.orderDetails': return 'Order Details';
 			case 'orderDetails.totalPrice': return 'Total Price';
 			case 'orderDetails.products': return 'Dishes';
@@ -1052,6 +1082,7 @@ extension on Translations {
 			case 'settings.greetings.night': return 'Good night! Sweet dreams 🌙';
 			case 'settings.greetings.hello': return 'Hello there! 👋';
 			case 'common.today': return 'Today';
+			case 'common.tomorrow': return 'Tomorrow';
 			case 'common.weekdays.0': return 'Monday';
 			case 'common.weekdays.1': return 'Tuesday';
 			case 'common.weekdays.2': return 'Wednesday';
@@ -1059,6 +1090,18 @@ extension on Translations {
 			case 'common.weekdays.4': return 'Friday';
 			case 'common.weekdays.5': return 'Saturday';
 			case 'common.weekdays.6': return 'Sunday';
+			case 'common.months.0': return 'January';
+			case 'common.months.1': return 'February';
+			case 'common.months.2': return 'March';
+			case 'common.months.3': return 'April';
+			case 'common.months.4': return 'May';
+			case 'common.months.5': return 'June';
+			case 'common.months.6': return 'July';
+			case 'common.months.7': return 'August';
+			case 'common.months.8': return 'September';
+			case 'common.months.9': return 'October';
+			case 'common.months.10': return 'November';
+			case 'common.months.11': return 'December';
 			default: return null;
 		}
 	}
@@ -1104,7 +1147,7 @@ extension on _StringsNl {
 			case 'checkout.reserveTimeTitle': return 'Reserveer een tijd';
 			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
 			case 'checkout.selectTimeError': return 'Selecteer een geldige tijd';
-			case 'checkout.closedMessage': return 'Het restaurant is gesloten op deze dag';
+			case 'checkout.closedMessage': return 'Het restaurant is vandaag gesloten of momenteel niet geopend.';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
@@ -1115,7 +1158,6 @@ extension on _StringsNl {
 			case 'payment.payNow': return 'Betaal nu';
 			case 'orderStatus.paid': return 'Betaald';
 			case 'orderStatus.unpaid': return 'Niet betaald';
-			case 'orderStatus.waitingPickup': return 'Klaar voor Afhalen';
 			case 'orderStatus.delivering': return 'Bezorging bezig';
 			case 'orderStatus.completed': return 'Voltooid';
 			case 'orderStatus.unknown': return 'Onbekende status';
@@ -1126,7 +1168,7 @@ extension on _StringsNl {
 			case 'orderResult.status': return 'Status';
 			case 'orderResult.noOrderId': return 'Geen bestelnummer gevonden';
 			case 'orderResult.noOrderInfo': return 'Geen bestelgegevens beschikbaar';
-			case 'orderResult.goToOrderPage': return 'Naar besteloverzich';
+			case 'orderResult.goToOrderPage': return 'Naar besteloverzicht';
 			case 'orderResult.timeout': return 'Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw.';
 			case 'orderHistory.orderHistory': return 'Bestelgeschiedenis';
 			case 'orderHistory.today': return 'Bestellingen van vandaag';
@@ -1138,6 +1180,7 @@ extension on _StringsNl {
 			case 'orderHistory.deliveryAddress': return 'Bezorgadres';
 			case 'orderHistory.products': return 'Producten';
 			case 'orderHistory.totalPrice': return 'Totaal bedrag';
+			case 'orderDetails.reserveTime': return 'Gereseveerde Tijd';
 			case 'orderDetails.orderDetails': return 'Bestelgegevens';
 			case 'orderDetails.totalPrice': return 'Totaal bedrag';
 			case 'orderDetails.products': return 'Gerechten';
@@ -1231,6 +1274,7 @@ extension on _StringsNl {
 			case 'settings.greetings.night': return 'Welterusten! 🌙';
 			case 'settings.greetings.hello': return 'Hallo daar! 👋';
 			case 'common.today': return 'Vandaag';
+			case 'common.tomorrow': return 'Morgen';
 			case 'common.weekdays.0': return 'Maandag';
 			case 'common.weekdays.1': return 'Dinsdag';
 			case 'common.weekdays.2': return 'Woensdag';
@@ -1238,6 +1282,18 @@ extension on _StringsNl {
 			case 'common.weekdays.4': return 'Vrijdag';
 			case 'common.weekdays.5': return 'Zaterdag';
 			case 'common.weekdays.6': return 'Zondag';
+			case 'common.months.0': return 'januari';
+			case 'common.months.1': return 'februari';
+			case 'common.months.2': return 'maart';
+			case 'common.months.3': return 'april';
+			case 'common.months.4': return 'mei';
+			case 'common.months.5': return 'juni';
+			case 'common.months.6': return 'juli';
+			case 'common.months.7': return 'augustus';
+			case 'common.months.8': return 'september';
+			case 'common.months.9': return 'oktober';
+			case 'common.months.10': return 'november';
+			case 'common.months.11': return 'december';
 			default: return null;
 		}
 	}

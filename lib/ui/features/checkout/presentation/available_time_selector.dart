@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
@@ -52,7 +53,7 @@ class AvailableTimeSelector extends ConsumerWidget {
                             // 左侧日期栏
                             Container(
                               width: 130,
-                              color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                              color: Theme.of(context).colorScheme.surface,
                               child: ListView.builder(
                                 itemCount: dates.length,
                                 itemBuilder: (context, index) {
@@ -63,7 +64,7 @@ class AvailableTimeSelector extends ConsumerWidget {
 
                                   return ListTile(
                                     tileColor: isSelected
-                                        ? Theme.of(context).colorScheme.primary.withOpacity(0.15)
+                                        ? Theme.of(context).colorScheme.primary
                                         : Colors.transparent,
                                     shape: isSelected
                                         ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
@@ -86,7 +87,7 @@ class AvailableTimeSelector extends ConsumerWidget {
                                           ),
                                         ),
                                         Text(
-                                          "${date.month}/${date.day}",
+                                          "${date.day} ${context.t.common.months[date.month - 1]}",
                                           textAlign: TextAlign.center,
                                           softWrap: false,
                                           overflow: TextOverflow.ellipsis,
@@ -106,14 +107,40 @@ class AvailableTimeSelector extends ConsumerWidget {
                                 },
                               ),
                             ),
+                            // 垂直分割线
+                            const VerticalDivider(width: 1, thickness: 1),
                             // 右侧时间列表
                             Expanded(
                               child: availableTimesAsync.when(
-                                loading: () => const Center(child: CircularProgressIndicator()),
+                                loading: () => Center(
+                                  child: SpinKitFadingGrid(
+                                    color: Theme.of(context).primaryColor,
+                                    size: 32
+                                  ),
+                                ),
                                 error: (err, _) => Center(child: Text(context.t.errors.genericErrorMessage)),
                                 data: (response) {
                                   if (response.times.isEmpty) {
-                                    return Center(child: Text(context.t.checkout.closedMessage));
+                                    return Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.info_outline, size: 40, color: Theme.of(context).colorScheme.onSurface),
+                                            const SizedBox(height: 16),
+                                            Text(
+                                              context.t.checkout.closedMessage,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Theme.of(context).colorScheme.onSurface,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
                                   }
                                   return ListView.separated(
                                     itemCount: response.times.length,

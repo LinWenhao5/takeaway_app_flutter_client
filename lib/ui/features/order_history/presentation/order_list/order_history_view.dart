@@ -75,7 +75,6 @@ class _OrderHistoryViewState extends ConsumerState<OrderHistoryView> {
       ));
     }
     if (state.error != null) {
-      print('Error fetching order history: ${state.error}');
       return Center(child: Text(context.t.errors.genericErrorMessage));
     }
     if (state.data == null) {

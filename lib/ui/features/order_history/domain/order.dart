@@ -9,6 +9,7 @@ class Order {
   final OrderStatus status;
   final String totalPrice;
   final String createdAt;
+  final String reserveTime;
   final AddressSnapshot? address;
   final List<Product> products;
   final OrderType orderType;
@@ -18,6 +19,7 @@ class Order {
     required this.status,
     required this.totalPrice,
     required this.createdAt,
+    required this.reserveTime,
     required this.address,
     required this.products,
     required this.orderType,
@@ -29,6 +31,7 @@ class Order {
       status: OrderStatusExtension.fromString(json['status']),
       totalPrice: json['total_price'],
       createdAt: json['created_at'],
+      reserveTime: json['reserve_time'] ?? '',
       address: json['address_snapshot'] != null
           ? AddressSnapshot.fromJson(json['address_snapshot'])
           : null,
@@ -42,4 +45,6 @@ class Order {
   }
 
   String get createdAtAmsterdam => DateTimeUtil.formatToAmsterdam(createdAt);
+
+  String get reserveTimeAmsterdam => DateTimeUtil.formatReserveTimeHuman(reserveTime);
 }

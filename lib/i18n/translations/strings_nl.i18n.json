@@ -45,7 +45,7 @@
     "reserveTimeTitle": "Reserveer een tijd",
     "selectTimeHint": "Selecteer een tijd",
     "selectTimeError": "Selecteer een geldige tijd",
-    "closedMessage": "Het restaurant is gesloten op deze dag"
+    "closedMessage": "Het restaurant is vandaag gesloten of momenteel niet geopend."
   },
   "payment": {
     "paymentTitle": "Betaling",
@@ -60,7 +60,6 @@
   "orderStatus": {
     "paid": "Betaald",
     "unpaid": "Niet betaald",
-    "waitingPickup": "Klaar voor Afhalen",
     "delivering": "Bezorging bezig",
     "completed": "Voltooid",
     "unknown": "Onbekende status"
@@ -75,7 +74,7 @@
     "status": "Status",
     "noOrderId": "Geen bestelnummer gevonden",
     "noOrderInfo": "Geen bestelgegevens beschikbaar",
-    "goToOrderPage": "Naar besteloverzich",
+    "goToOrderPage": "Naar besteloverzicht",
     "timeout": "Het ophalen van de bestelstatus duurde te lang, probeer het later opnieuw."
   },
   "orderHistory": {
@@ -91,6 +90,7 @@
     "totalPrice": "Totaal bedrag"
   },
   "orderDetails": {
+    "reserveTime": "Gereseveerde Tijd",
     "orderDetails": "Bestelgegevens",
     "totalPrice": "Totaal bedrag",
     "products": "Gerechten"
@@ -198,6 +198,8 @@
   },
   "common": {
     "today": "Vandaag",
-    "weekdays": ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"]
+    "tomorrow": "Morgen",
+    "weekdays": ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
+    "months": ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"]
   }
 }

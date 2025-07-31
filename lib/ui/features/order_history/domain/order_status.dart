@@ -2,7 +2,6 @@ enum OrderStatus {
   unpaid,
   paid,
   delivering,
-  waitingPickup,
   completed,
 }
 
@@ -15,8 +14,6 @@ extension OrderStatusExtension on OrderStatus {
         return 'paid';
       case OrderStatus.delivering:
         return 'delivering';
-      case OrderStatus.waitingPickup:
-        return 'waiting_pickup';
       case OrderStatus.completed:
         return 'completed';
     }
@@ -30,8 +27,6 @@ extension OrderStatusExtension on OrderStatus {
         return OrderStatus.paid;
       case 'delivering':
         return OrderStatus.delivering;
-      case 'waiting_pickup':
-        return OrderStatus.waitingPickup;
       case 'completed':
         return OrderStatus.completed;
       default:
