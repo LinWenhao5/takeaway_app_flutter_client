@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 322 (161 per locale)
+/// Strings: 326 (163 per locale)
 ///
-/// Built on 2025-07-29 at 21:35 UTC
+/// Built on 2025-07-31 at 12:09 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -243,7 +243,9 @@ class _StringsCheckoutEn {
 	String get selectPickupTimeTitle => 'Please select a pickup time';
 	String get selectDeliveryTimeTitle => 'Please select a delivery time';
 	String get cancelButton => 'Cancel';
+	String get reserveTimeTitle => 'Reserve a time';
 	String get selectTimeHint => 'Please select a time';
+	String get selectTimeError => 'Please select a valid time';
 	String get closedMessage => 'The restaurant is currently closed.';
 }
 
@@ -600,7 +602,9 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get selectPickupTimeTitle => 'Selecteer een afhaaltijd';
 	@override String get selectDeliveryTimeTitle => 'Selecteer een bezorgtijd';
 	@override String get cancelButton => 'Annuleren';
+	@override String get reserveTimeTitle => 'Reserveer een tijd';
 	@override String get selectTimeHint => 'Selecteer een tijd';
+	@override String get selectTimeError => 'Selecteer een geldige tijd';
 	@override String get closedMessage => 'De restaurant is momenteel gesloten.';
 }
 
@@ -878,7 +882,9 @@ extension on Translations {
 			case 'checkout.selectPickupTimeTitle': return 'Please select a pickup time';
 			case 'checkout.selectDeliveryTimeTitle': return 'Please select a delivery time';
 			case 'checkout.cancelButton': return 'Cancel';
+			case 'checkout.reserveTimeTitle': return 'Reserve a time';
 			case 'checkout.selectTimeHint': return 'Please select a time';
+			case 'checkout.selectTimeError': return 'Please select a valid time';
 			case 'checkout.closedMessage': return 'The restaurant is currently closed.';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
@@ -1047,7 +1053,9 @@ extension on _StringsNl {
 			case 'checkout.selectPickupTimeTitle': return 'Selecteer een afhaaltijd';
 			case 'checkout.selectDeliveryTimeTitle': return 'Selecteer een bezorgtijd';
 			case 'checkout.cancelButton': return 'Annuleren';
+			case 'checkout.reserveTimeTitle': return 'Reserveer een tijd';
 			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
+			case 'checkout.selectTimeError': return 'Selecteer een geldige tijd';
 			case 'checkout.closedMessage': return 'De restaurant is momenteel gesloten.';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';

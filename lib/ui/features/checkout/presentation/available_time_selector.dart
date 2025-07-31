@@ -52,87 +52,90 @@ class AvailableTimeSelector extends StatelessWidget {
                 return Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 800),
-                    child: Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                      ),
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          const itemHeight = 40.0;
-                          final visibleCount = (constraints.maxHeight / itemHeight).floor();
-                          final selectedIndex = selectedTime == null
-                              ? 0
-                              : response.times.indexOf(selectedTime!);
-                          final maxScrollExtent = (response.times.length - visibleCount) * itemHeight;
-                          double offset = (selectedIndex - (visibleCount ~/ 2)) * itemHeight;
-                          offset = offset.clamp(0, maxScrollExtent > 0 ? maxScrollExtent : 0) as double;
-                          final scrollController = ScrollController(initialScrollOffset: offset);
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                        ),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            const itemHeight = 40.0;
+                            final visibleCount = (constraints.maxHeight / itemHeight).floor();
+                            final selectedIndex = selectedTime == null
+                                ? 0
+                                : response.times.indexOf(selectedTime!);
+                            final maxScrollExtent = (response.times.length - visibleCount) * itemHeight;
+                            double offset = (selectedIndex - (visibleCount ~/ 2)) * itemHeight;
+                            offset = offset.clamp(0, maxScrollExtent > 0 ? maxScrollExtent : 0) as double;
+                            final scrollController = ScrollController(initialScrollOffset: offset);
 
-                          return SafeArea(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 16),
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.surface,
-                                    borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                                  ),
-                                  child: Text(
-                                    orderType == OrderType.pickup
-                                        ? context.t.checkout.selectPickupTimeTitle
-                                        : context.t.checkout.selectDeliveryTimeTitle,
-                                    style: Theme.of(context).textTheme.titleMedium,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                const Divider(height: 1),
-                                Flexible(
-                                  child: ListView.separated(
-                                    controller: scrollController,
-                                    padding: const EdgeInsets.symmetric(vertical: 8),
-                                    itemCount: response.times.length,
-                                    separatorBuilder: (_, __) => const Divider(height: 1),
-                                    itemBuilder: (context, index) {
-                                      final time = response.times[index];
-                                      final isSelected = time == selectedTime;
-                                      return ListTile(
-                                        dense: true,
-                                        title: Text(time),
-                                        selected: isSelected,
-                                        selectedTileColor: Theme.of(context).colorScheme.primaryContainer,
-                                        trailing: isSelected
-                                            ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
-                                            : null,
-                                        textColor: isSelected
-                                            ? Theme.of(context).colorScheme.primary
-                                            : Theme.of(context).colorScheme.onSurface,
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                          onChanged(time);
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  color: Theme.of(context).colorScheme.surface,
-                                  padding: const EdgeInsets.only(top: 8, bottom: 16),
-                                  child: TextButton(
-                                    onPressed: () => Navigator.pop(context),
+                            return SafeArea(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    padding: const EdgeInsets.symmetric(vertical: 16),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.surface,
+                                      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                                    ),
                                     child: Text(
-                                      context.t.checkout.cancelButton,
-                                      style: TextStyle(color: Theme.of(context).colorScheme.error),
+                                      orderType == OrderType.pickup
+                                          ? context.t.checkout.selectPickupTimeTitle
+                                          : context.t.checkout.selectDeliveryTimeTitle,
+                                      style: Theme.of(context).textTheme.titleMedium,
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                                  const Divider(height: 1),
+                                  Flexible(
+                                    child: ListView.separated(
+                                      controller: scrollController,
+                                      padding: const EdgeInsets.symmetric(vertical: 8),
+                                      itemCount: response.times.length,
+                                      separatorBuilder: (_, __) => const Divider(height: 1),
+                                      itemBuilder: (context, index) {
+                                        final time = response.times[index];
+                                        final isSelected = time == selectedTime;
+                                        return ListTile(
+                                          dense: true,
+                                          title: Text(time),
+                                          selected: isSelected,
+                                          selectedTileColor: Theme.of(context).colorScheme.primaryContainer,
+                                          trailing: isSelected
+                                              ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+                                              : null,
+                                          textColor: isSelected
+                                              ? Theme.of(context).colorScheme.primary
+                                              : Theme.of(context).colorScheme.onSurface,
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                            onChanged(time);
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    color: Theme.of(context).colorScheme.surface,
+                                    padding: const EdgeInsets.only(top: 8, bottom: 16),
+                                    child: TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text(
+                                        context.t.checkout.cancelButton,
+                                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -142,23 +145,33 @@ class AvailableTimeSelector extends StatelessWidget {
           },
         );
       },
-      child: InputDecorator(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: context.t.checkout.selectTimeHint,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-          prefixIcon: Icon(
-            Icons.access_time,
-            color: Theme.of(context).colorScheme.onSurface,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            context.t.checkout.reserveTimeTitle,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
-        ),
-        child: Text(
-          selectedTime ?? context.t.checkout.selectTimeHint,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 16,
+          const SizedBox(height: 8),
+          InputDecorator(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: context.t.checkout.selectTimeHint,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              prefixIcon: Icon(
+                Icons.access_time,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+            child: Text(
+              selectedTime ?? context.t.checkout.selectTimeHint,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: 16,
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
