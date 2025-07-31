@@ -206,7 +206,9 @@ class AvailableTimeSelector extends ConsumerWidget {
               ),
             ),
             child: Text(
-              selectedTime ?? context.t.checkout.selectTimeHint,
+              selectedTime != null
+                  ? DateTimeUtil.formatReserveTimeHuman(selectedTime!)
+                  : context.t.checkout.selectTimeHint,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onSurface,
                 fontSize: 16,

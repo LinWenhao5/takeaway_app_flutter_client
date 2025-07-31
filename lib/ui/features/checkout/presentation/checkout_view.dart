@@ -19,9 +19,6 @@ class CheckoutView extends ConsumerStatefulWidget {
 }
 
 class _CheckoutViewState extends ConsumerState<CheckoutView> {
-  OrderType _selectedType = OrderType.delivery;
-  String? _selectedTime;
-
   @override
   Widget build(BuildContext context) {
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
@@ -35,6 +32,8 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
     final cartSummary = ref.watch(cartSummaryProvider);
     final activeAddressId = ref.watch(selectedAddressIdProvider);
     final addresses = ref.watch(addressNotifierProvider).addresses;
+    final orderType = ref.watch(selectedOrderTypeProvider);
+    final selectedTime = ref.watch(selectedReserveTimeProvider);
 
     return Align(
       alignment: Alignment.topCenter,
@@ -43,26 +42,21 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
         child: Column(
           children: [
             OrderTypeSelector(
-              selectedType: _selectedType,
+              selectedType: orderType,
               onChanged: (type) {
-                setState(() {
-                  _selectedType = type;
-                  _selectedTime = null;
-                });
                 ref.read(selectedOrderTypeProvider.notifier).state = type;
+                ref.read(selectedReserveTimeProvider.notifier).state = null;
               },
             ),
             Expanded(
               child: CheckoutContent(
-                orderType: _selectedType,
+                orderType: orderType,
                 addresses: addresses,
                 activeAddressId: activeAddressId,
                 cartSummary: cartSummary,
-                selectedTime: _selectedTime,
+                selectedTime: selectedTime,
                 onTimeChanged: (time) {
-                  setState(() {
-                    _selectedTime = time;
-                  });
+                  ref.read(selectedReserveTimeProvider.notifier).state = time;
                 },
               ),
             ),

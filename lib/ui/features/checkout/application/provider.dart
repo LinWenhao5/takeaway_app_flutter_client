@@ -25,3 +25,5 @@ final selectedOrderTypeProvider = StateProvider<OrderType>((ref) => OrderType.de
 
 final selectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
 
+final selectedReserveTimeProvider = StateProvider<String?>((ref) => null);
+
