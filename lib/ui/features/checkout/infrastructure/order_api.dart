@@ -30,9 +30,15 @@ class OrderApi {
 
   static Future<AvailableTimesResponse> fetchAvailableTimes({
     required OrderType orderType,
+    String? date,
   }) async {
+    final query = [
+      'order_type=${orderType.value}',
+      if (date != null) 'date=$date',
+    ].join('&');
+
     final response = await ApiClient.get(
-      '/business-hours/available-times?order_type=${orderType.value}',
+      '/business-hours/available-times?$query',
     );
     return AvailableTimesResponse.fromJson(response);
   }

@@ -45,7 +45,7 @@
     "reserveTimeTitle": "Reserve a time",
     "selectTimeHint": "Please select a time",
     "selectTimeError": "Please select a valid time",
-    "closedMessage": "The restaurant is currently closed."
+    "closedMessage": "The restaurant is closed on this day"
   },
   "payment": {
     "paymentTitle": "Payment",
@@ -195,5 +195,9 @@
       "night": "Good night! Sweet dreams 🌙",
       "hello": "Hello there! 👋"
     }
+  },
+  "common": {
+    "today": "Today",
+    "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   }
 }

@@ -12,6 +12,16 @@ final orderNotifierProvider =
   (ref) => OrderNotifier(),
 );
 
-final availableTimesProvider = FutureProvider.family<AvailableTimesResponse, OrderType>((ref, orderType) async {
-  return await OrderApi.fetchAvailableTimes(orderType: orderType);
+final availableTimesProvider = FutureProvider<AvailableTimesResponse>((ref) async {
+  final orderType = ref.watch(selectedOrderTypeProvider);
+  final selectedDate = ref.watch(selectedDateProvider);
+  return await OrderApi.fetchAvailableTimes(
+    orderType: orderType,
+    date: selectedDate.toIso8601String().substring(0, 10),
+  );
 });
+
+final selectedOrderTypeProvider = StateProvider<OrderType>((ref) => OrderType.delivery);
+
+final selectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
+

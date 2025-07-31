@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
-import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/available_times_response.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/available_time_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_item_list.dart';
@@ -37,7 +35,6 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
     final cartSummary = ref.watch(cartSummaryProvider);
     final activeAddressId = ref.watch(selectedAddressIdProvider);
     final addresses = ref.watch(addressNotifierProvider).addresses;
-    final availableTimesAsync = ref.watch(availableTimesProvider(_selectedType));
 
     return Align(
       alignment: Alignment.topCenter,
@@ -52,6 +49,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                   _selectedType = type;
                   _selectedTime = null;
                 });
+                ref.read(selectedOrderTypeProvider.notifier).state = type;
               },
             ),
             Expanded(
@@ -66,7 +64,6 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                     _selectedTime = time;
                   });
                 },
-                availableTimesAsync: availableTimesAsync,
               ),
             ),
           ],
@@ -83,7 +80,6 @@ class CheckoutContent extends ConsumerWidget {
   final dynamic cartSummary;
   final String? selectedTime;
   final ValueChanged<String?> onTimeChanged;
-  final AsyncValue<AvailableTimesResponse> availableTimesAsync;
 
   const CheckoutContent({
     super.key,
@@ -93,7 +89,6 @@ class CheckoutContent extends ConsumerWidget {
     required this.cartSummary,
     required this.selectedTime,
     required this.onTimeChanged,
-    required this.availableTimesAsync,
   });
 
   @override
@@ -102,7 +97,7 @@ class CheckoutContent extends ConsumerWidget {
       onRefresh: () async {
         final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
         await fetchCartNotifier.fetchCart();
-        ref.invalidate(availableTimesProvider(orderType));
+        ref.invalidate(availableTimesProvider);
       },
       child: ConstrainedBox(
         constraints: BoxConstraints(
@@ -121,10 +116,8 @@ class CheckoutContent extends ConsumerWidget {
                 const SizedBox(height: 32),
               ],
               AvailableTimeSelector(
-                orderType: orderType,
                 selectedTime: selectedTime,
-                onChanged: onTimeChanged,
-                availableTimesAsync: availableTimesAsync,
+                onChanged: onTimeChanged
               ),
               const SizedBox(height: 32),
               const PaymentMethodSelector(),

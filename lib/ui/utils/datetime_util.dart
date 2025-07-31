@@ -12,4 +12,10 @@ class DateTimeUtil {
     final amsNow = tz.TZDateTime.now(tz.getLocation('Europe/Amsterdam'));
     return DateFormat(pattern).format(amsNow);
   }
+
+  static String formatFullDateTime(DateTime date, String time) {
+    final dt = DateTime(date.year, date.month, date.day,
+        int.parse(time.split(':')[0]), int.parse(time.split(':')[1]));
+    return DateFormat('yyyy-MM-dd HH:mm').format(dt);
+  }
 }

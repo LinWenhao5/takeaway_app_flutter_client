@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 326 (163 per locale)
+/// Strings: 342 (171 per locale)
 ///
-/// Built on 2025-07-31 at 12:09 UTC
+/// Built on 2025-07-31 at 13:51 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -164,6 +164,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
 	late final _StringsAddressEn address = _StringsAddressEn._(_root);
 	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
+	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 }
 
 // Path: search
@@ -246,7 +247,7 @@ class _StringsCheckoutEn {
 	String get reserveTimeTitle => 'Reserve a time';
 	String get selectTimeHint => 'Please select a time';
 	String get selectTimeError => 'Please select a valid time';
-	String get closedMessage => 'The restaurant is currently closed.';
+	String get closedMessage => 'The restaurant is closed on this day';
 }
 
 // Path: payment
@@ -466,6 +467,25 @@ class _StringsSettingsEn {
 	late final _StringsSettingsGreetingsEn greetings = _StringsSettingsGreetingsEn._(_root);
 }
 
+// Path: common
+class _StringsCommonEn {
+	_StringsCommonEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get today => 'Today';
+	List<String> get weekdays => [
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+		'Sunday',
+	];
+}
+
 // Path: settings.greetings
 class _StringsSettingsGreetingsEn {
 	_StringsSettingsGreetingsEn._(this._root);
@@ -523,6 +543,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
 	@override late final _StringsAddressNl address = _StringsAddressNl._(_root);
 	@override late final _StringsSettingsNl settings = _StringsSettingsNl._(_root);
+	@override late final _StringsCommonNl common = _StringsCommonNl._(_root);
 }
 
 // Path: search
@@ -605,7 +626,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get reserveTimeTitle => 'Reserveer een tijd';
 	@override String get selectTimeHint => 'Selecteer een tijd';
 	@override String get selectTimeError => 'Selecteer een geldige tijd';
-	@override String get closedMessage => 'De restaurant is momenteel gesloten.';
+	@override String get closedMessage => 'Het restaurant is gesloten op deze dag';
 }
 
 // Path: payment
@@ -825,6 +846,25 @@ class _StringsSettingsNl implements _StringsSettingsEn {
 	@override late final _StringsSettingsGreetingsNl greetings = _StringsSettingsGreetingsNl._(_root);
 }
 
+// Path: common
+class _StringsCommonNl implements _StringsCommonEn {
+	_StringsCommonNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get today => 'Vandaag';
+	@override List<String> get weekdays => [
+		'Maandag',
+		'Dinsdag',
+		'Woensdag',
+		'Donderdag',
+		'Vrijdag',
+		'Zaterdag',
+		'Zondag',
+	];
+}
+
 // Path: settings.greetings
 class _StringsSettingsGreetingsNl implements _StringsSettingsGreetingsEn {
 	_StringsSettingsGreetingsNl._(this._root);
@@ -885,7 +925,7 @@ extension on Translations {
 			case 'checkout.reserveTimeTitle': return 'Reserve a time';
 			case 'checkout.selectTimeHint': return 'Please select a time';
 			case 'checkout.selectTimeError': return 'Please select a valid time';
-			case 'checkout.closedMessage': return 'The restaurant is currently closed.';
+			case 'checkout.closedMessage': return 'The restaurant is closed on this day';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
@@ -1011,6 +1051,14 @@ extension on Translations {
 			case 'settings.greetings.evening': return 'Good evening! Treat yourself to sushi tonight 🌇';
 			case 'settings.greetings.night': return 'Good night! Sweet dreams 🌙';
 			case 'settings.greetings.hello': return 'Hello there! 👋';
+			case 'common.today': return 'Today';
+			case 'common.weekdays.0': return 'Monday';
+			case 'common.weekdays.1': return 'Tuesday';
+			case 'common.weekdays.2': return 'Wednesday';
+			case 'common.weekdays.3': return 'Thursday';
+			case 'common.weekdays.4': return 'Friday';
+			case 'common.weekdays.5': return 'Saturday';
+			case 'common.weekdays.6': return 'Sunday';
 			default: return null;
 		}
 	}
@@ -1056,7 +1104,7 @@ extension on _StringsNl {
 			case 'checkout.reserveTimeTitle': return 'Reserveer een tijd';
 			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
 			case 'checkout.selectTimeError': return 'Selecteer een geldige tijd';
-			case 'checkout.closedMessage': return 'De restaurant is momenteel gesloten.';
+			case 'checkout.closedMessage': return 'Het restaurant is gesloten op deze dag';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';
@@ -1182,6 +1230,14 @@ extension on _StringsNl {
 			case 'settings.greetings.evening': return 'Goede avond! Trakteer jezelf op sushi vanavond 🌇';
 			case 'settings.greetings.night': return 'Welterusten! 🌙';
 			case 'settings.greetings.hello': return 'Hallo daar! 👋';
+			case 'common.today': return 'Vandaag';
+			case 'common.weekdays.0': return 'Maandag';
+			case 'common.weekdays.1': return 'Dinsdag';
+			case 'common.weekdays.2': return 'Woensdag';
+			case 'common.weekdays.3': return 'Donderdag';
+			case 'common.weekdays.4': return 'Vrijdag';
+			case 'common.weekdays.5': return 'Zaterdag';
+			case 'common.weekdays.6': return 'Zondag';
 			default: return null;
 		}
 	}

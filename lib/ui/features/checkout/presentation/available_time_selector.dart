@@ -1,143 +1,158 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/available_times_response.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
+import 'package:takeaway_app_flutter_client/ui/utils/datetime_util.dart';
 
-class AvailableTimeSelector extends StatelessWidget {
-  final OrderType orderType;
+class AvailableTimeSelector extends ConsumerWidget {
   final String? selectedTime;
   final ValueChanged<String?> onChanged;
-  final AsyncValue<AvailableTimesResponse> availableTimesAsync;
 
   const AvailableTimeSelector({
     super.key,
-    required this.orderType,
     required this.selectedTime,
     required this.onChanged,
-    required this.availableTimesAsync,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dates = List.generate(5, (i) => DateTime.now().add(Duration(days: i)));
+
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
           context: context,
-          backgroundColor: Colors.transparent,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-          ),
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.5,
-          ),
           builder: (context) {
-            return availableTimesAsync.when(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (err, _) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Text(context.t.errors.genericErrorMessage, style: TextStyle(color: Theme.of(context).colorScheme.error)),
-              ),
-              data: (response) {
-                if (response.times.isEmpty) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Text(
-                      context.t.checkout.closedMessage,
-                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  );
-                }
-                return Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 800),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                      child: Material(
-                        color: Theme.of(context).colorScheme.surface,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                        ),
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            const itemHeight = 40.0;
-                            final visibleCount = (constraints.maxHeight / itemHeight).floor();
-                            final selectedIndex = selectedTime == null
-                                ? 0
-                                : response.times.indexOf(selectedTime!);
-                            final maxScrollExtent = (response.times.length - visibleCount) * itemHeight;
-                            double offset = (selectedIndex - (visibleCount ~/ 2)) * itemHeight;
-                            offset = offset.clamp(0, maxScrollExtent > 0 ? maxScrollExtent : 0) as double;
-                            final scrollController = ScrollController(initialScrollOffset: offset);
+            return Consumer(
+              builder: (context, ref, _) {
+                final selectedDate = ref.watch(selectedDateProvider);
+                final availableTimesAsync = ref.watch(availableTimesProvider);
+                final orderType = ref.watch(selectedOrderTypeProvider);
 
-                            return SafeArea(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.symmetric(vertical: 16),
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).colorScheme.surface,
-                                      borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                                    ),
-                                    child: Text(
-                                      orderType == OrderType.pickup
-                                          ? context.t.checkout.selectPickupTimeTitle
-                                          : context.t.checkout.selectDeliveryTimeTitle,
-                                      style: Theme.of(context).textTheme.titleMedium,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  const Divider(height: 1),
-                                  Flexible(
-                                    child: ListView.separated(
-                                      controller: scrollController,
-                                      padding: const EdgeInsets.symmetric(vertical: 8),
-                                      itemCount: response.times.length,
-                                      separatorBuilder: (_, __) => const Divider(height: 1),
-                                      itemBuilder: (context, index) {
-                                        final time = response.times[index];
-                                        final isSelected = time == selectedTime;
-                                        return ListTile(
-                                          dense: true,
-                                          title: Text(time),
-                                          selected: isSelected,
-                                          selectedTileColor: Theme.of(context).colorScheme.primaryContainer,
-                                          trailing: isSelected
-                                              ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
-                                              : null,
-                                          textColor: isSelected
-                                              ? Theme.of(context).colorScheme.primary
-                                              : Theme.of(context).colorScheme.onSurface,
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                            onChanged(time);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    color: Theme.of(context).colorScheme.surface,
-                                    padding: const EdgeInsets.only(top: 8, bottom: 16),
-                                    child: TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text(
-                                        context.t.checkout.cancelButton,
-                                        style: TextStyle(color: Theme.of(context).colorScheme.error),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
+                final String headerText = orderType == OrderType.delivery
+                    ? context.t.checkout.selectDeliveryTimeTitle
+                    : context.t.checkout.selectPickupTimeTitle;
+
+                return Material(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text(
+                          headerText,
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
-                    ),
+                      const Divider(height: 1),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            // 左侧日期栏
+                            Container(
+                              width: 130,
+                              color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                              child: ListView.builder(
+                                itemCount: dates.length,
+                                itemBuilder: (context, index) {
+                                  final date = dates[index];
+                                  final isSelected = date.day == selectedDate.day &&
+                                      date.month == selectedDate.month &&
+                                      date.year == selectedDate.year;
+
+                                  return ListTile(
+                                    tileColor: isSelected
+                                        ? Theme.of(context).colorScheme.primary.withOpacity(0.15)
+                                        : Colors.transparent,
+                                    shape: isSelected
+                                        ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                                        : null,
+                                    title: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          index == 0
+                                              ? context.t.common.today
+                                              : context.t.common.weekdays[date.weekday - 1],
+                                          textAlign: TextAlign.center,
+                                          softWrap: false,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.primary
+                                                : Theme.of(context).textTheme.bodyMedium?.color,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${date.month}/${date.day}",
+                                          textAlign: TextAlign.center,
+                                          softWrap: false,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.primary
+                                                : Theme.of(context).textTheme.bodyMedium?.color,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    selected: isSelected,
+                                    onTap: () {
+                                      ref.read(selectedDateProvider.notifier).state = date;
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                            // 右侧时间列表
+                            Expanded(
+                              child: availableTimesAsync.when(
+                                loading: () => const Center(child: CircularProgressIndicator()),
+                                error: (err, _) => Center(child: Text(context.t.errors.genericErrorMessage)),
+                                data: (response) {
+                                  if (response.times.isEmpty) {
+                                    return Center(child: Text(context.t.checkout.closedMessage));
+                                  }
+                                  return ListView.separated(
+                                    itemCount: response.times.length,
+                                    separatorBuilder: (_, __) => const Divider(height: 1),
+                                    itemBuilder: (context, index) {
+                                      final time = response.times[index];
+                                      final fullTime = DateTimeUtil.formatFullDateTime(selectedDate, time);
+                                      final isSelected = fullTime == selectedTime;
+                                      return ListTile(
+                                        title: Text(
+                                          time,
+                                          style: TextStyle(
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.primary
+                                                : Theme.of(context).textTheme.bodyMedium?.color,
+                                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                          ),
+                                        ),
+                                        trailing: isSelected
+                                            ? Icon(Icons.check_circle, color: Theme.of(context).colorScheme.secondary)
+                                            : null,
+                                        selected: isSelected,
+                                        shape: isSelected
+                                            ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                                            : null,
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          onChanged(fullTime);
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 );
               },

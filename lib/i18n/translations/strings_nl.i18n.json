@@ -45,7 +45,7 @@
     "reserveTimeTitle": "Reserveer een tijd",
     "selectTimeHint": "Selecteer een tijd",
     "selectTimeError": "Selecteer een geldige tijd",
-    "closedMessage": "De restaurant is momenteel gesloten."
+    "closedMessage": "Het restaurant is gesloten op deze dag"
   },
   "payment": {
     "paymentTitle": "Betaling",
@@ -195,5 +195,9 @@
       "night": "Welterusten! 🌙",
       "hello": "Hallo daar! 👋"
     }
+  },
+  "common": {
+    "today": "Vandaag",
+    "weekdays": ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"]
   }
 }
