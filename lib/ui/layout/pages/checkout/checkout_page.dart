@@ -9,12 +9,8 @@ class CheckoutPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.checkout.checkoutSummary),
-      ),
-      body: const SafeArea(
-        child: CheckoutView(),
-      ),
+      appBar: AppBar(title: Text(context.t.checkout.checkoutSummary)),
+      body: const SafeArea(child: CheckoutView()),
     );
   }
 }

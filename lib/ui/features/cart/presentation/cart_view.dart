@@ -13,7 +13,8 @@ class CartView extends ConsumerWidget {
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (ref.read(cartItemsProvider).isEmpty && !ref.read(fetchCartProvider).isLoading) {
+      if (ref.read(cartItemsProvider).isEmpty &&
+          !ref.read(fetchCartProvider).isLoading) {
         fetchCartNotifier.fetchCart();
       }
     });

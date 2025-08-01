@@ -7,13 +7,8 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register'),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: RegisterForm(),
-      ),
+      appBar: AppBar(title: const Text('Register')),
+      body: const Padding(padding: EdgeInsets.all(16.0), child: RegisterForm()),
     );
   }
 }

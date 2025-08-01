@@ -9,23 +9,28 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/d
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/notifier/fetch_cart_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/state/fetch_cart_state.dart';
 
-final addToCartProvider = StateNotifierProvider.family<AddToCartNotifier, AddToCartState, int>(
-  (ref, productId) => AddToCartNotifier(),
-);
+final addToCartProvider =
+    StateNotifierProvider.family<AddToCartNotifier, AddToCartState, int>(
+      (ref, productId) => AddToCartNotifier(),
+    );
 
 final fetchCartProvider =
     StateNotifierProvider<FetchCartNotifier, FetchCartState>(
-  (ref) => FetchCartNotifier(ref),
-);
+      (ref) => FetchCartNotifier(ref),
+    );
 
-final deleteCartItemProvider = StateNotifierProvider.family<DeleteCartItemNotifier, DeleteCartItemState, int>(
-  (ref, productId) => DeleteCartItemNotifier(),
-);
+final deleteCartItemProvider = StateNotifierProvider.family<
+  DeleteCartItemNotifier,
+  DeleteCartItemState,
+  int
+>((ref, productId) => DeleteCartItemNotifier());
 
-final cartItemsProvider = StateNotifierProvider<CartItemsNotifier, List<CartItem>>(
-  (ref) => CartItemsNotifier(),
-);
+final cartItemsProvider =
+    StateNotifierProvider<CartItemsNotifier, List<CartItem>>(
+      (ref) => CartItemsNotifier(),
+    );
 
-final cartSummaryProvider = StateNotifierProvider<CartSummaryNotifier, CartSummary>(
-  (ref) => CartSummaryNotifier(),
-);
+final cartSummaryProvider =
+    StateNotifierProvider<CartSummaryNotifier, CartSummary>(
+      (ref) => CartSummaryNotifier(),
+    );

@@ -30,26 +30,18 @@ const TextStyle kTitleMedium = TextStyle(
   fontWeight: FontWeight.w600,
 );
 
-const TextStyle kBodyLarge = TextStyle(
-  fontSize: 16,
-);
+const TextStyle kBodyLarge = TextStyle(fontSize: 16);
 
-const TextStyle kBodyMedium = TextStyle(
-  fontSize: 14,
-);
+const TextStyle kBodyMedium = TextStyle(fontSize: 14);
 
-const TextStyle kBodySmall = TextStyle(
-  fontSize: 12,
-);
+const TextStyle kBodySmall = TextStyle(fontSize: 12);
 
 const TextStyle kLabelLarge = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
 );
 
-const TextStyle kLabelSmall = TextStyle(
-  fontSize: 10,
-);
+const TextStyle kLabelSmall = TextStyle(fontSize: 10);
 
 final TextTheme appTextTheme = TextTheme(
   displayLarge: kDisplayLarge,

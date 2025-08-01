@@ -9,10 +9,7 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 class ProductActionsSection extends ConsumerWidget {
   final Product product;
 
-  const ProductActionsSection({
-    super.key,
-    required this.product,
-  });
+  const ProductActionsSection({super.key, required this.product});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,10 +27,7 @@ class ProductActionsSection extends ConsumerWidget {
               icon: const Icon(Icons.remove_circle_outline),
               onPressed: quantityNotifier.decrement,
             ),
-            Text(
-              '$quantity',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            Text('$quantity', style: Theme.of(context).textTheme.bodyMedium),
             IconButton(
               icon: const Icon(Icons.add_circle_outline),
               onPressed: quantityNotifier.increment,
@@ -48,16 +42,21 @@ class ProductActionsSection extends ConsumerWidget {
               side: BorderSide(color: Theme.of(context).colorScheme.primary),
               foregroundColor: Theme.of(context).colorScheme.primary,
             ),
-            icon: addToCartState.isLoading
-                ? SizedBox(
-                    width: 18,
-                    height: 18,
-                    child: SpinKitFadingCircle(
-                      size: 18,
+            icon:
+                addToCartState.isLoading
+                    ? SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: SpinKitFadingCircle(
+                        size: 18,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    )
+                    : Icon(
+                      Icons.add,
+                      size: 20,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                  )
-                : Icon(Icons.add, size: 20, color: Theme.of(context).colorScheme.primary),
             label: Text(
               context.t.search.addToCart,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -65,29 +64,29 @@ class ProductActionsSection extends ConsumerWidget {
               ),
               overflow: TextOverflow.ellipsis,
             ),
-            onPressed: addToCartState.isLoading
-                ? null
-                : () async {
-                    final scaffoldMessenger = ScaffoldMessenger.of(context);
+            onPressed:
+                addToCartState.isLoading
+                    ? null
+                    : () async {
+                      final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-                    await addToCartNotifier.addToCart(
-                      product.id,
-                      quantity,
-                    );
+                      await addToCartNotifier.addToCart(product.id, quantity);
 
-                    final updatedAddToCartState = ref.read(addToCartProvider(product.id));
-
-                    if (updatedAddToCartState.isSuccess) {
-                      quantityNotifier.reset();
-                      await ref.read(fetchCartProvider.notifier).fetchCart();
-                    } else if (updatedAddToCartState.errorMessage != null) {
-                      scaffoldMessenger.showSnackBar(
-                        SnackBar(
-                          content: Text(updatedAddToCartState.errorMessage!),
-                        ),
+                      final updatedAddToCartState = ref.read(
+                        addToCartProvider(product.id),
                       );
-                    }
-                },
+
+                      if (updatedAddToCartState.isSuccess) {
+                        quantityNotifier.reset();
+                        await ref.read(fetchCartProvider.notifier).fetchCart();
+                      } else if (updatedAddToCartState.errorMessage != null) {
+                        scaffoldMessenger.showSnackBar(
+                          SnackBar(
+                            content: Text(updatedAddToCartState.errorMessage!),
+                          ),
+                        );
+                      }
+                    },
           ),
         ),
       ],

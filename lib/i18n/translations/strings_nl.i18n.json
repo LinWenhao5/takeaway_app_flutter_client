@@ -79,7 +79,7 @@
   },
   "orderHistory": {
     "orderHistory": "Bestelgeschiedenis",
-    "today": "Bestellingen van vandaag",
+    "reserved": "Gereseveerde bestellingen",
     "past": "Eerdere bestellingen",
     "noOrders": "Geen bestellingen",
     "placedAt": "Besteld om:",

@@ -30,10 +30,7 @@ class CartItemDetails extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         // Product price
-        Text(
-          '€${item.price}',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+        Text('€${item.price}', style: Theme.of(context).textTheme.bodyMedium),
       ],
     );
   }

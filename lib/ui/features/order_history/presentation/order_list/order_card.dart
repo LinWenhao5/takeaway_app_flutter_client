@@ -20,10 +20,7 @@ class OrderCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
-        side: BorderSide(
-          color: theme.dividerColor,
-          width: 0.5,
-        ),
+        side: BorderSide(color: theme.dividerColor, width: 0.5),
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
@@ -34,7 +31,9 @@ class OrderCard extends StatelessWidget {
             // Header
             Container(
               decoration: BoxDecoration(
-                color: OrderStatusUtils.getStatusColor(order.status).withAlpha((255 * 0.08).toInt()),
+                color: OrderStatusUtils.getStatusColor(
+                  order.status,
+                ).withAlpha((255 * 0.08).toInt()),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(14),
                   topRight: Radius.circular(14),
@@ -47,15 +46,22 @@ class OrderCard extends StatelessWidget {
                     Text(
                       '${context.t.orderHistory.placedAt} ${order.createdAtAmsterdam}',
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withAlpha((255 * 0.7).toInt()),
+                        color: theme.colorScheme.onSurface.withAlpha(
+                          (255 * 0.7).toInt(),
+                        ),
                         fontSize: 13,
                       ),
                     ),
                     const Spacer(),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
-                        color: OrderStatusUtils.getStatusColor(order.status).withAlpha((255 * 0.12).toInt()),
+                        color: OrderStatusUtils.getStatusColor(
+                          order.status,
+                        ).withAlpha((255 * 0.12).toInt()),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -101,19 +107,30 @@ class OrderCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 8),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 2,
+                              ),
                               decoration: BoxDecoration(
-                                color: order.orderType == OrderType.delivery
-                                    ? theme.colorScheme.primary.withAlpha((255 * 0.12).toInt())
-                                    : Colors.orange.withAlpha((255 * 0.12).toInt()),
+                                color:
+                                    order.orderType == OrderType.delivery
+                                        ? theme.colorScheme.primary.withAlpha(
+                                          (255 * 0.12).toInt(),
+                                        )
+                                        : Colors.orange.withAlpha(
+                                          (255 * 0.12).toInt(),
+                                        ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
-                                order.orderType == OrderType.delivery ? context.t.orderType.delivery : context.t.orderType.pickup,
+                                order.orderType == OrderType.delivery
+                                    ? context.t.orderType.delivery
+                                    : context.t.orderType.pickup,
                                 style: theme.textTheme.bodySmall?.copyWith(
-                                  color: order.orderType == OrderType.delivery
-                                      ? theme.colorScheme.primary
-                                      : Colors.orange,
+                                  color:
+                                      order.orderType == OrderType.delivery
+                                          ? theme.colorScheme.primary
+                                          : Colors.orange,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 12,
                                 ),
@@ -131,43 +148,76 @@ class OrderCard extends StatelessWidget {
                             const SizedBox(width: 8),
                             Icon(
                               Icons.chevron_right_outlined,
-                              color: theme.colorScheme.onSurface.withAlpha((255 * 0.3).toInt()),
+                              color: theme.colorScheme.onSurface.withAlpha(
+                                (255 * 0.3).toInt(),
+                              ),
                               size: 22,
                             ),
                           ],
                         ),
                         const SizedBox(height: 8),
                         // 商品列表
-                        ...order.products.map((product) => Padding(
-                              padding: const EdgeInsets.only(bottom: 2),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      product.name,
-                                      style: theme.textTheme.bodySmall?.copyWith(
-                                        color: theme.colorScheme.onSurface.withAlpha((255 * 0.85).toInt()),
-                                        fontSize: 13,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Text(
-                                    'x${product.pivot?['quantity']}',
+                        ...order.products.map(
+                          (product) => Padding(
+                            padding: const EdgeInsets.only(bottom: 2),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    product.name,
                                     style: theme.textTheme.bodySmall?.copyWith(
-                                      color: theme.colorScheme.onSurface.withAlpha((255 * 0.6).toInt()),
+                                      color: theme.colorScheme.onSurface
+                                          .withAlpha((255 * 0.85).toInt()),
                                       fontSize: 13,
                                     ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                ],
-                              ),
-                            )),
+                                ),
+                                Text(
+                                  'x${product.pivot?['quantity']}',
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.onSurface
+                                        .withAlpha((255 * 0.6).toInt()),
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         const SizedBox(height: 8),
+                        // 预约时间
+                        if (order.reserveTime.isNotEmpty) ...[
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.access_time,
+                                size: 16,
+                                color: theme.colorScheme.onSurface.withAlpha(
+                                  (255 * 0.7).toInt(),
+                                ),
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                order.reserveTimeAmsterdamHuman,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: theme.colorScheme.onSurface.withAlpha(
+                                    (255 * 0.7).toInt(),
+                                  ),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                        ],
                         if (order.address != null)
                           Text(
                             '${order.address!.street} ${order.address!.houseNumber}, ${order.address!.city}',
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onSurface.withAlpha((255 * 0.5).toInt()),
+                              color: theme.colorScheme.onSurface.withAlpha(
+                                (255 * 0.5).toInt(),
+                              ),
                               fontSize: 12,
                             ),
                             overflow: TextOverflow.ellipsis,

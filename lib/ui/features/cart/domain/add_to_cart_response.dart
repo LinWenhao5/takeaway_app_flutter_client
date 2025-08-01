@@ -4,8 +4,6 @@ class AddToCartResponse {
   AddToCartResponse({required this.message});
 
   factory AddToCartResponse.fromJson(Map<String, dynamic> json) {
-    return AddToCartResponse(
-      message: json['message']
-    );
+    return AddToCartResponse(message: json['message']);
   }
 }

@@ -3,7 +3,10 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class DateTimeUtil {
-  static String formatToAmsterdam(String utcString, {String pattern = 'yyyy-MM-dd HH:mm'}) {
+  static String formatToAmsterdam(
+    String utcString, {
+    String pattern = 'yyyy-MM-dd HH:mm',
+  }) {
     final utc = DateTime.parse(utcString).toUtc();
     final ams = tz.TZDateTime.from(utc, tz.getLocation('Europe/Amsterdam'));
     return DateFormat(pattern).format(ams);
@@ -15,8 +18,13 @@ class DateTimeUtil {
   }
 
   static String formatFullDateTime(DateTime date, String time) {
-    final dt = DateTime(date.year, date.month, date.day,
-        int.parse(time.split(':')[0]), int.parse(time.split(':')[1]));
+    final dt = DateTime(
+      date.year,
+      date.month,
+      date.day,
+      int.parse(time.split(':')[0]),
+      int.parse(time.split(':')[1]),
+    );
     return DateFormat('yyyy-MM-dd HH:mm').format(dt);
   }
 
@@ -29,7 +37,8 @@ class DateTimeUtil {
     final tomorrow = today.add(const Duration(days: 1));
     final reserveDay = DateTime(dt.year, dt.month, dt.day);
 
-    final timeStr = '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+    final timeStr =
+        '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
 
     if (reserveDay == today) {
       return '${t.common.today} $timeStr';

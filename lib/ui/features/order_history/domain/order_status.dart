@@ -1,9 +1,4 @@
-enum OrderStatus {
-  unpaid,
-  paid,
-  delivering,
-  completed,
-}
+enum OrderStatus { unpaid, paid, delivering, completed }
 
 extension OrderStatusExtension on OrderStatus {
   String get value {

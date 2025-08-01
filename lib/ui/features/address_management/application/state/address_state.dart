@@ -5,11 +5,7 @@ class AddressState {
   final List<Address> addresses;
   final String? error;
 
-  AddressState({
-    this.isLoading = false,
-    this.addresses = const [],
-    this.error,
-  });
+  AddressState({this.isLoading = false, this.addresses = const [], this.error});
 
   static const _unset = Object();
 
@@ -20,7 +16,8 @@ class AddressState {
   }) {
     return AddressState(
       isLoading: isLoading ?? this.isLoading,
-      addresses: addresses == _unset ? this.addresses : addresses as List<Address>,
+      addresses:
+          addresses == _unset ? this.addresses : addresses as List<Address>,
       error: error == _unset ? this.error : error as String?,
     );
   }

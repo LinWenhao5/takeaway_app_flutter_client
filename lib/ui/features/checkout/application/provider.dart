@@ -7,12 +7,13 @@ import 'package:takeaway_app_flutter_client/ui/features/checkout/infrastructure/
 
 final selectedAddressIdProvider = StateProvider<int?>((ref) => null);
 
-final orderNotifierProvider =
-    StateNotifierProvider<OrderNotifier, OrderState>(
+final orderNotifierProvider = StateNotifierProvider<OrderNotifier, OrderState>(
   (ref) => OrderNotifier(),
 );
 
-final availableTimesProvider = FutureProvider<AvailableTimesResponse>((ref) async {
+final availableTimesProvider = FutureProvider<AvailableTimesResponse>((
+  ref,
+) async {
   final orderType = ref.watch(selectedOrderTypeProvider);
   final selectedDate = ref.watch(selectedDateProvider);
   return await OrderApi.fetchAvailableTimes(
@@ -21,9 +22,10 @@ final availableTimesProvider = FutureProvider<AvailableTimesResponse>((ref) asyn
   );
 });
 
-final selectedOrderTypeProvider = StateProvider<OrderType>((ref) => OrderType.delivery);
+final selectedOrderTypeProvider = StateProvider<OrderType>(
+  (ref) => OrderType.delivery,
+);
 
 final selectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
 
 final selectedReserveTimeProvider = StateProvider<String?>((ref) => null);
-

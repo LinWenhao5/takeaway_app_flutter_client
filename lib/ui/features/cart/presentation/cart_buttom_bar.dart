@@ -30,14 +30,17 @@ class CartBottomBar extends ConsumerWidget {
                       Text(
                         '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         '€${cartSummary.totalPrice}',
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineSmall?.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
                           fontWeight: FontWeight.bold,
                         ),
@@ -54,7 +57,7 @@ class CartBottomBar extends ConsumerWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
-                      elevation: 0
+                      elevation: 0,
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, '/checkout');

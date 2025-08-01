@@ -32,19 +32,26 @@ class Order {
       totalPrice: json['total_price'],
       createdAt: json['created_at'],
       reserveTime: json['reserve_time'] ?? '',
-      address: json['address_snapshot'] != null
-          ? AddressSnapshot.fromJson(json['address_snapshot'])
-          : null,
-      products: (json['products'] as List<dynamic>? ?? [])
-          .map((e) => Product.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      orderType: json['order_type'] == 'pickup'
-          ? OrderType.pickup
-          : OrderType.delivery,
+      address:
+          json['address_snapshot'] != null
+              ? AddressSnapshot.fromJson(json['address_snapshot'])
+              : null,
+      products:
+          (json['products'] as List<dynamic>? ?? [])
+              .map((e) => Product.fromJson(e as Map<String, dynamic>))
+              .toList(),
+      orderType:
+          json['order_type'] == 'pickup'
+              ? OrderType.pickup
+              : OrderType.delivery,
     );
   }
 
   String get createdAtAmsterdam => DateTimeUtil.formatToAmsterdam(createdAt);
 
-  String get reserveTimeAmsterdam => DateTimeUtil.formatReserveTimeHuman(reserveTime);
+  String get reserveTimeAmsterdam =>
+      DateTimeUtil.formatToAmsterdam(reserveTime);
+
+  String get reserveTimeAmsterdamHuman =>
+      DateTimeUtil.formatReserveTimeHuman(reserveTime);
 }

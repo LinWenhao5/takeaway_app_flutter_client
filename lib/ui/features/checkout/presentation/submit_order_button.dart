@@ -21,11 +21,13 @@ class SubmitOrderButton extends ConsumerWidget {
   });
 
   Future<void> _handleSubmit(BuildContext context, WidgetRef ref) async {
-    await ref.read(orderNotifierProvider.notifier).createOrder(
+    await ref
+        .read(orderNotifierProvider.notifier)
+        .createOrder(
           orderType: orderType,
           addressId: orderType == OrderType.delivery ? activeAddressId : null,
           reserveTime: reserveTime,
-    );
+        );
     final orderState = ref.read(orderNotifierProvider);
     if (orderState.success) {
       final url = orderState.paymentUrl;
@@ -46,13 +48,13 @@ class SubmitOrderButton extends ConsumerWidget {
       }
       ref.read(cartItemsProvider.notifier).setItems([]);
       ref.read(cartSummaryProvider.notifier).updateSummary("0", "0.00");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.t.checkout.orderSuccess)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.t.checkout.orderSuccess)));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.t.checkout.orderFailed)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.t.checkout.orderFailed)));
     }
   }
 
@@ -61,10 +63,11 @@ class SubmitOrderButton extends ConsumerWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: enabled &&
-                (orderType == OrderType.pickup || activeAddressId != null)
-            ? () => _handleSubmit(context, ref)
-            : null,
+        onPressed:
+            enabled &&
+                    (orderType == OrderType.pickup || activeAddressId != null)
+                ? () => _handleSubmit(context, ref)
+                : null,
         child: Text(context.t.checkout.submitOrder),
       ),
     );

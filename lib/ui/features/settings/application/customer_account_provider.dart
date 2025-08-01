@@ -5,8 +5,8 @@ import 'package:takeaway_app_flutter_client/ui/features/settings/application/sta
 
 final usernameNotifierProvider =
     StateNotifierProvider<UsernameNotifier, UsernameState>((ref) {
-  return UsernameNotifier();
-});
+      return UsernameNotifier();
+    });
 
 final logoutNotifierProvider = StateNotifierProvider<LogoutNotifier, bool>(
   (ref) => LogoutNotifier(ref),

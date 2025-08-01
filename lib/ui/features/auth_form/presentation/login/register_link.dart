@@ -14,8 +14,8 @@ class RegisterLink extends StatelessWidget {
         child: Text(
           context.t.login.registerLink,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                decoration: TextDecoration.underline,
-              ),
+            decoration: TextDecoration.underline,
+          ),
         ),
       ),
     );

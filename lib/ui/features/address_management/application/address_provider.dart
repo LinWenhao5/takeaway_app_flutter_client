@@ -6,10 +6,10 @@ import 'state/address_state.dart';
 
 final addressNotifierProvider =
     StateNotifierProvider<AddressNotifier, AddressState>(
-  (ref) => AddressNotifier(),
-);
+      (ref) => AddressNotifier(),
+    );
 
 final addressActionNotifierProvider =
     StateNotifierProvider<AddressActionNotifier, AddressActionState>(
-  (ref) => AddressActionNotifier(),
-);
+      (ref) => AddressActionNotifier(),
+    );

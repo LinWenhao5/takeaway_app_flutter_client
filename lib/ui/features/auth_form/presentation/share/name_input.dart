@@ -5,11 +5,7 @@ class NameInput extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
 
-  const NameInput({
-    super.key,
-    required this.controller,
-    this.onChanged,
-  });
+  const NameInput({super.key, required this.controller, this.onChanged});
 
   @override
   Widget build(BuildContext context) {

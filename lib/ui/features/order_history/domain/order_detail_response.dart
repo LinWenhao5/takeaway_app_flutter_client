@@ -1,7 +1,6 @@
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order.dart';
 
 class OrderDetailResponse {
-
   final bool success;
   final Order order;
 

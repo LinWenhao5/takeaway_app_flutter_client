@@ -9,7 +9,11 @@ class OrderReserveTimeInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.access_time, size: 20, color: Theme.of(context).colorScheme.onSurface),
+        Icon(
+          Icons.access_time,
+          size: 20,
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
         const SizedBox(width: 8),
         Text(
           context.t.orderDetails.reserveTime,

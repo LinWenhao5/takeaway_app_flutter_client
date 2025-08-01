@@ -5,11 +5,7 @@ class OrderHistoryState {
   final String? error;
   final OrderHistoryResponse? data;
 
-  OrderHistoryState({
-    this.isLoading = false,
-    this.error,
-    this.data,
-  });
+  OrderHistoryState({this.isLoading = false, this.error, this.data});
 
   OrderHistoryState copyWith({
     bool? isLoading,

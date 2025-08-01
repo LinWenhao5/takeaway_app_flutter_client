@@ -4,8 +4,6 @@ class DeleteFromCartResponse {
   DeleteFromCartResponse({required this.message});
 
   factory DeleteFromCartResponse.fromJson(Map<String, dynamic> json) {
-    return DeleteFromCartResponse(
-      message: json['message'],
-    );
+    return DeleteFromCartResponse(message: json['message']);
   }
 }

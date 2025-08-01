@@ -8,7 +8,11 @@ class DeleteCartItemNotifier extends StateNotifier<DeleteCartItemState> {
   DeleteCartItemNotifier() : super(DeleteCartItemState());
 
   Future<void> deleteCartItem(int productId) async {
-    state = state.copyWith(isLoading: true, errorMessage: null, isSuccess: false);
+    state = state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+      isSuccess: false,
+    );
     try {
       await CartApi.deleteFromCart(productId);
       state = state.copyWith(isLoading: false, isSuccess: true);
@@ -19,7 +23,11 @@ class DeleteCartItemNotifier extends StateNotifier<DeleteCartItemState> {
   }
 
   Future<void> deleteCartItemQuantity(int productId, int quantity) async {
-    state = state.copyWith(isLoading: true, errorMessage: null, isSuccess: false);
+    state = state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+      isSuccess: false,
+    );
     try {
       await CartApi.deleteQuantityFromCart(productId, quantity);
       state = state.copyWith(isLoading: false, isSuccess: true);

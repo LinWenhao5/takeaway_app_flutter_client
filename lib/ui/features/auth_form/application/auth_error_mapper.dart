@@ -23,7 +23,6 @@ String mapRegisterErrorToLocalizedMessage(String error) {
   return t.errors.genericErrorMessage;
 }
 
-
 String mapCaptchaErrorToLocalizedMessage(String error) {
   if (error.contains('email')) {
     return t.errors.invalidEmailFormatMessage;

@@ -14,11 +14,7 @@ class ManualPaymentPage extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final appBar = AppBar(
-      title: Text(
-        context.t.payment.paymentTitle
-      )
-    );
+    final appBar = AppBar(title: Text(context.t.payment.paymentTitle));
 
     if (paymentUrl == null || paymentUrl!.isEmpty) {
       return Scaffold(
@@ -46,10 +42,7 @@ class ManualPaymentPage extends StatelessWidget {
           decoration: BoxDecoration(
             color: colorScheme.surface,
             borderRadius: BorderRadius.circular(kCardRadius),
-            border: Border.all(
-              color: colorScheme.outline,
-              width: 1,
-            ),
+            border: Border.all(color: colorScheme.outline, width: 1),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -116,7 +109,10 @@ class ManualPaymentPage extends StatelessWidget {
                   onPressed: () async {
                     final uri = Uri.parse(paymentUrl!);
                     if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri, mode: LaunchMode.externalApplication);
+                      await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

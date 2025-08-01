@@ -35,10 +35,7 @@ class _PasswordInputState extends State<PasswordInput> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null)
-          Text(
-            widget.label!,
-            style: Theme.of(context).textTheme.labelMedium,
-          ),
+          Text(widget.label!, style: Theme.of(context).textTheme.labelMedium),
         if (widget.label != null) const SizedBox(height: 8),
         TextField(
           controller: widget.controller,
@@ -52,14 +49,15 @@ class _PasswordInputState extends State<PasswordInput> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
-            suffixIcon: widget.controller.text.isNotEmpty
-                ? IconButton(
-                    icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: _togglePasswordVisibility,
-                  )
-                : null,
+            suffixIcon:
+                widget.controller.text.isNotEmpty
+                    ? IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: _togglePasswordVisibility,
+                    )
+                    : null,
           ),
         ),
       ],

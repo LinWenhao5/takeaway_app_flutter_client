@@ -30,7 +30,10 @@ class _EditAddressPageState extends ConsumerState<EditAddressPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AddressActionState>(addressActionNotifierProvider, (previous, next) async {
+    ref.listen<AddressActionState>(addressActionNotifierProvider, (
+      previous,
+      next,
+    ) async {
       if (next.success && next.action == AddressActionType.update) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(context.t.address.updateSuccess)),
@@ -39,16 +42,14 @@ class _EditAddressPageState extends ConsumerState<EditAddressPage> {
         if (mounted) Navigator.of(context).pop();
       }
       if (next.error != null && next.action == AddressActionType.update) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(next.error!)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(next.error!)));
       }
     });
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.address.editAddress),
-      ),
+      appBar: AppBar(title: Text(context.t.address.editAddress)),
       body: AddressForm(
         initial: AddressCreateRequest(
           name: widget.address.name,
@@ -63,7 +64,9 @@ class _EditAddressPageState extends ConsumerState<EditAddressPage> {
         submitLabel: context.t.address.saveAddress,
         onSubmit: (request) async {
           setState(() => _submitting = true);
-          await ref.read(addressActionNotifierProvider.notifier).updateAddress(widget.address.id, request);
+          await ref
+              .read(addressActionNotifierProvider.notifier)
+              .updateAddress(widget.address.id, request);
           setState(() => _submitting = false);
         },
       ),

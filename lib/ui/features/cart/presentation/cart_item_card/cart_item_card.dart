@@ -19,10 +19,7 @@ class CartItemCard extends ConsumerWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(kCardRadius),
-          border: Border.all(
-            color: Theme.of(context).dividerColor,
-            width: 1,
-          ),
+          border: Border.all(color: Theme.of(context).dividerColor, width: 1),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),

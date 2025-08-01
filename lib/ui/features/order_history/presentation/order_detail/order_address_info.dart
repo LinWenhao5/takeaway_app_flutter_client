@@ -14,20 +14,26 @@ class OrderAddressInfo extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.location_on_outlined, color: Theme.of(context).colorScheme.primary, size: 22),
+              Icon(
+                Icons.location_on_outlined,
+                color: Theme.of(context).colorScheme.primary,
+                size: 22,
+              ),
               const SizedBox(width: 8),
               Text(
                 context.t.orderHistory.deliveryAddress,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const SizedBox(height: 12),
           Text(
             '${address.name}  ${address.phone}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 4),
           Text(

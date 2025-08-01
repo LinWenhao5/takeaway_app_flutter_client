@@ -1,7 +1,4 @@
-enum OrderType {
-  delivery,
-  pickup,
-}
+enum OrderType { delivery, pickup }
 
 extension OrderTypeExtension on OrderType {
   String get value {

@@ -54,15 +54,17 @@ class _AddressFormState extends State<AddressForm> {
 
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
-    widget.onSubmit(AddressCreateRequest(
-      name: _nameController.text,
-      phone: _phoneController.text,
-      street: _streetController.text,
-      houseNumber: _houseNumberController.text,
-      postcode: _postcodeController.text,
-      city: _cityController.text,
-      country: 'Netherlands',
-    ));
+    widget.onSubmit(
+      AddressCreateRequest(
+        name: _nameController.text,
+        phone: _phoneController.text,
+        street: _streetController.text,
+        houseNumber: _houseNumberController.text,
+        postcode: _postcodeController.text,
+        city: _cityController.text,
+        country: 'Netherlands',
+      ),
+    );
   }
 
   @override
@@ -88,12 +90,16 @@ class _AddressFormState extends State<AddressForm> {
                       child: Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.secondaryContainer,
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.info_outline, color: Colors.orange),
+                            const Icon(
+                              Icons.info_outline,
+                              color: Colors.orange,
+                            ),
                             const SizedBox(width: 8),
                             Expanded(
                               child: Text(
@@ -120,7 +126,11 @@ class _AddressFormState extends State<AddressForm> {
                         hintText: context.t.address.nameHint,
                         helperText: context.t.address.nameHelper,
                       ),
-                      validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                      validator:
+                          (v) =>
+                              v == null || v.isEmpty
+                                  ? context.t.address.required
+                                  : null,
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -133,7 +143,11 @@ class _AddressFormState extends State<AddressForm> {
                       ),
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
-                      validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                      validator:
+                          (v) =>
+                              v == null || v.isEmpty
+                                  ? context.t.address.required
+                                  : null,
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -143,7 +157,11 @@ class _AddressFormState extends State<AddressForm> {
                         hintText: context.t.address.streetHint,
                         helperText: context.t.address.streetHelper,
                       ),
-                      validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                      validator:
+                          (v) =>
+                              v == null || v.isEmpty
+                                  ? context.t.address.required
+                                  : null,
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -157,7 +175,11 @@ class _AddressFormState extends State<AddressForm> {
                               hintText: context.t.address.postcodeHint,
                               helperText: context.t.address.postcodeHelper,
                             ),
-                            validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                            validator:
+                                (v) =>
+                                    v == null || v.isEmpty
+                                        ? context.t.address.required
+                                        : null,
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -170,7 +192,11 @@ class _AddressFormState extends State<AddressForm> {
                               hintText: context.t.address.houseNumberHint,
                               helperText: context.t.address.houseNumberHelper,
                             ),
-                            validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                            validator:
+                                (v) =>
+                                    v == null || v.isEmpty
+                                        ? context.t.address.required
+                                        : null,
                           ),
                         ),
                       ],
@@ -183,28 +209,35 @@ class _AddressFormState extends State<AddressForm> {
                         hintText: context.t.address.cityHint,
                         helperText: context.t.address.cityHelper,
                       ),
-                      validator: (v) => v == null || v.isEmpty ? context.t.address.required : null,
+                      validator:
+                          (v) =>
+                              v == null || v.isEmpty
+                                  ? context.t.address.required
+                                  : null,
                     ),
                     const SizedBox(height: 16),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 4),
                       child: Text(
                         context.t.address.country,
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          color: Colors.grey,
-                        ),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelLarge?.copyWith(color: Colors.grey),
                       ),
                     ),
                     const SizedBox(height: 32),
                     ElevatedButton(
                       onPressed: widget.submitting ? null : _submit,
-                      child: widget.submitting
-                          ? SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: CircularProgressIndicator(color: Colors.white),
-                            )
-                          : Text(widget.submitLabel),
+                      child:
+                          widget.submitting
+                              ? SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                              : Text(widget.submitLabel),
                     ),
                   ],
                 ),

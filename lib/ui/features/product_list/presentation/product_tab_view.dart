@@ -10,7 +10,8 @@ class CategoryTabView extends StatefulWidget {
   State<CategoryTabView> createState() => _CategoryTabViewState();
 }
 
-class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderStateMixin {
+class _CategoryTabViewState extends State<CategoryTabView>
+    with TickerProviderStateMixin {
   late TabController _tabController;
   final ScrollController _scrollController = ScrollController();
   final List<GlobalKey> _categoryKeys = [];
@@ -19,8 +20,13 @@ class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderSt
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: widget.categories.length, vsync: this);
-    _categoryKeys.addAll(List.generate(widget.categories.length, (_) => GlobalKey()));
+    _tabController = TabController(
+      length: widget.categories.length,
+      vsync: this,
+    );
+    _categoryKeys.addAll(
+      List.generate(widget.categories.length, (_) => GlobalKey()),
+    );
     _scrollController.addListener(_onScroll);
   }
 
@@ -86,11 +92,17 @@ class _CategoryTabViewState extends State<CategoryTabView> with TickerProviderSt
               final category = widget.categories[index];
               return Container(
                 key: _categoryKeys[index],
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 12,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(category.name, style: Theme.of(context).textTheme.headlineMedium),
+                    Text(
+                      category.name,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
                     const Divider(thickness: 1),
                     const SizedBox(height: 8),
                     ...category.products.map((p) => ProductTile(product: p)),

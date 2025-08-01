@@ -66,12 +66,13 @@ class _ProductSearchInputState extends ConsumerState<ProductSearchInput> {
         decoration: InputDecoration(
           hintText: context.t.search.hint,
           prefixIcon: const Icon(Icons.search),
-          suffixIcon: _controller.text.isNotEmpty
-              ? IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: _clearInput,
-                )
-              : null,
+          suffixIcon:
+              _controller.text.isNotEmpty
+                  ? IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: _clearInput,
+                  )
+                  : null,
         ),
         onChanged: _onChanged,
       ),

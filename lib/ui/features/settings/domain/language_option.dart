@@ -1,9 +1,6 @@
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 
-enum LanguageOption {
-  english,
-  netherlands,
-}
+enum LanguageOption { english, netherlands }
 
 extension LanguageOptionExt on LanguageOption {
   String get label {

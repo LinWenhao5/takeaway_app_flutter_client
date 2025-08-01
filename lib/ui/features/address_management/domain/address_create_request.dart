@@ -18,12 +18,12 @@ class AddressCreateRequest {
   });
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'phone': phone,
-        'street': street,
-        'house_number': houseNumber,
-        'postcode': postcode,
-        'city': city,
-        'country': country,
-      };
+    'name': name,
+    'phone': phone,
+    'street': street,
+    'house_number': houseNumber,
+    'postcode': postcode,
+    'city': city,
+    'country': country,
+  };
 }

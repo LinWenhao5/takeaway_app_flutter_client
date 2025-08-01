@@ -3,9 +3,7 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/domain/order
 
 class PaymentApi {
   static Future<OrderStatusResponse> getOrderStatus(int orderId) async {
-    final response = await ApiClient.get(
-      '/orders/$orderId/status',
-    );
+    final response = await ApiClient.get('/orders/$orderId/status');
     return OrderStatusResponse.fromJson(response);
   }
 }

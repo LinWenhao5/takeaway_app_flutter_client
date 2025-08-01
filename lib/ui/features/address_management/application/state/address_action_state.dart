@@ -23,7 +23,7 @@ class AddressActionState {
       isLoading: isLoading ?? this.isLoading,
       error: error,
       success: success ?? this.success,
-      action: action ?? this.action
+      action: action ?? this.action,
     );
   }
 }

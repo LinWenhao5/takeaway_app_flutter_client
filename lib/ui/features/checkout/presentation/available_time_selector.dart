@@ -18,7 +18,10 @@ class AvailableTimeSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dates = List.generate(5, (i) => DateTime.now().add(Duration(days: i)));
+    final dates = List.generate(
+      5,
+      (i) => DateTime.now().add(Duration(days: i)),
+    );
 
     return GestureDetector(
       onTap: () {
@@ -31,9 +34,10 @@ class AvailableTimeSelector extends ConsumerWidget {
                 final availableTimesAsync = ref.watch(availableTimesProvider);
                 final orderType = ref.watch(selectedOrderTypeProvider);
 
-                final String headerText = orderType == OrderType.delivery
-                    ? context.t.checkout.selectDeliveryTimeTitle
-                    : context.t.checkout.selectPickupTimeTitle;
+                final String headerText =
+                    orderType == OrderType.delivery
+                        ? context.t.checkout.selectDeliveryTimeTitle
+                        : context.t.checkout.selectPickupTimeTitle;
 
                 return Material(
                   child: Column(
@@ -58,32 +62,50 @@ class AvailableTimeSelector extends ConsumerWidget {
                                 itemCount: dates.length,
                                 itemBuilder: (context, index) {
                                   final date = dates[index];
-                                  final isSelected = date.day == selectedDate.day &&
+                                  final isSelected =
+                                      date.day == selectedDate.day &&
                                       date.month == selectedDate.month &&
                                       date.year == selectedDate.year;
 
                                   return ListTile(
-                                    tileColor: isSelected
-                                        ? Theme.of(context).colorScheme.primary
-                                        : Colors.transparent,
-                                    shape: isSelected
-                                        ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
-                                        : null,
+                                    tileColor:
+                                        isSelected
+                                            ? Theme.of(
+                                              context,
+                                            ).colorScheme.primary
+                                            : Colors.transparent,
+                                    shape:
+                                        isSelected
+                                            ? RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            )
+                                            : null,
                                     title: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           index == 0
                                               ? context.t.common.today
-                                              : context.t.common.weekdays[date.weekday - 1],
+                                              : context
+                                                  .t
+                                                  .common
+                                                  .weekdays[date.weekday - 1],
                                           textAlign: TextAlign.center,
                                           softWrap: false,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: isSelected
-                                                ? Theme.of(context).colorScheme.primary
-                                                : Theme.of(context).textTheme.bodyMedium?.color,
+                                            color:
+                                                isSelected
+                                                    ? Theme.of(
+                                                      context,
+                                                    ).colorScheme.primary
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.color,
                                           ),
                                         ),
                                         Text(
@@ -92,16 +114,24 @@ class AvailableTimeSelector extends ConsumerWidget {
                                           softWrap: false,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                            color: isSelected
-                                                ? Theme.of(context).colorScheme.primary
-                                                : Theme.of(context).textTheme.bodyMedium?.color,
+                                            color:
+                                                isSelected
+                                                    ? Theme.of(
+                                                      context,
+                                                    ).colorScheme.primary
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.color,
                                           ),
                                         ),
                                       ],
                                     ),
                                     selected: isSelected,
                                     onTap: () {
-                                      ref.read(selectedDateProvider.notifier).state = date;
+                                      ref
+                                          .read(selectedDateProvider.notifier)
+                                          .state = date;
                                     },
                                   );
                                 },
@@ -112,28 +142,47 @@ class AvailableTimeSelector extends ConsumerWidget {
                             // 右侧时间列表
                             Expanded(
                               child: availableTimesAsync.when(
-                                loading: () => Center(
-                                  child: SpinKitFadingGrid(
-                                    color: Theme.of(context).primaryColor,
-                                    size: 32
-                                  ),
-                                ),
-                                error: (err, _) => Center(child: Text(context.t.errors.genericErrorMessage)),
+                                loading:
+                                    () => Center(
+                                      child: SpinKitFadingGrid(
+                                        color: Theme.of(context).primaryColor,
+                                        size: 32,
+                                      ),
+                                    ),
+                                error:
+                                    (err, _) => Center(
+                                      child: Text(
+                                        context.t.errors.genericErrorMessage,
+                                      ),
+                                    ),
                                 data: (response) {
                                   if (response.times.isEmpty) {
                                     return Center(
                                       child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 24.0,
+                                        ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Icon(Icons.info_outline, size: 40, color: Theme.of(context).colorScheme.onSurface),
+                                            Icon(
+                                              Icons.info_outline,
+                                              size: 40,
+                                              color:
+                                                  Theme.of(
+                                                    context,
+                                                  ).colorScheme.onSurface,
+                                            ),
                                             const SizedBox(height: 16),
                                             Text(
                                               context.t.checkout.closedMessage,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                color: Theme.of(context).colorScheme.onSurface,
+                                                color:
+                                                    Theme.of(
+                                                      context,
+                                                    ).colorScheme.onSurface,
                                                 fontSize: 16,
                                               ),
                                             ),
@@ -144,28 +193,54 @@ class AvailableTimeSelector extends ConsumerWidget {
                                   }
                                   return ListView.separated(
                                     itemCount: response.times.length,
-                                    separatorBuilder: (_, __) => const Divider(height: 1),
+                                    separatorBuilder:
+                                        (_, __) => const Divider(height: 1),
                                     itemBuilder: (context, index) {
                                       final time = response.times[index];
-                                      final fullTime = DateTimeUtil.formatFullDateTime(selectedDate, time);
-                                      final isSelected = fullTime == selectedTime;
+                                      final fullTime =
+                                          DateTimeUtil.formatFullDateTime(
+                                            selectedDate,
+                                            time,
+                                          );
+                                      final isSelected =
+                                          fullTime == selectedTime;
                                       return ListTile(
                                         title: Text(
                                           time,
                                           style: TextStyle(
-                                            color: isSelected
-                                                ? Theme.of(context).colorScheme.primary
-                                                : Theme.of(context).textTheme.bodyMedium?.color,
-                                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                            color:
+                                                isSelected
+                                                    ? Theme.of(
+                                                      context,
+                                                    ).colorScheme.primary
+                                                    : Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.color,
+                                            fontWeight:
+                                                isSelected
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal,
                                           ),
                                         ),
-                                        trailing: isSelected
-                                            ? Icon(Icons.check_circle, color: Theme.of(context).colorScheme.secondary)
-                                            : null,
+                                        trailing:
+                                            isSelected
+                                                ? Icon(
+                                                  Icons.check_circle,
+                                                  color:
+                                                      Theme.of(
+                                                        context,
+                                                      ).colorScheme.secondary,
+                                                )
+                                                : null,
                                         selected: isSelected,
-                                        shape: isSelected
-                                            ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
-                                            : null,
+                                        shape:
+                                            isSelected
+                                                ? RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                )
+                                                : null,
                                         onTap: () {
                                           Navigator.pop(context);
                                           onChanged(fullTime);
@@ -199,7 +274,10 @@ class AvailableTimeSelector extends ConsumerWidget {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               hintText: context.t.checkout.selectTimeHint,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 16,
+              ),
               prefixIcon: Icon(
                 Icons.access_time,
                 color: Theme.of(context).colorScheme.onSurface,

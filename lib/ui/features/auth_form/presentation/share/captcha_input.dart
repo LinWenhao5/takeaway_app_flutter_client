@@ -24,22 +24,19 @@ class CaptchaInput extends ConsumerWidget {
     final remainingTime = ref.watch(captchaTimerProvider);
     final captchaTimerNotifier = ref.read(captchaTimerProvider.notifier);
 
-    ref.listen(
-      captchaProvider,
-      (previous, next) {
-        if (!context.mounted) return;
-        if (next.errorMessage != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(next.errorMessage!)),
-          );
-        } else if (next.captchaMessage != null) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(context.t.register.captchaSentMessage)),
-          );
-          captchaTimerNotifier.startTimer();
-        }
-      },
-    );
+    ref.listen(captchaProvider, (previous, next) {
+      if (!context.mounted) return;
+      if (next.errorMessage != null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(next.errorMessage!)));
+      } else if (next.captchaMessage != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.t.register.captchaSentMessage)),
+        );
+        captchaTimerNotifier.startTimer();
+      }
+    });
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,32 +60,38 @@ class CaptchaInput extends ConsumerWidget {
             ),
             const SizedBox(width: 8),
             ElevatedButton(
-              onPressed: (remainingTime > 0 || captchaState.isLoading)
-                  ? null
-                  : () async {
-                      final email = emailController.text;
-                      if (email.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.t.errors.invalidEmailMessage)),
-                        );
-                        return;
-                      }
-                      await captchaNotifier.generateCaptcha(email);
-                    },
-              child: captchaState.isLoading
-                  ? SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: SpinKitFadingCircle(
-                        color: Colors.white,
-                        size: 20.0,
+              onPressed:
+                  (remainingTime > 0 || captchaState.isLoading)
+                      ? null
+                      : () async {
+                        final email = emailController.text;
+                        if (email.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                context.t.errors.invalidEmailMessage,
+                              ),
+                            ),
+                          );
+                          return;
+                        }
+                        await captchaNotifier.generateCaptcha(email);
+                      },
+              child:
+                  captchaState.isLoading
+                      ? SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: SpinKitFadingCircle(
+                          color: Colors.white,
+                          size: 20.0,
+                        ),
+                      )
+                      : Text(
+                        remainingTime > 0
+                            ? '${remainingTime}s'
+                            : context.t.register.sendCaptchaButton,
                       ),
-                    )
-                  : Text(
-                      remainingTime > 0
-                          ? '${remainingTime}s'
-                          : context.t.register.sendCaptchaButton,
-                    ),
             ),
           ],
         ),

@@ -18,13 +18,11 @@ class OrderApi {
       'reserve_time': reserveTime,
       'platform': platform,
       if (host != null) 'host': host,
-      if (orderType == OrderType.delivery && addressId != null) 'address_id': addressId,
+      if (orderType == OrderType.delivery && addressId != null)
+        'address_id': addressId,
     };
 
-    final response = await ApiClient.post(
-      '/orders',
-      body: body,
-    );
+    final response = await ApiClient.post('/orders', body: body);
     return OrderCreateResponse.fromJson(response);
   }
 

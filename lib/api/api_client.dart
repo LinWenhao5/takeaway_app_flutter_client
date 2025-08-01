@@ -55,9 +55,10 @@ class ApiClient {
     final headers = await _getHeaders();
     headers['Content-Type'] = 'application/json';
 
-    final request = http.Request('DELETE', uri)
-      ..headers.addAll(headers)
-      ..body = json.encode(body);
+    final request =
+        http.Request('DELETE', uri)
+          ..headers.addAll(headers)
+          ..body = json.encode(body);
 
     final response = await http.Client().send(request);
     final responseBody = await response.stream.bytesToString();

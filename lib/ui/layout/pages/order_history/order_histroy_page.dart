@@ -9,9 +9,7 @@ class OrderHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(context.t.orderHistory.orderHistory)),
-      body: SafeArea(
-        child: const OrderHistoryView(),
-      ),
+      body: SafeArea(child: const OrderHistoryView()),
     );
   }
 }

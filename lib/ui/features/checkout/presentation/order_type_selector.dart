@@ -45,18 +45,21 @@ class OrderTypeSelector extends StatelessWidget {
             fillColor: colorScheme.primary,
             borderColor: colorScheme.primary,
             selectedBorderColor: colorScheme.primary,
-            constraints: const BoxConstraints(
-              minWidth: 140,
-              minHeight: 36,
-            ),
+            constraints: const BoxConstraints(minWidth: 140, minHeight: 36),
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                child: Text(context.t.orderType.delivery, style: TextStyle(fontSize: 16)),
+                child: Text(
+                  context.t.orderType.delivery,
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                child: Text(context.t.orderType.pickup, style: TextStyle(fontSize: 16)),
+                child: Text(
+                  context.t.orderType.pickup,
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),

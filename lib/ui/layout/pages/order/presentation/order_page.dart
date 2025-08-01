@@ -38,7 +38,10 @@ class _OrderPageState extends ConsumerState<OrderPage> {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: ProductSearchInput(),
             ),
             if (isSearchActive)
@@ -54,19 +57,24 @@ class _OrderPageState extends ConsumerState<OrderPage> {
                     return ref.refresh(categoryWithProductsProvider.future);
                   },
                   child: categoryAsync.when(
-                    data: (categories) => CategoryTabView(categories: categories),
-                    loading: () => Center(
-                      child: SpinKitWave(
-                        color: Theme.of(context).primaryColor,
-                        size: 40.0,
-                      ),
-                    ),
-                    error: (e, stack) => ErrorDisplayWidget(
-                      errorMessage: context.t.errors.connectionError,
-                      onRetry: () async {
-                        return ref.refresh(categoryWithProductsProvider.future);
-                      },
-                    ),
+                    data:
+                        (categories) => CategoryTabView(categories: categories),
+                    loading:
+                        () => Center(
+                          child: SpinKitWave(
+                            color: Theme.of(context).primaryColor,
+                            size: 40.0,
+                          ),
+                        ),
+                    error:
+                        (e, stack) => ErrorDisplayWidget(
+                          errorMessage: context.t.errors.connectionError,
+                          onRetry: () async {
+                            return ref.refresh(
+                              categoryWithProductsProvider.future,
+                            );
+                          },
+                        ),
                   ),
                 ),
               ),

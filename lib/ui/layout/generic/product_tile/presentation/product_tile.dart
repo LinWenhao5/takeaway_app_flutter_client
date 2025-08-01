@@ -13,7 +13,6 @@ class ProductTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Padding(
       padding: kListTilePadding,
       child: Row(
@@ -21,12 +20,8 @@ class ProductTile extends ConsumerWidget {
         children: [
           ProductImageSection(product: product),
           const SizedBox(width: 12),
-          Expanded(
-            child: ProductDetailsSection(product: product),
-          ),
-          ProductActionsSection(
-            product: product
-          ),
+          Expanded(child: ProductDetailsSection(product: product)),
+          ProductActionsSection(product: product),
         ],
       ),
     );

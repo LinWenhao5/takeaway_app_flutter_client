@@ -79,7 +79,7 @@
   },
   "orderHistory": {
     "orderHistory": "Order History",
-    "today": "Today's Orders",
+    "reserved": "Reserved Orders",
     "past": "Past Orders",
     "noOrders": "No orders",
     "placedAt": "Placed at:",

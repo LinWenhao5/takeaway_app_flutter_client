@@ -5,11 +5,7 @@ class OrderStatusState {
   final OrderStatusResponse? data;
   final String? error;
 
-  OrderStatusState({
-    this.isLoading = false,
-    this.data,
-    this.error,
-  });
+  OrderStatusState({this.isLoading = false, this.data, this.error});
 
   OrderStatusState copyWith({
     bool? isLoading,

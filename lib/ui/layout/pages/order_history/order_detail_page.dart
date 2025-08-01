@@ -12,15 +12,16 @@ class OrderDetailPage extends StatelessWidget {
       appBar: AppBar(title: Text(context.t.orderDetails.orderDetails)),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: orderId == null
-            ? Center(
-                child: Text(
-                  context.t.errors.missingOrderParam,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleMedium
-                ),
-              )
-            : OrderDetailView(orderId: orderId!),
+        child:
+            orderId == null
+                ? Center(
+                  child: Text(
+                    context.t.errors.missingOrderParam,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                )
+                : OrderDetailView(orderId: orderId!),
       ),
     );
   }

@@ -25,38 +25,40 @@ class CheckoutItemList extends ConsumerWidget {
           Text(
             context.t.checkout.orderItems,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
           ),
           const SizedBox(height: 8),
-          ...cartItems.map((item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        item.name,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
+          ...cartItems.map(
+            (item) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      item.name,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
-                    Text(
-                      'x${item.quantity}',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurfaceVariant,
-                          ),
+                  ),
+                  Text(
+                    'x${item.quantity}',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
-                    const SizedBox(width: 16),
-                    Text(
-                      '€${item.price}',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  ),
+                  const SizedBox(width: 16),
+                  Text(
+                    '€${item.price}',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

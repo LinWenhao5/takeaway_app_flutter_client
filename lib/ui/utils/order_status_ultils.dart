@@ -6,11 +6,7 @@ import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_ty
 class OrderStatusUtils {
   static List<OrderStatus> getSteps(OrderType orderType) {
     if (orderType == OrderType.pickup) {
-      return [
-        OrderStatus.unpaid,
-        OrderStatus.paid,
-        OrderStatus.completed,
-      ];
+      return [OrderStatus.unpaid, OrderStatus.paid, OrderStatus.completed];
     } else {
       // delivery
       return [

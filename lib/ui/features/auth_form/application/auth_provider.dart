@@ -11,14 +11,20 @@ final loginProvider = StateNotifierProvider<LoginNotifier, LoginState>((ref) {
   return LoginNotifier();
 });
 
-final registerProvider = StateNotifierProvider<RegisterNotifier, RegisterState>((ref) {
-  return RegisterNotifier();
-});
+final registerProvider = StateNotifierProvider<RegisterNotifier, RegisterState>(
+  (ref) {
+    return RegisterNotifier();
+  },
+);
 
-final captchaProvider = StateNotifierProvider<CaptchaNotifier, CaptchaState>((ref) {
+final captchaProvider = StateNotifierProvider<CaptchaNotifier, CaptchaState>((
+  ref,
+) {
   return CaptchaNotifier();
 });
 
-final captchaTimerProvider = StateNotifierProvider<CaptchaTimerNotifier, int>((ref) {
+final captchaTimerProvider = StateNotifierProvider<CaptchaTimerNotifier, int>((
+  ref,
+) {
   return CaptchaTimerNotifier();
 });

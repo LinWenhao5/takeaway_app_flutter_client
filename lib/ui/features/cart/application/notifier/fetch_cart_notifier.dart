@@ -17,10 +17,9 @@ class FetchCartNotifier extends StateNotifier<FetchCartState> {
       state = state.copyWith(isLoading: false, getCartResponse: cartResponse);
 
       ref.read(cartItemsProvider.notifier).setItems(cartResponse.cart);
-      ref.read(cartSummaryProvider.notifier).updateSummary(
-        cartResponse.totalQuantity,
-        cartResponse.totalPrice,
-      );
+      ref
+          .read(cartSummaryProvider.notifier)
+          .updateSummary(cartResponse.totalQuantity, cartResponse.totalPrice);
     } catch (e) {
       final errorMessage = handleError(e, mapCartErrorToLocalizedMessage);
       state = state.copyWith(isLoading: false, errorMessage: errorMessage);

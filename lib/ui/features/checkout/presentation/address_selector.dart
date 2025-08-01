@@ -19,7 +19,10 @@ class AddressSelector extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(context.t.checkout.selectAddress, style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              context.t.checkout.selectAddress,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             IconButton(
               icon: const Icon(Icons.add_location_alt_outlined),
               tooltip: context.t.checkout.addAddress,
@@ -47,19 +50,26 @@ class AddressSelector extends ConsumerWidget {
                 ref.read(selectedAddressIdProvider.notifier).state = address.id;
               },
               child: Container(
-                color: isSelected
-                    ? colorScheme.primary.withAlpha((0.15 * 255).toInt())
-                    : Colors.transparent,
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                color:
+                    isSelected
+                        ? colorScheme.primary.withAlpha((0.15 * 255).toInt())
+                        : Colors.transparent,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 8,
+                ),
                 child: Row(
                   children: [
                     Icon(
                       isSelected
                           ? Icons.radio_button_checked
                           : Icons.radio_button_unchecked,
-                      color: isSelected
-                          ? colorScheme.primary
-                          : colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+                      color:
+                          isSelected
+                              ? colorScheme.primary
+                              : colorScheme.onSurface.withAlpha(
+                                (0.5 * 255).toInt(),
+                              ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -68,14 +78,18 @@ class AddressSelector extends ConsumerWidget {
                         children: [
                           Text(
                             '${address.street} ${address.houseNumber}, ${address.city}',
-                            style: Theme.of(context).textTheme.bodyMedium
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: 2),
                           Text(
                             '${address.name}  ${address.phone}',
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: colorScheme.onSurface.withAlpha((0.5 * 255).toInt())
-                                ),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodySmall?.copyWith(
+                              color: colorScheme.onSurface.withAlpha(
+                                (0.5 * 255).toInt(),
+                              ),
+                            ),
                           ),
                         ],
                       ),

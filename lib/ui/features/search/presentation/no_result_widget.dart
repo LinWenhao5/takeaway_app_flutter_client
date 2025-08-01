@@ -23,9 +23,9 @@ class NoResultWidget extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             t.search.tryAnotherKeyword,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Colors.grey,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(color: Colors.grey),
           ),
         ],
       ),

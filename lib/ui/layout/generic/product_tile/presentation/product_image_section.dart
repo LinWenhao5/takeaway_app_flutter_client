@@ -11,9 +11,10 @@ class ProductImageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(kListTileRadius),
-      child: product.media.isNotEmpty
-          ? ProductImage(media: product.media.first.path)
-          : const Icon(Icons.image_not_supported, size: 45),
+      child:
+          product.media.isNotEmpty
+              ? ProductImage(media: product.media.first.path)
+              : const Icon(Icons.image_not_supported, size: 45),
     );
   }
 }

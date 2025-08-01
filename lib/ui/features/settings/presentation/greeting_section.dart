@@ -5,10 +5,7 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import '../application/customer_account_provider.dart';
 
 class GreetingSection extends ConsumerWidget {
-
-  const GreetingSection({
-    super.key,
-  });
+  const GreetingSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,11 +16,10 @@ class GreetingSection extends ConsumerWidget {
       child: () {
         if (usernameState.isLoading) {
           return Center(
-            child: 
-            SpinKitWave(
+            child: SpinKitWave(
               color: Theme.of(context).primaryColor,
               size: 30.0,
-            )
+            ),
           );
         } else if (usernameState.username != null) {
           return Column(
@@ -55,9 +51,7 @@ class GreetingSection extends ConsumerWidget {
                 },
                 child: Text(
                   context.t.settings.sign_in_now,
-                  style: const TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
+                  style: const TextStyle(decoration: TextDecoration.underline),
                 ),
               ),
             ],

@@ -8,7 +8,11 @@ class AddToCartNotifier extends StateNotifier<AddToCartState> {
   AddToCartNotifier() : super(AddToCartState());
 
   Future<void> addToCart(int productId, int quantity) async {
-    state = state.copyWith(isLoading: true, errorMessage: null, isSuccess: false);
+    state = state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+      isSuccess: false,
+    );
     try {
       await CartApi.addToCart(productId, quantity);
       state = state.copyWith(isLoading: false, isSuccess: true);

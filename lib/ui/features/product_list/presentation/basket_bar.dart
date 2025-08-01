@@ -29,7 +29,10 @@ class BasketBar extends StatelessWidget {
                   Navigator.pushNamed(context, '/cart');
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                    horizontal: 20,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -38,7 +41,10 @@ class BasketBar extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.shopping_basket,
-                              color: Theme.of(context).colorScheme.onPrimaryContainer,
+                              color:
+                                  Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimaryContainer,
                             ),
                             const SizedBox(width: 10),
                             Flexible(
@@ -46,19 +52,24 @@ class BasketBar extends StatelessWidget {
                                 '${cartSummary.totalQuantity} ${context.t.cart.totalQuantity}',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: Theme.of(context).colorScheme.onSurface,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             const SizedBox(width: 16),
                             Text(
                               '€${cartSummary.totalPrice}',
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Theme.of(context).colorScheme.secondary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             const SizedBox(width: 8),
                           ],
@@ -66,12 +77,17 @@ class BasketBar extends StatelessWidget {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
-                          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18),
                           ),
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
                           elevation: 0,
                         ),
                         onPressed: () {
@@ -79,10 +95,12 @@ class BasketBar extends StatelessWidget {
                         },
                         child: Text(
                           context.t.cart.goToBasket,
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                color: Theme.of(context).colorScheme.onPrimary,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

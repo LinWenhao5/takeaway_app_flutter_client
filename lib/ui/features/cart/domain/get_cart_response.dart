@@ -5,13 +5,18 @@ class GetCartResponse {
   final String totalPrice;
   final String totalQuantity;
 
-  GetCartResponse({required this.cart, required this.totalPrice, required this.totalQuantity});
+  GetCartResponse({
+    required this.cart,
+    required this.totalPrice,
+    required this.totalQuantity,
+  });
 
   factory GetCartResponse.fromJson(Map<String, dynamic> json) {
     return GetCartResponse(
-      cart: (json['cart'] as List<dynamic>)
-          .map((item) => CartItem.fromJson(item))
-          .toList(),
+      cart:
+          (json['cart'] as List<dynamic>)
+              .map((item) => CartItem.fromJson(item))
+              .toList(),
       totalPrice: json['total_price'],
       totalQuantity: json['total_quantity'],
     );

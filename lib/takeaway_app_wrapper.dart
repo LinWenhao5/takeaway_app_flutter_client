@@ -21,7 +21,8 @@ class _TakeawayAppWrapperState extends State<TakeawayAppWrapper> {
 
     if (kIsWeb) {
       final uri = Uri.base;
-      if (uri.path == '/payment-callback' && uri.queryParameters['order_id'] != null) {
+      if (uri.path == '/payment-callback' &&
+          uri.queryParameters['order_id'] != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           navigatorKey.currentState?.pushNamedAndRemoveUntil(
             '/payment-result',

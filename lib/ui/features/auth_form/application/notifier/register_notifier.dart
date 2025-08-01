@@ -9,7 +9,12 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
   RegisterNotifier() : super(RegisterState());
 
   Future<void> register(
-      String name, String email, String password, String captcha, BuildContext context) async {
+    String name,
+    String email,
+    String password,
+    String captcha,
+    BuildContext context,
+  ) async {
     state = state.copyWith(isLoading: true, errorMessage: null);
     try {
       await AuthApi.register(name, email, password, captcha);

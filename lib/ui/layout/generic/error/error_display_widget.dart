@@ -18,11 +18,7 @@ class ErrorDisplayWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            Icons.wifi_off,
-            color: kErrorColor,
-            size: 64,
-          ),
+          Icon(Icons.wifi_off, color: kErrorColor, size: 64),
           const SizedBox(height: 16),
           Text(
             errorMessage,

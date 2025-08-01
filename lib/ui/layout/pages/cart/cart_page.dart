@@ -8,13 +8,8 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.cart.checkout_basket),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: CartView(),
-      ),
+      appBar: AppBar(title: Text(context.t.cart.checkout_basket)),
+      body: const Padding(padding: EdgeInsets.all(16.0), child: CartView()),
     );
   }
 }

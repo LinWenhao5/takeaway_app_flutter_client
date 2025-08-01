@@ -21,14 +21,18 @@ class OrderDetailView extends ConsumerStatefulWidget {
 
 class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
   Future<void> _refresh() async {
-    await ref.read(orderDetailProvider.notifier).fetchOrderDetail(widget.orderId.toString());
+    await ref
+        .read(orderDetailProvider.notifier)
+        .fetchOrderDetail(widget.orderId.toString());
   }
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(orderDetailProvider.notifier).fetchOrderDetail(widget.orderId.toString());
+      ref
+          .read(orderDetailProvider.notifier)
+          .fetchOrderDetail(widget.orderId.toString());
     });
   }
 
@@ -95,7 +99,9 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                   children: [
                     Text(
                       '${context.t.orderHistory.orderId}${order.id}',
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineLarge?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.2,
@@ -103,11 +109,16 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                     ),
                     const SizedBox(height: 8),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
-                        color: order.orderType == OrderType.delivery
-                            ? Theme.of(context).colorScheme.primary.withAlpha((255 * 0.12).toInt())
-                            : Colors.orange.withAlpha((255 * 0.12).toInt()),
+                        color:
+                            order.orderType == OrderType.delivery
+                                ? Theme.of(context).colorScheme.primary
+                                    .withAlpha((255 * 0.12).toInt())
+                                : Colors.orange.withAlpha((255 * 0.12).toInt()),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -115,9 +126,10 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
                             ? context.t.orderType.delivery
                             : context.t.orderType.pickup,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: order.orderType == OrderType.delivery
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.orange,
+                          color:
+                              order.orderType == OrderType.delivery
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Colors.orange,
                           fontWeight: FontWeight.w600,
                           fontSize: 13,
                         ),
@@ -129,13 +141,15 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               const SizedBox(height: 40),
               OrderStatusLine(status: order.status, orderType: order.orderType),
               const Divider(height: 32, thickness: 1),
-              OrderReserveTimeInfo(reserveTime: order.reserveTimeAmsterdam),
+              OrderReserveTimeInfo(
+                reserveTime: order.reserveTimeAmsterdamHuman,
+              ),
               if (order.orderType == OrderType.delivery) ...[
                 const Divider(height: 32, thickness: 1),
                 OrderAddressInfo(address: order.address),
               ],
               const Divider(height: 32, thickness: 1),
-              OrderProductList(products: order.products), 
+              OrderProductList(products: order.products),
               const Divider(height: 32),
               OrderPriceInfo(totalPrice: order.totalPrice),
               if (order.status == OrderStatus.unpaid) ...[

@@ -6,10 +6,10 @@ import 'package:takeaway_app_flutter_client/ui/features/order_history/applicatio
 
 final orderHistoryProvider =
     StateNotifierProvider<OrderHistoryNotifier, OrderHistoryState>(
-  (ref) => OrderHistoryNotifier(),
-);
+      (ref) => OrderHistoryNotifier(),
+    );
 
 final orderDetailProvider =
     StateNotifierProvider<OrderDetailNotifier, OrderDetailState>(
-  (ref) => OrderDetailNotifier(),
-);
+      (ref) => OrderDetailNotifier(),
+    );

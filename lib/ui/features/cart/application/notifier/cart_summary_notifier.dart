@@ -8,7 +8,8 @@ class CartSummary {
 }
 
 class CartSummaryNotifier extends StateNotifier<CartSummary> {
-  CartSummaryNotifier() : super(CartSummary(totalQuantity: "0", totalPrice: "0.00"));
+  CartSummaryNotifier()
+    : super(CartSummary(totalQuantity: "0", totalPrice: "0.00"));
 
   void updateSummary(String totalQuantity, String totalPrice) {
     state = CartSummary(totalQuantity: totalQuantity, totalPrice: totalPrice);

@@ -6,11 +6,7 @@ class OrderSection extends StatelessWidget {
   final String title;
   final List<Order> orders;
 
-  const OrderSection({
-    required this.title,
-    required this.orders,
-    super.key,
-  });
+  const OrderSection({required this.title, required this.orders, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,20 +22,27 @@ class OrderSection extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
             ),
-            ...orders.map((order) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: OrderCard(order: order, onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  '/order-detail',
-                  arguments: order.id,
-                );
-              }),
-            )),
+            ...orders.map(
+              (order) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: OrderCard(
+                  order: order,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/order-detail',
+                      arguments: order.id,
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),

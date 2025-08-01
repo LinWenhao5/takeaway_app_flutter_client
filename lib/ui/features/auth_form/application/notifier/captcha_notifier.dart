@@ -8,13 +8,21 @@ class CaptchaNotifier extends StateNotifier<CaptchaState> {
   CaptchaNotifier() : super(CaptchaState());
 
   Future<void> generateCaptcha(String email) async {
-    state = state.copyWith(isLoading: true, errorMessage: null, captchaMessage: null);
+    state = state.copyWith(
+      isLoading: true,
+      errorMessage: null,
+      captchaMessage: null,
+    );
     try {
       final captcha = await AuthApi.captcha(email);
       state = state.copyWith(isLoading: false, captchaMessage: captcha.message);
     } catch (e) {
       final errorMessage = handleError(e, mapCaptchaErrorToLocalizedMessage);
-      state = state.copyWith(isLoading: false, errorMessage: errorMessage, captchaMessage: null);
+      state = state.copyWith(
+        isLoading: false,
+        errorMessage: errorMessage,
+        captchaMessage: null,
+      );
     }
   }
 }

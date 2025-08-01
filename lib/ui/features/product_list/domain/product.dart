@@ -18,16 +18,18 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json['id'],
-        name: json['name'],
-        description: json['description'],
-        price: (json['price'] is String)
+    id: json['id'],
+    name: json['name'],
+    description: json['description'],
+    price:
+        (json['price'] is String)
             ? double.parse(json['price'])
             : (json['price'] as num).toDouble(),
-        media: (json['media'] as List<dynamic>?)
-                ?.map((e) => ProductMedia.fromJson(e))
-                .toList() ??
-            [],
-        pivot: json['pivot'],
-      );
+    media:
+        (json['media'] as List<dynamic>?)
+            ?.map((e) => ProductMedia.fromJson(e))
+            .toList() ??
+        [],
+    pivot: json['pivot'],
+  );
 }

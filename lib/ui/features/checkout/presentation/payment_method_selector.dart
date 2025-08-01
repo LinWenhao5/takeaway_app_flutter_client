@@ -17,16 +17,8 @@ class PaymentMethodSelector extends StatelessWidget {
         const SizedBox(height: 12),
         Row(
           children: [
-            Radio<String>(
-              value: 'ideal',
-              groupValue: 'ideal',
-              onChanged: null,
-            ),
-            SvgPicture.asset(
-              'assets/images/IDEAL.svg',
-              width: 32,
-              height: 32,
-            ),
+            Radio<String>(value: 'ideal', groupValue: 'ideal', onChanged: null),
+            SvgPicture.asset('assets/images/IDEAL.svg', width: 32, height: 32),
             const SizedBox(width: 8),
             const Text('iDEAL'),
           ],

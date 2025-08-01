@@ -13,7 +13,11 @@ class AddressNotifier extends StateNotifier<AddressState> {
     try {
       final response = await AddressApi.getAddresses();
       final List<Address> addresses = response.addresses;
-      state = state.copyWith(isLoading: false, addresses: addresses, error: null);
+      state = state.copyWith(
+        isLoading: false,
+        addresses: addresses,
+        error: null,
+      );
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }

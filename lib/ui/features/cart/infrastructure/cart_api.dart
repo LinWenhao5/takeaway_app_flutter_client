@@ -4,13 +4,13 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/domain/delete_from_
 import 'package:takeaway_app_flutter_client/ui/features/cart/domain/get_cart_response.dart';
 
 class CartApi {
-  static Future<AddToCartResponse> addToCart(int productId, int quantity) async {
+  static Future<AddToCartResponse> addToCart(
+    int productId,
+    int quantity,
+  ) async {
     final response = await ApiClient.post(
       '/cart',
-      body: {
-        'product_id': productId,
-        'quantity': quantity,
-      },
+      body: {'product_id': productId, 'quantity': quantity},
     );
     return AddToCartResponse.fromJson(response);
   }
@@ -23,20 +23,18 @@ class CartApi {
   static Future<DeleteFromCartResponse> deleteFromCart(int productId) async {
     final response = await ApiClient.delete(
       '/cart/remove',
-      body: {
-        'product_id': productId,
-      },
+      body: {'product_id': productId},
     );
     return DeleteFromCartResponse.fromJson(response);
   }
 
-  static Future<DeleteFromCartResponse> deleteQuantityFromCart(int productId, int quantity) async {
+  static Future<DeleteFromCartResponse> deleteQuantityFromCart(
+    int productId,
+    int quantity,
+  ) async {
     final response = await ApiClient.delete(
       '/cart/remove-quantity',
-      body: {
-        'product_id': productId,
-        'quantity': quantity,
-      },
+      body: {'product_id': productId, 'quantity': quantity},
     );
     return DeleteFromCartResponse.fromJson(response);
   }

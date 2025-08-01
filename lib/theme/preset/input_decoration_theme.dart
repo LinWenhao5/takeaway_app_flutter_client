@@ -17,10 +17,7 @@ final InputDecorationTheme appInputDecorationThemeLight = InputDecorationTheme(
     borderSide: const BorderSide(color: kAccentColor, width: 2),
   ),
   prefixIconColor: kPrimaryColor,
-  hintStyle: const TextStyle(
-    color: Colors.grey,
-    fontSize: 16,
-  ),
+  hintStyle: const TextStyle(color: Colors.grey, fontSize: 16),
   contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
 );
 
@@ -40,9 +37,6 @@ final InputDecorationTheme appInputDecorationThemeDark = InputDecorationTheme(
     borderSide: const BorderSide(color: kPrimaryColor, width: 2),
   ),
   prefixIconColor: kAccentColor,
-  hintStyle: const TextStyle(
-    color: Colors.grey,
-    fontSize: 16,
-  ),
+  hintStyle: const TextStyle(color: Colors.grey, fontSize: 16),
   contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
 );

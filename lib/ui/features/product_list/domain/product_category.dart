@@ -1,6 +1,5 @@
 import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product.dart';
 
-
 class ProductCategory {
   final int id;
   final int? mediaId;
@@ -18,14 +17,19 @@ class ProductCategory {
     required this.products,
   });
 
-  factory ProductCategory.fromJson(Map<String, dynamic> json) => ProductCategory(
+  factory ProductCategory.fromJson(Map<String, dynamic> json) =>
+      ProductCategory(
         id: json['id'],
-        mediaId: json['media_id'] == null ? null : int.tryParse(json['media_id'].toString()),
+        mediaId:
+            json['media_id'] == null
+                ? null
+                : int.tryParse(json['media_id'].toString()),
         name: json['name'],
         createdAt: DateTime.parse(json['created_at']),
         updatedAt: DateTime.parse(json['updated_at']),
-        products: (json['products'] as List<dynamic>)
-            .map((e) => Product.fromJson(e))
-            .toList(),
+        products:
+            (json['products'] as List<dynamic>)
+                .map((e) => Product.fromJson(e))
+                .toList(),
       );
 }

@@ -16,7 +16,12 @@ class UsernameNotifier extends StateNotifier<UsernameState> {
     state = state.copyWith(isLoading: true, error: null, errorCode: null);
     try {
       final response = await CustomerAccountApi.getUsername();
-      state = state.copyWith(isLoading: false, username: response.username, error: null, errorCode: null);
+      state = state.copyWith(
+        isLoading: false,
+        username: response.username,
+        error: null,
+        errorCode: null,
+      );
     } catch (e) {
       int? code;
       String? message;
@@ -26,7 +31,12 @@ class UsernameNotifier extends StateNotifier<UsernameState> {
       } else {
         message = e.toString();
       }
-      state = state.copyWith(isLoading: false, username: null, error: message, errorCode: code);
+      state = state.copyWith(
+        isLoading: false,
+        username: null,
+        error: message,
+        errorCode: code,
+      );
     }
   }
 }

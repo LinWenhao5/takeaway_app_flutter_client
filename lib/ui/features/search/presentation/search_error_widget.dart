@@ -3,7 +3,6 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/colors.dart';
 
 class SearchErrorWidget extends StatelessWidget {
-
   const SearchErrorWidget({super.key});
 
   @override

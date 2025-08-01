@@ -21,10 +21,7 @@ class AddressCard extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
-        side: BorderSide(
-          color: Colors.grey,
-          width: 1,
-        ),
+        side: BorderSide(color: Colors.grey, width: 1),
       ),
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Stack(
@@ -32,7 +29,10 @@ class AddressCard extends StatelessWidget {
           ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.transparent,
-              child: Icon(Icons.location_on_outlined, color: Theme.of(context).colorScheme.primary),
+              child: Icon(
+                Icons.location_on_outlined,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,28 +56,37 @@ class AddressCard extends StatelessWidget {
                   Text(
                     '${address.postcode} ${address.city}',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.8).toInt()),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withAlpha((255 * 0.8).toInt()),
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     '${address.name}  ${address.phone}',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.7).toInt()),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withAlpha((255 * 0.7).toInt()),
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     address.country,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withAlpha((255 * 0.6).toInt()),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withAlpha((255 * 0.6).toInt()),
                     ),
                   ),
                 ],
               ),
             ),
             isThreeLine: true,
-            contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 16,
+            ),
           ),
           Positioned(
             top: 4,
@@ -100,26 +109,34 @@ class AddressCard extends StatelessWidget {
                     onDelete?.call();
                   }
                 },
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 'edit',
-                    child: ListTile(
-                      leading: Icon(Icons.edit, size: 20),
-                      title: Text(context.t.address.editAddress),
-                      contentPadding: EdgeInsets.zero,
-                      dense: true,
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 'delete',
-                    child: ListTile(
-                      leading: const Icon(Icons.delete_outline, color: Colors.red, size: 20),
-                      title: Text(context.t.address.deleteAddress, style: TextStyle(color: Colors.red)),
-                      contentPadding: EdgeInsets.zero,
-                      dense: true,
-                    ),
-                  ),
-                ],
+                itemBuilder:
+                    (context) => [
+                      PopupMenuItem(
+                        value: 'edit',
+                        child: ListTile(
+                          leading: Icon(Icons.edit, size: 20),
+                          title: Text(context.t.address.editAddress),
+                          contentPadding: EdgeInsets.zero,
+                          dense: true,
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: 'delete',
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.delete_outline,
+                            color: Colors.red,
+                            size: 20,
+                          ),
+                          title: Text(
+                            context.t.address.deleteAddress,
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          contentPadding: EdgeInsets.zero,
+                          dense: true,
+                        ),
+                      ),
+                    ],
                 icon: const Icon(Icons.more_vert, size: 20),
                 offset: const Offset(-8, 32),
                 padding: EdgeInsets.zero,

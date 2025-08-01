@@ -16,7 +16,10 @@ class ThemeSegment extends ConsumerWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-          child: Text(context.t.settings.theme, style: Theme.of(context).textTheme.titleMedium),
+          child: Text(
+            context.t.settings.theme,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
@@ -24,15 +27,27 @@ class ThemeSegment extends ConsumerWidget {
             width: double.infinity,
             child: SegmentedButton<String>(
               segments: [
-                ButtonSegment(value: 'system', label: Text(context.t.settings.themeSystem), icon: Icon(Icons.phone_android)),
-                ButtonSegment(value: 'light', label: Text(context.t.settings.themeLight), icon: Icon(Icons.light_mode)),
-                ButtonSegment(value: 'dark', label: Text(context.t.settings.themeDark), icon: Icon(Icons.dark_mode)),
+                ButtonSegment(
+                  value: 'system',
+                  label: Text(context.t.settings.themeSystem),
+                  icon: Icon(Icons.phone_android),
+                ),
+                ButtonSegment(
+                  value: 'light',
+                  label: Text(context.t.settings.themeLight),
+                  icon: Icon(Icons.light_mode),
+                ),
+                ButtonSegment(
+                  value: 'dark',
+                  label: Text(context.t.settings.themeDark),
+                  icon: Icon(Icons.dark_mode),
+                ),
               ],
               selected: {currentTheme},
               onSelectionChanged: (Set<String> newSelection) {
-                ref.read(themeModeProvider.notifier).setThemeMode(
-                  stringToThemeMode(newSelection.first),
-                );
+                ref
+                    .read(themeModeProvider.notifier)
+                    .setThemeMode(stringToThemeMode(newSelection.first));
               },
             ),
           ),

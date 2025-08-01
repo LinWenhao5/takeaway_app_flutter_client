@@ -24,7 +24,8 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (ref.read(cartItemsProvider).isEmpty && !ref.read(fetchCartProvider).isLoading) {
+      if (ref.read(cartItemsProvider).isEmpty &&
+          !ref.read(fetchCartProvider).isLoading) {
         fetchCartNotifier.fetchCart();
       }
     });
@@ -111,15 +112,18 @@ class CheckoutContent extends ConsumerWidget {
               ],
               AvailableTimeSelector(
                 selectedTime: selectedTime,
-                onChanged: onTimeChanged
+                onChanged: onTimeChanged,
               ),
               const SizedBox(height: 32),
               const PaymentMethodSelector(),
               const SizedBox(height: 24),
               SubmitOrderButton(
-                enabled: (selectedTime != null) &&
-                    (orderType == OrderType.pickup || (addresses.isNotEmpty && activeAddressId != null)),
-                activeAddressId: orderType == OrderType.delivery ? activeAddressId : null,
+                enabled:
+                    (selectedTime != null) &&
+                    (orderType == OrderType.pickup ||
+                        (addresses.isNotEmpty && activeAddressId != null)),
+                activeAddressId:
+                    orderType == OrderType.delivery ? activeAddressId : null,
                 orderType: orderType,
                 reserveTime: selectedTime ?? '',
               ),

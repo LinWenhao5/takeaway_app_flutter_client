@@ -8,16 +8,14 @@ class AccountSettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Account Settings'),
-      ),
+      appBar: AppBar(title: const Text('Account Settings')),
       body: Center(
         child: ElevatedButton.icon(
           icon: const Icon(Icons.logout),
           label: const Text('Log Out'),
           onPressed: () async {
             await ref.read(logoutNotifierProvider.notifier).logout();
-            
+
             Navigator.pop(context);
           },
         ),

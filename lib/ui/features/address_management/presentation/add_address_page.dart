@@ -17,31 +17,34 @@ class _AddAddressPageState extends ConsumerState<AddAddressPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AddressActionState>(addressActionNotifierProvider, (previous, next) async {
+    ref.listen<AddressActionState>(addressActionNotifierProvider, (
+      previous,
+      next,
+    ) async {
       if (next.success && next.action == AddressActionType.create) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(context.t.address.addSuccess)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.t.address.addSuccess)));
         await ref.read(addressNotifierProvider.notifier).fetchAddresses();
         if (mounted) Navigator.of(context).pop();
       }
       if (next.error != null && next.action == AddressActionType.create) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(next.error!)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(next.error!)));
       }
     });
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.t.address.addAddress),
-      ),
+      appBar: AppBar(title: Text(context.t.address.addAddress)),
       body: AddressForm(
         submitting: _submitting,
         submitLabel: context.t.address.submit,
         onSubmit: (request) async {
           setState(() => _submitting = true);
-          await ref.read(addressActionNotifierProvider.notifier).createAddress(request);
+          await ref
+              .read(addressActionNotifierProvider.notifier)
+              .createAddress(request);
           setState(() => _submitting = false);
         },
       ),
