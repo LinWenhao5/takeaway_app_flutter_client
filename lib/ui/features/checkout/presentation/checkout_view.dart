@@ -10,6 +10,7 @@ import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/ad
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/order_type_selector.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/submit_order_button.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/payment_method_selector.dart';
+import 'package:takeaway_app_flutter_client/ui/features/store/presentation/store_info_checkout_widget.dart';
 
 class CheckoutView extends ConsumerStatefulWidget {
   const CheckoutView({super.key});
@@ -108,6 +109,10 @@ class CheckoutContent extends ConsumerWidget {
               const SizedBox(height: 32),
               if (orderType == OrderType.delivery) ...[
                 const AddressSelector(),
+                const SizedBox(height: 32),
+              ],  
+              if (orderType == OrderType.pickup) ...[
+                const StoreInfoCheckoutWidget(),
                 const SizedBox(height: 32),
               ],
               AvailableTimeSelector(

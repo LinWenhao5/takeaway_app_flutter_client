@@ -32,6 +32,7 @@
     "orderItems": "Bestelde gerechten",
     "amount": "Aantal",
     "selectAddress": "Selecteer bezorgadres",
+    "pickupAddress": "Afhaaladres",
     "addAddress": "Adres toevoegen",
     "paymentMethod": "Betaalmethode",
     "subtotal": "Subtotaal",
@@ -197,6 +198,7 @@
     }
   },
   "common": {
+    "openInGoogleMaps": "Open in Google Maps",
     "today": "Vandaag",
     "tomorrow": "Morgen",
     "weekdays": ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],

@@ -32,6 +32,7 @@
     "orderItems": "Ordered Dishes",
     "amount": "Qty",
     "selectAddress": "Select Delivery Address",
+    "pickupAddress": "Pickup Address",
     "addAddress": "Add Address",
     "paymentMethod": "Payment Method",
     "subtotal": "Subtotal",
@@ -197,6 +198,7 @@
     }
   },
   "common": {
+    "openInGoogleMaps": "Open in Google Maps",
     "today": "Today",
     "tomorrow": "Tomorrow",
     "weekdays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],

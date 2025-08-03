@@ -10,6 +10,7 @@ import 'package:takeaway_app_flutter_client/ui/features/order_history/presentati
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_address_info.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_price_info.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/store/presentation/store_info_order_detail_widget.dart';
 
 class OrderDetailView extends ConsumerStatefulWidget {
   final int orderId;
@@ -147,6 +148,10 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               if (order.orderType == OrderType.delivery) ...[
                 const Divider(height: 32, thickness: 1),
                 OrderAddressInfo(address: order.address),
+              ],
+              if (order.orderType == OrderType.pickup) ...[
+                const Divider(height: 32, thickness: 1),
+                StoreInfoOrderDetailWidget(),
               ],
               const Divider(height: 32, thickness: 1),
               OrderProductList(products: order.products),
