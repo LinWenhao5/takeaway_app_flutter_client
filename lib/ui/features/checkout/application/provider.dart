@@ -8,7 +8,7 @@ import 'package:takeaway_app_flutter_client/ui/features/checkout/infrastructure/
 final selectedAddressIdProvider = StateProvider<int?>((ref) => null);
 
 final orderNotifierProvider = StateNotifierProvider<OrderNotifier, OrderState>(
-  (ref) => OrderNotifier(),
+  (ref) => OrderNotifier(ref),
 );
 
 final availableTimesProvider = FutureProvider<AvailableTimesResponse>((

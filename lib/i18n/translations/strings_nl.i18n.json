@@ -110,7 +110,8 @@
     "unsupportedPostcode": "Sorry, we bezorgen nog niet op deze postcode.",
     "invalidPhone": "Ongeldig telefoonnummer.",
     "invalidStreet": "Ongeldige straatnaam.",
-    "missingOrderParam": "Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw."
+    "missingOrderParam": "Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw.",
+    "selectedTimeUnavailable": "De geselecteerde tijd is niet beschikbaar, kies een andere tijd."
   },
   "login": {
     "title": "Fijn je weer te zien!",

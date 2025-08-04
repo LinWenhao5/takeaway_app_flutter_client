@@ -110,7 +110,8 @@
     "unsupportedPostcode": "Sorry, we currently do not deliver to this postcode.",
     "invalidPhone": "Invalid phone number.",
     "invalidStreet": "Invalid street name.",
-    "missingOrderParam": "Oops, something went wrong with your order. Please go back and try again."
+    "missingOrderParam": "Oops, something went wrong with your order. Please go back and try again.",
+    "selectedTimeUnavailable": "The selected time is not available, please choose another time."
   },
   "login": {
     "title": "Welcome back!",

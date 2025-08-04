@@ -51,10 +51,12 @@ class SubmitOrderButton extends ConsumerWidget {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(context.t.checkout.orderSuccess)));
-    } else {
+    } 
+    
+    if (orderState.error != null) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(context.t.checkout.orderFailed)));
+      ).showSnackBar(SnackBar(content: Text(orderState.error!)));
     }
   }
 

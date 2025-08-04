@@ -1,10 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/order_state.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/infrastructure/order_api.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
+import 'package:takeaway_app_flutter_client/ui/utils/error_handler.dart';
 
 class OrderNotifier extends StateNotifier<OrderState> {
-  OrderNotifier() : super(OrderState());
+  final Ref ref;
+  OrderNotifier(this.ref) : super(OrderState());
 
   Future<void> createOrder({
     required OrderType orderType,
@@ -37,12 +41,26 @@ class OrderNotifier extends StateNotifier<OrderState> {
       state = state.copyWith(
         isLoading: false,
         success: false,
-        error: e.toString(),
+        error: _mapOrderError(e),
         action: OrderActionType.create,
         orderId: null,
         paymentUrl: null,
       );
     }
+  }
+
+  String _mapOrderError(dynamic e) {
+    return handleError(
+      e,
+      (msg) {
+        if (msg.contains('Selected time is not available')) {
+          ref.read(selectedReserveTimeProvider.notifier).state = null;
+          ref.invalidate(availableTimesProvider);
+          return t.errors.selectedTimeUnavailable;
+        }
+        return t.errors.genericErrorMessage;
+      },
+    );
   }
 
   void reset() {

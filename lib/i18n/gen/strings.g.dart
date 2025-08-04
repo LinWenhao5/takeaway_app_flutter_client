@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 372 (186 per locale)
+/// Strings: 374 (187 per locale)
 ///
-/// Built on 2025-08-03 at 14:29 UTC
+/// Built on 2025-08-04 at 11:52 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -362,6 +362,7 @@ class _StringsErrorsEn {
 	String get invalidPhone => 'Invalid phone number.';
 	String get invalidStreet => 'Invalid street name.';
 	String get missingOrderParam => 'Oops, something went wrong with your order. Please go back and try again.';
+	String get selectedTimeUnavailable => 'The selected time is not available, please choose another time.';
 }
 
 // Path: login
@@ -758,6 +759,7 @@ class _StringsErrorsNl implements _StringsErrorsEn {
 	@override String get invalidPhone => 'Ongeldig telefoonnummer.';
 	@override String get invalidStreet => 'Ongeldige straatnaam.';
 	@override String get missingOrderParam => 'Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw.';
+	@override String get selectedTimeUnavailable => 'De geselecteerde tijd is niet beschikbaar, kies een andere tijd.';
 }
 
 // Path: login
@@ -1011,6 +1013,7 @@ extension on Translations {
 			case 'errors.invalidPhone': return 'Invalid phone number.';
 			case 'errors.invalidStreet': return 'Invalid street name.';
 			case 'errors.missingOrderParam': return 'Oops, something went wrong with your order. Please go back and try again.';
+			case 'errors.selectedTimeUnavailable': return 'The selected time is not available, please choose another time.';
 			case 'login.title': return 'Welcome back!';
 			case 'login.emailLabel': return 'Email Address';
 			case 'login.emailHint': return 'Enter your email address';
@@ -1205,6 +1208,7 @@ extension on _StringsNl {
 			case 'errors.invalidPhone': return 'Ongeldig telefoonnummer.';
 			case 'errors.invalidStreet': return 'Ongeldige straatnaam.';
 			case 'errors.missingOrderParam': return 'Oeps, er ging iets mis met je bestelling. Ga even terug en probeer het opnieuw.';
+			case 'errors.selectedTimeUnavailable': return 'De geselecteerde tijd is niet beschikbaar, kies een andere tijd.';
 			case 'login.title': return 'Fijn je weer te zien!';
 			case 'login.emailLabel': return 'E-mailadres';
 			case 'login.emailHint': return 'Vul je e-mailadres in';
