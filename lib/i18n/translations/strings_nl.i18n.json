@@ -94,7 +94,9 @@
     "reserveTime": "Gereseveerde Tijd",
     "orderDetails": "Bestelgegevens",
     "totalPrice": "Totaal bedrag",
-    "products": "Gerechten"
+    "products": "Gerechten",
+    "changeReserveTime": "Wijzig gereserveerde tijd",
+    "reserveTimeNeedChange": "Uw eerder gekozen tijd is verlopen, kies alstublieft een nieuwe tijd."
   },
   "errors": {
     "connectionError": "Er is een verbindingsprobleem opgetreden",

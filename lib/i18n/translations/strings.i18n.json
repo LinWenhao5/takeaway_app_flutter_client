@@ -94,7 +94,9 @@
     "reserveTime": "Reserved Time",
     "orderDetails": "Order Details",
     "totalPrice": "Total Price",
-    "products": "Dishes"
+    "products": "Dishes",
+    "changeReserveTime": "Change Reserved Time",
+    "reserveTimeNeedChange": "Your previously selected time has expired, please choose a new time."
   },
   "errors": {
     "connectionError": "There was a connection issue.",

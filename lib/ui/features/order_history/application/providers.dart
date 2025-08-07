@@ -3,6 +3,8 @@ import 'package:takeaway_app_flutter_client/ui/features/order_history/applicatio
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_detail_state.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_history_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_history_state.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_repay_notifier.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_repay_state.dart';
 
 final orderHistoryProvider =
     StateNotifierProvider<OrderHistoryNotifier, OrderHistoryState>(
@@ -12,4 +14,9 @@ final orderHistoryProvider =
 final orderDetailProvider =
     StateNotifierProvider<OrderDetailNotifier, OrderDetailState>(
       (ref) => OrderDetailNotifier(),
+    );
+
+final orderRepayProvider =
+    StateNotifierProvider.autoDispose<OrderRepayNotifier, OrderRepayState>(
+      (ref) => OrderRepayNotifier(),
     );

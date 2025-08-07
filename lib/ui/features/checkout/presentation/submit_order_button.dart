@@ -4,6 +4,7 @@ import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
+import 'package:takeaway_app_flutter_client/ui/utils/launch_util.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SubmitOrderButton extends ConsumerWidget {
@@ -32,12 +33,7 @@ class SubmitOrderButton extends ConsumerWidget {
     if (orderState.success) {
       final url = orderState.paymentUrl;
       if (url != null && url.isNotEmpty) {
-        final uri = Uri.parse(url);
-        if (await canLaunchUrl(uri)) {
-          await launchUrl(uri, mode: LaunchMode.platformDefault);
-        } else {
-          await launchUrl(uri, mode: LaunchMode.externalApplication);
-        }
+        await openWebUrl(url);
         if (context.mounted) {
           Navigator.of(context).pushNamedAndRemoveUntil(
             '/manual-payment',

@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_repay_button.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_reserve_time_info.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_status_line.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_product_list.dart';
@@ -144,6 +145,9 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               const Divider(height: 32, thickness: 1),
               OrderReserveTimeInfo(
                 reserveTime: order.reserveTimeAmsterdamHuman,
+                orderType: order.orderType,
+                onTimeChanged: (newTime) {
+                },
               ),
               if (order.orderType == OrderType.delivery) ...[
                 const Divider(height: 32, thickness: 1),
@@ -159,17 +163,7 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               OrderPriceInfo(totalPrice: order.totalPrice),
               if (order.status == OrderStatus.unpaid) ...[
                 const SizedBox(height: 32),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // TODO: 跳转支付页面或发起支付
-                  },
-                  icon: const Icon(Icons.payment),
-                  label: Text(context.t.payment.payNow),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    minimumSize: const Size(double.infinity, 48),
-                  ),
-                ),
+                RepayButton(orderId: order.id),
               ],
             ],
           );

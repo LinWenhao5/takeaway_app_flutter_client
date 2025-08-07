@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 374 (187 per locale)
+/// Strings: 378 (189 per locale)
 ///
-/// Built on 2025-08-04 at 11:52 UTC
+/// Built on 2025-08-07 at 13:47 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -339,6 +339,8 @@ class _StringsOrderDetailsEn {
 	String get orderDetails => 'Order Details';
 	String get totalPrice => 'Total Price';
 	String get products => 'Dishes';
+	String get changeReserveTime => 'Change Reserved Time';
+	String get reserveTimeNeedChange => 'Your previously selected time has expired, please choose a new time.';
 }
 
 // Path: errors
@@ -736,6 +738,8 @@ class _StringsOrderDetailsNl implements _StringsOrderDetailsEn {
 	@override String get orderDetails => 'Bestelgegevens';
 	@override String get totalPrice => 'Totaal bedrag';
 	@override String get products => 'Gerechten';
+	@override String get changeReserveTime => 'Wijzig gereserveerde tijd';
+	@override String get reserveTimeNeedChange => 'Uw eerder gekozen tijd is verlopen, kies alstublieft een nieuwe tijd.';
 }
 
 // Path: errors
@@ -999,6 +1003,8 @@ extension on Translations {
 			case 'orderDetails.orderDetails': return 'Order Details';
 			case 'orderDetails.totalPrice': return 'Total Price';
 			case 'orderDetails.products': return 'Dishes';
+			case 'orderDetails.changeReserveTime': return 'Change Reserved Time';
+			case 'orderDetails.reserveTimeNeedChange': return 'Your previously selected time has expired, please choose a new time.';
 			case 'errors.connectionError': return 'There was a connection issue.';
 			case 'errors.retry': return 'Tap here to retry';
 			case 'errors.invalidEmailMessage': return 'The email address you entered is invalid.';
@@ -1194,6 +1200,8 @@ extension on _StringsNl {
 			case 'orderDetails.orderDetails': return 'Bestelgegevens';
 			case 'orderDetails.totalPrice': return 'Totaal bedrag';
 			case 'orderDetails.products': return 'Gerechten';
+			case 'orderDetails.changeReserveTime': return 'Wijzig gereserveerde tijd';
+			case 'orderDetails.reserveTimeNeedChange': return 'Uw eerder gekozen tijd is verlopen, kies alstublieft een nieuwe tijd.';
 			case 'errors.connectionError': return 'Er is een verbindingsprobleem opgetreden';
 			case 'errors.retry': return 'Klik hier om opnieuw te proberen';
 			case 'errors.invalidEmailMessage': return 'Het ingevoerde e-mailadres is ongeldig.';
