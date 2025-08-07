@@ -17,16 +17,15 @@ class RepayButton extends ConsumerWidget {
         await notifier.repayOrder(orderId.toString());
         final repayState = ref.read(orderRepayProvider);
         final paymentUrl = repayState.data?.paymentUrl;
-        print(repayState.toString());
         if (paymentUrl != null && paymentUrl.isNotEmpty) {
           await openWebUrl(paymentUrl);
-          // if (context.mounted) {
-          //   Navigator.of(context).pushNamedAndRemoveUntil(
-          //     '/manual-payment',
-          //     ModalRoute.withName('/'),
-          //     arguments: paymentUrl,
-          //   );
-          // }
+          if (context.mounted) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              '/manual-payment',
+              ModalRoute.withName('/'),
+              arguments: paymentUrl,
+            );
+          }
         } else if (repayState.error != null) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(repayState.error!)),
