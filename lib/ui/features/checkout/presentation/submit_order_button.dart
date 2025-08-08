@@ -5,7 +5,6 @@ import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_pr
 import 'package:takeaway_app_flutter_client/ui/features/checkout/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/utils/launch_util.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SubmitOrderButton extends ConsumerWidget {
   final bool enabled;

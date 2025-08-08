@@ -5,6 +5,7 @@ import 'package:takeaway_app_flutter_client/ui/features/order_history/applicatio
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_history_state.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_repay_notifier.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/order_repay_state.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/infrastructure/order_history_api.dart';
 
 final orderHistoryProvider =
     StateNotifierProvider<OrderHistoryNotifier, OrderHistoryState>(
@@ -20,3 +21,11 @@ final orderRepayProvider =
     StateNotifierProvider.autoDispose<OrderRepayNotifier, OrderRepayState>(
       (ref) => OrderRepayNotifier(),
     );
+
+final updateReserveTimeProvider = FutureProvider.autoDispose.family<void, Map<String, String>>(
+  (ref, params) async {
+    final orderId = params['orderId']!;
+    final reserveTime = params['reserveTime']!;
+    await OrderHistoryApi.updateReserveTime(orderId, reserveTime);
+  },
+);

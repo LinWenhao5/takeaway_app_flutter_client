@@ -13,7 +13,11 @@ class OrderRepayNotifier extends StateNotifier<OrderRepayState> {
     state = state.copyWith(isLoading: true, error: null);
     try {
       final response = await OrderHistoryApi.repayOrder(orderId);
-      state = state.copyWith(data: response, isLoading: false, error: null);
+      state = state.copyWith(
+        needChangeReserveTime: false,
+        data: response, 
+        isLoading: false, 
+        error: null);
     } catch (e) {
       final errorMsg = handleError(
         e,

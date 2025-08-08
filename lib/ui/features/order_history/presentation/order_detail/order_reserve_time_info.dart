@@ -9,11 +9,13 @@ class OrderReserveTimeInfo extends ConsumerWidget {
   final String reserveTime;
   final OrderType orderType;
   final void Function(String newTime)? onTimeChanged;
+  final bool canEdit;
 
   const OrderReserveTimeInfo({
     required this.reserveTime,
     required this.orderType,
     this.onTimeChanged,
+    this.canEdit = false,
     super.key,
   });
 
@@ -49,25 +51,25 @@ class OrderReserveTimeInfo extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 8),
-            IconButton(
-              icon: Icon(Icons.edit, color: Theme.of(context).colorScheme.primary),
-              tooltip: context.t.orderDetails.changeReserveTime,
-              onPressed: () async {
-                final newTime = await showModalBottomSheet<String>(
-                  context: context,
-                  builder: (context) => AvailableTimeModal(
-                    selectedTime: reserveTime,
-                    orderType: orderType,
-                    onChanged: (time) {
-                      Navigator.of(context).pop(time);
-                    },
-                  ),
-                );
-                if (newTime != null && onTimeChanged != null) {
-                  onTimeChanged!(newTime);
-                }
-              },
-            ),
+            if (canEdit)
+              IconButton(
+                icon: Icon(Icons.edit, color: Theme.of(context).colorScheme.primary),
+                tooltip: context.t.orderDetails.changeReserveTime,
+                onPressed: () async {
+                  await showModalBottomSheet(
+                    context: context,
+                    builder: (context) => AvailableTimeModal(
+                      selectedTime: reserveTime,
+                      orderType: orderType,
+                      onChanged: (time) {
+                        if (time != null && onTimeChanged != null) {
+                          onTimeChanged!(time);
+                        }
+                      },
+                    ),
+                  );
+                },
+              ),
           ],
         ),
         if (needChange) ...[

@@ -18,4 +18,11 @@ class OrderHistoryApi {
     final response = await ApiClient.post('/orders/$orderId/repay');
     return OrderRepayResponse.fromJson(response);
   }
+
+  static Future<void> updateReserveTime(String orderId, String reserveTime) async {
+    await ApiClient.put(
+      '/orders/$orderId/reserve-time',
+      body: {'reserve_time': reserveTime},
+    );
+  }
 }

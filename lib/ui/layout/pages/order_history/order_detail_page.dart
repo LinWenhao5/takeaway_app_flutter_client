@@ -15,14 +15,18 @@ class OrderDetailPage extends StatelessWidget {
         child:
             orderId == null
                 ? Center(
-                  child: Text(
-                    context.t.errors.missingOrderParam,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.error_outline, size: 40),
+                        const SizedBox(height: 12),
+                        Text(context.t.errors.missingOrderParam, textAlign: TextAlign.center),
+                      ],
+                    ),
                 )
                 : OrderDetailView(orderId: orderId!),
       ),
     );
   }
 }
+

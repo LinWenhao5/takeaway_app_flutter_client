@@ -146,8 +146,11 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               OrderReserveTimeInfo(
                 reserveTime: order.reserveTimeAmsterdamHuman,
                 orderType: order.orderType,
-                onTimeChanged: (newTime) {
+                onTimeChanged: (newTime) async {
+                  await ref.read(updateReserveTimeProvider({'orderId': order.id.toString(), 'reserveTime': newTime}).future);
+                  await _refresh();
                 },
+                canEdit: order.status == OrderStatus.unpaid,
               ),
               if (order.orderType == OrderType.delivery) ...[
                 const Divider(height: 32, thickness: 1),
