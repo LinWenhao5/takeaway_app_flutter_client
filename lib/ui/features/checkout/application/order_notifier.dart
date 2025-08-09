@@ -15,6 +15,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
     required OrderType orderType,
     int? addressId,
     required String reserveTime,
+    String? note,
   }) async {
     state = state.copyWith(
       isLoading: true,
@@ -29,6 +30,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
         orderType: orderType,
         addressId: addressId,
         reserveTime: reserveTime,
+        note: note,
       );
       state = state.copyWith(
         isLoading: false,

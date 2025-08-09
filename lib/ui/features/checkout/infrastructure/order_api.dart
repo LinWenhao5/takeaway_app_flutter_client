@@ -9,6 +9,7 @@ class OrderApi {
     required OrderType orderType,
     int? addressId,
     required String reserveTime,
+    String? note,
   }) async {
     final platform = getPlatform();
     final host = kIsWeb ? Uri.base.origin : null;
@@ -19,6 +20,7 @@ class OrderApi {
       if (host != null) 'host': host,
       if (orderType == OrderType.delivery && addressId != null)
         'address_id': addressId,
+      if (note != null && note.isNotEmpty) 'note': note,
     };
 
     final response = await ApiClient.post('/orders', body: body);

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/radius.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
+import 'package:takeaway_app_flutter_client/ui/features/checkout/presentation/checkout_note_field.dart';
 
 class CheckoutItemList extends ConsumerWidget {
   const CheckoutItemList({super.key});
@@ -31,7 +32,7 @@ class CheckoutItemList extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           ...cartItems.map(
-            (item) => Padding(
+                (item) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 children: [
@@ -59,6 +60,8 @@ class CheckoutItemList extends ConsumerWidget {
               ),
             ),
           ),
+          const Divider(),
+          const CheckoutNoteField(),
         ],
       ),
     );

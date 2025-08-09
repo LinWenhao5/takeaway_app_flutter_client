@@ -11,6 +11,7 @@ class SubmitOrderButton extends ConsumerWidget {
   final int? activeAddressId;
   final OrderType orderType;
   final String reserveTime;
+  final String? note;
 
   const SubmitOrderButton({
     super.key,
@@ -18,6 +19,7 @@ class SubmitOrderButton extends ConsumerWidget {
     required this.activeAddressId,
     required this.orderType,
     required this.reserveTime,
+    required this.note,
   });
 
   Future<void> _handleSubmit(BuildContext context, WidgetRef ref) async {
@@ -27,6 +29,7 @@ class SubmitOrderButton extends ConsumerWidget {
           orderType: orderType,
           addressId: orderType == OrderType.delivery ? activeAddressId : null,
           reserveTime: reserveTime,
+          note: note,
         );
     final orderState = ref.read(orderNotifierProvider);
     if (orderState.success) {

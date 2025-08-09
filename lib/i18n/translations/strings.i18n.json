@@ -31,6 +31,8 @@
     "checkoutSummary": "Checkout Summary",
     "orderItems": "Ordered Dishes",
     "amount": "Qty",
+    "addNote": "Add note",
+    "note": "Note",
     "selectAddress": "Select Delivery Address",
     "pickupAddress": "Pickup Address",
     "addAddress": "Add Address",
@@ -201,6 +203,8 @@
     }
   },
   "common": {
+    "confirm": "Confirm",
+    "clear": "Clear",
     "openInGoogleMaps": "Open in Google Maps",
     "today": "Today",
     "tomorrow": "Tomorrow",

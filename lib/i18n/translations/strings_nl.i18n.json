@@ -31,6 +31,8 @@
     "checkoutSummary": "Afrekenoverzicht",
     "orderItems": "Bestelde gerechten",
     "amount": "Aantal",
+    "addNote": "Opmerking toevoegen",
+    "note": "Opmerking",
     "selectAddress": "Selecteer bezorgadres",
     "pickupAddress": "Afhaaladres",
     "addAddress": "Adres toevoegen",
@@ -201,6 +203,8 @@
     }
   },
   "common": {
+    "confirm": "Bevestigen",
+    "clear": "Wissen",
     "openInGoogleMaps": "Open in Google Maps",
     "today": "Vandaag",
     "tomorrow": "Morgen",

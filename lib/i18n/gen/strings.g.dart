@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 378 (189 per locale)
+/// Strings: 386 (193 per locale)
 ///
-/// Built on 2025-08-07 at 13:47 UTC
+/// Built on 2025-08-09 at 12:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -233,6 +233,8 @@ class _StringsCheckoutEn {
 	String get checkoutSummary => 'Checkout Summary';
 	String get orderItems => 'Ordered Dishes';
 	String get amount => 'Qty';
+	String get addNote => 'Add note';
+	String get note => 'Note';
 	String get selectAddress => 'Select Delivery Address';
 	String get pickupAddress => 'Pickup Address';
 	String get addAddress => 'Add Address';
@@ -478,6 +480,8 @@ class _StringsCommonEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get confirm => 'Confirm';
+	String get clear => 'Clear';
 	String get openInGoogleMaps => 'Open in Google Maps';
 	String get today => 'Today';
 	String get tomorrow => 'Tomorrow';
@@ -632,6 +636,8 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get checkoutSummary => 'Afrekenoverzicht';
 	@override String get orderItems => 'Bestelde gerechten';
 	@override String get amount => 'Aantal';
+	@override String get addNote => 'Opmerking toevoegen';
+	@override String get note => 'Opmerking';
 	@override String get selectAddress => 'Selecteer bezorgadres';
 	@override String get pickupAddress => 'Afhaaladres';
 	@override String get addAddress => 'Adres toevoegen';
@@ -877,6 +883,8 @@ class _StringsCommonNl implements _StringsCommonEn {
 	@override final _StringsNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get confirm => 'Bevestigen';
+	@override String get clear => 'Wissen';
 	@override String get openInGoogleMaps => 'Open in Google Maps';
 	@override String get today => 'Vandaag';
 	@override String get tomorrow => 'Morgen';
@@ -951,6 +959,8 @@ extension on Translations {
 			case 'checkout.checkoutSummary': return 'Checkout Summary';
 			case 'checkout.orderItems': return 'Ordered Dishes';
 			case 'checkout.amount': return 'Qty';
+			case 'checkout.addNote': return 'Add note';
+			case 'checkout.note': return 'Note';
 			case 'checkout.selectAddress': return 'Select Delivery Address';
 			case 'checkout.pickupAddress': return 'Pickup Address';
 			case 'checkout.addAddress': return 'Add Address';
@@ -1095,6 +1105,8 @@ extension on Translations {
 			case 'settings.greetings.evening': return 'Good evening! Treat yourself to sushi tonight 🌇';
 			case 'settings.greetings.night': return 'Good night! Sweet dreams 🌙';
 			case 'settings.greetings.hello': return 'Hello there! 👋';
+			case 'common.confirm': return 'Confirm';
+			case 'common.clear': return 'Clear';
 			case 'common.openInGoogleMaps': return 'Open in Google Maps';
 			case 'common.today': return 'Today';
 			case 'common.tomorrow': return 'Tomorrow';
@@ -1148,6 +1160,8 @@ extension on _StringsNl {
 			case 'checkout.checkoutSummary': return 'Afrekenoverzicht';
 			case 'checkout.orderItems': return 'Bestelde gerechten';
 			case 'checkout.amount': return 'Aantal';
+			case 'checkout.addNote': return 'Opmerking toevoegen';
+			case 'checkout.note': return 'Opmerking';
 			case 'checkout.selectAddress': return 'Selecteer bezorgadres';
 			case 'checkout.pickupAddress': return 'Afhaaladres';
 			case 'checkout.addAddress': return 'Adres toevoegen';
@@ -1292,6 +1306,8 @@ extension on _StringsNl {
 			case 'settings.greetings.evening': return 'Goede avond! Trakteer jezelf op sushi vanavond 🌇';
 			case 'settings.greetings.night': return 'Welterusten! 🌙';
 			case 'settings.greetings.hello': return 'Hallo daar! 👋';
+			case 'common.confirm': return 'Bevestigen';
+			case 'common.clear': return 'Wissen';
 			case 'common.openInGoogleMaps': return 'Open in Google Maps';
 			case 'common.today': return 'Vandaag';
 			case 'common.tomorrow': return 'Morgen';

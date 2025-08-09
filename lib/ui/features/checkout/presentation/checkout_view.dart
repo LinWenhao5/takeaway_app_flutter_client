@@ -37,6 +37,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
     final addresses = ref.watch(addressNotifierProvider).addresses;
     final orderType = ref.watch(selectedOrderTypeProvider);
     final selectedTime = ref.watch(selectedReserveTimeProvider);
+    final note = ref.read(checkoutNoteProvider);
 
     return Align(
       alignment: Alignment.topCenter,
@@ -61,6 +62,7 @@ class _CheckoutViewState extends ConsumerState<CheckoutView> {
                 onTimeChanged: (time) {
                   ref.read(selectedReserveTimeProvider.notifier).state = time;
                 },
+                note: note,
               ),
             ),
           ],
@@ -77,6 +79,7 @@ class CheckoutContent extends ConsumerWidget {
   final dynamic cartSummary;
   final String? selectedTime;
   final ValueChanged<String?> onTimeChanged;
+  final String? note;
 
   const CheckoutContent({
     super.key,
@@ -86,9 +89,10 @@ class CheckoutContent extends ConsumerWidget {
     required this.cartSummary,
     required this.selectedTime,
     required this.onTimeChanged,
+    this.note,
   });
 
-  @override
+  @override 
   Widget build(BuildContext context, WidgetRef ref) {
     return RefreshIndicator(
       onRefresh: () async {
@@ -132,6 +136,7 @@ class CheckoutContent extends ConsumerWidget {
                     orderType == OrderType.delivery ? activeAddressId : null,
                 orderType: orderType,
                 reserveTime: selectedTime ?? '',
+                note: note ?? '',
               ),
             ],
           ),

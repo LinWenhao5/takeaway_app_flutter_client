@@ -13,6 +13,7 @@ class Order {
   final AddressSnapshot? address;
   final List<Product> products;
   final OrderType orderType;
+  final String note;
 
   Order({
     required this.id,
@@ -23,6 +24,7 @@ class Order {
     required this.address,
     required this.products,
     required this.orderType,
+    required this.note,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
@@ -44,6 +46,7 @@ class Order {
           json['order_type'] == 'pickup'
               ? OrderType.pickup
               : OrderType.delivery,
+      note: json['note'] ?? '',
     );
   }
 

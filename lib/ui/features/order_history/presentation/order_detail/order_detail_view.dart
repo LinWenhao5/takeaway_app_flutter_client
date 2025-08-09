@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:takeaway_app_flutter_client/ui/features/checkout/domain/order_type.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/application/providers.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/domain/order_status.dart';
+import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_note_info.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_repay_button.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_reserve_time_info.dart';
 import 'package:takeaway_app_flutter_client/ui/features/order_history/presentation/order_detail/order_status_line.dart';
@@ -159,6 +160,10 @@ class _OrderDetailViewState extends ConsumerState<OrderDetailView> {
               if (order.orderType == OrderType.pickup) ...[
                 const Divider(height: 32, thickness: 1),
                 StoreInfoOrderDetailWidget(),
+              ],
+              if (order.note.isNotEmpty) ...[
+                const Divider(height: 32, thickness: 1),
+                OrderNoteInfo(note: order.note),
               ],
               const Divider(height: 32, thickness: 1),
               OrderProductList(products: order.products),
