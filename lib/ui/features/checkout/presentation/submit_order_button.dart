@@ -46,6 +46,8 @@ class SubmitOrderButton extends ConsumerWidget {
       }
       ref.read(cartItemsProvider.notifier).setItems([]);
       ref.read(cartSummaryProvider.notifier).updateSummary("0", "0.00");
+      ref.read(selectedAddressIdProvider.notifier).state = null;
+      ref.read(checkoutNoteProvider.notifier).state = '';
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(context.t.checkout.orderSuccess)));
