@@ -29,3 +29,16 @@ String mapCaptchaErrorToLocalizedMessage(String error) {
   }
   return t.errors.genericErrorMessage;
 }
+
+String mapForgotPasswordErrorToLocalizedMessage(String error) {
+  if (error.contains('Invalid captcha')) {
+    return t.errors.invalidCaptchaMessage;
+  }
+  if (error.contains('email')) {
+    return t.errors.invalidEmailFormatMessage;
+  }
+  if (error.contains('password')) {
+    return t.errors.invalidPasswordMessage;
+  }
+  return t.errors.genericErrorMessage;
+}

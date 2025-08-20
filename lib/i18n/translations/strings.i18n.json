@@ -126,7 +126,14 @@
     "loginButton": "Log In",
     "successMessage": "You have successfully logged in!",
     "errorMessage": "Please complete all required fields",
-    "registerLink": "Don't have an account yet? Sign up here."
+    "registerLink": "Don't have an account yet? Sign up here.",
+    "backToLogin": "Back to login"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "sendCode": "Send Verification Code",
+    "reset": "Reset Password",
+    "success": "Password reset successfully!"
   },
   "register": {
     "title": "Create a New Account",

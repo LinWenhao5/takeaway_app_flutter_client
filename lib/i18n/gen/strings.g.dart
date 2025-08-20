@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 386 (193 per locale)
+/// Strings: 396 (198 per locale)
 ///
-/// Built on 2025-08-09 at 12:33 UTC
+/// Built on 2025-08-20 at 11:17 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsOrderDetailsEn orderDetails = _StringsOrderDetailsEn._(_root);
 	late final _StringsErrorsEn errors = _StringsErrorsEn._(_root);
 	late final _StringsLoginEn login = _StringsLoginEn._(_root);
+	late final _StringsForgotPasswordEn forgotPassword = _StringsForgotPasswordEn._(_root);
 	late final _StringsRegisterEn register = _StringsRegisterEn._(_root);
 	late final _StringsAddressEn address = _StringsAddressEn._(_root);
 	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
@@ -385,6 +386,20 @@ class _StringsLoginEn {
 	String get successMessage => 'You have successfully logged in!';
 	String get errorMessage => 'Please complete all required fields';
 	String get registerLink => 'Don\'t have an account yet? Sign up here.';
+	String get backToLogin => 'Back to login';
+}
+
+// Path: forgotPassword
+class _StringsForgotPasswordEn {
+	_StringsForgotPasswordEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Forgot Password';
+	String get sendCode => 'Send Verification Code';
+	String get reset => 'Reset Password';
+	String get success => 'Password reset successfully!';
 }
 
 // Path: register
@@ -564,6 +579,7 @@ class _StringsNl implements Translations {
 	@override late final _StringsOrderDetailsNl orderDetails = _StringsOrderDetailsNl._(_root);
 	@override late final _StringsErrorsNl errors = _StringsErrorsNl._(_root);
 	@override late final _StringsLoginNl login = _StringsLoginNl._(_root);
+	@override late final _StringsForgotPasswordNl forgotPassword = _StringsForgotPasswordNl._(_root);
 	@override late final _StringsRegisterNl register = _StringsRegisterNl._(_root);
 	@override late final _StringsAddressNl address = _StringsAddressNl._(_root);
 	@override late final _StringsSettingsNl settings = _StringsSettingsNl._(_root);
@@ -788,6 +804,20 @@ class _StringsLoginNl implements _StringsLoginEn {
 	@override String get successMessage => 'Je bent succesvol ingelogd!';
 	@override String get errorMessage => 'Vul alle verplichte velden in';
 	@override String get registerLink => 'Nog geen account? Registreer je hier.';
+	@override String get backToLogin => 'Terug naar inloggen';
+}
+
+// Path: forgotPassword
+class _StringsForgotPasswordNl implements _StringsForgotPasswordEn {
+	_StringsForgotPasswordNl._(this._root);
+
+	@override final _StringsNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Wachtwoord vergeten';
+	@override String get sendCode => 'Verificatiecode versturen';
+	@override String get reset => 'Wachtwoord opnieuw instellen';
+	@override String get success => 'Wachtwoord succesvol opnieuw ingesteld!';
 }
 
 // Path: register
@@ -1039,6 +1069,11 @@ extension on Translations {
 			case 'login.successMessage': return 'You have successfully logged in!';
 			case 'login.errorMessage': return 'Please complete all required fields';
 			case 'login.registerLink': return 'Don\'t have an account yet? Sign up here.';
+			case 'login.backToLogin': return 'Back to login';
+			case 'forgotPassword.title': return 'Forgot Password';
+			case 'forgotPassword.sendCode': return 'Send Verification Code';
+			case 'forgotPassword.reset': return 'Reset Password';
+			case 'forgotPassword.success': return 'Password reset successfully!';
 			case 'register.title': return 'Create a New Account';
 			case 'register.nameLabel': return 'Full Name';
 			case 'register.nameHint': return 'Enter your full name';
@@ -1240,6 +1275,11 @@ extension on _StringsNl {
 			case 'login.successMessage': return 'Je bent succesvol ingelogd!';
 			case 'login.errorMessage': return 'Vul alle verplichte velden in';
 			case 'login.registerLink': return 'Nog geen account? Registreer je hier.';
+			case 'login.backToLogin': return 'Terug naar inloggen';
+			case 'forgotPassword.title': return 'Wachtwoord vergeten';
+			case 'forgotPassword.sendCode': return 'Verificatiecode versturen';
+			case 'forgotPassword.reset': return 'Wachtwoord opnieuw instellen';
+			case 'forgotPassword.success': return 'Wachtwoord succesvol opnieuw ingesteld!';
 			case 'register.title': return 'Maak een nieuw account aan';
 			case 'register.nameLabel': return 'Volledige naam';
 			case 'register.nameHint': return 'Vul je volledige naam in';

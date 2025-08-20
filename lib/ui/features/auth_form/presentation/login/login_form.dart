@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
+import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/login/forgot_password_link.dart';
 import '../share/email_input.dart';
 import '../share/password_input.dart';
 import 'register_link.dart';
@@ -44,6 +45,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 ),
                 const SizedBox(height: 16),
                 const RegisterLink(),
+                const SizedBox(height: 8),
+                const ForgotPasswordLink(),
                 const SizedBox(height: 24),
                 LoginButton(
                   emailController: emailController,

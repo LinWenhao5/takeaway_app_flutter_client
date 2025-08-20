@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/forgot_password_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/login_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/auth/presentation/register_page.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/pages/cart/cart_page.dart';
@@ -16,6 +17,7 @@ import 'package:takeaway_app_flutter_client/ui/layout/pages/payment/presentation
 final Map<String, WidgetBuilder> appRoutes = {
   '/login': (context) => const LoginPage(),
   '/register': (context) => const RegisterPage(),
+  '/forgot-password': (context) => const ForgotPasswordPage(),
   '/cart': (context) => const CartPage(),
   '/checkout': (context) => const CheckoutPage(),
   '/account-settings': (context) => const AccountSettingsPage(),

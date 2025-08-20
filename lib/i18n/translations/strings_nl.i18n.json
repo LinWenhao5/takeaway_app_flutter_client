@@ -126,7 +126,14 @@
     "loginButton": "Inloggen",
     "successMessage": "Je bent succesvol ingelogd!",
     "errorMessage": "Vul alle verplichte velden in",
-    "registerLink": "Nog geen account? Registreer je hier."
+    "registerLink": "Nog geen account? Registreer je hier.",
+    "backToLogin": "Terug naar inloggen"
+  },
+  "forgotPassword": {
+    "title": "Wachtwoord vergeten",
+    "sendCode": "Verificatiecode versturen",
+    "reset": "Wachtwoord opnieuw instellen",
+    "success": "Wachtwoord succesvol opnieuw ingesteld!"
   },
   "register": {
     "title": "Maak een nieuw account aan",
