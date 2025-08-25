@@ -17,11 +17,14 @@ class ProductDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Text(
-          product.description,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodySmall,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 260),
+          child: Text(
+            product.description,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ),
         const SizedBox(height: 8),
         Text(

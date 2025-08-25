@@ -5,3 +5,5 @@ final quantityProvider =
     StateNotifierProvider.family<QuantityNotifier, int, int>((ref, productId) {
       return QuantityNotifier();
     });
+
+final productDetailPageProvider = StateProvider.autoDispose<int>((ref) => 0);

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product.dart';
 import 'package:takeaway_app_flutter_client/theme/preset/base/padding.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/presentation/product_actions_section.dart';
+import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/presentation/product_detail_modal.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/presentation/product_details_section.dart';
 
 import 'product_image_section.dart';
@@ -13,17 +14,36 @@ class ProductTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: kListTilePadding,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ProductImageSection(product: product),
-          const SizedBox(width: 12),
-          Expanded(child: ProductDetailsSection(product: product)),
-          ProductActionsSection(product: product),
-        ],
-      ),
-    );
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          ),
+          builder: (context) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: ProductDetailModal(product: product),
+            );
+          },
+        );
+      },
+      child: Padding(
+        padding: kListTilePadding,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+              ProductImageSection(product: product),
+              const SizedBox(width: 12),
+              Expanded(child: ProductDetailsSection(product: product)),
+              ProductActionsSection(product: product),
+            ],
+          ),
+        ),
+      );
   }
 }

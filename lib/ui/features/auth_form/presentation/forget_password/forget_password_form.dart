@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takeaway_app_flutter_client/ui/features/auth_form/application/auth_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/share/email_input.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/share/captcha_input.dart';
 import 'package:takeaway_app_flutter_client/ui/features/auth_form/presentation/share/password_input.dart';
 import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'forget_password_button.dart';
 
 class ForgetPasswordForm extends ConsumerStatefulWidget {
