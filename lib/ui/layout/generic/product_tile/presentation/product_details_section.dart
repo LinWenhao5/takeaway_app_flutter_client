@@ -20,10 +20,12 @@ class ProductDetailsSection extends StatelessWidget {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 260),
           child: Text(
-            product.description,
+            _stripHtmlTags(product.description),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
           ),
         ),
         const SizedBox(height: 8),
@@ -34,4 +36,8 @@ class ProductDetailsSection extends StatelessWidget {
       ],
     );
   }
+}
+
+String _stripHtmlTags(String htmlText) {
+  return htmlText.replaceAll(RegExp(r'<[^>]*>'), '');
 }

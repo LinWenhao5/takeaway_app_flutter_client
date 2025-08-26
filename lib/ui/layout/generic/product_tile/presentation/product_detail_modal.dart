@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takeaway_app_flutter_client/ui/features/product_list/domain/product.dart';
 import 'package:takeaway_app_flutter_client/ui/layout/generic/product_tile/application/provider.dart';
@@ -92,12 +93,20 @@ class ProductDetailModal extends ConsumerWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 4),
-          Text(
-            product.description,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface
-                ),
-            textAlign: TextAlign.start,
+          SizedBox(
+            height: 320,
+            child: SingleChildScrollView(
+              child: Html(
+                data: product.description,
+                style: {
+                  "body": Style(
+                    margin: Margins.zero,
+                    fontSize: FontSize(Theme.of(context).textTheme.bodyMedium?.fontSize ?? 16),
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                },
+              ),
+            ),
           ),
           const SizedBox(height: 4),
           Text(
