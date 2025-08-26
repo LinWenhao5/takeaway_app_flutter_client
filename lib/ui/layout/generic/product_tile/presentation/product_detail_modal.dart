@@ -94,7 +94,7 @@ class ProductDetailModal extends ConsumerWidget {
           ),
           const SizedBox(height: 4),
           SizedBox(
-            height: 320,
+            height: 240,
             child: SingleChildScrollView(
               child: Html(
                 data: product.description,
