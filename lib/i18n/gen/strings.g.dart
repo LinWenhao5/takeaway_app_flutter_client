@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 396 (198 per locale)
+/// Strings: 398 (199 per locale)
 ///
-/// Built on 2025-08-20 at 11:17 UTC
+/// Built on 2025-09-06 at 13:01 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -252,6 +252,7 @@ class _StringsCheckoutEn {
 	String get selectTimeHint => 'Please select a time';
 	String get selectTimeError => 'Please select a valid time';
 	String get closedMessage => 'The restaurant is closed today or currently not open.';
+	String get minimumAmountError => 'The order amount is lower than the required minimum amount';
 }
 
 // Path: payment
@@ -670,6 +671,7 @@ class _StringsCheckoutNl implements _StringsCheckoutEn {
 	@override String get selectTimeHint => 'Selecteer een tijd';
 	@override String get selectTimeError => 'Selecteer een geldige tijd';
 	@override String get closedMessage => 'Het restaurant is vandaag gesloten of momenteel niet geopend.';
+	@override String get minimumAmountError => 'Het bestelbedrag is lager dan het vereiste minimumbedrag';
 }
 
 // Path: payment
@@ -1007,6 +1009,7 @@ extension on Translations {
 			case 'checkout.selectTimeHint': return 'Please select a time';
 			case 'checkout.selectTimeError': return 'Please select a valid time';
 			case 'checkout.closedMessage': return 'The restaurant is closed today or currently not open.';
+			case 'checkout.minimumAmountError': return 'The order amount is lower than the required minimum amount';
 			case 'payment.paymentTitle': return 'Payment';
 			case 'payment.paymentExpired': return 'Page expired';
 			case 'payment.paymentInstruction': return 'If you are not redirected automatically, please click the button below or copy the link to go to the payment page:';
@@ -1213,6 +1216,7 @@ extension on _StringsNl {
 			case 'checkout.selectTimeHint': return 'Selecteer een tijd';
 			case 'checkout.selectTimeError': return 'Selecteer een geldige tijd';
 			case 'checkout.closedMessage': return 'Het restaurant is vandaag gesloten of momenteel niet geopend.';
+			case 'checkout.minimumAmountError': return 'Het bestelbedrag is lager dan het vereiste minimumbedrag';
 			case 'payment.paymentTitle': return 'Betaling';
 			case 'payment.paymentExpired': return 'Pagina verlopen';
 			case 'payment.paymentInstruction': return 'Als je niet automatisch wordt doorgestuurd, klik dan op de onderstaande knop of kopieer de link om naar de betaalpagina te gaan:';

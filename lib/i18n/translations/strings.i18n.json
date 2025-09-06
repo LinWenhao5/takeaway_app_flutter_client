@@ -48,7 +48,8 @@
     "reserveTimeTitle": "Reserve a time",
     "selectTimeHint": "Please select a time",
     "selectTimeError": "Please select a valid time",
-    "closedMessage": "The restaurant is closed today or currently not open."
+    "closedMessage": "The restaurant is closed today or currently not open.",
+    "minimumAmountError": "The order amount is lower than the required minimum amount"
   },
   "payment": {
     "paymentTitle": "Payment",

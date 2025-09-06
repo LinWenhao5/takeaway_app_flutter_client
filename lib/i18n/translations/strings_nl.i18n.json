@@ -48,7 +48,8 @@
     "reserveTimeTitle": "Reserveer een tijd",
     "selectTimeHint": "Selecteer een tijd",
     "selectTimeError": "Selecteer een geldige tijd",
-    "closedMessage": "Het restaurant is vandaag gesloten of momenteel niet geopend."
+    "closedMessage": "Het restaurant is vandaag gesloten of momenteel niet geopend.",
+    "minimumAmountError": "Het bestelbedrag is lager dan het vereiste minimumbedrag"
   },
   "payment": {
     "paymentTitle": "Betaling",

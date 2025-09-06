@@ -61,6 +61,9 @@ class OrderNotifier extends StateNotifier<OrderState> {
           ref.invalidate(availableTimesProvider);
           return t.errors.selectedTimeUnavailable;
         }
+        if (msg.contains('Order amount does not meet the minimum delivery amount')) {
+          return t.checkout.minimumAmountError;
+        }
         return t.errors.genericErrorMessage;
       },
     );

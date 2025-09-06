@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takeaway_app_flutter_client/i18n/gen/strings.g.dart';
 import 'package:takeaway_app_flutter_client/ui/features/address_management/application/address_provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/available_time/application/provider.dart';
 import 'package:takeaway_app_flutter_client/ui/features/cart/application/cart_provider.dart';
@@ -21,6 +22,15 @@ class CheckoutView extends ConsumerStatefulWidget {
 }
 
 class _CheckoutViewState extends ConsumerState<CheckoutView> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      ref.read(deliverySettingNotifierProvider.notifier).fetch();
+      ref.read(fetchCartProvider.notifier).fetchCart();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
@@ -94,6 +104,14 @@ class CheckoutContent extends ConsumerWidget {
 
   @override 
   Widget build(BuildContext context, WidgetRef ref) {
+    final deliverySettingState = ref.watch(deliverySettingNotifierProvider);
+    final minimumAmount = deliverySettingState.setting?.minimumAmount ?? 0.0;
+    final cartTotal = double.tryParse(cartSummary.totalPrice) ?? 0.0;
+
+    bool belowMinimum = false;
+    if (orderType == OrderType.delivery) {
+      belowMinimum = cartTotal < minimumAmount;
+    }
     return RefreshIndicator(
       onRefresh: () async {
         final fetchCartNotifier = ref.read(fetchCartProvider.notifier);
@@ -127,11 +145,20 @@ class CheckoutContent extends ConsumerWidget {
               const SizedBox(height: 32),
               const PaymentMethodSelector(),
               const SizedBox(height: 24),
+              if (orderType == OrderType.delivery && belowMinimum)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    '${context.t.checkout.minimumAmountError}: €${minimumAmount.toStringAsFixed(2)}',
+                    style: TextStyle(color: Colors.red, fontSize: 14),
+                  ),
+                ),
               SubmitOrderButton(
                 enabled:
                     (selectedTime != null) &&
                     (orderType == OrderType.pickup ||
-                        (addresses.isNotEmpty && activeAddressId != null)),
+                    (addresses.isNotEmpty && activeAddressId != null)) &&
+                    !belowMinimum,
                 activeAddressId:
                     orderType == OrderType.delivery ? activeAddressId : null,
                 orderType: orderType,
